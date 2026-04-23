@@ -4,7 +4,7 @@
 
 - Evitar testes de HTML por padrão.
 - Usar harnesses somente se o escopo exigir validação de interação de UI.
-- Para testes unitários de lógica em `.spec.ts`, seguir `vitest-unit-tests`.
+- Para testes unitários de lógica em `.spec.ts`, seguir [testing-fundamentals.md](testing-fundamentals.md).
 
 ## Nota
 

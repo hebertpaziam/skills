@@ -1,15 +1,15 @@
 ---
 title: Use SWR for Automatic Deduplication
 impact: MEDIUM-HIGH
-impactDescription: deduplicacao automatica
+impactDescription: deduplicação automatica
 tags: client, swr, deduplication, data-fetching
 ---
 
 ## Use SWR for Automatic Deduplication
 
-SWR permite deduplicacao de requests, cache e revalidacao entre instancias de componentes.
+SWR permite deduplicação de requests, cache e revalidacao entre instancias de componentes.
 
-### Incorrect (sem deduplicacao, cada instancia faz fetch)
+### Incorrect (sem deduplicação, cada instancia faz fetch)
 
 ```tsx
 function UserList() {

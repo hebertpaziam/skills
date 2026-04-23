@@ -21,6 +21,24 @@ Use estas diretrizes quando:
 - Refatorar código React/Next.js
 - Otimizar bundle ou tempos de carregamento
 
+## Princípio LIFT
+
+Antes de criar novo componente, hook, utilitário, cache, fluxo async ou abstração estrutural, aplique `LIFT`:
+
+- `Locate` - localize componentes, hooks, helpers, padrões e referências já existentes no projeto.
+- `Identify` - identifique o que já resolve parte do problema e onde existe duplicação real.
+- `Find` - encontre o menor ponto coerente de reutilização, extensão ou composição antes de introduzir código novo.
+- `Try to be DRY` - tente ser DRY sem criar abstrações prematuras, wrappers desnecessários ou camadas genéricas que prejudiquem legibilidade e performance.
+
+Use `LIFT` para preferir reaproveitamento claro e consistente, sem sacrificar simplicidade local.
+
+## Integracao com outras skills
+
+- Ao alterar tipagem geral, contratos compartilhados ou modelagem TypeScript, seguir `typescript-standards`.
+- Ao sugerir ou executar scripts do projeto, respeitar a stack e os scripts ja configurados no projeto.
+- Ao preparar commits, seguir `git-commit`.
+- Em caso de conflito, `react-standards` prevalece para performance, rendering e arquitetura React/Next.js; `typescript-standards` para regras gerais de TypeScript; `git-commit` para commits.
+
 ## Categorias por prioridade
 
 | Prioridade | Categoria | Impacto | Prefixo |
@@ -131,6 +149,8 @@ Use estas diretrizes quando:
 - `advanced-use-latest` - useLatest para refs de callback estáveis
 
 ## Como usar
+
+Antes de aplicar uma regra ou criar uma nova abstração, aplique `LIFT`.
 
 Leia os arquivos de regras para explicações detalhadas e exemplos de código:
 

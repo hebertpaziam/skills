@@ -7,13 +7,13 @@
 - Usar Signals para qualquer estado no componente.
 - Usar control flow nativo (`@if`, `@for`, `@switch`).
 - Preferir `class` e `style` bindings sobre `ngClass` e `ngStyle`.
-- Ao alterar estilos do componente ou classes do template, carregar e seguir `bem-scss`.
+- Ao alterar estilos do componente ou classes do template, carregar e seguir [component-styles.md](component-styles.md).
 - Propriedades e métodos devem seguir a ordem definida no skill.
 
-## Integração com outras skills
+## Integração com outros guias
 
-- `bem-scss` é a fonte de verdade para SCSS de componente, BEM, toolbox, ITCSS e limpeza baseada no HTML.
-- `vitest-unit-tests` é a fonte de verdade para a escrita do `.spec.ts` do componente.
+- [component-styles.md](component-styles.md) é a fonte de verdade para SCSS de componente, BEM, toolbox, ITCSS e limpeza baseada no HTML.
+- [testing-fundamentals.md](testing-fundamentals.md) é a fonte de verdade para a escrita do `.spec.ts`, sempre respeitando a stack de testes configurada no projeto.
 
 ## Definição básica
 
@@ -46,5 +46,5 @@ Sempre use blocos nativos:
 
 - Componentes pequenos e focados; extraia responsabilidades para services ou child components.
 - Evite lógica complexa em template; prefira `computed`.
-- Se houver SCSS ou mudança de classes no template, delegue o detalhamento de estilo para `bem-scss`.
-- Sempre criar o arquivo `.spec.ts` e seguir `vitest-unit-tests` ao preencher os unit tests.
+- Se houver SCSS ou mudanca de classes no template, delegue o detalhamento de estilo para [component-styles.md](component-styles.md).
+- Sempre criar o arquivo `.spec.ts` e seguir [testing-fundamentals.md](testing-fundamentals.md) ao preencher os unit tests.

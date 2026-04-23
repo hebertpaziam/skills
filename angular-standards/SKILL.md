@@ -1,6 +1,6 @@
 ---
 name: angular-standards
-description: 'Aplicar padrões Angular 21 em novos recursos, com arquitetura baseada em signals, OnPush, inject e control flow moderno. Use junto com a skill bem-scss para estilos de componente e a skill vitest-unit-tests para testes unitários.'
+description: 'Aplicar padroes Angular 21 em novos recursos, com arquitetura baseada em signals, OnPush, inject e control flow moderno. Para estilos de componente e testes unitarios, siga as references internas de `angular-standards` e respeite a stack configurada no projeto.'
 ---
 
 # Angular 21 Standards
@@ -14,23 +14,36 @@ description: 'Aplicar padrões Angular 21 em novos recursos, com arquitetura bas
 ## Objetivo
 
 - Padronizar Angular 21 com signals, RxJS, testabilidade, simplicidade e acessibilidade.
-- Delegar regras detalhadas de estilo para a skill `bem-scss`.
-- Delegar regras detalhadas de testes unitários para a skill `vitest-unit-tests`.
+- Concentrar regras detalhadas de estilos de componente em [references/component-styles.md](references/component-styles.md).
+- Concentrar regras detalhadas de testes unitários em [references/testing-fundamentals.md](references/testing-fundamentals.md).
 
-## Integração com outras skills
+## Principio LIFT
 
-- Ao alterar arquivos `*.component.scss`, `*.directive.scss` ou classes em templates Angular, carregar e seguir `bem-scss`.
-- Ao criar ou alterar arquivos `*.spec.ts`, carregar e seguir `vitest-unit-tests`.
-- Em caso de conflito, prevalece esta ordem: `bem-scss` para estilos de componente, `vitest-unit-tests` para testes unitários e `angular-standards` para arquitetura Angular, organização de código, reatividade e acessibilidade.
+- Antes de criar novo component, service, directive, guard, helper, generator ou teste, aplicar o principio `LIFT`.
+- `Locate`: localizar codigo, contratos, generators, patterns e references ja existentes no projeto e no dominio.
+- `Identify`: identificar o que ja resolve parte do problema e onde ha duplicação potencial.
+- `Find`: encontrar o menor ponto coerente de reutilizacao, extensao ou composicao antes de introduzir codigo novo.
+- `Try to be DRY`: tentar eliminar duplicação real sem criar abstracoes prematuras ou estruturas genericas sem necessidade.
+
+## Integracao com referencias locais
+
+- Ao alterar tipagem geral, contratos compartilhados, interfaces, enums ou modelagem TypeScript, seguir `typescript-standards`.
+- Ao alterar arquivos `*.component.scss`, `*.directive.scss` ou classes em templates Angular, seguir [references/component-styles.md](references/component-styles.md).
+- Ao criar ou alterar arquivos `*.spec.ts`, seguir [references/testing-fundamentals.md](references/testing-fundamentals.md).
+- Ao sugerir ou executar scripts do projeto, respeitar a stack e os scripts ja configurados no projeto.
+- Ao preparar commits, seguir `git-commit`.
+- Em caso de conflito, prevalece esta ordem: [references/component-styles.md](references/component-styles.md) para estilos de componente, [references/testing-fundamentals.md](references/testing-fundamentals.md) para testes unitarios, `typescript-standards` para regras gerais de TypeScript, `git-commit` para commits e `angular-standards` para arquitetura Angular, organizacao de codigo, reatividade e acessibilidade.
 
 ## Regras principais
 
 - Standalone por padrão. Não definir `standalone: true`.
+- Aplicar `LIFT` antes de introduzir novos components, services, directives, guards, helpers, generators ou testes.
 - Sempre criar o arquivo `.spec.ts` correspondente quando o recurso exigir teste unitário.
-- Ao criar ou atualizar testes unitários, seguir `vitest-unit-tests`.
-- Toda nova interface deve ter um generator correspondente em `src/mock/generators` usando `faker.js`.
+- Ao criar ou atualizar testes unitários, seguir [references/testing-fundamentals.md](references/testing-fundamentals.md).
+- Ao criar ou atualizar testes unitarios, reutilizar apenas a ferramenta, os scripts e os utilitarios de teste ja configurados no projeto.
+- Toda nova interface deve ter um generator correspondente usando `faker.js`, com um unico seed aleatorio por execucao e respeitando a hierarquia de pastas adotada pelo projeto.
 - Usar `Generator` apenas para dados de mock/teste; caso contrário, preferir `Factory` ou `Builder`.
-- Ao criar ou alterar estilos de componente, seguir `bem-scss` e manter o template alinhado às classes usadas no HTML.
+- Ao criar ou alterar estilos de componente, seguir [references/component-styles.md](references/component-styles.md) e manter o template alinhado as classes usadas no HTML.
 - Usar Signals para qualquer dado em componentes.
 - Evitar getters e setters; preferir `computed`.
 - Usar APIs baseadas em Signals: `input`, `output`, `model`, `viewChild`.
@@ -54,21 +67,25 @@ description: 'Aplicar padrões Angular 21 em novos recursos, com arquitetura bas
 
 ## Procedimento
 
-1. Modele o estado com Signals e `computed`.
-2. Configure `OnPush` e use `inject()`.
-3. Estruture o template com control flow nativo e bindings claros de `class` e `style`.
-4. Se houver estilos de componente ou mudança de classes no template, aplique `bem-scss`.
-5. Escreva RxJS com `pipe` e operadores semânticos.
-6. Use `takeUntilDestroyed` quando houver subscription.
-7. Se houver testes unitários, siga `vitest-unit-tests`.
-8. Garanta acessibilidade WCAG AA e sem expor a11y como API configurável.
+1. Aplique `LIFT` para localizar, identificar e reutilizar o que ja existe antes de criar novas estruturas.
+2. Modele o estado com Signals e `computed`.
+3. Configure `OnPush` e use `inject()`.
+4. Estruture o template com control flow nativo e bindings claros de `class` e `style`.
+5. Se houver tipagem geral ou contratos compartilhados, alinhe tambem com `typescript-standards`.
+6. Se houver estilos de componente ou mudanca de classes no template, aplique [references/component-styles.md](references/component-styles.md).
+7. Escreva RxJS com `pipe` e operadores semânticos.
+8. Use `takeUntilDestroyed` quando houver subscription.
+9. Se houver testes unitários, siga [references/testing-fundamentals.md](references/testing-fundamentals.md).
+10. Garanta acessibilidade WCAG AA e sem expor a11y como API configurável.
 
 ## Checklist de qualidade
 
 - Arquivo `.spec.ts` criado quando aplicável.
-- Se houve alteração em `*.spec.ts`, `vitest-unit-tests` foi seguida.
-- Se houve alteração em SCSS de componente ou classes do template, `bem-scss` foi seguida.
-- Novas interfaces com generator correspondente.
+- `LIFT` aplicado antes de introduzir novas estruturas ou duplicar implementacoes.
+- Se houve alteracao de tipagem geral, `typescript-standards` foi seguida.
+- Se houve alteração em `*.spec.ts`, [references/testing-fundamentals.md](references/testing-fundamentals.md) foi seguida.
+- Se houve alteracao em SCSS de componente ou classes do template, [references/component-styles.md](references/component-styles.md) foi seguida.
+- Novas interfaces com generator correspondente usando `faker.js`, seed unico e hierarquia correta.
 - Nomes `Generator` apenas para mocks/testes.
 - Signals usados para todo estado do componente.
 - Sem getters/setters; `computed` quando necessário.
@@ -86,16 +103,18 @@ description: 'Aplicar padrões Angular 21 em novos recursos, com arquitetura bas
 
 - Não executar `ng build` automaticamente; seguir scripts do `package.json`.
 - Esta skill define padrões arquiteturais; não duplique nela as regras operacionais de SCSS e unit tests.
-- Para estilos de componente, use `bem-scss`.
-- Para testes unitários de lógica, use `vitest-unit-tests`.
+- Para estilos de componente, use [references/component-styles.md](references/component-styles.md).
+- Para testes unitarios de logica, use [references/testing-fundamentals.md](references/testing-fundamentals.md) e preserve a stack de testes configurada no projeto.
+- Para scripts do projeto, respeite a stack e os scripts ja configurados no projeto.
+- Para commits, use `git-commit`.
 - Harnesses e router testing são referências complementares para casos específicos de UI e navegação.
 - `effect` apenas para casos simples; lógica complexa fica em RxJS.
 - `resource` é experimental; usar com critério.
 
 ## Referências (carregar quando fizer sentido)
 
-- Skill de estilos de componente: `bem-scss`
-- Skill de testes unitários: `vitest-unit-tests`
+- Estilos de componente: [references/component-styles.md](references/component-styles.md)
+- Testes unitarios: [references/testing-fundamentals.md](references/testing-fundamentals.md)
 - Componentes: [references/components.md](references/components.md)
 - Inputs: [references/inputs.md](references/inputs.md)
 - Outputs: [references/outputs.md](references/outputs.md)
@@ -122,7 +141,6 @@ description: 'Aplicar padrões Angular 21 em novos recursos, com arquitetura bas
 - Rendering strategies: [references/rendering-strategies.md](references/rendering-strategies.md)
 - Route animations: [references/route-animations.md](references/route-animations.md)
 - Angular Aria: [references/angular-aria.md](references/angular-aria.md)
-- Testing fundamentals: [references/testing-fundamentals.md](references/testing-fundamentals.md)
 - Component harnesses: [references/component-harnesses.md](references/component-harnesses.md)
 - Router testing: [references/router-testing.md](references/router-testing.md)
 - E2E testing: [references/e2e-testing.md](references/e2e-testing.md)
