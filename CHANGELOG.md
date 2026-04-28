@@ -5,6 +5,11 @@ Do not edit manually.
 
 ## Unreleased
 
+### Bug Fixes
+
+- Translate changelog and cliff.toml labels to English
+
+
 ### Features
 
 - Remove obsolete SKILL documents for OpenSpec workflows
