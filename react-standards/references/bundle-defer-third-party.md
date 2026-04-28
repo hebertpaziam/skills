@@ -1,15 +1,15 @@
 ---
-title: Adie Bibliotecas de Terceiros Não Críticas
+title: Defer Non-Critical Third-Party Libraries
 impact: MEDIUM
-impactDescription: carrega após a hidratação
+impactDescription: loads after hydration
 tags: bundle, third-party, analytics, defer
 ---
 
-## Adie Bibliotecas de Terceiros Não Críticas
+## Defer Non-Critical Third-Party Libraries
 
-Analytics, logging e error tracking não bloqueiam a interação do usuário. Carregue depois da hidratação.
+Analytics, logging, and error tracking don't block user interaction. Load them after hydration.
 
-**Incorreto (bloqueia o bundle inicial):**
+**Incorrect (blocks initial bundle):**
 
 ```tsx
 import { Analytics } from '@vercel/analytics/react'
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-**Correto (carrega após a hidratação):**
+**Correct (loads after hydration):**
 
 ```tsx
 import dynamic from 'next/dynamic'

@@ -1,28 +1,28 @@
 ---
-title: Use Inicialização Lazy de Estado
+title: Use Lazy State Initialization
 impact: MEDIUM
-impactDescription: computação desperdicada a cada render
+impactDescription: wasted computation on every render
 tags: react, hooks, useState, performance, initialization
 ---
 
-## Use Inicialização Lazy de Estado
+## Use Lazy State Initialization
 
-Passe uma função para `useState` quando o valor inicial for caro. Sem a forma funcional, o inicializador roda em todo render mesmo sendo usado apenas uma vez.
+Pass a function to `useState` for expensive initial values. Without the function form, the initializer runs on every render even though the value is only used once.
 
-**Incorreto (roda em todo render):**
+**Incorrect (runs on every render):**
 
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
-  // buildSearchIndex() roda em TODO render, mesmo após a inicialização
+  // buildSearchIndex() runs on EVERY render, even after initialization
   const [searchIndex, setSearchIndex] = useState(buildSearchIndex(items))
   const [query, setQuery] = useState('')
   
-  // Quando query muda, buildSearchIndex roda de novo sem necessidade
+  // When query changes, buildSearchIndex runs again unnecessarily
   return <SearchResults index={searchIndex} query={query} />
 }
 
 function UserProfile() {
-  // JSON.parse roda em todo render
+  // JSON.parse runs on every render
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem('settings') || '{}')
   )
@@ -31,11 +31,11 @@ function UserProfile() {
 }
 ```
 
-**Correto (roda apenas uma vez):**
+**Correct (runs only once):**
 
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
-  // buildSearchIndex() roda APENAS no render inicial
+  // buildSearchIndex() runs ONLY on initial render
   const [searchIndex, setSearchIndex] = useState(() => buildSearchIndex(items))
   const [query, setQuery] = useState('')
   
@@ -43,7 +43,7 @@ function FilteredList({ items }: { items: Item[] }) {
 }
 
 function UserProfile() {
-  // JSON.parse roda apenas no render inicial
+  // JSON.parse runs only on initial render
   const [settings, setSettings] = useState(() => {
     const stored = localStorage.getItem('settings')
     return stored ? JSON.parse(stored) : {}
@@ -53,6 +53,6 @@ function UserProfile() {
 }
 ```
 
-Use inicialização lazy ao computar valores iniciais a partir de localStorage/sessionStorage, construir estruturas de dados (índices, mapas), ler do DOM ou fazer transformações pesadas.
+Use lazy initialization when computing initial values from localStorage/sessionStorage, building data structures (indexes, maps), reading from the DOM, or performing heavy transformations.
 
-Para primitivos simples (`useState(0)`), referências diretas (`useState(props.value)`) ou literais baratos (`useState({})`), a forma funcional não é necessária.
+For simple primitives (`useState(0)`), direct references (`useState(props.value)`), or cheap literals (`useState({})`), the function form is unnecessary.

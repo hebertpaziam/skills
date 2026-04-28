@@ -1,33 +1,33 @@
 ---
-title: Evite Imports de Barrel
+title: Avoid Barrel File Imports
 impact: CRITICAL
-impactDescription: 200-800ms de custo, builds lentos
+impactDescription: 200-800ms import cost, slow builds
 tags: bundle, imports, tree-shaking, barrel-files, performance
 ---
 
-## Evite Imports de Barrel
+## Avoid Barrel File Imports
 
-Importe direto dos arquivos de origem em vez de barrel files para evitar carregar milhares de módulos não usados. **Barrel files** são pontos de entrada que reexportam vários módulos (ex.: `index.js` que faz `export * from './module'`).
+Import directly from source files instead of barrel files to avoid loading thousands of unused modules. **Barrel files** are entry points that re-export multiple modules (e.g., `index.js` that does `export * from './module'`).
 
-Bibliotecas populares de ícones e componentes podem ter **até 10.000 reexports** no arquivo de entrada. Para muitos pacotes React, **leva 200-800ms apenas para importar**, afetando a velocidade de desenvolvimento e os cold starts em produção.
+Popular icon and component libraries can have **up to 10,000 re-exports** in their entry file. For many React packages, **it takes 200-800ms just to import them**, affecting both development speed and production cold starts.
 
-**Por que tree-shaking não ajuda:** Quando uma biblioteca é marcada como externa (não bundlada), o bundler não consegue otimizar. Se você bundlar para habilitar tree-shaking, os builds ficam bem mais lentos ao analisar todo o grafo de módulos.
+**Why tree-shaking doesn't help:** When a library is marked as external (not bundled), the bundler can't optimize it. If you bundle it to enable tree-shaking, builds become substantially slower analyzing the entire module graph.
 
-**Incorreto (importa a biblioteca inteira):**
+**Incorrect (imports entire library):**
 
 ```tsx
 import { Check, X, Menu } from 'lucide-react'
-// Carrega 1.583 módulos, leva ~2.8s extra em dev
-// Custo em runtime: 200-800ms em cada cold start
+// Loads 1,583 modules, takes ~2.8s extra in dev
+// Runtime cost: 200-800ms on every cold start
 
 import { Button, TextField } from '@mui/material'
-// Carrega 2.225 módulos, leva ~4.2s extra em dev
+// Loads 2,225 modules, takes ~4.2s extra in dev
 ```
 
-**Correto - Next.js 13.5+ (recomendado):**
+**Correct - Next.js 13.5+ (recommended):**
 
 ```js
-// next.config.js - otimiza imports de barrel no build
+// next.config.js - automatically optimizes barrel imports at build time
 module.exports = {
   experimental: {
     optimizePackageImports: ['lucide-react', '@mui/material']
@@ -36,25 +36,25 @@ module.exports = {
 ```
 
 ```tsx
-// Mantenha os imports padrão - Next.js transforma em imports diretos
+// Keep the standard imports - Next.js transforms them to direct imports
 import { Check, X, Menu } from 'lucide-react'
-// Suporte total a TypeScript, sem manipular paths manualmente
+// Full TypeScript support, no manual path wrangling
 ```
 
-Esta é a abordagem recomendada porque preserva a segurança de tipos do TypeScript e o autocomplete do editor enquanto elimina o custo do barrel import.
+This is the recommended approach because it preserves TypeScript type safety and editor autocompletion while still eliminating the barrel import cost.
 
-**Correto - Imports diretos (projetos fora do Next.js):**
+**Correct - Direct imports (non-Next.js projects):**
 
 ```tsx
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
-// Carrega apenas o que você usa
+// Loads only what you use
 ```
 
-> **Aviso de TypeScript:** Algumas bibliotecas (notavelmente `lucide-react`) não entregam arquivos `.d.ts` para paths de import profundo. Importar de `lucide-react/dist/esm/icons/check` resulta em tipo `any` implícito, causando erros com `strict` ou `noImplicitAny`. Prefira `optimizePackageImports` quando disponível, ou verifique se a biblioteca exporta tipos para seus subpaths antes de usar imports diretos.
+> **TypeScript warning:** Some libraries (notably `lucide-react`) don't ship `.d.ts` files for their deep import paths. Importing from `lucide-react/dist/esm/icons/check` resolves to an implicit `any` type, causing errors under `strict` or `noImplicitAny`. Prefer `optimizePackageImports` when available, or verify the library exports types for its subpaths before using direct imports.
 
-Essas otimizações geram dev boot 15-70% mais rápido, builds 28% mais rápidos, cold starts 40% mais rápidos e HMR significativamente mais rápido.
+These optimizations provide 15-70% faster dev boot, 28% faster builds, 40% faster cold starts, and significantly faster HMR.
 
-Bibliotecas com impacto comum: `lucide-react`, `@mui/material`, `@mui/icons-material`, `@tabler/icons-react`, `react-icons`, `@headlessui/react`, `@radix-ui/react-*`, `lodash`, `ramda`, `date-fns`, `rxjs`, `react-use`.
+Libraries commonly affected: `lucide-react`, `@mui/material`, `@mui/icons-material`, `@tabler/icons-react`, `react-icons`, `@headlessui/react`, `@radix-ui/react-*`, `lodash`, `ramda`, `date-fns`, `rxjs`, `react-use`.
 
-Referência: [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js)
+Reference: [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js)

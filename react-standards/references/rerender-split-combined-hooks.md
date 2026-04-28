@@ -1,15 +1,15 @@
 ---
-title: Separe Computações Combinadas em Hooks
+title: Split Combined Hook Computations
 impact: MEDIUM
-impactDescription: evita recomputar etapas independentes
+impactDescription: avoids recomputing independent steps
 tags: rerender, useMemo, useEffect, dependencies, optimization
 ---
 
-## Separe Computações Combinadas em Hooks
+## Split Combined Hook Computations
 
-Quando um hook tem multiplas tarefas independentes com dependências diferentes, separe em hooks distintos. Um hook combinado reexecuta tudo quando qualquer dependência muda, mesmo que algumas tarefas não usem o valor mudado.
+When a hook contains multiple independent tasks with different dependencies, split them into separate hooks. A combined hook reruns all tasks when any dependency changes, even if some tasks don't use the changed value.
 
-**Incorreto (mudar `sortOrder` recomputa o filtro):**
+**Incorrect (changing `sortOrder` recomputes filtering):**
 
 ```tsx
 const sortedProducts = useMemo(() => {
@@ -21,7 +21,7 @@ const sortedProducts = useMemo(() => {
 }, [products, category, sortOrder])
 ```
 
-**Correto (filtra apenas quando products ou category mudam):**
+**Correct (filtering only recomputes when products or category change):**
 
 ```tsx
 const filteredProducts = useMemo(
@@ -38,9 +38,9 @@ const sortedProducts = useMemo(
 )
 ```
 
-Esse padrão também vale para `useEffect` ao combinar efeitos não relacionados:
+This pattern also applies to `useEffect` when combining unrelated side effects:
 
-**Incorreto (ambos effects rodam quando qualquer dependência muda):**
+**Incorrect (both effects run when either dependency changes):**
 
 ```tsx
 useEffect(() => {
@@ -49,7 +49,7 @@ useEffect(() => {
 }, [pathname, pageTitle])
 ```
 
-**Correto (effects rodam de forma independente):**
+**Correct (effects run independently):**
 
 ```tsx
 useEffect(() => {
@@ -61,4 +61,4 @@ useEffect(() => {
 }, [pageTitle])
 ```
 
-**Nota:** Se o projeto usa [React Compiler](https://react.dev/learn/react-compiler), ele otimiza o tracking de dependências e pode cobrir alguns casos.
+**Note:** If your project has [React Compiler](https://react.dev/learn/react-compiler) enabled, it automatically optimizes dependency tracking and may handle some of these cases for you.

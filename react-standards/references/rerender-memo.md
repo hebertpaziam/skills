@@ -1,15 +1,15 @@
 ---
-title: Extraia para Componentes Memoizados
+title: Extract to Memoized Components
 impact: MEDIUM
-impactDescription: permite retornos antecipados
+impactDescription: enables early returns
 tags: rerender, memo, useMemo, optimization
 ---
 
-## Extraia para Componentes Memoizados
+## Extract to Memoized Components
 
-Extraia trabalho caro para componentes memoizados a fim de permitir retornos antecipados antes da computação.
+Extract expensive work into memoized components to enable early returns before computation.
 
-**Incorreto (calcula avatar mesmo carregando):**
+**Incorrect (computes avatar even when loading):**
 
 ```tsx
 function Profile({ user, loading }: Props) {
@@ -23,7 +23,7 @@ function Profile({ user, loading }: Props) {
 }
 ```
 
-**Correto (evita computação quando carregando):**
+**Correct (skips computation when loading):**
 
 ```tsx
 const UserAvatar = memo(function UserAvatar({ user }: { user: User }) {
@@ -41,4 +41,4 @@ function Profile({ user, loading }: Props) {
 }
 ```
 
-**Nota:** Se o projeto usa [React Compiler](https://react.dev/learn/react-compiler), memoização manual com `memo()` e `useMemo()` não é necessária. O compilador otimiza re-renders automaticamente.
+**Note:** If your project has [React Compiler](https://react.dev/learn/react-compiler) enabled, manual memoization with `memo()` and `useMemo()` is not necessary. The compiler automatically optimizes re-renders.

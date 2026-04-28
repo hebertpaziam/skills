@@ -1,49 +1,49 @@
 ---
-title: Adie await até ser necessário
+title: Defer Await Until Needed
 impact: HIGH
-impactDescription: evita bloquear caminhos de código não utilizados
+impactDescription: avoids blocking unused code paths
 tags: async, await, conditional, optimization
 ---
 
-## Adie await até ser necessário
+## Defer Await Until Needed
 
-Mova operações `await` para os ramos em que elas são usadas para evitar bloquear caminhos que não precisam delas.
+Move `await` operations into the branches where they're actually used to avoid blocking code paths that don't need them.
 
-**Incorreto (bloqueia ambos os ramos):**
+**Incorrect (blocks both branches):**
 
 ```typescript
 async function handleRequest(userId: string, skipProcessing: boolean) {
   const userData = await fetchUserData(userId)
   
   if (skipProcessing) {
-    // Retorna imediatamente, mas ainda aguardou userData
+    // Returns immediately but still waited for userData
     return { skipped: true }
   }
   
-  // Apenas este ramo usa userData
+  // Only this branch uses userData
   return processUserData(userData)
 }
 ```
 
-**Correto (bloqueia apenas quando necessário):**
+**Correct (only blocks when needed):**
 
 ```typescript
 async function handleRequest(userId: string, skipProcessing: boolean) {
   if (skipProcessing) {
-    // Retorna imediatamente sem aguardar
+    // Returns immediately without waiting
     return { skipped: true }
   }
   
-  // Buscar somente quando necessário
+  // Fetch only when needed
   const userData = await fetchUserData(userId)
   return processUserData(userData)
 }
 ```
 
-**Outro exemplo (otimização de retorno antecipado):**
+**Another example (early return optimization):**
 
 ```typescript
-// Incorreto: sempre busca permissões
+// Incorrect: always fetches permissions
 async function updateResource(resourceId: string, userId: string) {
   const permissions = await fetchPermissions(userId)
   const resource = await getResource(resourceId)
@@ -59,7 +59,7 @@ async function updateResource(resourceId: string, userId: string) {
   return await updateResourceData(resource, permissions)
 }
 
-// Correto: busca somente quando necessário
+// Correct: fetches only when needed
 async function updateResource(resourceId: string, userId: string) {
   const resource = await getResource(resourceId)
   
@@ -77,6 +77,6 @@ async function updateResource(resourceId: string, userId: string) {
 }
 ```
 
-Esta otimização é especialmente valiosa quando o ramo ignorado é frequente, ou quando a operação adiada é cara.
+This optimization is especially valuable when the skipped branch is frequently taken, or when the deferred operation is expensive.
 
-Para `await getFlag()` combinado com um guard síncrono barato (`flag && someCondition`), veja [Check Cheap Conditions Before Async Flags](./async-cheap-condition-before-await.md).
+For `await getFlag()` combined with a cheap synchronous guard (`flag && someCondition`), see [Check Cheap Conditions Before Async Flags](./async-cheap-condition-before-await.md).

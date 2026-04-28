@@ -1,17 +1,17 @@
 ---
-title: Use flatMap para Mapear e Filtrar em Uma Passada
+title: Use flatMap to Map and Filter in One Pass
 impact: LOW-MEDIUM
-impactDescription: elimina array intermediario
+impactDescription: eliminates intermediate array
 tags: javascript, arrays, flatMap, filter, performance
 ---
 
-## Use flatMap para Mapear e Filtrar em Uma Passada
+## Use flatMap to Map and Filter in One Pass
 
-### Impacto: BAIXO-MÉDIO (elimina array intermediario)
+**Impact: LOW-MEDIUM (eliminates intermediate array)**
 
-Encadear `.map().filter(Boolean)` cria um array intermediario e itera duas vezes. Use `.flatMap()` para transformar e filtrar em uma passada.
+Chaining `.map().filter(Boolean)` creates an intermediate array and iterates twice. Use `.flatMap()` to transform and filter in a single pass.
 
-**Incorreto (2 iterações, array intermediario):**
+**Incorrect (2 iterations, intermediate array):**
 
 ```typescript
 const userNames = users
@@ -19,7 +19,7 @@ const userNames = users
   .filter(Boolean)
 ```
 
-**Correto (1 iteração, sem array intermediario):**
+**Correct (1 iteration, no intermediate array):**
 
 ```typescript
 const userNames = users.flatMap(user =>
@@ -27,10 +27,10 @@ const userNames = users.flatMap(user =>
 )
 ```
 
-**Mais exemplos:**
+**More examples:**
 
 ```typescript
-// Extrair emails validos das respostas
+// Extract valid emails from responses
 // Before
 const emails = responses
   .map(r => r.success ? r.data.email : null)
@@ -41,7 +41,7 @@ const emails = responses.flatMap(r =>
   r.success ? [r.data.email] : []
 )
 
-// Parsear e filtrar numeros validos
+// Parse and filter valid numbers
 // Before
 const numbers = strings
   .map(s => parseInt(s, 10))
@@ -54,8 +54,7 @@ const numbers = strings.flatMap(s => {
 })
 ```
 
-**Quando usar:**
-
-- Transformar itens enquanto filtra
-- Mapeamento condicional onde alguns não geram saida
-- Parsing/validação quando itens invalidos devem ser ignorados
+**When to use:**
+- Transforming items while filtering some out
+- Conditional mapping where some inputs produce no output
+- Parsing/validating where invalid inputs should be skipped

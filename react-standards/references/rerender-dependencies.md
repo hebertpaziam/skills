@@ -1,15 +1,15 @@
 ---
-title: Afine Dependências de Effect
+title: Narrow Effect Dependencies
 impact: LOW
-impactDescription: minimiza reexecuções do effect
+impactDescription: minimizes effect re-runs
 tags: rerender, useEffect, dependencies, optimization
 ---
 
-## Afine Dependências de Effect
+## Narrow Effect Dependencies
 
-Especifique dependências primitivas em vez de objetos para minimizar reexecuções do effect.
+Specify primitive dependencies instead of objects to minimize effect re-runs.
 
-**Incorreto (reexecuta em qualquer mudança do user):**
+**Incorrect (re-runs on any user field change):**
 
 ```tsx
 useEffect(() => {
@@ -17,7 +17,7 @@ useEffect(() => {
 }, [user])
 ```
 
-**Correto (reexecuta apenas quando o id muda):**
+**Correct (re-runs only when id changes):**
 
 ```tsx
 useEffect(() => {
@@ -25,17 +25,17 @@ useEffect(() => {
 }, [user.id])
 ```
 
-**Para estado derivado, compute fora do effect:**
+**For derived state, compute outside effect:**
 
 ```tsx
-// Incorreto: roda em width=767, 766, 765...
+// Incorrect: runs on width=767, 766, 765...
 useEffect(() => {
   if (width < 768) {
     enableMobileMode()
   }
 }, [width])
 
-// Correto: roda apenas na transição booleana
+// Correct: runs only on boolean transition
 const isMobile = width < 768
 useEffect(() => {
   if (isMobile) {

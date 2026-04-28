@@ -1,19 +1,19 @@
 ---
-title: Use toSorted() em vez de sort() para Imutabilidade
+title: Use toSorted() Instead of sort() for Immutability
 impact: MEDIUM-HIGH
-impactDescription: evita bugs de mutação em state
+impactDescription: prevents mutation bugs in React state
 tags: javascript, arrays, immutability, react, state, mutation
 ---
 
-## Use toSorted() em vez de sort() para Imutabilidade
+## Use toSorted() Instead of sort() for Immutability
 
-`.sort()` muta o array in-place, o que pode causar bugs em state e props. Use `.toSorted()` para criar um novo array ordenado sem mutação.
+`.sort()` mutates the array in place, which can cause bugs with React state and props. Use `.toSorted()` to create a new sorted array without mutation.
 
-**Incorreto (muta o array original):**
+**Incorrect (mutates original array):**
 
 ```typescript
 function UserList({ users }: { users: User[] }) {
-  // Muta o array de users!
+  // Mutates the users prop array!
   const sorted = useMemo(
     () => users.sort((a, b) => a.name.localeCompare(b.name)),
     [users]
@@ -22,11 +22,11 @@ function UserList({ users }: { users: User[] }) {
 }
 ```
 
-**Correto (cria novo array):**
+**Correct (creates new array):**
 
 ```typescript
 function UserList({ users }: { users: User[] }) {
-  // Cria array ordenado novo, original intacto
+  // Creates new sorted array, original unchanged
   const sorted = useMemo(
     () => users.toSorted((a, b) => a.name.localeCompare(b.name)),
     [users]
@@ -35,21 +35,21 @@ function UserList({ users }: { users: User[] }) {
 }
 ```
 
-**Por que isso importa no React:**
+**Why this matters in React:**
 
-1. Mutações em props/state quebram o modelo de imutabilidade
-2. Causa bugs de closures obsoletas - arrays mutados em closures geram comportamento inesperado
+1. Props/state mutations break React's immutability model - React expects props and state to be treated as read-only
+2. Causes stale closure bugs - Mutating arrays inside closures (callbacks, effects) can lead to unexpected behavior
 
-**Suporte de browser (fallback para antigos):**
+**Browser support (fallback for older browsers):**
 
-`.toSorted()` existe em browsers modernos (Chrome 110+, Safari 16+, Firefox 115+, Node.js 20+). Para ambientes antigos, use spread:
+`.toSorted()` is available in all modern browsers (Chrome 110+, Safari 16+, Firefox 115+, Node.js 20+). For older environments, use spread operator:
 
 ```typescript
-// Fallback para browsers antigos
+// Fallback for older browsers
 const sorted = [...items].sort((a, b) => a.value - b.value)
 ```
 
-**Outros métodos imutaveis:**
+**Other immutable array methods:**
 
 - `.toSorted()` - immutable sort
 - `.toReversed()` - immutable reverse

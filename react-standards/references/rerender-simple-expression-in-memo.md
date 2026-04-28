@@ -1,16 +1,16 @@
 ---
-title: Não Envolva Expressão Simples Primitiva em useMemo
+title: Do not wrap a simple expression with a primitive result type in useMemo
 impact: LOW-MEDIUM
-impactDescription: computação desperdicada a cada render
+impactDescription: wasted computation on every render
 tags: rerender, useMemo, optimization
 ---
 
-## Não Envolva Expressão Simples Primitiva em useMemo
+## Do not wrap a simple expression with a primitive result type in useMemo
 
-Quando uma expressão é simples (poucos operadores lógicos ou aritméticos) e tem resultado primitivo (boolean, number, string), não a envolva em `useMemo`.
-Chamar `useMemo` e comparar dependências pode consumir mais recursos do que a expressão.
+When an expression is simple (few logical or arithmetical operators) and has a primitive result type (boolean, number, string), do not wrap it in `useMemo`.
+Calling `useMemo` and comparing hook dependencies may consume more resources than the expression itself.
 
-**Incorreto:**
+**Incorrect:**
 
 ```tsx
 function Header({ user, notifications }: Props) {
@@ -23,7 +23,7 @@ function Header({ user, notifications }: Props) {
 }
 ```
 
-**Correto:**
+**Correct:**
 
 ```tsx
 function Header({ user, notifications }: Props) {

@@ -1,15 +1,15 @@
 ---
-title: Use Activity para Mostrar/Esconder
+title: Use Activity Component for Show/Hide
 impact: MEDIUM
-impactDescription: preserva estado/DOM
+impactDescription: preserves state/DOM
 tags: rendering, activity, visibility, state-preservation
 ---
 
-## Use Activity para Mostrar/Esconder
+## Use Activity Component for Show/Hide
 
-Use o `<Activity>` do React para preservar estado/DOM em componentes caros que alternam visibilidade com frequência.
+Use React's `<Activity>` to preserve state/DOM for expensive components that frequently toggle visibility.
 
-**Uso:**
+**Usage:**
 
 ```tsx
 import { Activity } from 'react'
@@ -23,4 +23,4 @@ function Dropdown({ isOpen }: Props) {
 }
 ```
 
-Evita re-renders caros e perda de estado.
+Avoids expensive re-renders and state loss.

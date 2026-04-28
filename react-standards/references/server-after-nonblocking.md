@@ -1,24 +1,24 @@
 ---
-title: Use after() para Operações Não Bloqueantes
+title: Use after() for Non-Blocking Operations
 impact: MEDIUM
-impactDescription: tempos de resposta mais rápidos
+impactDescription: faster response times
 tags: server, async, logging, analytics, side-effects
 ---
 
-## Use after() para Operações Não Bloqueantes
+## Use after() for Non-Blocking Operations
 
-Use o `after()` do Next.js para agendar trabalho que deve executar após a resposta ser enviada. Isso evita que logging, analytics e outros efeitos colaterais bloqueiem a resposta.
+Use Next.js's `after()` to schedule work that should execute after a response is sent. This prevents logging, analytics, and other side effects from blocking the response.
 
-**Incorreto (bloqueia a resposta):**
+**Incorrect (blocks response):**
 
 ```tsx
 import { logUserAction } from '@/app/utils'
 
 export async function POST(request: Request) {
-  // Executa a mutação
+  // Perform mutation
   await updateDatabase(request)
   
-  // Logging bloqueia a resposta
+  // Logging blocks the response
   const userAgent = request.headers.get('user-agent') || 'unknown'
   await logUserAction({ userAgent })
   
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 }
 ```
 
-**Correto (não bloqueante):**
+**Correct (non-blocking):**
 
 ```tsx
 import { after } from 'next/server'
@@ -37,10 +37,10 @@ import { headers, cookies } from 'next/headers'
 import { logUserAction } from '@/app/utils'
 
 export async function POST(request: Request) {
-  // Executa a mutação
+  // Perform mutation
   await updateDatabase(request)
   
-  // Loga após a resposta ser enviada
+  // Log after response is sent
   after(async () => {
     const userAgent = (await headers()).get('user-agent') || 'unknown'
     const sessionCookie = (await cookies()).get('session-id')?.value || 'anonymous'
@@ -55,19 +55,19 @@ export async function POST(request: Request) {
 }
 ```
 
-A resposta é enviada imediatamente enquanto o logging roda em background.
+The response is sent immediately while logging happens in the background.
 
-**Casos de uso comuns:**
+**Common use cases:**
 
-- Tracking de analytics
+- Analytics tracking
 - Audit logging
-- Envio de notificações
-- Invalidação de cache
-- Tarefas de cleanup
+- Sending notifications
+- Cache invalidation
+- Cleanup tasks
 
-**Notas importantes:**
+**Important notes:**
 
-- `after()` roda mesmo se a resposta falhar ou redirecionar
-- Funciona em Server Actions, Route Handlers e Server Components
+- `after()` runs even if the response fails or redirects
+- Works in Server Actions, Route Handlers, and Server Components
 
-Referência: [https://nextjs.org/docs/app/api-reference/functions/after](https://nextjs.org/docs/app/api-reference/functions/after)
+Reference: [https://nextjs.org/docs/app/api-reference/functions/after](https://nextjs.org/docs/app/api-reference/functions/after)

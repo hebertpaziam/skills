@@ -1,24 +1,24 @@
 ---
-title: Use Resource Hints do React DOM
+title: Use React DOM Resource Hints
 impact: HIGH
-impactDescription: reduz tempo de carga de recursos críticos
+impactDescription: reduces load time for critical resources
 tags: rendering, preload, preconnect, prefetch, resource-hints
 ---
 
-## Use Resource Hints do React DOM
+## Use React DOM Resource Hints
 
-### Impacto: ALTO (reduz tempo de carga de recursos críticos)
+**Impact: HIGH (reduces load time for critical resources)**
 
-O React DOM oferece APIs para sugerir recursos ao browser. São especialmente úteis em server components para iniciar o carregamento antes do HTML chegar ao client.
+React DOM provides APIs to hint the browser about resources it will need. These are especially useful in server components to start loading resources before the client even receives the HTML.
 
-- **`prefetchDNS(href)`**: Resolve DNS para um domínio que você espera conectar
-- **`preconnect(href)`**: Estabelece conexão (DNS + TCP + TLS) com um servidor
-- **`preload(href, options)`**: Faz fetch de recurso (stylesheet, font, script, imagem)
-- **`preloadModule(href)`**: Faz fetch de um módulo ES que você usará logo
-- **`preinit(href, options)`**: Faz fetch e avalia stylesheet ou script
-- **`preinitModule(href)`**: Faz fetch e avalia um módulo ES
+- **`prefetchDNS(href)`**: Resolve DNS for a domain you expect to connect to
+- **`preconnect(href)`**: Establish connection (DNS + TCP + TLS) to a server
+- **`preload(href, options)`**: Fetch a resource (stylesheet, font, script, image) you'll use soon
+- **`preloadModule(href)`**: Fetch an ES module you'll use soon
+- **`preinit(href, options)`**: Fetch and evaluate a stylesheet or script
+- **`preinitModule(href)`**: Fetch and evaluate an ES module
 
-**Exemplo (preconnect em APIs third-party):**
+**Example (preconnect to third-party APIs):**
 
 ```tsx
 import { preconnect, prefetchDNS } from 'react-dom'
@@ -31,16 +31,16 @@ export default function App() {
 }
 ```
 
-**Exemplo (preload de fontes e estilos críticos):**
+**Example (preload critical fonts and styles):**
 
 ```tsx
 import { preload, preinit } from 'react-dom'
 
 export default function RootLayout({ children }) {
-  // Preload do arquivo de fonte
+  // Preload font file
   preload('/fonts/inter.woff2', { as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' })
 
-  // Busca e aplica stylesheet crítico imediatamente
+  // Fetch and apply critical stylesheet immediately
   preinit('/styles/critical.css', { as: 'style' })
 
   return (
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-**Exemplo (preload de módulos para rotas code-split):**
+**Example (preload modules for code-split routes):**
 
 ```tsx
 import { preloadModule, preinitModule } from 'react-dom'
@@ -71,15 +71,15 @@ function Navigation() {
 }
 ```
 
-**Quando usar cada um:**
+**When to use each:**
 
 | API | Use case |
 |-----|----------|
-| `prefetchDNS` | Domínios third-party que você conectará depois |
-| `preconnect` | APIs ou CDNs que você vai buscar de imediato |
-| `preload` | Recursos críticos da página atual |
-| `preloadModule` | Módulos JS para a próxima navegação provável |
-| `preinit` | Stylesheets/scripts que devem executar cedo |
-| `preinitModule` | Módulos ES que devem executar cedo |
+| `prefetchDNS` | Third-party domains you'll connect to later |
+| `preconnect` | APIs or CDNs you'll fetch from immediately |
+| `preload` | Critical resources needed for current page |
+| `preloadModule` | JS modules for likely next navigation |
+| `preinit` | Stylesheets/scripts that must execute early |
+| `preinitModule` | ES modules that must execute early |
 
-Referência: [React DOM Resource Preloading APIs](https://react.dev/reference/react-dom#resource-preloading-apis)
+Reference: [React DOM Resource Preloading APIs](https://react.dev/reference/react-dom#resource-preloading-apis)

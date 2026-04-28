@@ -1,22 +1,22 @@
 ---
-title: Cache de Chamadas Repetidas
+title: Cache Repeated Function Calls
 impact: MEDIUM
-impactDescription: evita computação redundante
+impactDescription: avoid redundant computation
 tags: javascript, cache, memoization, performance
 ---
 
-## Cache de Chamadas Repetidas
+## Cache Repeated Function Calls
 
-Use um Map em nível de módulo para cachear resultados quando a função e chamada repetidamente com os mesmos inputs durante render.
+Use a module-level Map to cache function results when the same function is called repeatedly with the same inputs during render.
 
-**Incorreto (computação redundante):**
+**Incorrect (redundant computation):**
 
 ```typescript
 function ProjectList({ projects }: { projects: Project[] }) {
   return (
     <div>
       {projects.map(project => {
-        // slugify() chamado 100+ vezes para o mesmo nome
+        // slugify() called 100+ times for same project names
         const slug = slugify(project.name)
         
         return <ProjectCard key={project.id} slug={slug} />
@@ -26,10 +26,10 @@ function ProjectList({ projects }: { projects: Project[] }) {
 }
 ```
 
-**Correto (resultados cacheados):**
+**Correct (cached results):**
 
 ```typescript
-// Cache em nível de módulo
+// Module-level cache
 const slugifyCache = new Map<string, string>()
 
 function cachedSlugify(text: string): string {
@@ -45,7 +45,7 @@ function ProjectList({ projects }: { projects: Project[] }) {
   return (
     <div>
       {projects.map(project => {
-        // Computado uma vez por nome único
+        // Computed only once per unique project name
         const slug = cachedSlugify(project.name)
         
         return <ProjectCard key={project.id} slug={slug} />
@@ -55,7 +55,7 @@ function ProjectList({ projects }: { projects: Project[] }) {
 }
 ```
 
-**Padrão simples para funções de valor único:**
+**Simpler pattern for single-value functions:**
 
 ```typescript
 let isLoggedInCache: boolean | null = null
@@ -69,12 +69,12 @@ function isLoggedIn(): boolean {
   return isLoggedInCache
 }
 
-// Limpa o cache quando auth muda
+// Clear cache when auth changes
 function onAuthChange() {
   isLoggedInCache = null
 }
 ```
 
-Use um Map (não hook) para funcionar em todo lugar: utils, handlers, não só componentes React.
+Use a Map (not a hook) so it works everywhere: utilities, event handlers, not just React components.
 
-Referência: [How we made the Vercel Dashboard twice as fast](https://vercel.com/blog/how-we-made-the-vercel-dashboard-twice-as-fast)
+Reference: [How we made the Vercel Dashboard twice as fast](https://vercel.com/blog/how-we-made-the-vercel-dashboard-twice-as-fast)

@@ -1,17 +1,17 @@
 ---
-title: Verifique condições baratas antes de flags async
+title: Check Cheap Conditions Before Async Flags
 impact: HIGH
-impactDescription: evita trabalho async desnecessário quando um guard síncrono já falha
+impactDescription: avoids unnecessary async work when a synchronous guard already fails
 tags: async, await, feature-flags, short-circuit, conditional
 ---
 
-## Verifique condições baratas antes de flags async
+## Check Cheap Conditions Before Async Flags
 
-Quando um ramo usa `await` para uma flag ou valor remoto e também exige uma condição **síncrona barata** (props locais, metadados da request, estado já carregado), avalie a condição barata **primeiro**. Caso contrário, você paga a chamada async mesmo quando a condição composta nunca pode ser verdadeira.
+When a branch uses `await` for a flag or remote value and also requires a **cheap synchronous** condition (local props, request metadata, already-loaded state), evaluate the cheap condition **first**. Otherwise you pay for the async call even when the compound condition can never be true.
 
-Esta regra é uma especialização de [Defer Await Until Needed](./async-defer-await.md) para verificações do tipo `flag && cheapCondition`.
+This is a specialization of [Defer Await Until Needed](./async-defer-await.md) for `flag && cheapCondition` style checks.
 
-**Incorreto:**
+**Incorrect:**
 
 ```typescript
 const someFlag = await getFlag()
@@ -21,7 +21,7 @@ if (someFlag && someCondition) {
 }
 ```
 
-**Correto:**
+**Correct:**
 
 ```typescript
 if (someCondition) {
@@ -32,6 +32,6 @@ if (someCondition) {
 }
 ```
 
-Isso importa quando `getFlag` acessa a rede, um serviço de feature flag, ou `React.cache` / DB: pular quando `someCondition` é false remove esse custo no caminho frio.
+This matters when `getFlag` hits the network, a feature-flag service, or `React.cache` / DB work: skipping it when `someCondition` is false removes that cost on the cold path.
 
-Mantenha a ordem original se `someCondition` for caro, depender da flag, ou se você precisar executar efeitos colaterais em uma ordem fixa.
+Keep the original order if `someCondition` is expensive, depends on the flag, or you must run side effects in a fixed order.

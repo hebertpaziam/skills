@@ -1,15 +1,15 @@
 ---
-title: Fetch Paralelo de Dados Aninhados
+title: Parallel Nested Data Fetching
 impact: CRITICAL
-impactDescription: elimina waterfalls no server
+impactDescription: eliminates server-side waterfalls
 tags: server, rsc, parallel-fetching, promise-chaining
 ---
 
-## Fetch Paralelo de Dados Aninhados
+## Parallel Nested Data Fetching
 
-Ao buscar dados aninhados em paralelo, encadeie fetches dependentes dentro da promise de cada item para que um item lento não bloqueie o resto.
+When fetching nested data in parallel, chain dependent fetches within each item's promise so a slow item doesn't block the rest.
 
-**Incorreto (um item lento bloqueia todos os fetches aninhados):**
+**Incorrect (a single slow item blocks all nested fetches):**
 
 ```tsx
 const chats = await Promise.all(
@@ -21,9 +21,9 @@ const chatAuthors = await Promise.all(
 )
 ```
 
-Se um `getChat(id)` dentre 100 for extremamente lento, os autores dos outros 99 chats não conseguem começar a carregar mesmo que seus dados estejam prontos.
+If one `getChat(id)` out of 100 is extremely slow, the authors of the other 99 chats can't start loading even though their data is ready.
 
-**Correto (cada item encadeia seu proprio fetch aninhado):**
+**Correct (each item chains its own nested fetch):**
 
 ```tsx
 const chatAuthors = await Promise.all(
@@ -31,4 +31,4 @@ const chatAuthors = await Promise.all(
 )
 ```
 
-Cada item encadeia `getChat` → `getUser` de forma independente, então um chat lento não bloqueia o fetch de autores dos outros.
+Each item independently chains `getChat` → `getUser`, so a slow chat doesn't block author fetches for the others.

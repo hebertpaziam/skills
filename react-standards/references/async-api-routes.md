@@ -1,15 +1,15 @@
 ---
-title: Evite cadeias de waterfall em API routes
+title: Prevent Waterfall Chains in API Routes
 impact: CRITICAL
-impactDescription: melhoria de 2-10x
+impactDescription: 2-10× improvement
 tags: api-routes, server-actions, waterfalls, parallelization
 ---
 
-## Evite cadeias de waterfall em API routes
+## Prevent Waterfall Chains in API Routes
 
-Em API routes e Server Actions, inicie operações independentes imediatamente, mesmo que ainda não faça await.
+In API routes and Server Actions, start independent operations immediately, even if you don't await them yet.
 
-**Incorreto (config aguarda auth, data aguarda ambos):**
+**Incorrect (config waits for auth, data waits for both):**
 
 ```typescript
 export async function GET(request: Request) {
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 }
 ```
 
-**Correto (auth e config iniciam imediatamente):**
+**Correct (auth and config start immediately):**
 
 ```typescript
 export async function GET(request: Request) {
@@ -35,4 +35,4 @@ export async function GET(request: Request) {
 }
 ```
 
-Para cadeias de dependência mais complexas, use `better-all` para maximizar paralelismo automaticamente (ver Dependency-Based Parallelization).
+For operations with more complex dependency chains, use `better-all` to automatically maximize parallelism (see Dependency-Based Parallelization).

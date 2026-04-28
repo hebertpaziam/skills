@@ -1,15 +1,15 @@
 ---
-title: Use useDeferredValue para Renders Derivados Caros
+title: Use useDeferredValue for Expensive Derived Renders
 impact: MEDIUM
-impactDescription: mantém input responsivo em computação pesada
+impactDescription: keeps input responsive during heavy computation
 tags: rerender, useDeferredValue, optimization, concurrent
 ---
 
-## Use useDeferredValue para Renders Derivados Caros
+## Use useDeferredValue for Expensive Derived Renders
 
-Quando input do usuário dispara computações ou renders caros, use `useDeferredValue` para manter o input responsivo. O valor deferido fica atrasado, permitindo que o React priorize a atualização do input e renderize o resultado caro quando estiver ocioso.
+When user input triggers expensive computations or renders, use `useDeferredValue` to keep the input responsive. The deferred value lags behind, allowing React to prioritize the input update and render the expensive result when idle.
 
-**Incorreto (input fica lento ao filtrar):**
+**Incorrect (input feels laggy while filtering):**
 
 ```tsx
 function Search({ items }: { items: Item[] }) {
@@ -25,7 +25,7 @@ function Search({ items }: { items: Item[] }) {
 }
 ```
 
-**Correto (input fica rápido, resultados renderizam quando prontos):**
+**Correct (input stays snappy, results render when ready):**
 
 ```tsx
 function Search({ items }: { items: Item[] }) {
@@ -48,12 +48,12 @@ function Search({ items }: { items: Item[] }) {
 }
 ```
 
-**Quando usar:**
+**When to use:**
 
-- Filtrar/pesquisar listas grandes
-- Visualizações caras (gráficos) reagindo ao input
-- Qualquer estado derivado com atraso perceptível de render
+- Filtering/searching large lists
+- Expensive visualizations (charts, graphs) reacting to input
+- Any derived state that causes noticeable render delays
 
-**Nota:** Envolva a computação cara em `useMemo` com o valor deferido como dependência, caso contrário ela roda em todo render.
+**Note:** Wrap the expensive computation in `useMemo` with the deferred value as a dependency, otherwise it still runs on every render.
 
-Referência: [React useDeferredValue](https://react.dev/reference/react/useDeferredValue)
+Reference: [React useDeferredValue](https://react.dev/reference/react/useDeferredValue)

@@ -1,15 +1,15 @@
 ---
-title: Use useTransition em vez de Loading Manual
+title: Use useTransition Over Manual Loading States
 impact: LOW
-impactDescription: reduz re-renders e melhora clareza
+impactDescription: reduces re-renders and improves code clarity
 tags: rendering, transitions, useTransition, loading, state
 ---
 
-## Use useTransition em vez de Loading Manual
+## Use useTransition Over Manual Loading States
 
-Use `useTransition` em vez de `useState` manual para loading. Isso fornece `isPending` nativo e gerencia transitions automaticamente.
+Use `useTransition` instead of manual `useState` for loading states. This provides built-in `isPending` state and automatically manages transitions.
 
-**Incorreto (loading manual):**
+**Incorrect (manual loading state):**
 
 ```tsx
 function SearchResults() {
@@ -35,7 +35,7 @@ function SearchResults() {
 }
 ```
 
-**Correto (useTransition com pending nativo):**
+**Correct (useTransition with built-in pending state):**
 
 ```tsx
 import { useTransition, useState } from 'react'
@@ -46,10 +46,10 @@ function SearchResults() {
   const [isPending, startTransition] = useTransition()
 
   const handleSearch = (value: string) => {
-    setQuery(value) // Atualiza input imediatamente
+    setQuery(value) // Update input immediately
     
     startTransition(async () => {
-      // Busca e atualiza resultados
+      // Fetch and update results
       const data = await fetchResults(value)
       setResults(data)
     })
@@ -65,11 +65,11 @@ function SearchResults() {
 }
 ```
 
-**Benefícios:**
+**Benefits:**
 
-- **Pending automático**: Não precisa gerenciar `setIsLoading(true/false)`
-- **Resiliência a erros**: Pending reseta mesmo se a transition falhar
-- **Melhor responsividade**: Mantém a UI responsiva durante atualizações
-- **Cancelamento**: Novas transitions cancelam as pendentes
+- **Automatic pending state**: No need to manually manage `setIsLoading(true/false)`
+- **Error resilience**: Pending state correctly resets even if the transition throws
+- **Better responsiveness**: Keeps the UI responsive during updates
+- **Interrupt handling**: New transitions automatically cancel pending ones
 
-Referência: [useTransition](https://react.dev/reference/react/useTransition)
+Reference: [useTransition](https://react.dev/reference/react/useTransition)

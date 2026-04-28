@@ -1,38 +1,38 @@
 ---
-title: Adie Trabalho Não Crítico com requestIdleCallback
+title: Defer Non-Critical Work with requestIdleCallback
 impact: MEDIUM
-impactDescription: mantém a UI responsiva em background
+impactDescription: keeps UI responsive during background tasks
 tags: javascript, performance, idle, scheduling, analytics
 ---
 
-## Adie Trabalho Não Crítico com requestIdleCallback
+## Defer Non-Critical Work with requestIdleCallback
 
-### Impacto: MÉDIO (mantém UI responsiva em tarefas de background)
+**Impact: MEDIUM (keeps UI responsive during background tasks)**
 
-Use `requestIdleCallback()` para agendar trabalho não crítico durante ociosidade do browser. Isso libera a main thread para interações e animações, reduzindo jank.
+Use `requestIdleCallback()` to schedule non-critical work during browser idle periods. This keeps the main thread free for user interactions and animations, reducing jank and improving perceived performance.
 
-**Incorreto (bloqueia main thread na interação):**
+**Incorrect (blocks main thread during user interaction):**
 
 ```typescript
 function handleSearch(query: string) {
   const results = searchItems(query)
   setResults(results)
 
-  // Isso bloqueia a main thread imediatamente
+  // These block the main thread immediately
   analytics.track('search', { query })
   saveToRecentSearches(query)
   prefetchTopResults(results.slice(0, 3))
 }
 ```
 
-**Correto (adia trabalho não crítico para ociosidade):**
+**Correct (defers non-critical work to idle time):**
 
 ```typescript
 function handleSearch(query: string) {
   const results = searchItems(query)
   setResults(results)
 
-  // Adia trabalho não crítico para momentos ociosos
+  // Defer non-critical work to idle periods
   requestIdleCallback(() => {
     analytics.track('search', { query })
   })
@@ -47,30 +47,30 @@ function handleSearch(query: string) {
 }
 ```
 
-**Com timeout para trabalho necessário:**
+**With timeout for required work:**
 
 ```typescript
-// Garante analytics em até 2s mesmo com browser ocupado
+// Ensure analytics fires within 2 seconds even if browser stays busy
 requestIdleCallback(
   () => analytics.track('page_view', { path: location.pathname }),
   { timeout: 2000 }
 )
 ```
 
-**Fatiar tarefas grandes:**
+**Chunking large tasks:**
 
 ```typescript
 function processLargeDataset(items: Item[]) {
   let index = 0
 
   function processChunk(deadline: IdleDeadline) {
-    // Processa itens enquanto há tempo ocioso (alvo <50ms)
+    // Process items while we have idle time (aim for <50ms chunks)
     while (index < items.length && deadline.timeRemaining() > 0) {
       processItem(items[index])
       index++
     }
 
-    // Agenda o próximo chunk se restar item
+    // Schedule next chunk if more items remain
     if (index < items.length) {
       requestIdleCallback(processChunk)
     }
@@ -80,26 +80,26 @@ function processLargeDataset(items: Item[]) {
 }
 ```
 
-**Com fallback para browsers sem suporte:**
+**With fallback for unsupported browsers:**
 
 ```typescript
 const scheduleIdleWork = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1))
 
 scheduleIdleWork(() => {
-  // Trabalho não crítico
+  // Non-critical work
 })
 ```
 
-**Quando usar:**
+**When to use:**
 
-- Analytics e telemetria
-- Salvar estado em localStorage/IndexedDB
-- Prefetch de recursos para próximas ações
-- Transformações não urgentes
-- Inicialização lazy de features não críticas
+- Analytics and telemetry
+- Saving state to localStorage/IndexedDB
+- Prefetching resources for likely next actions
+- Processing non-urgent data transformations
+- Lazy initialization of non-critical features
 
-**Quando NÃO usar:**
+**When NOT to use:**
 
-- Ações do usuário que precisam de feedback imediato
-- Atualizações de render que o usuário espera
-- Operações sensíveis ao tempo
+- User-initiated actions that need immediate feedback
+- Rendering updates the user is waiting for
+- Time-sensitive operations

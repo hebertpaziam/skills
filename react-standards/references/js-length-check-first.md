@@ -1,36 +1,36 @@
 ---
-title: Cheque o Length Antes de Comparar Arrays
+title: Early Length Check for Array Comparisons
 impact: MEDIUM-HIGH
-impactDescription: evita operações caras com tamanhos diferentes
+impactDescription: avoids expensive operations when lengths differ
 tags: javascript, arrays, performance, optimization, comparison
 ---
 
-## Cheque o Length Antes de Comparar Arrays
+## Early Length Check for Array Comparisons
 
-Ao comparar arrays com operações caras (sort, deep equality, serialização), cheque o tamanho primeiro. Se os tamanhos diferem, não podem ser iguais.
+When comparing arrays with expensive operations (sorting, deep equality, serialization), check lengths first. If lengths differ, the arrays cannot be equal.
 
-Em apps reais, essa otimização é valiosa quando a comparação roda em hot paths (handlers, loops de render).
+In real-world applications, this optimization is especially valuable when the comparison runs in hot paths (event handlers, render loops).
 
-**Incorreto (sempre roda comparação cara):**
+**Incorrect (always runs expensive comparison):**
 
 ```typescript
 function hasChanges(current: string[], original: string[]) {
-  // Sempre ordena e junta, mesmo com tamanhos diferentes
+  // Always sorts and joins, even when lengths differ
   return current.sort().join() !== original.sort().join()
 }
 ```
 
-Duas ordenações O(n log n) rodam mesmo quando `current.length` é 5 e `original.length` é 100. Também há overhead de join e comparação de strings.
+Two O(n log n) sorts run even when `current.length` is 5 and `original.length` is 100. There is also overhead of joining the arrays and comparing the strings.
 
-**Correto (checa length O(1) primeiro):**
+**Correct (O(1) length check first):**
 
 ```typescript
 function hasChanges(current: string[], original: string[]) {
-  // Retorna cedo se tamanhos diferem
+  // Early return if lengths differ
   if (current.length !== original.length) {
     return true
   }
-  // Só ordena quando tamanhos batem
+  // Only sort when lengths match
   const currentSorted = current.toSorted()
   const originalSorted = original.toSorted()
   for (let i = 0; i < currentSorted.length; i++) {
@@ -42,9 +42,8 @@ function hasChanges(current: string[], original: string[]) {
 }
 ```
 
-Essa abordagem é mais eficiente porque:
-
-- Evita o overhead de ordenar e juntar quando tamanhos diferem
-- Evita consumo de memória com strings unidas (importante em arrays grandes)
-- Evita mutar os arrays originais
-- Retorna cedo ao encontrar diferença
+This new approach is more efficient because:
+- It avoids the overhead of sorting and joining the arrays when lengths differ
+- It avoids consuming memory for the joined strings (especially important for large arrays)
+- It avoids mutating the original arrays
+- It returns early when a difference is found

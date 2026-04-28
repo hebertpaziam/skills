@@ -1,15 +1,15 @@
 ---
-title: Mova JSX Estático para Fora
+title: Hoist Static JSX Elements
 impact: LOW
-impactDescription: evita recriação
+impactDescription: avoids re-creation
 tags: rendering, jsx, static, optimization
 ---
 
-## Mova JSX Estático para Fora
+## Hoist Static JSX Elements
 
-Extraia JSX estático para fora do componente para evitar recriação.
+Extract static JSX outside components to avoid re-creation.
 
-**Incorreto (recria elemento a cada render):**
+**Incorrect (recreates element every render):**
 
 ```tsx
 function LoadingSkeleton() {
@@ -25,7 +25,7 @@ function Container() {
 }
 ```
 
-**Correto (reusa o mesmo elemento):**
+**Correct (reuses same element):**
 
 ```tsx
 const loadingSkeleton = (
@@ -41,6 +41,6 @@ function Container() {
 }
 ```
 
-Isso ajuda especialmente para SVGs grandes e estáticos, que podem ser caros de recriar a cada render.
+This is especially helpful for large and static SVG nodes, which can be expensive to recreate on every render.
 
-**Nota:** Se o projeto usa [React Compiler](https://react.dev/learn/react-compiler), o compilador move JSX estático automaticamente e otimiza re-renders, tornando o hoist manual desnecessário.
+**Note:** If your project has [React Compiler](https://react.dev/learn/react-compiler) enabled, the compiler automatically hoists static JSX elements and optimizes component re-renders, making manual hoisting unnecessary.

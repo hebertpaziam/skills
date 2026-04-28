@@ -1,15 +1,15 @@
 ---
-title: Assine Estado Derivado
+title: Subscribe to Derived State
 impact: MEDIUM
-impactDescription: reduz a frequência de re-render
-tags: rerender, derived-state, média-query, optimization
+impactDescription: reduces re-render frequency
+tags: rerender, derived-state, media-query, optimization
 ---
 
-## Assine Estado Derivado
+## Subscribe to Derived State
 
-Assine estado booleano derivado em vez de valores continuos para reduzir a frequência de re-render.
+Subscribe to derived boolean state instead of continuous values to reduce re-render frequency.
 
-**Incorreto (re-renderiza a cada pixel):**
+**Incorrect (re-renders on every pixel change):**
 
 ```tsx
 function Sidebar() {
@@ -19,7 +19,7 @@ function Sidebar() {
 }
 ```
 
-**Correto (re-renderiza apenas quando o booleano muda):**
+**Correct (re-renders only when boolean changes):**
 
 ```tsx
 function Sidebar() {

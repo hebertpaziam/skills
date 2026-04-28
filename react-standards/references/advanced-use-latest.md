@@ -1,15 +1,15 @@
 ---
 title: useEffectEvent for Stable Callback Refs
 impact: LOW
-impactDescription: evita re-execucoes de effect
+impactDescription: prevents effect re-runs
 tags: advanced, hooks, useEffectEvent, refs, optimization
 ---
 
 ## useEffectEvent for Stable Callback Refs
 
-Acesse valores mais recentes em callbacks sem adiciona-los aos arrays de dependencias. Evita re-execucoes de effect e evita closures obsoletas.
+Access latest values in callbacks without adding them to dependency arrays. Prevents effect re-runs while avoiding stale closures.
 
-### Incorrect (effect reexecuta a cada mudanca de callback)
+**Incorrect (effect re-runs on every callback change):**
 
 ```tsx
 function SearchInput({ onSearch }: { onSearch: (q: string) => void }) {
@@ -22,7 +22,7 @@ function SearchInput({ onSearch }: { onSearch: (q: string) => void }) {
 }
 ```
 
-### Correct (usando useEffectEvent do React)
+**Correct (using React's useEffectEvent):**
 
 ```tsx
 import { useEffectEvent } from 'react';

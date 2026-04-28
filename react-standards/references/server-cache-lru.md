@@ -1,15 +1,15 @@
 ---
-title: Cache LRU Entre Requisições
+title: Cross-Request LRU Caching
 impact: HIGH
-impactDescription: cache entre requisições
+impactDescription: caches across requests
 tags: server, cache, lru, cross-request
 ---
 
-## Cache LRU Entre Requisições
+## Cross-Request LRU Caching
 
-`React.cache()` funciona apenas dentro de uma requisição. Para dados compartilhados entre requisições sequenciais (usuário clica no botão A e depois no B), use um cache LRU.
+`React.cache()` only works within one request. For data shared across sequential requests (user clicks button A then button B), use an LRU cache.
 
-**Implementação:**
+**Implementation:**
 
 ```typescript
 import { LRUCache } from 'lru-cache'
@@ -28,14 +28,14 @@ export async function getUser(id: string) {
   return user
 }
 
-// Requisição 1: query no DB, resultado em cache
-// Requisição 2: cache hit, sem query no DB
+// Request 1: DB query, result cached
+// Request 2: cache hit, no DB query
 ```
 
-Use quando ações sequenciais do usuário atingem múltiplos endpoints com a mesma informação em poucos segundos.
+Use when sequential user actions hit multiple endpoints needing the same data within seconds.
 
-**Com o [Fluid Compute](https://vercel.com/docs/fluid-compute) da Vercel:** o cache LRU e especialmente efetivo porque multiplas requisições concorrentes compartilham a mesma instância da função e o cache. Isso significa que o cache persiste entre requisições sem precisar de armazenamento externo como Redis.
+**With Vercel's [Fluid Compute](https://vercel.com/docs/fluid-compute):** LRU caching is especially effective because multiple concurrent requests can share the same function instance and cache. This means the cache persists across requests without needing external storage like Redis.
 
-**Em serverless tradicional:** cada invocação roda isolada, então considere Redis para cache entre processos.
+**In traditional serverless:** Each invocation runs in isolation, so consider Redis for cross-process caching.
 
-Referência: [https://github.com/isaacs/node-lru-cache](https://github.com/isaacs/node-lru-cache)
+Reference: [https://github.com/isaacs/node-lru-cache](https://github.com/isaacs/node-lru-cache)

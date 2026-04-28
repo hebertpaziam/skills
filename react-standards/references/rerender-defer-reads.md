@@ -1,15 +1,15 @@
 ---
-title: Adie Leitura de Estado para o Ponto de Uso
+title: Defer State Reads to Usage Point
 impact: MEDIUM
-impactDescription: evita assinaturas desnecessárias
+impactDescription: avoids unnecessary subscriptions
 tags: rerender, searchParams, localStorage, optimization
 ---
 
-## Adie Leitura de Estado para o Ponto de Uso
+## Defer State Reads to Usage Point
 
-Não assine estado dinâmico (searchParams, localStorage) se você só lê dentro de callbacks.
+Don't subscribe to dynamic state (searchParams, localStorage) if you only read it inside callbacks.
 
-**Incorreto (assina todas as mudanças de searchParams):**
+**Incorrect (subscribes to all searchParams changes):**
 
 ```tsx
 function ShareButton({ chatId }: { chatId: string }) {
@@ -24,7 +24,7 @@ function ShareButton({ chatId }: { chatId: string }) {
 }
 ```
 
-**Correto (lê sob demanda, sem assinatura):**
+**Correct (reads on demand, no subscription):**
 
 ```tsx
 function ShareButton({ chatId }: { chatId: string }) {

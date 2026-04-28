@@ -1,15 +1,15 @@
 ---
-title: Combine Iterações de Array
+title: Combine Multiple Array Iterations
 impact: LOW-MEDIUM
-impactDescription: reduz iterações
+impactDescription: reduces iterations
 tags: javascript, arrays, loops, performance
 ---
 
-## Combine Iterações de Array
+## Combine Multiple Array Iterations
 
-Multiplas chamadas de `.filter()` ou `.map()` iteram o array varias vezes. Combine em um loop.
+Multiple `.filter()` or `.map()` calls iterate the array multiple times. Combine into one loop.
 
-**Incorreto (3 iterações):**
+**Incorrect (3 iterations):**
 
 ```typescript
 const admins = users.filter(u => u.isAdmin)
@@ -17,7 +17,7 @@ const testers = users.filter(u => u.isTester)
 const inactive = users.filter(u => !u.isActive)
 ```
 
-**Correto (1 iteração):**
+**Correct (1 iteration):**
 
 ```typescript
 const admins: User[] = []

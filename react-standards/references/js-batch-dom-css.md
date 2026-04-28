@@ -1,19 +1,18 @@
 ---
-title: Evite Layout Thrashing
+title: Avoid Layout Thrashing
 impact: MEDIUM
-impactDescription: evita layouts síncronos e gargalos
+impactDescription: prevents forced synchronous layouts and reduces performance bottlenecks
 tags: javascript, dom, css, performance, reflow, layout-thrashing
 ---
 
-## Evite Layout Thrashing
+## Avoid Layout Thrashing
 
-Evite intercalar escrita de estilos com leitura de layout. Ao ler propriedades como `offsetWidth`, `getBoundingClientRect()` ou `getComputedStyle()` entre mudanças de estilo, o browser é forçado a reflow síncrono.
+Avoid interleaving style writes with layout reads. When you read a layout property (like `offsetWidth`, `getBoundingClientRect()`, or `getComputedStyle()`) between style changes, the browser is forced to trigger a synchronous reflow.
 
-**OK (browser agrupa mudanças de estilo):**
-
+**This is OK (browser batches style changes):**
 ```typescript
 function updateElementStyles(element: HTMLElement) {
-  // Cada linha invalida estilo, mas o browser agrupa o recálculo
+  // Each line invalidates style, but browser batches the recalculation
   element.style.width = '100px'
   element.style.height = '200px'
   element.style.backgroundColor = 'blue'
@@ -21,49 +20,45 @@ function updateElementStyles(element: HTMLElement) {
 }
 ```
 
-**Incorreto (leituras/escritas intercaladas forçam reflow):**
-
+**Incorrect (interleaved reads and writes force reflows):**
 ```typescript
 function layoutThrashing(element: HTMLElement) {
   element.style.width = '100px'
-  const width = element.offsetWidth  // Força reflow
+  const width = element.offsetWidth  // Forces reflow
   element.style.height = '200px'
-  const height = element.offsetHeight  // Força outro reflow
+  const height = element.offsetHeight  // Forces another reflow
 }
 ```
 
-**Correto (agrupa writes, depois lê uma vez):**
-
+**Correct (batch writes, then read once):**
 ```typescript
 function updateElementStyles(element: HTMLElement) {
-  // Agrupa todas as writes
+  // Batch all writes together
   element.style.width = '100px'
   element.style.height = '200px'
   element.style.backgroundColor = 'blue'
   element.style.border = '1px solid black'
   
-  // Lê depois das writes (um reflow)
+  // Read after all writes are done (single reflow)
   const { width, height } = element.getBoundingClientRect()
 }
 ```
 
-**Correto (agrupa reads, depois writes):**
-
+**Correct (batch reads, then writes):**
 ```typescript
 function avoidThrashing(element: HTMLElement) {
-  // Fase de leitura - queries primeiro
+  // Read phase - all layout queries first
   const rect1 = element.getBoundingClientRect()
   const offsetWidth = element.offsetWidth
   const offsetHeight = element.offsetHeight
   
-  // Fase de escrita - mudanças depois
+  // Write phase - all style changes after
   element.style.width = '100px'
   element.style.height = '200px'
 }
 ```
 
-### Melhor: use classes CSS
-
+**Better: use CSS classes**
 ```css
 .highlighted-box {
   width: 100px;
@@ -72,7 +67,6 @@ function avoidThrashing(element: HTMLElement) {
   border: 1px solid black;
 }
 ```
-
 ```typescript
 function updateElementStyles(element: HTMLElement) {
   element.classList.add('highlighted-box')
@@ -81,8 +75,7 @@ function updateElementStyles(element: HTMLElement) {
 }
 ```
 
-### Exemplo React
-
+**React example:**
 ```tsx
 // Incorrect: interleaving style changes with layout queries
 function Box({ isHighlighted }: { isHighlighted: boolean }) {
@@ -109,6 +102,6 @@ function Box({ isHighlighted }: { isHighlighted: boolean }) {
 }
 ```
 
-Prefira classes CSS em vez de inline styles quando possível. Arquivos CSS são cacheados pelo browser e classes separam melhor responsabilidades.
+Prefer CSS classes over inline styles when possible. CSS files are cached by the browser, and classes provide better separation of concerns and are easier to maintain.
 
-Veja [este gist](https://gist.github.com/paulirish/5d52fb081b3570c81e3a) e [CSS Triggers](https://csstriggers.com/) para mais informações sobre operações que forçam layout.
+See [this gist](https://gist.github.com/paulirish/5d52fb081b3570c81e3a) and [CSS Triggers](https://csstriggers.com/) for more information on layout-forcing operations.

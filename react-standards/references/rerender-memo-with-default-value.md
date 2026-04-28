@@ -1,19 +1,19 @@
 ---
 
-title: Extraia Valor Padrão Não Primitivo para Constante
+title: Extract Default Non-primitive Parameter Value from Memoized Component to Constant
 impact: MEDIUM
-impactDescription: restaura memoização usando constante
+impactDescription: restores memoization by using a constant for default value
 tags: rerender, memo, optimization
 
 ---
 
-## Extraia Valor Padrão Não Primitivo para Constante
+## Extract Default Non-primitive Parameter Value from Memoized Component to Constant
 
-Quando um componente memoizado tem valor padrão não primitivo (array, função, objeto), chamar o componente sem esse parâmetro quebra a memoização. Isso ocorre porque novas instâncias são criadas a cada re-render e não passam na comparação de igualdade estrita do `memo()`.
+When memoized component has a default value for some non-primitive optional parameter, such as an array, function, or object, calling the component without that parameter results in broken memoization. This is because new value instances are created on every rerender, and they do not pass strict equality comparison in `memo()`.
 
-Para resolver, extraia o valor padrão para uma constante.
+To address this issue, extract the default value into a constant.
 
-**Incorreto (`onClick` tem valores diferentes a cada re-render):**
+**Incorrect (`onClick` has different values on every rerender):**
 
 ```tsx
 const UserAvatar = memo(function UserAvatar({ onClick = () => {} }: { onClick?: () => void }) {
@@ -24,7 +24,7 @@ const UserAvatar = memo(function UserAvatar({ onClick = () => {} }: { onClick?: 
 <UserAvatar />
 ```
 
-**Correto (valor padrão estável):**
+**Correct (stable default value):**
 
 ```tsx
 const NOOP = () => {};

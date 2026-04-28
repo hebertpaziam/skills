@@ -1,15 +1,15 @@
 ---
 title: Version and Minimize localStorage Data
 impact: MEDIUM
-impactDescription: evita conflitos de schema, reduz tamanho de storage
+impactDescription: prevents schema conflicts, reduces storage size
 tags: client, localStorage, storage, versioning, data-minimization
 ---
 
 ## Version and Minimize localStorage Data
 
-Adicione prefixo de versão nas chaves e armazene apenas os campos necessarios. Isso evita conflitos de schema e armazenamento acidental de dados sensiveis.
+Add version prefix to keys and store only needed fields. Prevents schema conflicts and accidental storage of sensitive data.
 
-### Incorrect
+**Incorrect:**
 
 ```typescript
 // No version, stores everything, no error handling
@@ -17,7 +17,7 @@ localStorage.setItem('userConfig', JSON.stringify(fullUserObject))
 const data = localStorage.getItem('userConfig')
 ```
 
-### Correct
+**Correct:**
 
 ```typescript
 const VERSION = 'v2'
@@ -52,7 +52,7 @@ function migrate() {
 }
 ```
 
-**Armazene apenas campos minimos de respostas do server:**
+**Store minimal fields from server responses:**
 
 ```typescript
 // User object has 20+ fields, only store what UI needs
@@ -66,6 +66,6 @@ function cachePrefs(user: FullUser) {
 }
 ```
 
-**Sempre use try-catch:** `getItem()` e `setItem()` lancam erro em incognito/private browsing (Safari, Firefox), quando a cota e excedida, ou quando desabilitado.
+**Always wrap in try-catch:** `getItem()` and `setItem()` throw in incognito/private browsing (Safari, Firefox), when quota exceeded, or when disabled.
 
-**Beneficios:** Evolucao de schema via versionamento, reducao do tamanho do storage, evita armazenar tokens/PII/flags internas.
+**Benefits:** Schema evolution via versioning, reduced storage size, prevents storing tokens/PII/internal flags.

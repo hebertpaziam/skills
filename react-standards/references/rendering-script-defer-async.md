@@ -1,22 +1,22 @@
 ---
-title: Use defer ou async em Script Tags
+title: Use defer or async on Script Tags
 impact: HIGH
-impactDescription: elimina bloqueio de render
+impactDescription: eliminates render-blocking
 tags: rendering, script, defer, async, performance
 ---
 
-## Use defer ou async em Script Tags
+## Use defer or async on Script Tags
 
-### Impacto: ALTO (elimina bloqueio de render)
+**Impact: HIGH (eliminates render-blocking)**
 
-Scripts sem `defer` ou `async` bloqueiam o parsing do HTML enquanto baixam e executam. Isso atrasa First Contentful Paint e Time to Interactive.
+Script tags without `defer` or `async` block HTML parsing while the script downloads and executes. This delays First Contentful Paint and Time to Interactive.
 
-- **`defer`**: Baixa em paralelo, executa após o parsing, mantém ordem
-- **`async`**: Baixa em paralelo, executa quando pronto, sem ordem garantida
+- **`defer`**: Downloads in parallel, executes after HTML parsing completes, maintains execution order
+- **`async`**: Downloads in parallel, executes immediately when ready, no guaranteed order
 
-Use `defer` para scripts que dependem do DOM ou de outros scripts. Use `async` para scripts independentes como analytics.
+Use `defer` for scripts that depend on DOM or other scripts. Use `async` for independent scripts like analytics.
 
-**Incorreto (bloqueia render):**
+**Incorrect (blocks rendering):**
 
 ```tsx
 export default function Document() {
@@ -32,7 +32,7 @@ export default function Document() {
 }
 ```
 
-**Correto (não bloqueante):**
+**Correct (non-blocking):**
 
 ```tsx
 export default function Document() {
@@ -50,7 +50,7 @@ export default function Document() {
 }
 ```
 
-**Nota:** No Next.js, prefira `next/script` com a prop `strategy` em vez de tags script cruas:
+**Note:** In Next.js, prefer the `next/script` component with `strategy` prop instead of raw script tags:
 
 ```tsx
 import Script from 'next/script'
@@ -65,4 +65,4 @@ export default function Page() {
 }
 ```
 
-Referência: [MDN - Script element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer)
+Reference: [MDN - Script element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer)

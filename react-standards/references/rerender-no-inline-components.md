@@ -1,23 +1,23 @@
 ---
-title: Não Defina Componentes Dentro de Componentes
+title: Don't Define Components Inside Components
 impact: HIGH
-impactDescription: evita remount a cada render
+impactDescription: prevents remount on every render
 tags: rerender, components, remount, performance
 ---
 
-## Não Defina Componentes Dentro de Componentes
+## Don't Define Components Inside Components
 
-### Impacto: ALTO (evita remount a cada render)
+**Impact: HIGH (prevents remount on every render)**
 
-Definir um componente dentro de outro cria um novo tipo a cada render. React vê um componente diferente e remonta tudo, destruindo estado e DOM.
+Defining a component inside another component creates a new component type on every render. React sees a different component each time and fully remounts it, destroying all state and DOM.
 
-Um motivo comum é acessar variáveis do pai sem passar props. Sempre passe props.
+A common reason developers do this is to access parent variables without passing props. Always pass props instead.
 
-**Incorreto (remonta a cada render):**
+**Incorrect (remounts on every render):**
 
 ```tsx
 function UserProfile({ user, theme }) {
-  // Definido dentro para acessar `theme` - RUIM
+  // Defined inside to access `theme` - BAD
   const Avatar = () => (
     <img
       src={user.avatarUrl}
@@ -25,7 +25,7 @@ function UserProfile({ user, theme }) {
     />
   )
 
-  // Definido dentro para acessar `user` - RUIM
+  // Defined inside to access `user` - BAD
   const Stats = () => (
     <div>
       <span>{user.followers} followers</span>
@@ -42,9 +42,9 @@ function UserProfile({ user, theme }) {
 }
 ```
 
-Toda vez que `UserProfile` renderiza, `Avatar` e `Stats` são novos tipos. React desmonta as instâncias antigas e monta novas, perdendo estado interno, reexecutando effects e recriando o DOM.
+Every time `UserProfile` renders, `Avatar` and `Stats` are new component types. React unmounts the old instances and mounts new ones, losing any internal state, running effects again, and recreating DOM nodes.
 
-**Correto (passe props):**
+**Correct (pass props instead):**
 
 ```tsx
 function Avatar({ src, theme }: { src: string; theme: string }) {
@@ -75,9 +75,8 @@ function UserProfile({ user, theme }) {
 }
 ```
 
-**Sintomas desse bug:**
-
-- Inputs perdem foco a cada tecla
-- Animações reiniciam inesperadamente
-- `useEffect` cleanup/setup roda a cada render do pai
-- Posição de scroll reseta dentro do componente
+**Symptoms of this bug:**
+- Input fields lose focus on every keystroke
+- Animations restart unexpectedly
+- `useEffect` cleanup/setup runs on every parent render
+- Scroll position resets inside the component
