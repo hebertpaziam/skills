@@ -14,7 +14,7 @@
 
 ## Editing Conventions
 
-- Write repo documentation in Portuguese unless an ecosystem term or convention is better left in English.
+- Write all documentation in English.
 - Prefer operational, verifiable instructions. Avoid adding generic guidance to the root when it belongs inside a specific skill.
 - Preserve stable skill directory names unless the user explicitly wants a rename.
 - If a change affects one skill, keep new docs, references, and cross-links inside that skill folder instead of creating new root-level files.

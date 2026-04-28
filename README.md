@@ -1,20 +1,19 @@
-# Biblioteca de Skills
+# Skills Library
 
-## Proposito
+## Purpose
 
-- Reunir skills reutilizáveis para agentes de código.
-- Distribuir padrões, referencias e workflows para uso isolado por skill.
+- Reusable skills for code agents.
+- Distribute standards, references, and workflows as isolated, per-skill packages.
 
-## Tecnologias
+## Technologies
 
 - Angular 21
 - Vue 3
 - React / Next.js
 - TypeScript
-- OpenSpec
-- Markdown com `SKILL.md` e `references/`
+- Markdown with `SKILL.md` and `references/`
 
-## Instalação
+## Installation
 
 ```bash
 npx skills add https://github.com/hebertpaziam/skills

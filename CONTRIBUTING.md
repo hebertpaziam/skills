@@ -1,44 +1,44 @@
 # CONTRIBUTING
 
-Este repositório é uma biblioteca de skills. Cada contribuição deve preservar dois objetivos: facilitar o consumo da skill por agentes e manter a manutenção previsível para quem evolui o repositório.
+This repository is a skill library. Every contribution should preserve two goals: make skills easy for agents to consume, and keep maintenance predictable for anyone evolving the repo.
 
-## O que manter alinhado
+## What to keep aligned
 
-- Cada skill deve viver em um diretório próprio na raiz.
-- Cada diretório de skill deve ter `SKILL.md` como documento principal.
-- Materiais complementares devem ficar dentro da própria skill, não na raiz.
-- O [README.md](README.md) da raiz deve permanecer enxuto, cobrindo apenas propósito, tecnologias e instalação.
+- Each skill lives in its own top-level directory.
+- Each skill directory must have `SKILL.md` as its main document.
+- Supporting material belongs inside the skill directory, not at the root.
+- The root [README.md](README.md) should stay minimal, covering only purpose, technologies, and installation.
 
-## Ao criar uma nova skill
+## Creating a new skill
 
-1. Crie um diretório com nome curto, estável e alinhado ao domínio da skill.
-2. Adicione um `SKILL.md` com frontmatter contendo ao menos `name` e `description`.
-3. Documente claramente quando usar a skill, o objetivo dela e seus guardrails.
-4. Se a skill depender de outras, registre a integração e a precedência de forma explícita.
-5. Se houver material aprofundado, mantenha-o no mesmo diretório da skill.
-6. Atualize o [README.md](README.md) da raiz apenas se a nova skill alterar o propósito, as tecnologias destacadas ou a forma de instalação do repositório.
+1. Create a directory with a short, stable name aligned with the skill's domain.
+2. Add a `SKILL.md` with frontmatter containing at least `name` and `description`.
+3. Clearly document when to use the skill, its goal, and its guardrails.
+4. If the skill depends on others, record the integration and precedence explicitly.
+5. If there is in-depth material, keep it inside the same skill directory.
+6. Update the root [README.md](README.md) only if the new skill changes the repository's purpose, highlighted technologies, or installation instructions.
 
-## Ao alterar uma skill existente
+## Modifying an existing skill
 
-1. Preserve o nome da skill, salvo quando houver motivo forte para renomeação.
-2. Mantenha o frontmatter e a descrição coerentes com o comportamento real da skill.
-3. Revise referências cruzadas para evitar links quebrados ou precedência desatualizada.
-4. Atualize documentação auxiliar da própria skill quando a mudança afetar uso, manutenção ou artefatos derivados.
-5. Se a alteração mudar informações de propósito, tecnologias ou instalação do repositório, ajuste também o [README.md](README.md) da raiz.
+1. Preserve the skill name unless there is a strong reason to rename.
+2. Keep frontmatter and description consistent with the skill's actual behavior.
+3. Review cross-references to avoid broken links or stale precedence.
+4. Update the skill's own supporting docs when the change affects usage, maintenance, or derived artifacts.
+5. If the change alters repository-level purpose, technologies, or installation info, also update the root [README.md](README.md).
 
-## Convenções editoriais
+## Editorial conventions
 
-- Escreva em português, salvo quando um termo técnico ou convenção do ecossistema exigir inglês.
-- Prefira instruções operacionais, diretas e verificáveis.
-- Evite duplicar na raiz detalhes que pertencem ao diretório de uma skill específica.
-- Prefira duplicar contexto útil entre skills quando isso evitar dependência do README da raiz.
-- Use seções que deixem claro quando usar a skill, qual é o objetivo e quais são os limites dela.
+- Write in English.
+- Prefer operational, direct, and verifiable instructions.
+- Avoid duplicating in the root details that belong inside a specific skill directory.
+- Prefer duplicating useful context between skills when it avoids depending on the root README.
+- Use sections that make clear when to use the skill, what its goal is, and what its limits are.
 
-## Revisão mínima antes de abrir a mudança
+## Minimum review before opening a change
 
-- O diretório da skill está no lugar correto.
-- `SKILL.md` continua sendo a entrada principal.
-- O frontmatter descreve corretamente a skill.
-- As integrações com outras skills estão explícitas quando necessário.
-- O [README.md](README.md) da raiz continua coerente com seu escopo mínimo.
-- Não foram introduzidas referências a fluxos globais inexistentes no repositório.
+- The skill directory is in the correct location.
+- `SKILL.md` is still the main entrypoint.
+- Frontmatter correctly describes the skill.
+- Integrations with other skills are explicit when needed.
+- The root [README.md](README.md) remains consistent with its minimal scope.
+- No references to nonexistent global flows were introduced.
