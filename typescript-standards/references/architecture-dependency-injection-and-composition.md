@@ -1,17 +1,17 @@
 # Architecture dependency injection and composition
 
-## Quando usar
+## When to Use
 
-- Compor modulos, desacoplar dependencias externas ou facilitar teste em boundaries relevantes.
+- Compose modules, decouple external dependencies or facilitate testing at relevant boundaries.
 
-## Regras locais
+## Local Rules
 
-- Prefira composicao explicita e injecao simples por parametro antes de containers complexos.
-- Use contratos pequenos para dependencias quando o desacoplamento for valioso.
-- Nao transforme toda funcao em DI por antecipacao.
-- Em muitos casos, passar dependencia diretamente e suficiente e mais legivel.
+- Prefer explicit composition and simple parameter injection over complex containers.
+- Use small contracts for dependencies when decoupling is valuable.
+- Do not turn every function into DI by anticipation.
+- In many cases, passing the dependency directly is sufficient and more readable.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- A injecao simplificou teste ou desacoplamento real.
-- Nenhuma infraestrutura de DI foi introduzida sem necessidade forte.
+- Injection simplified testing or real decoupling.
+- No DI infrastructure was introduced without strong need.

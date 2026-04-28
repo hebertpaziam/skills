@@ -1,16 +1,16 @@
 # Types utility types
 
-## Quando usar
+## When to Use
 
-- Adaptar shapes existentes com `Partial`, `Pick`, `Omit`, `Record`, `Readonly` e utilitarios similares.
+- Adapt existing shapes with `Partial`, `Pick`, `Omit`, `Record`, `Readonly` and similar utilities.
 
-## Regras locais
+## Local Rules
 
-- Prefira utilitarios nativos quando eles expressam claramente a transformacao desejada.
-- Nao encadeie utilitarios de forma a tornar o tipo ilegivel sem ganho real.
-- Se a transformacao for recorrente e semantica, considere nomear o tipo resultante.
+- Prefer native utilities when they clearly express the desired transformation.
+- Do not chain utilities in a way that makes the type unreadable without real benefit.
+- If the transformation is recurrent and semantic, consider naming the resulting type.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Utility types melhoraram clareza.
-- Nao ha tipo final opaco demais.
+- Utility types improved clarity.
+- No overly opaque final type.

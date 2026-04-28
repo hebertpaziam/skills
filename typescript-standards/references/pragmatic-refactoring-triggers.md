@@ -1,23 +1,23 @@
 # Pragmatic refactoring triggers
 
-## Quando usar
+## When to Use
 
-- Avaliar se chegou a hora de refatorar tipos, modulos, classes ou boundaries.
+- Evaluate whether it is time to refactor types, modules, classes, or boundaries.
 
-## Triggers reais
+## Real Triggers
 
-- Mudancas recorrentes no mesmo ponto com atrito crescente.
-- Dificuldade frequente de teste por acoplamento ou side effects misturados.
-- Contratos inchados e ambiguos.
-- Classe ou modulo com responsabilidades demais.
-- Crescimento de condicionais para variantes de comportamento.
-- Duplicacao real em multiplos pontos com mesma semantica.
+- Recurring changes at the same point with increasing friction.
+- Frequent testing difficulty due to coupling or mixed side effects.
+- Bloated and ambiguous contracts.
+- Class or module with too many responsibilities.
+- Growing conditionals for behavior variants.
+- Real duplication across multiple points with the same semantics.
 
-## Regra local
+## Local Rule
 
-- Refatore quando a dor for presente e recorrente; nao porque um pattern cabe teoricamente.
+- Refactor when the pain is present and recurring; not because a pattern theoretically fits.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- A refatoracao respondeu a uma pressao real.
-- O design final ficou mais simples ou mais claro.
+- The refactoring responded to a real pressure.
+- The final design became simpler or clearer.

@@ -1,18 +1,18 @@
 # Architecture API design
 
-## Quando usar
+## When to Use
 
-- Definir funcoes publicas, factories, builders, adapters ou modulos consumidos por outras partes do sistema.
+- Define public functions, factories, builders, adapters, or modules consumed by other parts of the system.
 
-## Regras locais
+## Local Rules
 
-- APIs publicas devem ser pequenas, semanticas e dificeis de usar errado.
-- Nomeie funcoes e argumentos pelo dominio.
-- Prefira parametros claros a objetos de configuracao gigantescos quando o caso e simples.
-- Introduza objeto de opcoes apenas quando houver complexidade real e coesao entre parametros.
+- Public APIs should be small, semantic, and hard to misuse.
+- Name functions and arguments after the domain.
+- Prefer clear parameters over giant configuration objects when the case is simple.
+- Introduce an options object only when there is real complexity and cohesion among parameters.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- API legivel e previsivel.
-- Baixa chance de uso errado.
-- Sem superficie publica inflada.
+- API is readable and predictable.
+- Low chance of misuse.
+- No inflated public surface.

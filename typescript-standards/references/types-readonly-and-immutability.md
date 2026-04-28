@@ -1,16 +1,16 @@
 # Types readonly and immutability
 
-## Quando usar
+## When to Use
 
-- Modelar dados que nao devem ser mutados apos criacao ou expor contratos mais seguros.
+- Model data that should not be mutated after creation or expose safer contracts.
 
-## Regras locais
+## Local Rules
 
-- Use `readonly` para explicitar intencao de imutabilidade em contratos compartilhados.
-- Prefira expor leitura e encapsular mutacao onde a regra de dominio exigir.
-- Nao imponha imutabilidade ritualistica se a mutacao local controlada for a forma mais simples e clara.
+- Use `readonly` to make immutability intent explicit in shared contracts.
+- Prefer exposing reads and encapsulating mutation where domain rules require it.
+- Do not impose ritualistic immutability if controlled local mutation is the simplest and clearest approach.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Imutabilidade foi aplicada onde ela protege invariantes ou consumo publico.
-- Nao ha rigidez desnecessaria sem beneficio real.
+- Immutability was applied where it protects invariants or public consumption.
+- No unnecessary rigidity without real benefit.

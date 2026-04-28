@@ -1,18 +1,18 @@
 # Architecture modules and boundaries
 
-## Quando usar
+## When to Use
 
-- Organizar arquivos, modulos e pontos de integracao externa.
+- Organize files, modules and external integration points.
 
-## Regras locais
+## Local Rules
 
-- Cada modulo deve ter uma responsabilidade compreensivel.
-- Separar dominio, boundary externa, parsing, persistencia e efeitos colaterais quando isso reduz acoplamento.
-- Nao deixar o modulo de dominio depender diretamente de detalhes de transporte ou IO se isso comprometer teste e evolucao.
-- Prefira imports simples e diretos a malhas de dependencia circulares.
+- Each module should have a comprehensible responsibility.
+- Separate domain, external boundary, parsing, persistence and side effects when doing so reduces coupling.
+- Do not let the domain module depend directly on transport or IO details if that compromises testing and evolution.
+- Prefer simple and direct imports over circular dependency meshes.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Boundaries do modulo estao claras.
-- Dependencias estao orientadas na direcao correta.
-- Nao ha mistura excessiva de concerns.
+- Module boundaries are clear.
+- Dependencies point in the correct direction.
+- No excessive mixing of concerns.

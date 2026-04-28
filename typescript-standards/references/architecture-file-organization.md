@@ -1,27 +1,27 @@
 # Architecture file organization
 
-## Quando usar
+## When to Use
 
-- Criar novos arquivos ou reorganizar modulos TypeScript.
+- Create new files or reorganize TypeScript modules.
 
-## Regras locais
+## Local Rules
 
-- Prefira organizacao por dominio ou responsabilidade, nao por sufixos genericos excessivos.
-- Um contrato por arquivo, salvo forte coesao.
-- Interfaces devem existir apenas em arquivos dedicados a interface.
-- Toda interface deve ter um generator correspondente em arquivo dedicado.
-- O generator da interface deve respeitar a mesma hierarquia logica do contrato dentro da estrutura adotada pelo projeto.
-- Enums devem existir apenas em arquivos dedicados a enum.
-- Deve haver apenas um enum por arquivo.
-- O arquivo de enum deve conter tambem a estrutura de labels dos valores desse enum.
-- Nao espalhe microarquivos sem ganho real de leitura.
-- Nomes de arquivo devem refletir responsabilidade, nao vagueza arquitetural.
+- Prefer organization by domain or responsibility, not by excessive generic suffixes.
+- One contract per file, unless there is strong cohesion.
+- Interfaces should exist only in files dedicated to the interface.
+- Every interface must have a corresponding generator in a dedicated file.
+- The interface generator must follow the same logical hierarchy as the contract within the structure adopted by the project.
+- Enums should exist only in files dedicated to the enum.
+- There should be only one enum per file.
+- The enum file should also contain the label structure for that enum's values.
+- Do not scatter micro-files without real readability gain.
+- File names should reflect responsibility, not architectural vagueness.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Estrutura de arquivos acompanha o dominio.
-- Sem granularidade artificial.
-- Interfaces e enums nao ficaram embutidos em arquivos de implementacao.
-- Interfaces possuem generator correspondente na hierarquia correta.
-- Cada arquivo de enum contem apenas um enum e seu mapeamento de labels.
-- Sem arquivos `manager`, `base`, `common` ou `util` vagos sem contexto forte.
+- File structure follows the domain.
+- No artificial granularity.
+- Interfaces and enums are not embedded in implementation files.
+- Interfaces have a corresponding generator in the correct hierarchy.
+- Each enum file contains only one enum and its label mapping.
+- No vague `manager`, `base`, `common`, or `util` files without strong context.

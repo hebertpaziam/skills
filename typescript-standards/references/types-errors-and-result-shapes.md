@@ -1,17 +1,17 @@
 # Types errors and result shapes
 
-## Quando usar
+## When to Use
 
-- Modelar retornos de operacoes que podem falhar, erros de dominio e respostas de boundary.
+- Model return values of operations that can fail, domain errors and boundary responses.
 
-## Regras locais
+## Local Rules
 
-- Seja explicito sobre sucesso e falha em contratos que exigem isso.
-- Prefira shapes previsiveis e estreitos a objetos de erro genericos demais.
-- Nao use excecao como unico mecanismo em fluxos onde falha esperada faz parte do contrato.
-- Se o projeto usar um padrao de `Result`, mantenha consistencia; se nao usar, nao introduza um framework interno sem necessidade.
+- Be explicit about success and failure in contracts that require it.
+- Prefer predictable and narrow shapes over overly generic error objects.
+- Do not use exceptions as the only mechanism in flows where expected failure is part of the contract.
+- If the project uses a `Result` pattern, maintain consistency; if it does not, do not introduce an internal framework without real need.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Sucesso e falha estao claros no contrato.
-- O formato escolhido e coerente com a base do projeto.
+- Success and failure are clear in the contract.
+- The chosen format is consistent with the project's codebase.

@@ -1,22 +1,22 @@
 # Patterns when not to use
 
-## Quando usar
+## When to Use
 
-- Revisar se um pattern GoF esta sendo introduzido cedo demais.
+- Review whether a GoF pattern is being introduced too early.
 
-## Sinais de alerta
+## Warning Signs
 
-- Existe apenas uma implementacao e nenhuma pressao real por variacao.
-- O pattern foi introduzido para um futuro hipotetico.
-- Uma funcao, modulo ou objeto literal simples resolveria.
-- O codigo ficou mais dificil de navegar ou explicar.
-- A nova camada so repassa chamadas sem agregar semantica real.
+- There is only one implementation and no real pressure for variation.
+- The pattern was introduced for a hypothetical future.
+- A simple function, module, or object literal would suffice.
+- The code became harder to navigate or explain.
+- The new layer only forwards calls without adding real semantics.
 
-## Regra pragmatica
+## Pragmatic Rule
 
-- Se o pattern viola `KISS` e `YAGNI`, remova o pattern e prefira a forma mais simples.
+- If the pattern violates `KISS` and `YAGNI`, remove the pattern and prefer the simplest form.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O pattern sobreviveu a um teste honesto de simplicidade.
-- A abstracao trouxe valor presente, nao apenas potencial futuro.
+- The pattern survived an honest simplicity test.
+- The abstraction brought present value, not just future potential.

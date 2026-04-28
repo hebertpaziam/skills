@@ -1,17 +1,17 @@
 # Architecture side effects and ports
 
-## Quando usar
+## When to Use
 
-- Encapsular acesso a rede, storage, filesystem, environment, clock ou outras dependencias externas.
+- Encapsulate access to network, storage, filesystem, environment, clock, or other external dependencies.
 
-## Regras locais
+## Local Rules
 
-- Isole side effects em boundaries claras.
-- Trate adaptadores externos como ports/adapters quando isso simplificar teste e evolucao.
-- Nao misture regra de dominio com IO no mesmo ponto quando a separacao melhora clareza.
-- Nao crie arquitetura hexagonal completa se o modulo ainda nao precisa disso.
+- Isolate side effects at clear boundaries.
+- Treat external adapters as ports/adapters when it simplifies testing and evolution.
+- Do not mix domain logic with IO at the same point when separation improves clarity.
+- Do not create a full hexagonal architecture if the module does not need it yet.
 
-## Exemplo
+## Example
 
 ```ts
 // clock.interface.ts
@@ -20,8 +20,8 @@ export interface IClock {
 }
 ```
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Side effects ficaram localizados.
-- Ports existem apenas onde agregam valor.
-- O design nao ficou maior do que o problema.
+- Side effects remained localized.
+- Ports exist only where they add value.
+- The design did not grow larger than the problem.

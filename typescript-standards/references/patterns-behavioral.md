@@ -1,10 +1,10 @@
 # Patterns behavioral
 
-## Quando usar
+## When to Use
 
-- Variar comportamento, modelar fluxo, comandos, observacao ou transicoes de estado.
+- Vary behavior, model flow, commands, observation, or state transitions.
 
-## Cobertura
+## Coverage
 
 - Chain of Responsibility
 - Command
@@ -18,15 +18,15 @@
 - Template Method
 - Visitor
 
-## Regras locais
+## Local Rules
 
-- `Strategy` e uma das melhores escolhas quando existe algoritmo intercambiavel real.
-- `Observer` funciona bem para fluxos de eventos, mas nao deve virar acoplamento difuso.
-- `Command` e util para encapsular acao, fila, undo ou dispatch estruturado.
-- `State` ajuda quando ha estados explicitos com comportamento diferente.
-- `Template Method`, `Visitor` e `Interpreter` exigem justificativa muito forte em TypeScript de aplicacao.
+- `Strategy` is one of the best choices when there is a real interchangeable algorithm.
+- `Observer` works well for event flows but should not become diffuse coupling.
+- `Command` is useful for encapsulating action, queue, undo, or structured dispatch.
+- `State` helps when there are explicit states with different behavior.
+- `Template Method`, `Visitor`, and `Interpreter` require very strong justification in application TypeScript.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O comportamento variavel estava claro.
-- O pattern tornou o fluxo mais claro, nao mais opaco.
+- The variable behavior was clear.
+- The pattern made the flow clearer, not more opaque.

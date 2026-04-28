@@ -1,10 +1,10 @@
 # Patterns structural
 
-## Quando usar
+## When to Use
 
-- Adaptar interfaces, compor comportamento, simplificar acesso ou controlar delegacao.
+- Adapt interfaces, compose behavior, simplify access, or control delegation.
 
-## Cobertura
+## Coverage
 
 - Adapter
 - Bridge
@@ -14,15 +14,15 @@
 - Flyweight
 - Proxy
 
-## Regras locais
+## Local Rules
 
-- `Adapter` e excelente quando uma API externa nao encaixa no contrato interno.
-- `Decorator` e util para adicionar comportamento sem inflar a implementacao original.
-- `Facade` ajuda a reduzir acoplamento com subsistemas complexos.
-- `Proxy` pode encapsular cache, lazy access, auth ou controle de acesso.
-- `Bridge`, `Composite` e `Flyweight` sao menos comuns e exigem justificativa forte para nao virar sobreengenharia.
+- `Adapter` is excellent when an external API does not fit the internal contract.
+- `Decorator` is useful for adding behavior without bloating the original implementation.
+- `Facade` helps reduce coupling with complex subsystems.
+- `Proxy` can encapsulate cache, lazy access, auth, or access control.
+- `Bridge`, `Composite`, and `Flyweight` are less common and require strong justification to avoid becoming over-engineering.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O pattern reduziu acoplamento ou simplificou consumo.
-- Nao surgiu uma camada estrutural vazia.
+- The pattern reduced coupling or simplified consumption.
+- No empty structural layer appeared.

@@ -1,17 +1,17 @@
 # Principles KISS YAGNI
 
-## Quando usar
+## When to Use
 
-- Tomar decisoes de modelagem, refatoracao e introducao de abstracoes.
+- Making decisions about modeling, refactoring, and introducing abstractions.
 
-## Regras locais
+## Local Rules
 
-- `KISS`: escolha a solucao mais simples que permanece correta e legivel.
-- `YAGNI`: nao introduza extensibilidade, generics, strategies, factories ou camadas extras sem necessidade atual.
-- Se a abstracao so existe para um futuro hipotetico, ela provavelmente ainda nao deve existir.
+- `KISS`: choose the simplest solution that remains correct and readable.
+- `YAGNI`: do not introduce extensibility, generics, strategies, factories, or extra layers without a current need.
+- If an abstraction only exists for a hypothetical future, it probably should not exist yet.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- A solucao ficou mais simples de entender.
-- Nenhuma camada foi criada por antecipacao.
-- O codigo nao esta preparado para cenarios que o projeto ainda nao possui.
+- The solution became simpler to understand.
+- No layer was created in anticipation.
+- The code is not prepared for scenarios the project does not yet have.

@@ -1,17 +1,17 @@
 # Types runtime validation
 
-## Quando usar
+## When to Use
 
-- Consumir dados de API, storage, ambiente, query string, fila ou qualquer boundary externo.
+- Consume data from APIs, storage, environment, query strings, queues or any external boundary.
 
-## Regras locais
+## Local Rules
 
-- Tipos TypeScript nao substituem validacao em runtime.
-- Valide em boundaries de entrada e converta para formas internas seguras.
-- Prefira centralizar validacao de boundary em adapters ou parsers dedicados.
-- Nao espalhe parsing parcial e checagens inconsistentes pelo sistema.
+- TypeScript types do not replace runtime validation.
+- Validate at input boundaries and convert to safe internal shapes.
+- Prefer centralizing boundary validation in dedicated adapters or parsers.
+- Do not spread partial parsing and inconsistent checks throughout the system.
 
-## Exemplo
+## Example
 
 ```ts
 function parseUser(input: unknown): IUser {
@@ -23,7 +23,7 @@ function parseUser(input: unknown): IUser {
 }
 ```
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Boundaries externas foram validadas.
-- O sistema nao assume que dado externo ja esta correto porque o tipo existe.
+- External boundaries were validated.
+- The system does not assume external data is already correct just because the type exists.

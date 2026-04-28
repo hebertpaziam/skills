@@ -1,16 +1,16 @@
 # Types unions vs class hierarchies
 
-## Quando usar
+## When to Use
 
-- Escolher entre unions discriminadas, objetos literais e hierarquias de classes.
+- Choose between discriminated unions, literal objects and class hierarchies.
 
-## Regras locais
+## Local Rules
 
-- Em TypeScript, prefira unions discriminadas e composicao antes de hierarquias de classes.
-- Use classes quando estado, identidade, ciclo de vida, invariantes encapsulados ou polimorfismo real justificarem isso.
-- Nao introduza heranca apenas para representar variantes de dados.
+- In TypeScript, prefer discriminated unions and composition over class hierarchies.
+- Use classes when state, identity, lifecycle, encapsulated invariants or real polymorphism justify it.
+- Do not introduce inheritance just to represent data variants.
 
-## Exemplo
+## Example
 
 ```ts
 type TPaymentResult =
@@ -18,7 +18,7 @@ type TPaymentResult =
   | { status: 'denied'; reason: string };
 ```
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Hierarquia de classes so existe se substituibilidade e comportamento justificam.
-- Variacoes de estado nao viraram heranca por reflexo.
+- Class hierarchy only exists if substitutability and behavior justify it.
+- State variations did not become inheritance by reflex.

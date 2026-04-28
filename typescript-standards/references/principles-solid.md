@@ -1,23 +1,23 @@
 # Principles SOLID
 
-## Quando usar
+## When to Use
 
-- Avaliar design de tipos, modulos, classes, services e fronteiras de dependencia.
+- Evaluate the design of types, modules, classes, services, and dependency boundaries.
 
-## Regras locais
+## Local Rules
 
-- Use `SOLID` como heuristica pragmatica, nao como lei.
-- `SRP`: mantenha tipos, modulos e classes com uma responsabilidade coerente.
-- `OCP`: extraia extensibilidade quando houver pressao real de variacao, nao por especulacao.
-- `LSP`: nao modele heranca quando substituibilidade real nao for garantida.
-- `ISP`: prefira contratos pequenos e focados a interfaces inchadas.
-- `DIP`: dependa de contratos e fronteiras claras quando o desacoplamento trouxer valor real.
+- Use `SOLID` as a pragmatic heuristic, not as law.
+- `SRP`: keep types, modules, and classes with a single coherent responsibility.
+- `OCP`: extract extensibility when there is real variation pressure, not out of speculation.
+- `LSP`: do not model inheritance when real substitutability is not guaranteed.
+- `ISP`: prefer small, focused contracts over bloated interfaces.
+- `DIP`: depend on contracts and clear boundaries when decoupling brings real value.
 
-## Nota pragmatica
+## Pragmatic Note
 
-- Em TypeScript, muitas necessidades de design sao resolvidas melhor com funcoes, modulos, unions e composicao do que com hierarquias classicas.
+- In TypeScript, many design needs are better solved with functions, modules, unions, and composition than with classical hierarchies.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- `SOLID` melhorou clareza e evolucao do design.
-- Nenhum principio foi usado para justificar complexidade desnecessaria.
+- `SOLID` improved the clarity and evolution of the design.
+- No principle was used to justify unnecessary complexity.

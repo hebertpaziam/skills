@@ -1,19 +1,19 @@
 # Principles Object Calisthenics
 
-## Quando usar
+## When to Use
 
-- Revisar design, legibilidade e pressao arquitetural de modulos e classes.
+- Reviewing the design, readability, and architectural pressure of modules and classes.
 
-## Regra de enquadramento
+## Framing Rule
 
-- Trate `Object Calisthenics` como pressao de design opcional, nao como regra rigida.
+- Treat `Object Calisthenics` as optional design pressure, not as a rigid rule.
 
-## Uso recomendado
+## Recommended Usage
 
-- Use as regras para detectar classes inchadas, aninhamento excessivo, vazamento de estado e baixo encapsulamento.
-- Nao sacrifique clareza idiomatica de TypeScript apenas para obedecer literalmente a cada regra.
+- Use the rules to detect bloated classes, excessive nesting, state leakage, and poor encapsulation.
+- Do not sacrifice idiomatic TypeScript clarity just to literally obey each rule.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- As regras ajudaram a simplificar o design.
-- Nenhuma regra foi aplicada de forma mecanica contra a legibilidade.
+- The rules helped simplify the design.
+- No rule was applied mechanically against readability.

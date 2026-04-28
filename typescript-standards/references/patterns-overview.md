@@ -1,20 +1,20 @@
 # Patterns overview
 
-## Quando usar
+## When to Use
 
-- Avaliar se um pattern GoF realmente faz sentido em um problema TypeScript.
+- Evaluate whether a GoF pattern actually makes sense for a TypeScript problem.
 
-## Regra principal
+## Main Rule
 
-- Patterns GoF sao vocabulario de solucao, nao template inicial de arquitetura.
+- GoF patterns are solution vocabulary, not an initial architecture template.
 
-## Ordem de decisao
+## Decision Order
 
-1. Tente resolver com funcao, modulo, composicao, objeto literal ou union.
-2. Se houver repeticao ou variacao recorrente, considere um pattern.
-3. Verifique `KISS` e `YAGNI` antes de confirmar a escolha.
+1. Try to solve it with a function, module, composition, object literal, or union.
+2. If there is recurring repetition or variation, consider a pattern.
+3. Check `KISS` and `YAGNI` before confirming the choice.
 
-## Patterns geralmente mais uteis em TypeScript pragmatico
+## Patterns Generally Most Useful in Pragmatic TypeScript
 
 - Factory Method
 - Builder
@@ -28,7 +28,7 @@
 - State
 - Chain of Responsibility
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O pattern resolve uma pressao real.
-- Nao foi introduzido por habito ou estetica arquitetural.
+- The pattern solves a real pressure.
+- It was not introduced out of habit or architectural aesthetics.

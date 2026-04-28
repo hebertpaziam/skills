@@ -1,16 +1,16 @@
 # Types narrowing and unknown
 
-## Quando usar
+## When to Use
 
-- Receber dados incertos, parsear entradas externas ou lidar com APIs dinamicas.
+- Receive uncertain data, parse external inputs or deal with dynamic APIs.
 
-## Regras locais
+## Local Rules
 
-- Use `unknown` como tipo de entrada incerta.
-- Faca narrowing explicito com guards, predicates ou validacao.
-- Nao use `as` para pular verificacao quando a incerteza continua existindo.
+- Use `unknown` as the type for uncertain input.
+- Perform explicit narrowing with guards, predicates or validation.
+- Do not use `as` to skip verification when uncertainty still exists.
 
-## Exemplo
+## Example
 
 ```ts
 function isUser(value: unknown): value is IUser {
@@ -18,8 +18,8 @@ function isUser(value: unknown): value is IUser {
 }
 ```
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Nenhum `any` introduzido.
-- Narrowing explicito antes do uso.
-- Casts inseguros evitados.
+- No `any` introduced.
+- Explicit narrowing before use.
+- Unsafe casts avoided.

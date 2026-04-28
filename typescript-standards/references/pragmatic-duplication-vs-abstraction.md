@@ -1,22 +1,22 @@
 # Pragmatic duplication vs abstraction
 
-## Quando usar
+## When to Use
 
-- Decidir se dois trechos parecidos devem ser unificados agora.
+- Decide whether two similar snippets should be unified now.
 
-## Regras locais
+## Local Rules
 
-- Nem toda semelhanca visual e duplicação real.
-- Extraia abstracao quando houver mesma regra, mesma variacao e mesma direcao de evolucao.
-- Nao unifique trechos que ainda parecem iguais, mas evoluem por razoes diferentes.
-- Duplicacao pequena e local pode ser melhor que abstracao opaca e prematura.
+- Not every visual similarity is real duplication.
+- Extract an abstraction when there is the same rule, same variation, and same direction of evolution.
+- Do not unify snippets that still look alike but evolve for different reasons.
+- Small, local duplication can be better than an opaque and premature abstraction.
 
-## Exemplo de teste mental
+## Mental Test Example
 
-- Se eu mudar um, quase certamente o outro muda pelo mesmo motivo?
-- Se nao, talvez ainda nao seja hora de abstrair.
+- If I change one, will the other almost certainly change for the same reason?
+- If not, it may not be time to abstract yet.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- A abstracao surgiu de duplicação real.
-- Nao houve perda de semantica local.
+- The abstraction arose from real duplication.
+- There was no loss of local semantics.

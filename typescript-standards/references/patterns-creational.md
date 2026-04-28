@@ -1,10 +1,10 @@
 # Patterns creational
 
-## Quando usar
+## When to Use
 
-- Resolver construcao nao trivial de objetos, configuracoes ou variantes de instancia.
+- Solve non-trivial object construction, configurations, or instance variants.
 
-## Cobertura
+## Coverage
 
 - Factory Method
 - Abstract Factory
@@ -12,15 +12,15 @@
 - Prototype
 - Singleton
 
-## Regras locais
+## Local Rules
 
-- Prefira factory simples antes de `Abstract Factory`.
-- Use `Builder` quando a construcao for realmente incremental, valida e legivel com essa forma.
-- Seja cetico com `Singleton`; em geral ele aumenta acoplamento global e dificulta teste.
-- `Prototype` e raro em TypeScript e costuma perder para factories claras.
+- Prefer a simple factory before `Abstract Factory`.
+- Use `Builder` when construction is truly incremental, valid, and readable in that form.
+- Be skeptical of `Singleton`; it generally increases global coupling and makes testing harder.
+- `Prototype` is rare in TypeScript and usually loses to clear factories.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O problema era realmente de construcao.
-- Nao houve salto para pattern maior do que o necessario.
-- `Singleton` nao foi usado por conveniencia global.
+- The problem was truly about construction.
+- There was no jump to a pattern larger than necessary.
+- `Singleton` was not used for global convenience.

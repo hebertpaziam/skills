@@ -1,19 +1,19 @@
 # Types enums
 
-## Quando usar
+## When to Use
 
-- Modelar conjuntos fechados de valores nomeados quando enum realmente for a melhor escolha.
+- Modeling closed sets of named values when an enum truly is the best choice.
 
-## Regras locais
+## Local Rules
 
-- Enums devem viver em arquivos dedicados a enum.
-- Deve haver apenas um enum por arquivo.
-- Nao declare enum dentro de arquivos de implementacao, service, helper, component, composable, store ou similares.
-- Todo enum deve ter no mesmo arquivo uma estrutura de mapeamento que exponha os labels de seus valores.
-- Antes de criar um enum, avalie se um union type literal resolveria de forma mais simples.
-- Use enum apenas quando ele trouxer clareza real, interoperabilidade ou semantica melhor do que unions literais.
+- Enums must live in dedicated enum files.
+- There must be only one enum per file.
+- Do not declare an enum inside implementation, service, helper, component, composable, store, or similar files.
+- Every enum must have a mapping structure in the same file that exposes the labels of its values.
+- Before creating an enum, evaluate whether a literal union type would solve it more simply.
+- Use an enum only when it brings real clarity, interoperability, or better semantics than literal unions.
 
-## Exemplo
+## Example
 
 ```ts
 export enum UserStatus {
@@ -22,15 +22,15 @@ export enum UserStatus {
 }
 
 export const USER_STATUS_LABEL: Record<UserStatus, string> = {
-  [UserStatus.ACTIVE]: 'Ativo',
-  [UserStatus.INACTIVE]: 'Inativo',
+  [UserStatus.ACTIVE]: 'Active',
+  [UserStatus.INACTIVE]: 'Inactive',
 };
 ```
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Enum existe por motivo semantico real.
-- Enum vive em arquivo dedicado.
-- Ha apenas um enum no arquivo.
-- Existe no mesmo arquivo uma estrutura de labels para os valores do enum.
-- Uma alternativa mais simples com union type foi considerada.
+- The enum exists for a real semantic reason.
+- The enum lives in a dedicated file.
+- There is only one enum in the file.
+- A label mapping structure for the enum values exists in the same file.
+- A simpler alternative with a union type was considered.

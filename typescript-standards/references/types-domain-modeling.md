@@ -1,18 +1,18 @@
 # Types domain modeling
 
-## Quando usar
+## When to Use
 
-- Modelar entidades, value objects, DTOs, comandos, eventos e resultados de dominio.
+- Modeling entities, value objects, DTOs, commands, events, and domain results.
 
-## Regras locais
+## Local Rules
 
-- Nomeie tipos pelo dominio, nao pelo detalhe tecnico acidental.
-- Separe tipos internos de dominio de formatos externos de transporte quando isso reduzir ambiguidade.
-- Use tipos para expressar invariantes e estados validos sempre que possivel.
-- Nao replique o shape externo da API como se ele fosse o modelo de dominio definitivo sem necessidade.
+- Name types after the domain, not after accidental technical details.
+- Separate internal domain types from external transport formats when it reduces ambiguity.
+- Use types to express invariants and valid states whenever possible.
+- Do not replicate the external API shape as if it were the definitive domain model without necessity.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Tipos refletem o dominio real.
-- Nomes sao semanticos.
-- Ha separacao entre modelo interno e boundary externo quando necessario.
+- Types reflect the real domain.
+- Names are semantic.
+- There is separation between internal model and external boundary when necessary.

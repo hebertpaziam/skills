@@ -1,18 +1,18 @@
 # Principles LIFT
 
-## Quando usar
+## When to Use
 
-- Antes de criar novo tipo, helper, modulo, classe, adapter, factory ou abstracao.
+- Before creating a new type, helper, module, class, adapter, factory, or abstraction.
 
-## Regras locais
+## Local Rules
 
-- `Locate`: localize contratos, tipos, helpers, patterns e modulos ja existentes.
-- `Identify`: identifique o que ja resolve parte do problema e onde a duplicação esta surgindo.
-- `Find`: encontre o menor ponto coerente de reutilização, extensao ou composicao.
-- `Try to be DRY`: tente remover duplicação real sem introduzir sobreengenharia.
+- `Locate`: locate existing contracts, types, helpers, patterns, and modules.
+- `Identify`: identify what already solves part of the problem and where duplication is emerging.
+- `Find`: find the smallest coherent point of reuse, extension, or composition.
+- `Try to be DRY`: try to remove real duplication without introducing over-engineering.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O codigo existente foi revisado antes de criar algo novo.
-- A duplicação combatida era real, nao hipotetica.
-- A nova abstracao nao aumentou opacidade sem necessidade.
+- Existing code was reviewed before creating something new.
+- The duplication addressed was real, not hypothetical.
+- The new abstraction did not increase opacity unnecessarily.

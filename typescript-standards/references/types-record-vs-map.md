@@ -1,16 +1,16 @@
 # Types Record vs Map
 
-## Quando usar
+## When to Use
 
-- Escolher a estrutura de dados para lookup, indexacao e agregacao por chave.
+- Choose the data structure for lookup, indexing and key-based aggregation.
 
-## Regras locais
+## Local Rules
 
-- Prefira `Record` quando chaves string ou number forem suficientes.
-- Use `Map` quando a API especifica de `Map`, a ordem de iteracao controlada ou chaves nao serializaveis forem realmente necessarias.
-- Nao use `Map` apenas por preferencia pessoal quando um objeto simples resolve.
+- Prefer `Record` when string or number keys are sufficient.
+- Use `Map` when the specific `Map` API, controlled iteration order or non-serializable keys are actually needed.
+- Do not use `Map` just out of personal preference when a plain object suffices.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- `Record` foi usado como default quando suficiente.
-- `Map` foi escolhido por motivo tecnico real.
+- `Record` was used as the default when sufficient.
+- `Map` was chosen for a real technical reason.

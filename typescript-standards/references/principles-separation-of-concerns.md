@@ -1,16 +1,16 @@
 # Principles separation of concerns
 
-## Quando usar
+## When to Use
 
-- Organizar modulos, tipos, adaptadores, validacao, side effects e regras de dominio.
+- Organizing modules, types, adapters, validation, side effects, and domain rules.
 
-## Regras locais
+## Local Rules
 
-- Separe modelagem de dominio, IO, adaptacao externa, validacao e apresentacao.
-- Nao misture parsing de boundary, logica de negocio e detalhes de transporte no mesmo modulo sem necessidade.
-- Cada modulo deve ter uma fronteira compreensivel e responsabilidade clara.
+- Separate domain modeling, IO, external adaptation, validation, and presentation.
+- Do not mix boundary parsing, business logic, and transport details in the same module without necessity.
+- Each module should have a comprehensible boundary and clear responsibility.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Preocupacoes distintas estao separadas.
-- O modulo nao virou ponto de acoplamento entre camadas demais.
+- Distinct concerns are separated.
+- The module did not become a coupling point between too many layers.

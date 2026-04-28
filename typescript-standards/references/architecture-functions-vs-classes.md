@@ -1,17 +1,17 @@
 # Architecture functions vs classes
 
-## Quando usar
+## When to Use
 
-- Decidir a forma estrutural de um modulo novo ou refatorado.
+- Decide the structural form of a new or refactored module.
 
-## Regras locais
+## Local Rules
 
-- Prefira funcoes e modulos como default em TypeScript.
-- Use classes quando estado interno, identidade, ciclo de vida, invariantes encapsulados ou polimorfismo real justificarem isso.
-- Nao crie classes apenas para acomodar principios OO de forma ritualistica.
-- Nao introduza services, managers ou handlers genericos sem pressao real de design.
+- Prefer functions and modules as the default in TypeScript.
+- Use classes when internal state, identity, lifecycle, encapsulated invariants or real polymorphism justify it.
+- Do not create classes just to accommodate OO principles in a ritualistic way.
+- Do not introduce generic services, managers or handlers without real design pressure.
 
-## Exemplo
+## Example
 
 ```ts
 export function normalizeEmail(email: string): string {
@@ -19,7 +19,7 @@ export function normalizeEmail(email: string): string {
 }
 ```
 
-## Checklist de qualidade
+## Quality Checklist
 
-- A escolha entre funcao e classe foi feita por necessidade real.
-- Nao ha class-heavy design sem ganho concreto.
+- The choice between function and class was made based on real need.
+- No class-heavy design without concrete benefit.

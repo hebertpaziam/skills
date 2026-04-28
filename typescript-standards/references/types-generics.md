@@ -1,18 +1,18 @@
 # Types generics
 
-## Quando usar
+## When to Use
 
-- Criar APIs reutilizaveis, helpers tipados ou contratos parametricos.
+- Creating reusable APIs, typed helpers, or parametric contracts.
 
-## Regras locais
+## Local Rules
 
-- Use generics quando o tipo realmente varia e essa variacao precisa ser propagada.
-- Prefira generics pequenos, restritos e nomeados de forma clara.
-- Nao introduza generics apenas para parecer mais flexivel.
-- Quando uma uniao explicita e suficiente, prefira a forma mais simples.
+- Use generics when the type truly varies and that variation needs to be propagated.
+- Prefer small, constrained generics with clearly named parameters.
+- Do not introduce generics just to appear more flexible.
+- When an explicit union is sufficient, prefer the simpler form.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- O generic resolve um problema real.
-- A assinatura continua legivel.
-- Nao ha complexidade generica especulativa.
+- The generic solves a real problem.
+- The signature remains readable.
+- There is no speculative generic complexity.
