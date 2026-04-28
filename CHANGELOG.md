@@ -1,11 +1,11 @@
 # Changelog
 
-Este arquivo e gerado automaticamente a partir do historico de Conventional Commits.
-Nao edite manualmente.
+This file is generated automatically from the Conventional Commits history.
+Do not edit manually.
 
 ## Unreleased
 
-### Novidades
+### Features
 
 - Remove obsolete SKILL documents for OpenSpec workflows
 
@@ -18,7 +18,7 @@ Nao edite manualmente.
 - Add skills
 
 
-### Refatoracao
+### Refactoring
 
 - **react-standards:** Translate SKILL.md to English and remove scaffolds
 

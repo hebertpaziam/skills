@@ -6,8 +6,8 @@ repo = "skills"
 header = """
 # Changelog
 
-Este arquivo e gerado automaticamente a partir do historico de Conventional Commits.
-Nao edite manualmente.
+This file is generated automatically from the Conventional Commits history.
+Do not edit manually.
 
 """
 body = """
@@ -39,17 +39,17 @@ tag_pattern = "v[0-9].*"
 sort_commits = "newest"
 commit_parsers = [
   { message = "^chore\\(changelog\\):", skip = true },
-  { message = "^feat", group = "Novidades" },
-  { message = "^fix", group = "Correcoes" },
-  { message = "^docs?", group = "Documentacao" },
-  { message = "^refactor", group = "Refatoracao" },
+  { message = "^feat", group = "Features" },
+  { message = "^fix", group = "Bug Fixes" },
+  { message = "^docs?", group = "Documentation" },
+  { message = "^refactor", group = "Refactoring" },
   { message = "^perf", group = "Performance" },
-  { message = "^test", group = "Testes" },
+  { message = "^test", group = "Tests" },
   { message = "^build", group = "Build" },
   { message = "^ci", group = "CI" },
-  { message = "^style", group = "Estilo" },
-  { message = "^chore", group = "Manutencao" },
-  { message = "^revert", group = "Reversoes" },
+  { message = "^style", group = "Style" },
+  { message = "^chore", group = "Maintenance" },
+  { message = "^revert", group = "Reverts" },
 ]
 link_parsers = [
   { pattern = "#(\\d+)", href = "https://github.com/hebertpaziam/skills/issues/$1" },
