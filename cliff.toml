@@ -38,17 +38,16 @@ filter_commits = true
 tag_pattern = "v[0-9].*"
 sort_commits = "newest"
 commit_parsers = [
-  { message = "^chore\\(changelog\\):", skip = true },
+  { message = "^chore", skip = true },
+  { message = "^docs?", skip = true },
   { message = "^feat", group = "Features" },
   { message = "^fix", group = "Bug Fixes" },
-  { message = "^docs?", group = "Documentation" },
   { message = "^refactor", group = "Refactoring" },
   { message = "^perf", group = "Performance" },
   { message = "^test", group = "Tests" },
   { message = "^build", group = "Build" },
   { message = "^ci", group = "CI" },
   { message = "^style", group = "Style" },
-  { message = "^chore", group = "Maintenance" },
   { message = "^revert", group = "Reverts" },
 ]
 link_parsers = [
