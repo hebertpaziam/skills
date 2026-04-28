@@ -7,6 +7,8 @@ Nao edite manualmente.
 
 ### Novidades
 
+- Remove obsolete SKILL documents for OpenSpec workflows
+
 - Add changelog generation workflow and documentation
 
 - **skills:** [breaking] Add Vue standards and commit workflow
