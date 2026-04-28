@@ -1,18 +1,18 @@
 # Testing E2E
 
-## Quando usar
+## When to Use
 
-- Validar fluxos ponta a ponta, navegacao real, integracao com backend e comportamento multi-pagina.
+- Validating end-to-end flows, real navigation, backend integration, and multi-page behavior.
 
-## Regras locais
+## Local Rules
 
-- E2E cobre fluxos criticos de negocio e navegacao, nao cada detalhe micro de UI.
-- Reutilize a ferramenta E2E configurada no projeto.
-- Priorize cenarios que unit e component tests nao conseguem cobrir com confianca suficiente.
-- Minimize flakiness com dados, esperas e seletores previsiveis.
+- E2E covers critical business flows and navigation, not every micro UI detail.
+- Reuse the E2E tool configured in the project.
+- Prioritize scenarios that unit and component tests cannot cover with sufficient confidence.
+- Minimize flakiness with predictable data, waits, and selectors.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Fluxos criticos cobertos.
-- Sem excesso de sobreposicao com testes unitarios/componentes.
-- Ferramenta atual do projeto respeitada.
+- Critical flows covered.
+- No excessive overlap with unit/component tests.
+- Project's current tool respected.

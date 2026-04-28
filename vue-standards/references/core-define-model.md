@@ -1,25 +1,25 @@
 # Core defineModel
 
-## Quando usar
+## When to Use
 
-- Implementar componentes customizados integrados com `v-model`.
-- Revisar fluxo de two-way binding em componentes.
+- Implementing custom components integrated with `v-model`.
+- Reviewing two-way binding flow in components.
 
-## Regras locais
+## Local Rules
 
-- `defineModel` e apropriado para componentes de input e wrappers de formulario cujo contrato primario e sincronizar um valor.
-- Evite `defineModel` quando ele esconder ownership de estado que deveria continuar explicito.
-- Para modelos nomeados, use nomes que representem claramente o valor sincronizado.
-- Evite defaults que possam desalinhar pai e filho quando o pai nao fornece valor inicial.
+- `defineModel` is appropriate for input components and form wrappers whose primary contract is to synchronize a value.
+- Avoid `defineModel` when it hides state ownership that should remain explicit.
+- For named models, use names that clearly represent the synchronized value.
+- Avoid defaults that could misalign parent and child when the parent does not provide an initial value.
 
-## Quando preferir props + emits
+## When to Prefer props + emits
 
-- Quando o fluxo de dados precisa permanecer explicito.
-- Quando ha varias mudancas independentes sem semantica de `v-model`.
-- Quando o componente expoe eventos de negocio, nao apenas sincronizacao de valor.
+- When the data flow needs to remain explicit.
+- When there are multiple independent changes without `v-model` semantics.
+- When the component exposes business events, not just value synchronization.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- `defineModel` usado apenas quando simplifica uma API legitima de input.
-- Sem sincronizacao opaca entre pai e filho.
-- Sem default enganoso que introduza dessintonia.
+- `defineModel` used only when it simplifies a legitimate input API.
+- No opaque synchronization between parent and child.
+- No misleading default that introduces desynchronization.

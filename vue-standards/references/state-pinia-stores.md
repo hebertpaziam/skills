@@ -1,18 +1,18 @@
 # State Pinia stores
 
-## Quando usar
+## When to Use
 
-- Compartilhar estado entre telas, fluxos, modulos ou varios componentes desconectados.
+- Share state across screens, flows, modules, or multiple disconnected components.
 
-## Regras locais
+## Local Rules
 
-- Prefira Pinia para estado compartilhado de aplicacao.
-- Evite singletons reativos em escopo de modulo como solucao geral.
-- Store deve representar um dominio ou agregado coerente, nao um deposito generico de tudo.
-- Prefira setup stores quando a Composition API trouxer legibilidade e composicao melhores.
+- Prefer Pinia for shared application state.
+- Avoid reactive singletons at module scope as a general solution.
+- A store should represent a coherent domain or aggregate, not a generic catch-all container.
+- Prefer setup stores when the Composition API brings better readability and composability.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Shared state com Pinia quando o escopo justificar.
-- Store com responsabilidade clara.
-- Sem estado global improvisado fora da estrategia da app.
+- Shared state with Pinia when the scope justifies it.
+- Store with a clear responsibility.
+- No ad-hoc global state outside the app's strategy.

@@ -1,26 +1,26 @@
 # Composables design
 
-## Quando usar
+## When to Use
 
-- Criar logica reutilizavel com estado, lifecycle ou integracao reativa.
+- Creating reusable logic with state, lifecycle, or reactive integration.
 
-## Regras locais
+## Local Rules
 
-- Nomear composables com prefixo `use`.
-- Composable deve encapsular uma preocupacao coerente, nao um saco de utilidades.
-- Aceitar valores simples, refs ou getters quando isso melhorar a ergonomia publica.
-- Retornar objeto plano com refs e funcoes, nao um `reactive` agregado.
-- Se o composable depende de lifecycle ou `inject`, ele deve ser chamado em `setup` ou `<script setup>`.
+- Name composables with the `use` prefix.
+- A composable should encapsulate a coherent concern, not a grab bag of utilities.
+- Accept plain values, refs, or getters when it improves the public ergonomics.
+- Return a plain object with refs and functions, not an aggregated `reactive`.
+- If the composable depends on lifecycle or `inject`, it must be called in `setup` or `<script setup>`.
 
-## Design interno
+## Internal Design
 
-- Separar claramente estado, derivacao, efeitos e API publica.
-- Reaproveitar outros composables antes de duplicar comportamento.
-- Manter efeitos com cleanup previsivel.
+- Clearly separate state, derivation, effects, and public API.
+- Reuse other composables before duplicating behavior.
+- Keep effects with predictable cleanup.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Nome com `use`.
-- Responsabilidade unica.
-- API publica pequena.
-- Retorno com refs e funcoes claras.
+- Name starts with `use`.
+- Single responsibility.
+- Small public API.
+- Return with clear refs and functions.

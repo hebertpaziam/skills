@@ -1,18 +1,18 @@
 # Core custom directives
 
-## Quando usar
+## When to Use
 
-- Encapsular manipulacao de DOM de baixo nivel que nao cabe melhor em componente ou composable.
+- Encapsulating low-level DOM manipulation that does not fit better in a component or composable.
 
-## Regras locais
+## Local Rules
 
-- So criar diretiva quando a preocupacao principal for DOM imperativo reutilizavel.
-- Se a necessidade for reaproveitar estado ou logica reativa, prefira composable.
-- Se a necessidade for reaproveitar UI, prefira componente.
-- Diretivas devem ter escopo pequeno, efeito previsivel e cleanup claro.
+- Only create a directive when the primary concern is reusable imperative DOM work.
+- If the need is to reuse state or reactive logic, prefer a composable.
+- If the need is to reuse UI, prefer a component.
+- Directives should have a small scope, predictable effect, and clear cleanup.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Diretiva justificada tecnicamente.
-- Sem sobreposicao com componente ou composable.
-- Cleanup implementado quando necessario.
+- Directive technically justified.
+- No overlap with component or composable.
+- Cleanup implemented when necessary.

@@ -1,22 +1,22 @@
 # Accessibility
 
-## Quando usar
+## When to Use
 
-- Criar ou refatorar componentes, layouts, formularios e fluxos de navegacao.
+- Creating or refactoring components, layouts, forms, and navigation flows.
 
-## Regras locais
+## Local Rules
 
-- Manter baseline WCAG AA.
-- Preferir HTML semantico antes de recorrer a ARIA.
-- Estruturar headings, landmarks e ordem de foco de forma previsivel.
-- Formularios devem usar `label`, descricoes conectadas e mensagens de erro acessiveis.
-- Em navegacao com router, garantir restauracao de foco e contexto quando a UX exigir.
-- Nao esconda informacao essencial apenas em placeholder.
-- Nao use `aria-hidden` em elementos focaveis.
+- Maintain a WCAG AA baseline.
+- Prefer semantic HTML before resorting to ARIA.
+- Structure headings, landmarks, and focus order predictably.
+- Forms must use `label`, connected descriptions, and accessible error messages.
+- In router navigation, ensure focus and context restoration when the UX requires it.
+- Do not hide essential information only in placeholders.
+- Do not use `aria-hidden` on focusable elements.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Semantica correta.
-- Navegacao por teclado viavel.
-- Labels e descricoes conectadas.
-- Foco tratado conscientemente.
+- Correct semantics.
+- Viable keyboard navigation.
+- Connected labels and descriptions.
+- Focus handled deliberately.

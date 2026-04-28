@@ -1,16 +1,16 @@
 # Testing Pinia and Router
 
-## Quando usar
+## When to Use
 
-- Testar stores Pinia, navegacao, params, guards e integracao minima entre tela e router/store.
+- Testing Pinia stores, navigation, params, guards, and minimal integration between views and router/store.
 
-## Regras locais
+## Local Rules
 
-- Stores devem ser testadas por estado, getters, actions e efeitos observaveis.
-- Guards e navegacao devem ser testados por redirecionamento, autorizacao e resultado visivel.
-- Use doubles, spies e helpers da stack do projeto em vez de camadas paralelas de mock.
+- Stores should be tested by state, getters, actions, and observable effects.
+- Guards and navigation should be tested by redirection, authorization, and visible outcome.
+- Use doubles, spies, and helpers from the project's stack instead of parallel mock layers.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Store e router testados por comportamento observavel.
-- Sem acoplamento excessivo a detalhes internos.
+- Store and router tested by observable behavior.
+- No excessive coupling to internal details.

@@ -1,19 +1,19 @@
 # State Pinia store design
 
-## Quando usar
+## When to Use
 
-- Projetar ou refatorar stores Pinia.
+- Design or refactor Pinia stores.
 
-## Regras locais
+## Local Rules
 
-- Separar estado, derivacoes e acoes com nomes orientados ao dominio.
-- Getters devem representar derivacoes observaveis e estaveis.
-- Actions devem concentrar mutacoes de dominio e coordenacao assicrona.
-- Nao transformar a store em camada de UI nem em wrapper generico de HTTP sem semantica de dominio.
-- Compose stores com cuidado para evitar acoplamento circular desnecessario.
+- Separate state, derivations, and actions with domain-oriented names.
+- Getters should represent observable and stable derivations.
+- Actions should concentrate domain mutations and async coordination.
+- Do not turn the store into a UI layer or a generic HTTP wrapper without domain semantics.
+- Compose stores carefully to avoid unnecessary circular coupling.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Store pequena o suficiente para ter fronteira clara.
-- Getters e actions com semantica de dominio.
-- Sem mistura indevida de estado de view e estado de negocio.
+- Store small enough to have a clear boundary.
+- Getters and actions with domain semantics.
+- No improper mixing of view state and business state.

@@ -1,18 +1,18 @@
 # Testing components
 
-## Quando usar
+## When to Use
 
-- Testar props, emits, slots, estados visuais e comportamento de componentes Vue.
+- Testing props, emits, slots, visual states, and behavior of Vue components.
 
-## Regras locais
+## Local Rules
 
-- Teste o que o componente faz, nao como ele faz.
-- Foque na interface publica: props, emits, slots, render e reacao a interacao do usuario.
-- Evite acoplamento a estado interno privado ou metodos privados quando o comportamento observavel cobre o caso.
-- Nao dependa exclusivamente de snapshots de HTML.
+- Test what the component does, not how it does it.
+- Focus on the public interface: props, emits, slots, render, and reaction to user interaction.
+- Avoid coupling to private internal state or private methods when observable behavior covers the case.
+- Do not rely exclusively on HTML snapshots.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Assertions ancoradas em comportamento observavel.
-- Sem acoplamento desnecessario a implementacao interna.
-- Children sao mockados apenas quando isso melhora isolacao sem perder valor do teste.
+- Assertions anchored in observable behavior.
+- No unnecessary coupling to internal implementation.
+- Children are mocked only when it improves isolation without losing test value.

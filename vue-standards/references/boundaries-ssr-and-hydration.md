@@ -1,19 +1,19 @@
 # Boundaries SSR and hydration
 
-## Quando usar
+## When to Use
 
-- Trabalhar em projetos Vue com SSR, hydration ou codigo universal.
+- Working on Vue projects with SSR, hydration, or universal code.
 
-## Regras locais
+## Local Rules
 
-- Side effects de browser devem ser client-only.
-- Nao assuma `window`, `document` ou APIs de plataforma em codigo universal.
-- Evite poluicao de estado entre requests em SSR; stores e app devem ser criados por request quando a arquitetura exigir.
-- Previna hydration mismatch eliminando HTML invalido, valores aleatorios nao estabilizados e diferencas client/server evitaveis.
-- `Teleport` e outras features com comportamento especial em SSR exigem cuidado adicional.
+- Browser side effects must be client-only.
+- Do not assume `window`, `document`, or platform APIs in universal code.
+- Avoid state pollution between requests in SSR; stores and app should be created per request when the architecture requires it.
+- Prevent hydration mismatch by eliminating invalid HTML, unstabilized random values, and avoidable client/server differences.
+- `Teleport` and other features with special SSR behavior require additional care.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Codigo universal separado de codigo client-only.
-- Sem cross-request state pollution.
-- Hydration previsivel.
+- Universal code separated from client-only code.
+- No cross-request state pollution.
+- Predictable hydration.

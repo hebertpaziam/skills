@@ -1,33 +1,33 @@
 # Reactivity computed vs watch
 
-## Quando usar
+## When to Use
 
-- Decidir entre derivar estado ou reagir a mudancas com efeito colateral.
+- Deciding between deriving state or reacting to changes with a side effect.
 
-## Regra principal
+## Main Rule
 
-- Se um valor pode ser calculado a partir do estado atual, use `computed`.
-- Se a mudanca precisa acionar um efeito colateral externo, sincronizacao, persistencia, fetch ou integracao, use `watch`.
+- If a value can be calculated from the current state, use `computed`.
+- If the change needs to trigger an external side effect, synchronization, persistence, fetch, or integration, use `watch`.
 
-## Exemplos tipicos de `computed`
+## Typical `computed` Examples
 
-- filtros derivados
-- labels derivados
+- derived filters
+- derived labels
 - disabled state
-- agregacoes de lista
+- list aggregations
 
-## Exemplos tipicos de `watch`
+## Typical `watch` Examples
 
-- atualizar URL
-- persistir em storage
-- chamar API em resposta a mudanca de entrada
-- integrar bibliotecas externas imperativas
+- update URL
+- persist to storage
+- call API in response to input change
+- integrate imperative external libraries
 
 ## Anti-pattern
 
-- usar `watch` para preencher um segundo estado que poderia ser `computed`
+- using `watch` to populate a second state that could be a `computed`
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Nenhum `watch` foi usado para derivacao pura.
-- Nenhum `computed` esta executando efeitos colaterais.
+- No `watch` was used for pure derivation.
+- No `computed` is executing side effects.

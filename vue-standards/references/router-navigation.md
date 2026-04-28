@@ -1,17 +1,17 @@
 # Router navigation
 
-## Quando usar
+## When to Use
 
-- Implementar navegacao declarativa ou programatica.
+- Implement declarative or programmatic navigation.
 
-## Regras locais
+## Local Rules
 
-- Prefira `RouterLink` para navegacao declarativa.
-- Use `useRouter()` para navegacao programatica em resposta a fluxos de usuario ou efeitos claros.
-- Nao manipule `window.location` manualmente para fluxos internos da SPA.
-- Prefira navegar por nome e parametros tipados/coerentes quando isso reduzir fragilidade.
+- Prefer `RouterLink` for declarative navigation.
+- Use `useRouter()` for programmatic navigation in response to user flows or clear side effects.
+- Do not manually manipulate `window.location` for internal SPA flows.
+- Prefer navigating by name with typed/coherent params when it reduces fragility.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Navegacao expressa via Vue Router.
-- Sem hacks de URL fora da API do router.
+- Navigation expressed via Vue Router.
+- No URL hacks outside the router API.

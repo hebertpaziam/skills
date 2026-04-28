@@ -1,18 +1,18 @@
 # Reactivity watch vs watchEffect
 
-## Quando usar
+## When to Use
 
-- Escolher a forma de observar dependencias reativas para efeitos colaterais.
+- Choosing how to observe reactive dependencies for side effects.
 
-## Regras locais
+## Local Rules
 
-- Prefira `watch` quando as dependencias precisam ser explicitas e o gatilho deve ser preciso.
-- Use `watchEffect` quando o efeito realmente depende de varias fontes reativas acessadas dinamicamente e o acoplamento automatico melhora a legibilidade.
-- Em codigo de produto, `watch` tende a ser mais previsivel e auditavel.
-- Nao use `watchEffect` para esconder dependencias importantes.
+- Prefer `watch` when dependencies need to be explicit and the trigger must be precise.
+- Use `watchEffect` when the effect truly depends on multiple dynamically accessed reactive sources and automatic tracking improves readability.
+- In production code, `watch` tends to be more predictable and auditable.
+- Do not use `watchEffect` to hide important dependencies.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Dependencias estao claras.
-- O efeito nao dispara por fontes acidentais.
-- Cleanup existe quando necessario.
+- Dependencies are clear.
+- The effect does not fire from accidental sources.
+- Cleanup exists when necessary.

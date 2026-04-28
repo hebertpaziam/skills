@@ -1,19 +1,19 @@
 # Core slots
 
-## Quando usar
+## When to Use
 
-- Projetar componentes composicionais.
-- Revisar componentes com API muito grande baseada em props.
+- Designing compositional components.
+- Reviewing components with an overly large props-based API.
 
-## Regras locais
+## Local Rules
 
-- Slots sao a primeira opcao quando o consumidor precisa controlar estrutura visual ou conteudo.
-- Use slot props para expor apenas o minimo necessario ao consumidor.
-- Nomeie slots quando houver mais de uma area clara de composicao.
-- Nao use slots para mascarar acoplamento excessivo ou dependencia implicita de markup fragil.
+- Slots are the first choice when the consumer needs to control visual structure or content.
+- Use slot props to expose only the minimum necessary to the consumer.
+- Name slots when there is more than one clear area of composition.
+- Do not use slots to mask excessive coupling or implicit dependency on fragile markup.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Slots com nome e papel claros.
-- Slot props minimas e bem nomeadas.
-- Componente continua legivel para quem consome.
+- Slots with clear names and roles.
+- Minimal and well-named slot props.
+- Component remains readable for consumers.

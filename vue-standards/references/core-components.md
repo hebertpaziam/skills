@@ -1,28 +1,28 @@
 # Core components
 
-## Quando usar
+## When to Use
 
-- Criar ou refatorar componentes Vue.
-- Revisar a fronteira entre componente, composable e store.
+- Creating or refactoring Vue components.
+- Reviewing the boundary between component, composable, and store.
 
-## Regras locais
+## Local Rules
 
-- Componentes devem encapsular uma responsabilidade visual ou interacional clara.
-- Componentes pequenos e focados; extraia child components quando a leitura ou o reuso justificar.
-- Nao transformar o componente em coordenador de todos os detalhes de dominio se uma store ou composable for fronteira melhor.
-- Prefira API publica pequena: props, emits, slots e `v-model` quando fizer sentido.
-- Evite logica de negocio densa no template; derive e prepare os dados no script.
+- Components should encapsulate a clear visual or interactional responsibility.
+- Keep components small and focused; extract child components when readability or reuse justifies it.
+- Do not turn a component into a coordinator of all domain details if a store or composable is a better boundary.
+- Prefer a small public API: props, emits, slots, and `v-model` when it makes sense.
+- Avoid dense business logic in the template; derive and prepare data in the script.
 
-## Sinais para extrair
+## Signals to Extract
 
-- Mais de uma preocupacao logica relevante no mesmo arquivo.
-- Regras repetidas em multiplos componentes.
-- Muitos props booleanos tentando controlar variacoes demais.
-- Grande volume de branches no template.
+- More than one relevant logical concern in the same file.
+- Repeated rules across multiple components.
+- Too many boolean props trying to control too many variations.
+- Large volume of branches in the template.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Responsabilidade unica.
-- API publica pequena e clara.
-- Sem acoplamento desnecessario a detalhes externos.
-- Template legivel.
+- Single responsibility.
+- Small and clear public API.
+- No unnecessary coupling to external details.
+- Readable template.

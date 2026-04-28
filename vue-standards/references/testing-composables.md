@@ -1,17 +1,17 @@
 # Testing composables
 
-## Quando usar
+## When to Use
 
-- Testar composables com ou sem dependencia de host component.
+- Testing composables with or without host component dependency.
 
-## Regras locais
+## Local Rules
 
-- Se o composable usa apenas reatividade pura, teste-o por invocacao direta.
-- Se depende de lifecycle ou provide/inject, teste-o com host component ou helper equivalente da stack atual.
-- Valide contrato publico do composable: estado retornado, funcoes expostas e efeitos observaveis.
+- If the composable uses only pure reactivity, test it by direct invocation.
+- If it depends on lifecycle or provide/inject, test it with a host component or equivalent helper from the current stack.
+- Validate the composable's public contract: returned state, exposed functions, and observable effects.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Estrategia de teste alinhada ao tipo de composable.
-- Sem host component desnecessario.
-- Sem detalhismo excessivo em internals.
+- Testing strategy aligned with the composable type.
+- No unnecessary host component.
+- No excessive detail on internals.

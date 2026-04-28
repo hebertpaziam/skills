@@ -1,17 +1,17 @@
 # Template conditional rendering
 
-## Quando usar
+## When to Use
 
-- Escolher entre `v-if` e `v-show` e organizar branches no template.
+- Choosing between `v-if` and `v-show` and organizing branches in the template.
 
-## Regras locais
+## Local Rules
 
-- Use `v-if` quando o bloco e realmente opcional ou caro e nao precisa permanecer no DOM.
-- Use `v-show` quando o bloco precisa alternar visibilidade com frequencia e faz sentido permanecer montado.
-- Nao empilhe condicionais profundas no template quando um `computed` ou child component tornaria a leitura melhor.
-- Prefira branches explicitos e semanticamente claros.
+- Use `v-if` when the block is truly optional or expensive and does not need to remain in the DOM.
+- Use `v-show` when the block needs to toggle visibility frequently and it makes sense to stay mounted.
+- Do not stack deep conditionals in the template when a `computed` or child component would improve readability.
+- Prefer explicit and semantically clear branches.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- `v-if` e `v-show` escolhidos por semantica e custo.
-- Sem floresta de condicionais no template.
+- `v-if` and `v-show` chosen by semantics and cost.
+- No forest of conditionals in the template.

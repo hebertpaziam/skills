@@ -1,24 +1,24 @@
 # Reactivity refs vs reactive
 
-## Quando usar
+## When to Use
 
-- Escolher a API reativa principal de um componente, composable ou store.
+- Choosing the main reactive API for a component, composable, or store.
 
-## Regras locais
+## Local Rules
 
-- Prefira `ref` por padrao para estado isolado, primitivos e valores cuja identidade precisa ser explicita.
-- Use `reactive` quando um objeto coeso realmente se beneficia de acesso agrupado e nao sera destruturado livremente.
-- Evite retornar objetos `reactive` diretamente de composables; prefira objeto plano com refs.
-- Se a estrutura e grande e tratada como imutavel, considere `shallowRef` ou `shallowReactive`.
+- Prefer `ref` by default for isolated state, primitives, and values whose identity needs to be explicit.
+- Use `reactive` when a cohesive object truly benefits from grouped access and will not be freely destructured.
+- Avoid returning `reactive` objects directly from composables; prefer a plain object with refs.
+- If the structure is large and treated as immutable, consider `shallowRef` or `shallowReactive`.
 
-## Heuristica rapida
+## Quick Heuristic
 
-- `ref`: default seguro e explicito.
-- `reactive`: agrupamento local de estado fortemente relacionado.
-- `shallowRef` / `shallowReactive`: estruturas grandes com troca por raiz.
+- `ref`: safe and explicit default.
+- `reactive`: local grouping of tightly related state.
+- `shallowRef` / `shallowReactive`: large structures with root-level replacement.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- API reativa escolhida pela semantica, nao por habito.
-- Sem perda de reatividade por destructuring imprudente.
-- Sem sobrecarga desnecessaria em estruturas grandes.
+- Reactive API chosen by semantics, not by habit.
+- No reactivity loss from careless destructuring.
+- No unnecessary overhead on large structures.

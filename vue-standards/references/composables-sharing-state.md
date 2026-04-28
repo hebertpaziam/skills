@@ -1,18 +1,18 @@
 # Composables sharing state
 
-## Quando usar
+## When to Use
 
-- Decidir entre estado por instancia, shared state local ou store global.
+- Deciding between per-instance state, local shared state, or a global store.
 
-## Regras locais
+## Local Rules
 
-- Por padrao, cada chamada de composable deve criar estado isolado por instancia.
-- Use shared state em composable apenas quando o escopo compartilhado for pequeno, local e conscientemente controlado.
-- Quando o estado compartilhado atravessa modulos, paginas ou dominios, prefira Pinia.
-- Evite singletons reativos improvisados para estado de aplicacao.
+- By default, each composable call should create isolated per-instance state.
+- Use shared state in a composable only when the shared scope is small, local, and consciously controlled.
+- When shared state crosses modules, pages, or domains, prefer Pinia.
+- Avoid improvised reactive singletons for application state.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Escopo do estado compartilhado esta claro.
-- Nao ha risco de vazamento arquitetural ou acoplamento oculto.
-- Pinia foi considerada quando o estado ultrapassa o escopo local.
+- The scope of shared state is clear.
+- There is no risk of architectural leakage or hidden coupling.
+- Pinia was considered when the state exceeds the local scope.

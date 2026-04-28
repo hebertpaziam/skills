@@ -1,143 +1,201 @@
 ---
 name: vue-standards
-description: 'Aplicar padroes Vue 3 em novos recursos e refatoracoes, com foco em SFCs, Composition API, `<script setup lang="ts">`, reatividade previsivel e referencias internas para estado, router, testes, estilos e boundaries.'
+description: 'Apply Vue 3 standards to new features and refactors, with focus on SFCs, Composition API, `<script setup lang="ts">`, predictable reactivity, and internal references for state, router, testing, styling, and boundaries. Do NOT trigger for routine TypeScript edits already covered by typescript-standards.'
 ---
 
 # Vue 3 Standards
 
-## Quando usar
+## When to Use
 
-- Criar ou refatorar recursos Vue 3.
-- Padronizar componentes, composables, stores, rotas e formularios em projetos Vue.
-- Orquestrar tarefas Vue que envolvam `*.vue`, `*.ts`, stores, router, estilos de componente ou arquivos de teste.
+- Creating or refactoring Vue 3 features.
+- Standardizing components, composables, stores, routes, and forms in Vue projects.
+- Orchestrating Vue tasks involving `*.vue`, `*.ts`, stores, router, component styles, or test files.
 
-## Objetivo
+## Goal
 
-- Padronizar Vue 3 com SFCs, `<script setup lang="ts">`, Composition API, Pinia, Vue Router, testabilidade e acessibilidade.
-- Concentrar regras detalhadas em references locais para evitar duplicação e manter precedencia clara.
-- Preservar aderencia a ferramenta de teste, build, lint e estilo ja configurada no projeto.
+- Standardize Vue 3 with SFCs, `<script setup lang="ts">`, Composition API, Pinia, Vue Router, testability, and accessibility.
+- Concentrate detailed rules in local references to avoid duplication and maintain clear precedence.
+- Preserve adherence to the test, build, lint, and styling tools already configured in the project.
 
-## Principio LIFT
+## LIFT Principle
 
-- Antes de criar novo component, composable, store, route module, helper ou teste, aplicar o principio `LIFT`.
-- `Locate`: localizar SFCs, composables, stores, helpers, contracts e references ja existentes no projeto e no dominio.
-- `Identify`: identificar o que ja resolve parte do problema e onde ha duplicação potencial.
-- `Find`: encontrar o menor ponto coerente de reutilizacao, extensao ou composicao antes de introduzir codigo novo.
-- `Try to be DRY`: tentar eliminar duplicação real sem criar abstracoes prematuras, APIs opacas ou shared state desnecessario.
+Before creating any new component, composable, store, route module, helper, or test, apply the LIFT principle:
 
-## Integracao com outras skills e referencias
+- **Locate**: Find existing SFCs, composables, stores, helpers, contracts, and references in the project and domain.
+- **Identify**: Determine what already solves part of the problem and where there is potential duplication.
+- **Find**: Find the smallest coherent point of reuse, extension, or composition before introducing new code.
+- **Try to be DRY**: Eliminate real duplication without creating premature abstractions, opaque APIs, or unnecessary shared state.
 
-- Ao alterar tipagem geral, contratos compartilhados ou escolhas de modelagem TypeScript, seguir `typescript-standards`.
-- Ao sugerir ou executar scripts do projeto, respeitar a stack e os scripts ja configurados no projeto.
-- Ao preparar commits, seguir `git-commit`.
-- Ao alterar estilos de componente ou classes no template, seguir [references/component-styles.md](references/component-styles.md).
-- Ao criar ou alterar arquivos de teste, seguir [references/testing-fundamentals.md](references/testing-fundamentals.md).
-- Ao trabalhar com roteamento, query params, guards ou lazy loading, seguir as references de `router-*`.
-- Em caso de conflito, prevalece esta ordem: references locais especificas do tema, `typescript-standards` para regras gerais de TypeScript, `git-commit` para commits e `vue-standards` para arquitetura Vue, reatividade, composicao e acessibilidade.
+## Integration with Other Skills
 
-## Regras principais
+- When modifying general typing, shared contracts, or TypeScript modeling decisions, follow `typescript-standards`.
+- When suggesting or running project scripts, respect the stack and scripts already configured in the project.
+- When preparing commits, follow `git-commit`.
+- When modifying component styles or template classes, follow [references/component-styles.md](references/component-styles.md).
+- When creating or modifying test files, follow [references/testing-fundamentals.md](references/testing-fundamentals.md).
+- When working with routing, query params, guards, or lazy loading, follow the `router-*` references.
+- In case of conflict, this order prevails: topic-specific local references, `typescript-standards` for general TypeScript rules, `git-commit` for commits, and `vue-standards` for Vue architecture, reactivity, composition, and accessibility.
 
-- Vue 3 apenas.
-- Aplicar `LIFT` antes de introduzir novos components, composables, stores, route modules, helpers ou testes.
-- Para codigo novo, usar Single-File Components com `<script setup lang="ts">` por padrao.
-- Para codigo novo, usar Composition API por padrao.
-- Nao reescrever componentes estaveis em Options API sem necessidade real.
-- Usar `computed` para estado derivado; nao usar `watch` ou `watchEffect` para derivacao pura.
-- Usar `watch` e `watchEffect` apenas para efeitos colaterais, sincronizacao externa ou reacao assicrona controlada.
-- Logica reutilizavel com estado deve virar composable.
-- Estado compartilhado entre areas da aplicacao deve usar Pinia, nao singletons reativos ad hoc.
-- Estado que precisa sobreviver a navegacao, ser compartilhavel por URL ou deep-linkable deve usar Vue Router.
-- Nao usar mixins como padrao em Vue 3.
-- Manter templates simples, semanticamente corretos e sem logica excessiva.
-- Manter baseline WCAG AA e nao expor acessibilidade como API configuravel sem necessidade concreta.
-- Nunca usar templates nao confiaveis nem renderizar conteudo arbitrario como template Vue.
-- Ao criar ou atualizar testes, reutilizar apenas a stack de testes e os utilitarios ja configurados no projeto.
+## Main Rules
 
-## Procedimento
+- Vue 3 only.
+- Apply LIFT before introducing new components, composables, stores, route modules, helpers, or tests.
+- For new code, use Single-File Components with `<script setup lang="ts">` by default.
+- For new code, use Composition API by default.
+- Do not rewrite stable Options API components without real need.
+- Use `computed` for derived state; do not use `watch` or `watchEffect` for pure derivation.
+- Use `watch` and `watchEffect` only for side effects, external synchronization, or controlled async reactions.
+- Reusable logic with state should become a composable.
+- Shared state across application areas should use Pinia, not ad hoc reactive singletons.
+- State that needs to survive navigation, be shareable by URL, or be deep-linkable should use Vue Router.
+- Do not use mixins as a pattern in Vue 3.
+- Keep templates simple, semantically correct, and without excessive logic.
+- Maintain WCAG AA baseline and do not expose accessibility as configurable API without concrete need.
+- Never use untrusted templates or render arbitrary content as a Vue template.
+- When creating or updating tests, reuse only the test stack and utilities already configured in the project.
 
-1. Aplique `LIFT` para localizar, identificar e reutilizar o que ja existe antes de criar novas estruturas.
-2. Modele o recurso com SFC, `<script setup lang="ts">` e Composition API quando for codigo novo.
-3. Mantenha estado local no componente, extraia logica reutilizavel para composables e mova estado compartilhado para Pinia quando necessario.
-4. Use `computed` para derivacoes e limite `watch` a efeitos colaterais reais.
-5. Se houver estado navegavel ou compartilhavel por URL, modele-o no router.
-6. Se houver estilos de componente, siga [references/component-styles.md](references/component-styles.md).
-7. Se houver testes, siga [references/testing-fundamentals.md](references/testing-fundamentals.md).
-8. Se houver tipagem ou contratos compartilhados, alinhe tambem com `typescript-standards`.
-9. Revise semantica, acessibilidade, previsibilidade reativa e aderencia a stack do projeto.
+## Procedure
 
-## Checklist de qualidade
+1. Apply LIFT to locate, identify, and reuse what already exists before creating new structures.
+2. Model the feature with SFC, `<script setup lang="ts">`, and Composition API for new code.
+3. Keep local state in the component, extract reusable logic to composables, and move shared state to Pinia when necessary.
+4. Use `computed` for derivations and limit `watch` to real side effects.
+5. If there is navigable or URL-shareable state, model it in the router.
+6. If there are component styles, follow [references/component-styles.md](references/component-styles.md).
+7. If there are tests, follow [references/testing-fundamentals.md](references/testing-fundamentals.md).
+8. If there is shared typing or contracts, also align with `typescript-standards`.
+9. Review semantics, accessibility, reactive predictability, and adherence to the project stack.
 
-- Codigo novo em SFC com `<script setup lang="ts">`, salvo justificativa tecnica real.
-- `LIFT` aplicado antes de introduzir novas estruturas ou duplicar implementacoes.
-- Composition API usada por padrao em codigo novo.
-- `computed` usado para estado derivado.
-- `watch` e `watchEffect` usados apenas quando ha efeito colateral real.
-- Composables extraidos quando ha logica reutilizavel com estado.
-- Pinia usado para shared state quando necessario.
-- Router usado para estado URL-driven quando necessario.
-- Se houve alteracao em estilos, [references/component-styles.md](references/component-styles.md) foi seguida.
-- Se houve alteracao em testes, [references/testing-fundamentals.md](references/testing-fundamentals.md) foi seguida.
-- Se houve alteracao de tipagem geral, `typescript-standards` foi seguida.
-- Template simples, semantico e acessivel.
-- Nenhuma stack paralela de build, teste ou estilo foi introduzida.
+## Quality Checklist
 
-## Observacoes
+- New code in SFC with `<script setup lang="ts">`, unless there is real technical justification.
+- LIFT applied before introducing new structures or duplicating implementations.
+- Composition API used by default in new code.
+- `computed` used for derived state.
+- `watch` and `watchEffect` used only when there is a real side effect.
+- Composables extracted when there is reusable logic with state.
+- Pinia used for shared state when necessary.
+- Router used for URL-driven state when necessary.
+- If styles were changed, [references/component-styles.md](references/component-styles.md) was followed.
+- If tests were changed, [references/testing-fundamentals.md](references/testing-fundamentals.md) was followed.
+- If general typing was changed, `typescript-standards` was followed.
+- Template simple, semantic, and accessible.
+- No parallel build, test, or styling stack was introduced.
 
-- Esta skill nao padroniza uma ferramenta unica de teste, build ou SSR; use sempre a configuracao efetiva do projeto.
-- Detalhes de Nuxt, SSR e hydration ficam nas references de boundaries e nao no corpo principal da skill.
-- `component-styles.md` e neutra em relacao a stack de estilo do projeto; siga os tokens, conventions e utilitarios ja existentes.
-- Para scripts do projeto, respeite a stack e os scripts ja configurados no projeto.
-- Para commits, use `git-commit`.
+## Notes
 
-## Referencias (carregar quando fizer sentido)
+- This skill does not standardize a single test, build, or SSR tool; always use the project's effective configuration.
+- Nuxt, SSR, and hydration details live in the boundary references, not in the main skill body.
+- `component-styles.md` is neutral regarding the project's styling stack; follow the existing tokens, conventions, and utilities.
+- For project scripts, respect the stack and scripts already configured in the project.
+- For commits, use `git-commit`.
 
-- Estrutura de SFC: [references/core-sfc-structure.md](references/core-sfc-structure.md)
+## Core
+
+Consult when working with SFC structure, components, props, events, slots, or lifecycle.
+
+- SFC structure: [references/core-sfc-structure.md](references/core-sfc-structure.md)
 - `<script setup>`: [references/core-script-setup.md](references/core-script-setup.md)
-- Componentes: [references/core-components.md](references/core-components.md)
-- Props e emits: [references/core-props-and-emits.md](references/core-props-and-emits.md)
+- Components: [references/core-components.md](references/core-components.md)
+- Props and emits: [references/core-props-and-emits.md](references/core-props-and-emits.md)
 - `defineModel`: [references/core-define-model.md](references/core-define-model.md)
 - Slots: [references/core-slots.md](references/core-slots.md)
 - Template refs: [references/core-template-refs.md](references/core-template-refs.md)
 - Provide / inject: [references/core-provide-inject.md](references/core-provide-inject.md)
 - Lifecycle hooks: [references/core-lifecycle-hooks.md](references/core-lifecycle-hooks.md)
 - Custom directives: [references/core-custom-directives.md](references/core-custom-directives.md)
+
+## Reactivity
+
+Consult when choosing between reactivity primitives or implementing watchers and effects.
+
 - `ref` vs `reactive`: [references/reactivity-refs-vs-reactive.md](references/reactivity-refs-vs-reactive.md)
 - `computed` vs `watch`: [references/reactivity-computed-vs-watch.md](references/reactivity-computed-vs-watch.md)
 - `watch` vs `watchEffect`: [references/reactivity-watch-vs-watch-effect.md](references/reactivity-watch-vs-watch-effect.md)
-- APIs rasas: [references/reactivity-shallow-apis.md](references/reactivity-shallow-apis.md)
-- Composables: [references/composables-design.md](references/composables-design.md)
-- Composables async: [references/composables-async.md](references/composables-async.md)
-- Shared state em composables: [references/composables-sharing-state.md](references/composables-sharing-state.md)
-- Rendering condicional: [references/template-conditional-rendering.md](references/template-conditional-rendering.md)
-- Listas e keys: [references/template-list-rendering-and-keys.md](references/template-list-rendering-and-keys.md)
-- Class e style bindings: [references/template-class-and-style-bindings.md](references/template-class-and-style-bindings.md)
-- Performance de rendering: [references/rendering-performance-basics.md](references/rendering-performance-basics.md)
+- Shallow APIs: [references/reactivity-shallow-apis.md](references/reactivity-shallow-apis.md)
+
+## Composables
+
+Consult when extracting reusable logic, handling async composables, or sharing state.
+
+- Composable design: [references/composables-design.md](references/composables-design.md)
+- Async composables: [references/composables-async.md](references/composables-async.md)
+- Sharing state in composables: [references/composables-sharing-state.md](references/composables-sharing-state.md)
+
+## Templates
+
+Consult when working with conditional rendering, lists, or class/style bindings.
+
+- Conditional rendering: [references/template-conditional-rendering.md](references/template-conditional-rendering.md)
+- List rendering and keys: [references/template-list-rendering-and-keys.md](references/template-list-rendering-and-keys.md)
+- Class and style bindings: [references/template-class-and-style-bindings.md](references/template-class-and-style-bindings.md)
+
+## Rendering
+
+Consult when dealing with performance, async components, Suspense, or transition effects.
+
+- Performance basics: [references/rendering-performance-basics.md](references/rendering-performance-basics.md)
 - Async components: [references/rendering-async-components.md](references/rendering-async-components.md)
 - Suspense: [references/rendering-suspense.md](references/rendering-suspense.md)
-- Teleport, KeepAlive e Transition: [references/rendering-teleport-keepalive-transition.md](references/rendering-teleport-keepalive-transition.md)
-- Estado local: [references/state-local-component-state.md](references/state-local-component-state.md)
-- Pinia: [references/state-pinia-stores.md](references/state-pinia-stores.md)
-- Design de stores: [references/state-pinia-store-design.md](references/state-pinia-store-design.md)
+- Teleport, KeepAlive, and Transition: [references/rendering-teleport-keepalive-transition.md](references/rendering-teleport-keepalive-transition.md)
+
+## State Management
+
+Consult when designing local state, Pinia stores, or URL-driven state.
+
+- Local component state: [references/state-local-component-state.md](references/state-local-component-state.md)
+- Pinia stores: [references/state-pinia-stores.md](references/state-pinia-stores.md)
+- Pinia store design: [references/state-pinia-store-design.md](references/state-pinia-store-design.md)
 - URL as state: [references/state-url-as-state.md](references/state-url-as-state.md)
-- Definicao de rotas: [references/router-define-routes.md](references/router-define-routes.md)
-- Navegacao: [references/router-navigation.md](references/router-navigation.md)
-- Params e query: [references/router-route-params-and-query.md](references/router-route-params-and-query.md)
+
+## Router
+
+Consult when defining routes, navigation, guards, lazy loading, or data fetching.
+
+- Define routes: [references/router-define-routes.md](references/router-define-routes.md)
+- Navigation: [references/router-navigation.md](references/router-navigation.md)
+- Route params and query: [references/router-route-params-and-query.md](references/router-route-params-and-query.md)
 - Guards: [references/router-guards.md](references/router-guards.md)
-- Lazy loading de rotas: [references/router-lazy-loading.md](references/router-lazy-loading.md)
-- Data fetching com router: [references/router-data-fetching.md](references/router-data-fetching.md)
+- Lazy loading: [references/router-lazy-loading.md](references/router-lazy-loading.md)
+- Data fetching with router: [references/router-data-fetching.md](references/router-data-fetching.md)
 - Router testing: [references/router-testing.md](references/router-testing.md)
+
+## Forms
+
+Consult when implementing form bindings or validation.
+
 - `v-model`: [references/forms-v-model.md](references/forms-v-model.md)
-- Validacao de formularios: [references/forms-validation.md](references/forms-validation.md)
-- TypeScript em macros SFC: [references/typescript-sfc-macros.md](references/typescript-sfc-macros.md)
-- TypeScript em refs e injection: [references/typescript-template-refs-and-injection.md](references/typescript-template-refs-and-injection.md)
-- Estilos de componente: [references/component-styles.md](references/component-styles.md)
-- Acessibilidade: [references/accessibility.md](references/accessibility.md)
-- Seguranca: [references/security.md](references/security.md)
-- Testes: [references/testing-fundamentals.md](references/testing-fundamentals.md)
-- Testes de componentes: [references/testing-components.md](references/testing-components.md)
-- Testes de composables: [references/testing-composables.md](references/testing-composables.md)
-- Testes de Pinia e Router: [references/testing-pinia-and-router.md](references/testing-pinia-and-router.md)
-- E2E: [references/testing-e2e.md](references/testing-e2e.md)
-- Limites com Vite: [references/boundaries-vite.md](references/boundaries-vite.md)
-- SSR e hydration: [references/boundaries-ssr-and-hydration.md](references/boundaries-ssr-and-hydration.md)
-- Limites com Nuxt: [references/boundaries-nuxt.md](references/boundaries-nuxt.md)
+- Form validation: [references/forms-validation.md](references/forms-validation.md)
+
+## TypeScript in Vue
+
+Consult when typing SFC macros, template refs, or injection.
+
+- TypeScript in SFC macros: [references/typescript-sfc-macros.md](references/typescript-sfc-macros.md)
+- TypeScript in template refs and injection: [references/typescript-template-refs-and-injection.md](references/typescript-template-refs-and-injection.md)
+
+## Styling and Accessibility
+
+Consult when working with component styles, accessibility, or security.
+
+- Component styles: [references/component-styles.md](references/component-styles.md)
+- Accessibility: [references/accessibility.md](references/accessibility.md)
+- Security: [references/security.md](references/security.md)
+
+## Testing
+
+Consult when writing or updating tests for components, composables, stores, or routes.
+
+- Testing fundamentals: [references/testing-fundamentals.md](references/testing-fundamentals.md)
+- Testing components: [references/testing-components.md](references/testing-components.md)
+- Testing composables: [references/testing-composables.md](references/testing-composables.md)
+- Testing Pinia and Router: [references/testing-pinia-and-router.md](references/testing-pinia-and-router.md)
+- E2E testing: [references/testing-e2e.md](references/testing-e2e.md)
+
+## Boundaries
+
+Consult when dealing with Vite, SSR, hydration, or Nuxt integration.
+
+- Vite: [references/boundaries-vite.md](references/boundaries-vite.md)
+- SSR and hydration: [references/boundaries-ssr-and-hydration.md](references/boundaries-ssr-and-hydration.md)
+- Nuxt: [references/boundaries-nuxt.md](references/boundaries-nuxt.md)

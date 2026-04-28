@@ -1,18 +1,18 @@
 # Router guards
 
-## Quando usar
+## When to Use
 
-- Proteger rotas, redirecionar fluxos ou validar precondicoes de navegacao.
+- Protect routes, redirect flows, or validate navigation preconditions.
 
-## Regras locais
+## Local Rules
 
-- Guards devem ser pequenos, previsiveis e focados em navegacao.
-- Logica de autorizacao ou dominio mais densa deve viver em service, composable ou store e ser apenas orquestrada pelo guard.
-- Evite efeitos colaterais complexos dentro de guards.
-- Redirecionamentos devem ser explicitamente modelados e de facil rastreio.
+- Guards should be small, predictable, and focused on navigation.
+- Denser authorization or domain logic should live in a service, composable, or store and only be orchestrated by the guard.
+- Avoid complex side effects inside guards.
+- Redirects should be explicitly modeled and easy to trace.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Guard com responsabilidade clara.
-- Sem logica de negocio inchada no router.
-- Redirecionamentos previsiveis.
+- Guard with clear responsibility.
+- No bloated business logic in the router.
+- Predictable redirects.

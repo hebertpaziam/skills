@@ -1,20 +1,20 @@
 # Core provide inject
 
-## Quando usar
+## When to Use
 
-- Compartilhar dependencias por profundidade de arvore.
-- Implementar contexto de grupo, form containers, temas ou recursos plugin-like.
+- Sharing dependencies across tree depth.
+- Implementing group context, form containers, themes, or plugin-like resources.
 
-## Regras locais
+## Local Rules
 
-- Prefira props e emits para fluxos locais simples.
-- Use `provide` e `inject` quando o custo de prop drilling for real e a dependencia for estrutural.
-- Tipar chaves de injection com `InjectionKey`.
-- Centralizar chaves em arquivo dedicado quando reutilizadas por mais de um componente.
-- Evitar usar `inject` para esconder dependencias de negocio difusas.
+- Prefer props and emits for simple local flows.
+- Use `provide` and `inject` when the cost of prop drilling is real and the dependency is structural.
+- Type injection keys with `InjectionKey`.
+- Centralize keys in a dedicated file when reused by more than one component.
+- Avoid using `inject` to hide diffuse business dependencies.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- `provide/inject` usado apenas para contexto estrutural legitimo.
-- Chaves tipadas.
-- Dependencias continuam rastreaveis.
+- `provide/inject` used only for legitimate structural context.
+- Typed keys.
+- Dependencies remain traceable.

@@ -1,23 +1,23 @@
 # Security
 
-## Quando usar
+## When to Use
 
-- Revisar renderizacao de conteudo dinamico, bindings de URL, HTML e integracoes potencialmente inseguras.
+- Reviewing dynamic content rendering, URL bindings, HTML, and potentially insecure integrations.
 
-## Regra principal
+## Main Rule
 
-- Nunca usar conteudo nao confiavel como template Vue.
+- Never use untrusted content as a Vue template.
 
-## Regras locais
+## Local Rules
 
-- Evite `v-html`; use apenas quando o HTML for confiavel ou adequadamente saneado fora do componente.
-- URLs de usuario devem ser validadas e saneadas na fronteira apropriada, idealmente no backend.
-- Nao permita JS ou CSS arbitrario de usuario sem sandbox real.
-- Nunca monte Vue sobre HTML server-rendered que possa conter conteudo nao confiavel interpretavel como template.
-- Em SSR, redobre cuidado com universal code e fronteiras de execucao.
+- Avoid `v-html`; use it only when the HTML is trusted or properly sanitized outside the component.
+- User URLs must be validated and sanitized at the appropriate boundary, ideally on the backend.
+- Do not allow arbitrary user JS or CSS without a real sandbox.
+- Never mount Vue on server-rendered HTML that may contain untrusted content interpretable as a template.
+- In SSR, be extra careful with universal code and execution boundaries.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Nenhum template nao confiavel.
-- `v-html` justificado e controlado.
-- URLs e conteudo dinamico tratados com seguranca.
+- No untrusted templates.
+- `v-html` justified and controlled.
+- URLs and dynamic content handled securely.

@@ -1,40 +1,40 @@
 # Core SFC structure
 
-## Quando usar
+## When to Use
 
-- Criar ou reorganizar arquivos `*.vue`.
-- Revisar a estrutura interna de um component SFC.
+- Creating or reorganizing `*.vue` files.
+- Reviewing the internal structure of an SFC component.
 
-## Regras locais
+## Local Rules
 
-- Para codigo novo, preferir `<script setup lang="ts">`.
-- Manter um unico componente por arquivo.
-- Preferir um unico `<script setup>`; usar `<script>` normal apenas quando houver necessidade real de escopo de modulo ou export nomeado.
-- Manter `template` simples e `style` apenas quando o componente realmente possui estilos proprios.
-- Separar componentes quando o arquivo acumular mais de uma preocupacao visual ou comportamental relevante.
+- For new code, prefer `<script setup lang="ts">`.
+- Keep a single component per file.
+- Prefer a single `<script setup>`; only use a regular `<script>` when there is a real need for module scope or named exports.
+- Keep `template` simple and only include `style` when the component actually has its own styles.
+- Split components when a file accumulates more than one relevant visual or behavioral concern.
 
-## Ordem recomendada
+## Recommended Order
 
 1. `<script setup lang="ts">`
 2. `<template>`
 3. `<style>`
 
-## Estrutura sugerida no script
+## Suggested Script Structure
 
 1. imports
-2. types locais
+2. local types
 3. `defineOptions`, `defineProps`, `defineEmits`, `defineModel`, `defineSlots`
-4. injects e template refs
-5. estado local (`ref`, `reactive`, `shallowRef`)
-6. estado derivado (`computed`)
+4. injects and template refs
+5. local state (`ref`, `reactive`, `shallowRef`)
+6. derived state (`computed`)
 7. composables
-8. watchers e efeitos
-9. handlers e funcoes auxiliares
-10. exposes quando realmente necessario
+8. watchers and effects
+9. handlers and helper functions
+10. exposes when truly necessary
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Arquivo com responsabilidade unica e nome coerente.
-- Sem mistura desnecessaria de Options API e Composition API.
-- Sem exportacoes ou side effects acidentais no SFC.
-- Template, script e style alinhados ao escopo real do componente.
+- File has a single responsibility and a coherent name.
+- No unnecessary mixing of Options API and Composition API.
+- No accidental exports or side effects in the SFC.
+- Template, script, and style aligned with the actual scope of the component.

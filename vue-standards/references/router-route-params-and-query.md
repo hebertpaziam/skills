@@ -1,18 +1,18 @@
 # Router route params and query
 
-## Quando usar
+## When to Use
 
-- Ler ou escrever params e query string.
+- Read or write params and query string.
 
-## Regras locais
+## Local Rules
 
-- Trate params e query como contrato externo da tela.
-- Normalize tipos e defaults antes de espalhar uso pelo componente.
-- Prefira `computed` com getter/setter ou composable dedicado quando houver sincronizacao bidirecional com a URL.
-- Nao acople o restante da tela a parsing manual repetido.
+- Treat params and query as the screen's external contract.
+- Normalize types and defaults before spreading usage across the component.
+- Prefer `computed` with getter/setter or a dedicated composable when bidirectional sync with the URL is needed.
+- Do not couple the rest of the screen to repeated manual parsing.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Parsing centralizado.
-- Defaults claros.
-- Estado de rota tratado como fonte de verdade quando apropriado.
+- Centralized parsing.
+- Clear defaults.
+- Route state treated as source of truth when appropriate.

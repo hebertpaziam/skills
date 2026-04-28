@@ -1,16 +1,16 @@
 # State local component state
 
-## Quando usar
+## When to Use
 
-- Modelar estado que pertence apenas ao ciclo de vida do componente atual.
+- Model state that belongs solely to the current component's lifecycle.
 
-## Regras locais
+## Local Rules
 
-- Estado local continua no componente quando seu escopo e estritamente visual ou interacional e nao ha reuso real.
-- Nao promover estado para Pinia ou URL sem necessidade.
-- Mantenha proximo do consumo o estado que nao precisa ser compartilhado.
+- Local state stays in the component when its scope is strictly visual or interactional and there is no real reuse.
+- Do not promote state to Pinia or URL without a real need.
+- Keep state close to where it is consumed when it does not need to be shared.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Estado permanece no menor escopo que atende o caso.
-- Nao houve subida prematura para store global.
+- State remains in the smallest scope that satisfies the use case.
+- No premature promotion to a global store.

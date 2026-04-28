@@ -1,18 +1,18 @@
 # Router data fetching
 
-## Quando usar
+## When to Use
 
-- Decidir onde dados de tela devem ser carregados em fluxos baseados em rota.
+- Decide where screen data should be loaded in route-based flows.
 
-## Regras locais
+## Local Rules
 
-- Dados estritamente de tela podem ser carregados no componente ou em composable da tela.
-- Dados compartilhados entre telas ou fluxos tendem a caber melhor em store/composable compartilhado.
-- Nao use guard apenas para fazer fetch se isso piorar UX ou acoplar demais a navegacao.
-- Separe claramente carregamento, estado de erro e estado vazio.
+- Data strictly belonging to a screen can be loaded in the component or in a screen-level composable.
+- Data shared across screens or flows tends to fit better in a shared store/composable.
+- Do not use a guard solely for fetching if it worsens UX or over-couples navigation.
+- Clearly separate loading, error state, and empty state.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Responsabilidade de fetch esta na fronteira certa.
-- Sem fetch escondido em guard sem necessidade.
-- Estados de tela claros.
+- Fetch responsibility sits at the right boundary.
+- No fetch hidden in a guard without necessity.
+- Clear screen states.

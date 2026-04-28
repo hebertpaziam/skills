@@ -1,17 +1,17 @@
 # Router testing
 
-## Quando usar
+## When to Use
 
-- Testar navegacao, params, query, guards e comportamento baseado em rota.
+- Test navigation, params, query, guards, and route-based behavior.
 
-## Regras locais
+## Local Rules
 
-- Reutilize a ferramenta de teste configurada no projeto.
-- Teste o comportamento observavel da navegacao, nao detalhes privados da implementacao do router.
-- Para params e query, valide parse, serializacao e reacao da tela.
-- Para guards, teste autorizacao, redirecionamento e fluxo feliz.
+- Reuse the testing tool configured in the project.
+- Test observable navigation behavior, not private implementation details of the router.
+- For params and query, validate parsing, serialization, and screen reaction.
+- For guards, test authorization, redirection, and the happy path.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Testes cobrem comportamento de navegacao.
-- Sem acoplamento desnecessario a detalhes internos.
+- Tests cover navigation behavior.
+- No unnecessary coupling to internal details.

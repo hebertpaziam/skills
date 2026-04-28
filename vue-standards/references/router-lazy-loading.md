@@ -1,16 +1,16 @@
 # Router lazy loading
 
-## Quando usar
+## When to Use
 
-- Carregar telas por demanda no Vue Router.
+- Load screens on demand in Vue Router.
 
-## Regras locais
+## Local Rules
 
-- Use lazy loading para componentes de rota por padrao, salvo caminhos pequenos e criticos onde o projeto tenha decidido diferente.
-- Mantenha fronteiras de chunk alinhadas a telas, funis ou areas pesadas.
-- Nao fragmente em excesso rotas pequenas sem ganho mensuravel.
+- Use lazy loading for route components by default, except for small critical paths where the project has decided otherwise.
+- Keep chunk boundaries aligned with screens, funnels, or heavy areas.
+- Do not over-fragment small routes without measurable gain.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Route-level code splitting coerente.
-- Sem excesso de fragmentacao.
+- Consistent route-level code splitting.
+- No excessive fragmentation.

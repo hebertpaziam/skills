@@ -1,18 +1,18 @@
 # Template list rendering and keys
 
-## Quando usar
+## When to Use
 
-- Renderizar listas, colecoes filtradas e itens dinamicos.
+- Rendering lists, filtered collections, and dynamic items.
 
-## Regras locais
+## Local Rules
 
-- Toda lista dinamica deve ter `key` estavel baseada em identidade real de dominio.
-- Nao usar indice como `key` quando a lista puder reordenar, filtrar, inserir ou remover itens.
-- Prefira preparar filtros, ordenacoes e agrupamentos no script em vez de sobrecarregar o `v-for`.
-- Nao combinar `v-if` e `v-for` no mesmo elemento quando isso puder ser evitado.
+- Every dynamic list must have a stable `key` based on real domain identity.
+- Do not use index as `key` when the list can reorder, filter, insert, or remove items.
+- Prefer preparing filters, sorts, and groupings in the script instead of overloading `v-for`.
+- Do not combine `v-if` and `v-for` on the same element when it can be avoided.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- `key` estavel e semantica.
-- Lista preparada fora do template quando necessario.
-- Sem identidade fraca baseada em indice por conveniencia.
+- `key` is stable and semantic.
+- List is prepared outside the template when necessary.
+- No weak identity based on index for convenience.

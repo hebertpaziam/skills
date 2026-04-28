@@ -1,18 +1,18 @@
 # Core template refs
 
-## Quando usar
+## When to Use
 
-- Interagir com DOM real, foco, medicao ou API publica exposta por outro componente.
+- Interacting with the real DOM, focus, measurement, or a public API exposed by another component.
 
-## Regras locais
+## Local Rules
 
-- Template refs sao escape hatch, nao mecanismo primario de comunicacao entre componentes.
-- Prefira props, emits e composables antes de recorrer a refs de componente.
-- Tipar refs explicitamente quando a inferencia automatica nao for suficiente.
-- Toda operacao com DOM deve considerar ciclo de vida e nulidade do elemento.
+- Template refs are an escape hatch, not a primary mechanism for inter-component communication.
+- Prefer props, emits, and composables before resorting to component refs.
+- Type refs explicitly when automatic inference is not sufficient.
+- Every DOM operation should account for lifecycle and element nullability.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Ref usada por necessidade real.
-- Sem dependencia acidental em implementacao privada de child component.
-- Acesso protegido contra `null`.
+- Ref used out of genuine necessity.
+- No accidental dependency on a child component's private implementation.
+- Access guarded against `null`.

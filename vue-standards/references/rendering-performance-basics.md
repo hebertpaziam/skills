@@ -1,21 +1,21 @@
 # Rendering performance basics
 
-## Quando usar
+## When to Use
 
-- Revisar componentes com render custoso, listas grandes ou updates frequentes.
+- Review components with expensive renders, large lists, or frequent updates.
 
-## Regras locais
+## Local Rules
 
-- Mantenha props estaveis para reduzir atualizacoes desnecessarias em children.
-- Use `v-once` apenas para subarvores realmente imutaveis apos o primeiro render.
-- Use `v-memo` apenas quando houver subarvores grandes e criterio objetivo de memorizacao.
-- Evite criar objetos novos em `computed` sem necessidade quando a estabilidade importa.
-- Virtualize listas grandes em vez de renderizar milhares de nos de uma vez.
-- Evite abstracoes de componente sem ganho real, principalmente em listas extensas.
+- Keep props stable to reduce unnecessary updates in children.
+- Use `v-once` only for subtrees that are truly immutable after the first render.
+- Use `v-memo` only when there are large subtrees and an objective memoization criterion.
+- Avoid creating new objects in `computed` unnecessarily when stability matters.
+- Virtualize large lists instead of rendering thousands of nodes at once.
+- Avoid component abstractions with no real benefit, especially in large lists.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Props estaveis quando possivel.
-- Sem render desnecessario em massa.
-- Virtualizacao considerada para listas grandes.
-- Sem excesso de wrappers/componentes sem funcao clara.
+- Stable props when possible.
+- No unnecessary mass re-renders.
+- Virtualization considered for large lists.
+- No excess wrappers/components without a clear purpose.

@@ -1,18 +1,18 @@
 # TypeScript template refs and injection
 
-## Quando usar
+## When to Use
 
-- Tipar refs de DOM, refs de componente e chaves de injection.
+- Type DOM refs, component refs, and injection keys.
 
-## Regras locais
+## Local Rules
 
-- Prefira inferencia automatica quando a stack suportar isso com clareza.
-- Quando necessario, tipar explicitamente refs de DOM, refs de componente e `InjectionKey`.
-- Considere nulidade e timing de mount ao acessar template refs.
-- Evite `as` desnecessario quando uma modelagem mais precisa resolve melhor.
+- Prefer automatic inference when the stack supports it clearly.
+- When necessary, explicitly type DOM refs, component refs, and `InjectionKey`.
+- Consider nullability and mount timing when accessing template refs.
+- Avoid unnecessary `as` when a more precise modeling solves it better.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Refs tipadas quando a inferencia nao basta.
-- `InjectionKey` usado em provide/inject reutilizavel.
-- Nulidade tratada corretamente.
+- Refs typed when inference is not enough.
+- `InjectionKey` used in reusable provide/inject.
+- Nullability handled correctly.

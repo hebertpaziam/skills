@@ -1,18 +1,18 @@
 # Template class and style bindings
 
-## Quando usar
+## When to Use
 
-- Declarar classes e estilos dinamicos no template.
+- Declaring dynamic classes and styles in the template.
 
-## Regras locais
+## Local Rules
 
-- Prefira bindings simples, com nomes expressivos e pouco branching inline.
-- Quando a logica de classe crescer, derive-a no script com `computed`.
-- Use `style` binding apenas para variacoes legitimas de runtime; estilo estrutural deve continuar no stylesheet.
-- Nao usar objeto de style grande como atalho para fugir da stack de estilos do projeto.
+- Prefer simple bindings with expressive names and minimal inline branching.
+- When class logic grows, derive it in the script with `computed`.
+- Use `style` binding only for legitimate runtime variations; structural styling should remain in the stylesheet.
+- Do not use a large style object as a shortcut to bypass the project's styling stack.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Template sem logica de classe excessiva.
-- Estilo estrutural continua fora do template.
-- Classes e estilos expressam estado observavel, nao detalhe acidental.
+- Template has no excessive class logic.
+- Structural styling remains outside the template.
+- Classes and styles express observable state, not accidental detail.

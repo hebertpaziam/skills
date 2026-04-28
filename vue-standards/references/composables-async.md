@@ -1,20 +1,20 @@
 # Composables async
 
-## Quando usar
+## When to Use
 
-- Modelar fetch, revalidacao, estados de loading/error e sincronizacao assicrona reutilizavel.
+- Modeling fetch, revalidation, loading/error states, and reusable async synchronization.
 
-## Regras locais
+## Local Rules
 
-- Modelar explicitamente estados de loading, success e error.
-- Aceitar inputs reativos quando o fetch precisar reexecutar em resposta a mudancas.
-- Evitar disparos redundantes e condicoes de corrida silenciosas.
-- Tratar cancelamento, invalidacao ou descarte de respostas obsoletas quando o fluxo exigir.
-- Nao esconder efeitos caros atras de `watchEffect` sem criterio.
+- Explicitly model loading, success, and error states.
+- Accept reactive inputs when the fetch needs to re-execute in response to changes.
+- Avoid redundant triggers and silent race conditions.
+- Handle cancellation, invalidation, or discarding of stale responses when the flow requires it.
+- Do not hide expensive effects behind `watchEffect` without careful consideration.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Estado assicrono previsivel.
-- Dependencias de reexecucao claras.
-- Sem race conditions obvias.
-- Sem stack paralela ao data layer ja existente no projeto.
+- Async state is predictable.
+- Re-execution dependencies are clear.
+- No obvious race conditions.
+- No parallel stack duplicating the existing data layer in the project.

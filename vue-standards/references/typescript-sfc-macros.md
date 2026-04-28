@@ -1,19 +1,19 @@
 # TypeScript SFC macros
 
-## Quando usar
+## When to Use
 
-- Tipar `defineProps`, `defineEmits`, `defineModel`, `withDefaults` e macros correlatas.
+- Type `defineProps`, `defineEmits`, `defineModel`, `withDefaults`, and related macros.
 
-## Regras locais
+## Local Rules
 
-- Em codigo novo, prefira declaracao baseada em tipos para `defineProps` e `defineEmits` quando isso mantiver o contrato claro.
-- Use defaults de props de forma previsivel, evitando mutaveis compartilhados.
-- Para props complexas, prefira interfaces ou types nomeados quando isso melhorar leitura.
-- Nao combine declaracao runtime e type-based da mesma macro.
-- Ao usar generics em SFC, mantenha a API do componente compreensivel para consumo normal.
+- In new code, prefer type-based declaration for `defineProps` and `defineEmits` when it keeps the contract clear.
+- Use prop defaults predictably, avoiding shared mutables.
+- For complex props, prefer named interfaces or types when it improves readability.
+- Do not combine runtime and type-based declaration for the same macro.
+- When using generics in SFC, keep the component API understandable for normal consumption.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Macros com tipagem coerente.
-- Defaults seguros.
-- Sem abuso de tipos complexos que prejudiquem manutenibilidade.
+- Macros with consistent typing.
+- Safe defaults.
+- No abuse of complex types that harms maintainability.

@@ -1,19 +1,19 @@
 # Forms validation
 
-## Quando usar
+## When to Use
 
-- Validar formularios e campos em componentes ou fluxos Vue.
+- Validate forms and fields in Vue components or flows.
 
-## Regras locais
+## Local Rules
 
-- Reutilize a biblioteca, schema validator ou estrategia de validacao ja adotada no projeto.
-- Separe estado do formulario, regras de validacao e apresentacao visual de erro.
-- Erros devem ser exibidos de forma acessivel e conectada ao campo.
-- Validacao sincrona e assincrona devem ter estados observaveis e previsiveis.
-- Nao acople o componente a uma biblioteca especifica se o projeto ja abstrai isso em composables ou helpers.
+- Reuse the library, schema validator, or validation strategy already adopted in the project.
+- Separate form state, validation rules, and visual error presentation.
+- Errors should be displayed accessibly and connected to the field.
+- Synchronous and asynchronous validation should have observable and predictable states.
+- Do not couple the component to a specific library if the project already abstracts this in composables or helpers.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Stack de validacao do projeto respeitada.
-- Erros acessiveis.
-- Sem duplicação desnecessaria de regras.
+- Project's validation stack respected.
+- Accessible errors.
+- No unnecessary duplication of rules.

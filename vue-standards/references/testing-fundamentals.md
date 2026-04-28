@@ -1,25 +1,22 @@
 # Testing fundamentals
 
-## Quando usar
+## When to Use
 
-- Criar ou atualizar testes de componentes, composables, stores, router e fluxos Vue.
+- Creating or updating tests for components, composables, stores, router, and Vue flows.
+- Exclusively reuse the testing stack already configured in the project.
+- Ensure coherent coverage across logic, observable behavior, and critical flows.
+- Avoid introducing a parallel stack of runners, environments, mocks, or assertions.
 
-## Objetivo
+## Local Rules
 
-- Reutilizar exclusivamente a stack de testes ja configurada no projeto.
-- Garantir cobertura coerente entre logica, comportamento observavel e fluxos criticos.
-- Evitar introduzir uma stack paralela de runner, ambiente, mocks ou assertions.
+- Respect the repository's test scripts, environments, utilities, and conventions.
+- Do not standardize a new tool if the project already has one chosen.
+- Tests should prioritize observable behavior and public contracts.
+- Use unit tests for isolated logic, component tests for component behavior, and E2E for multi-page flows.
+- Do not rely solely on snapshots.
 
-## Regras locais
+## Quality Checklist
 
-- Respeite os scripts, ambientes, utilitarios e conventions de teste do repositorio.
-- Nao padronize ferramenta nova se o projeto ja possui uma escolhida.
-- Testes devem priorizar comportamento observavel e contratos publicos.
-- Use unit tests para logica isolada, component tests para comportamento de componente e E2E para fluxos multi-pagina.
-- Nao confie apenas em snapshots.
-
-## Checklist de qualidade
-
-- A stack atual do projeto foi preservada.
-- Nenhuma ferramenta paralela foi introduzida.
-- O teste cobre comportamento, nao detalhes privados desnecessarios.
+- The project's current stack was preserved.
+- No parallel tooling was introduced.
+- The test covers behavior, not unnecessary private details.

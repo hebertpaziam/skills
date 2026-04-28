@@ -1,17 +1,17 @@
 # Rendering async components
 
-## Quando usar
+## When to Use
 
-- Adiar carregamento de componentes ou arvores pesadas.
+- Defer loading of heavy components or subtrees.
 
-## Regras locais
+## Local Rules
 
-- Use `defineAsyncComponent` para componentes grandes, raros ou fora do caminho critico.
-- Prefira lazy loading em fronteiras naturais de tela, modal ou funcionalidade opcional.
-- Nao transformar componentes pequenos e criticos em async sem ganho real.
+- Use `defineAsyncComponent` for large, rarely used, or non-critical-path components.
+- Prefer lazy loading at natural boundaries such as screens, modals, or optional features.
+- Do not turn small, critical components into async without a real benefit.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Lazy loading alinhado ao custo real.
-- Sem fragmentacao excessiva de chunk.
-- Fallback ou UX de carregamento coerente quando necessario.
+- Lazy loading aligned with actual cost.
+- No excessive chunk fragmentation.
+- Coherent fallback or loading UX when needed.

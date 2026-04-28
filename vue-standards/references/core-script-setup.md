@@ -1,28 +1,25 @@
 # Core script setup
 
-## Quando usar
+## When to Use
 
-- Criar ou alterar componentes Vue 3 com SFC.
-- Revisar uso de macros, bindings e escopo do componente.
+- Creating or modifying Vue 3 components with SFC.
+- Reviewing usage of macros, bindings, and component scope.
+- Standardize `<script setup>` as the ergonomic and performant default for Vue 3.
+- Leverage type inference and reduce boilerplate.
 
-## Objetivo
+## Local Rules
 
-- Padronizar `<script setup>` como default ergonomico e performatico para Vue 3.
-- Aproveitar inferencia de tipos e reduzir boilerplate.
+- For new code, use `<script setup lang="ts">`.
+- Treat top-level bindings as the template's internal API.
+- Use `defineOptions` for `inheritAttrs` and metadata that truly need to be declared.
+- Use `defineExpose` sparingly; components should be closed by default.
+- `useAttrs()` and `useSlots()` should be rare and only used when composition truly requires them.
+- Avoid combining `<script setup>` with a regular `<script>` without a concrete technical need.
+- `top-level await` should only be used when the project and architecture support the resulting flow.
 
-## Regras locais
+## Quality Checklist
 
-- Para codigo novo, usar `<script setup lang="ts">`.
-- Tratar top-level bindings como API interna do template.
-- Usar `defineOptions` para `inheritAttrs` e metadados que realmente precisam ser declarados.
-- Usar `defineExpose` com parcimonia; componentes devem ser fechados por padrao.
-- `useAttrs()` e `useSlots()` devem ser raros e usados apenas quando a composicao realmente exigir.
-- Evitar combinar `<script setup>` com `<script>` normal sem necessidade tecnica concreta.
-- `top-level await` so deve ser usado quando o projeto e a arquitetura suportarem o fluxo resultante.
-
-## Checklist de qualidade
-
-- `lang="ts"` presente em codigo novo.
-- Sem uso desnecessario de `<script>` paralelo.
-- Macros usadas de forma explicita e enxuta.
-- Nenhum binding top-level exposto ao template por acidente sem necessidade.
+- `lang="ts"` present in new code.
+- No unnecessary parallel `<script>` usage.
+- Macros used explicitly and concisely.
+- No top-level binding accidentally exposed to the template without need.

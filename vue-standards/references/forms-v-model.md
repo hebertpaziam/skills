@@ -1,18 +1,18 @@
 # Forms v-model
 
-## Quando usar
+## When to Use
 
-- Implementar inputs nativos ou componentes de formulario customizados.
+- Implement native inputs or custom form components.
 
-## Regras locais
+## Local Rules
 
-- Use `v-model` quando ele expressa claramente ownership e sincronizacao de valor.
-- Para inputs customizados, mantenha contrato previsivel com `defineModel` ou props + emits explicitos.
-- Nao esconda validacao, formatacao e side effects relevantes dentro do binding sem deixar o fluxo claro.
-- Prefira normalizacao no limite do input ou em composable dedicado.
+- Use `v-model` when it clearly expresses ownership and value synchronization.
+- For custom inputs, keep a predictable contract with `defineModel` or explicit props + emits.
+- Do not hide validation, formatting, and relevant side effects inside the binding without making the flow clear.
+- Prefer normalization at the input boundary or in a dedicated composable.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Fluxo de dados previsivel.
-- `v-model` usado por semantica, nao por conveniencia cega.
-- Sem sincronizacao opaca.
+- Predictable data flow.
+- `v-model` used for semantics, not out of blind convenience.
+- No opaque synchronization.

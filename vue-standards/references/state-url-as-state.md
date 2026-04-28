@@ -1,18 +1,18 @@
 # State URL as state
 
-## Quando usar
+## When to Use
 
-- Modelar busca, filtros, ordenacao, paginacao, tabs ou selecoes que precisam sobreviver a reload, compartilhamento ou navegacao.
+- Model search, filters, sorting, pagination, tabs, or selections that need to survive reload, sharing, or navigation.
 
-## Regras locais
+## Local Rules
 
-- Mova para a URL o estado que precisa ser compartilhavel, restauravel ou deep-linkable.
-- Nao mova para a URL estado puramente efemero e local de UI sem ganho real.
-- Centralize parse, serializacao e defaults dos query params.
-- Mantenha tipos e naming dos params previsiveis e estaveis.
+- Move to the URL any state that needs to be shareable, restorable, or deep-linkable.
+- Do not move purely ephemeral and local UI state to the URL without a real benefit.
+- Centralize parsing, serialization, and defaults of query params.
+- Keep param types and naming predictable and stable.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Estado URL-driven realmente traz valor.
-- Sem query params opacos ou inconsistentes.
-- Parse e serializacao controlados.
+- URL-driven state actually provides value.
+- No opaque or inconsistent query params.
+- Parsing and serialization are controlled.

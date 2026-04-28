@@ -1,18 +1,18 @@
 # Core lifecycle hooks
 
-## Quando usar
+## When to Use
 
-- Adicionar setup e teardown de efeitos ligados ao ciclo de vida do componente.
+- Adding setup and teardown of effects tied to the component lifecycle.
 
-## Regras locais
+## Local Rules
 
-- `onMounted` e `onUnmounted` devem encapsular efeitos ligados ao browser, DOM ou listeners.
-- Nao usar hooks para trabalho que pode ser expresso como derivacao reativa pura.
-- Todo efeito que registra recursos externos deve ter cleanup correspondente.
-- Em cenarios SSR, side effects de browser devem permanecer client-only.
+- `onMounted` and `onUnmounted` should encapsulate effects tied to the browser, DOM, or listeners.
+- Do not use hooks for work that can be expressed as pure reactive derivation.
+- Every effect that registers external resources must have a corresponding cleanup.
+- In SSR scenarios, browser side effects should remain client-only.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Cada efeito possui motivo claro.
-- Recursos externos sao limpos corretamente.
-- Hooks nao estao sendo usados para compensar modelagem reativa ruim.
+- Each effect has a clear reason.
+- External resources are cleaned up correctly.
+- Hooks are not being used to compensate for poor reactive modeling.

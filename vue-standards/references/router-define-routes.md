@@ -1,18 +1,18 @@
 # Router define routes
 
-## Quando usar
+## When to Use
 
-- Criar ou revisar definicao de rotas Vue Router.
+- Create or review Vue Router route definitions.
 
-## Regras locais
+## Local Rules
 
-- Nomeie rotas quando a navegacao programatica ou os links se beneficiarem disso.
-- Estruture rotas por dominios e fronteiras de layout, nao apenas por pasta arbitraria.
-- Use `meta` para informacoes de navegacao, autorizacao e apresentacao quando isso simplificar a composicao.
-- Nao centralize demais comportamento de dominio na definicao de rotas.
+- Name routes when programmatic navigation or links benefit from it.
+- Structure routes by domains and layout boundaries, not just by arbitrary folder.
+- Use `meta` for navigation, authorization, and presentation information when it simplifies composition.
+- Do not over-centralize domain behavior in route definitions.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Rotas legiveis e organizadas.
-- Nomes e `meta` coerentes.
-- Sem acoplamento excessivo entre router e UI interna.
+- Routes are readable and organized.
+- Names and `meta` are coherent.
+- No excessive coupling between router and internal UI.

@@ -1,16 +1,16 @@
 # Boundaries Vite
 
-## Quando usar
+## When to Use
 
-- Trabalhar em projetos Vue baseados em Vite ou avaliar limites de bundling e transform pipeline.
+- Working on Vite-based Vue projects or evaluating bundling and transform pipeline limits.
 
-## Regras locais
+## Local Rules
 
-- So aplique guidance especifica de Vite quando o projeto realmente usar Vite.
-- Prefira imports analisaveis estaticamente e route-level lazy loading quando isso alinhar com a arquitetura.
-- Nao trate Vite como requisito universal do `vue-standards`.
+- Only apply Vite-specific guidance when the project actually uses Vite.
+- Prefer statically analyzable imports and route-level lazy loading when it aligns with the architecture.
+- Do not treat Vite as a universal requirement of `vue-standards`.
 
-## Checklist de qualidade
+## Quality Checklist
 
-- Regras de Vite aplicadas apenas quando o projeto usa Vite.
-- Nenhuma suposicao indevida de bundler.
+- Vite rules applied only when the project uses Vite.
+- No undue bundler assumptions.
