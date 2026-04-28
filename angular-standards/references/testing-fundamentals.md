@@ -1,74 +1,66 @@
-# Testing fundamentals (logica Angular)
+# Testing Fundamentals
 
-## Quando usar
+This guide covers the fundamental principles and practices for writing unit tests in this repository, which uses Vitest as the test runner.
 
-- Criar ou atualizar testes unitarios para recursos Angular.
-- Validar comportamento de metodos e funcoes em components, services, directives e afins.
-- Garantir cobertura total de cenarios de sucesso e falha.
-- Usar esta reference sempre que a tarefa Angular envolver criacao ou edicao de `*.spec.ts`.
-- Reutilizar exclusivamente a stack de testes ja configurada no projeto.
+## Core Philosophy: Zoneless & Async-First
 
-## Objetivo
+This project follows a modern, zoneless testing approach. State changes schedule updates asynchronously, and tests must account for this.
 
-- Testar apenas logica do recurso, sem validar HTML, renderizacao, textos ou cores.
-- Reutilizar o runner, a API de assercao, o ambiente de execucao, os utilitarios de spy/mock e o provedor de cobertura ja padronizados no repositorio.
-- Evitar a introducao de stack paralela de testes, helpers ad hoc ou convencoes divergentes da base atual.
-- Usar dados gerados com `faker.js` e com geradores locais do projeto quando existirem.
-- Evitar stubs; usar spies para validar chamadas a dependencias.
-- Manter testes legiveis, deterministas e com estrutura consistente.
+**Do NOT** use `fixture.detectChanges()` to manually trigger updates.
+**ALWAYS** use the "Act, Wait, Assert" pattern:
 
-## Regras locais
+1.  **Act:** Update state or perform an action (e.g., set a component input, click a button).
+2.  **Wait:** Use `await fixture.whenStable()` to allow the framework to process the scheduled update and render the changes.
+3.  **Assert:** Verify the outcome.
 
-- Nao introduzir ferramentas, adapters ou camadas paralelas de teste quando o projeto ja possui scripts, config e utilitarios definidos.
-- Ao precisar de spies, mocks, fake timers, helpers async ou matchers, usar os equivalentes nativos da stack configurada no projeto.
-- Nunca testar HTML ou renderizacao por padrao.
-- Sempre gerar dados com `faker.js` ou com geradores locais do projeto.
-- Nunca usar dados fixos nos testes.
-- Evitar stubs manuais; preferir spies e doubles fornecidos pela ferramenta configurada no projeto para validar chamadas a dependencias.
-- Evitar sub-contextos (`describe` dentro de `describe`) salvo necessidade real.
-- Nunca validar objetos ou valores inline; sempre atribuir a variáveis.
-- Preferir matchers semanticos fornecidos pela stack configurada no projeto em vez de assercoes genericas quando houver opcao mais descritiva.
-- Buscar 100% de cobertura do recurso, cobrindo todos os comportamentos possiveis.
-- Ordenar cenarios: primeiro sucesso, depois falha.
-
-## Fronteira de escopo
-
-- Esta reference define as regras operacionais para unit tests de logica em Angular.
-- `component-harnesses` e `router-testing` cobrem excecoes de UI e navegacao quando o escopo exigir.
-
-## Procedimento
-
-1. Identifique o recurso e os metodos e funcoes publicos e privados relevantes.
-2. Levante todos os comportamentos possiveis, cobrindo sucesso e falha.
-3. Confirme quais scripts, helpers e convencoes de teste ja estao configurados no projeto e reutilize-os sem introduzir uma stack paralela.
-4. Gere dados com `faker.js` ou com geradores locais do projeto.
-5. Monte a suite usando um unico contexto raiz por recurso, sempre que possível.
-6. Crie `spies` para dependencias e valide chamadas com as APIs nativas da stack do projeto.
-7. Armazene entradas e resultados em variáveis nomeadas antes dos `expect`.
-8. Escreva os testes de sucesso primeiro, depois os de falha.
-9. Revise a cobertura para garantir 100% de comportamento coberto.
-
-## Checklist de qualidade
-
-- Suite aderente a ferramenta e aos utilitarios de teste ja configurados no projeto.
-- Nenhuma stack paralela de testes foi introduzida.
-- Nenhum teste usa DOM ou HTML por padrao.
-- Dados gerados com `faker.js` ou geradores locais, sem valores fixos.
-- Sem stubs; apenas spies quando houver dependencias.
-- Sem `describe` aninhado, a menos que justificado.
-- `expect` usa variáveis nomeadas, sem objetos inline.
-- Matchers semanticos priorizados.
-- Cobertura completa do recurso, com sucesso antes de falha.
-
-## Exemplo
+### Basic Test Structure Example
 
 ```ts
-import { faker } from '@faker-js/faker';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MyComponent} from './my.component';
 
-const inputValue = faker.string.alpha();
-const expectedResult = faker.number.int();
+describe('MyComponent', () => {
+  let component: MyComponent;
+  let fixture: ComponentFixture<MyComponent>;
+  let h1: HTMLElement;
 
-const result = service.calculate(inputValue);
+  beforeEach(async () => {
+    // 1. Configure the test module
+    await TestBed.configureTestingModule({
+      imports: [MyComponent],
+    }).compileComponents();
 
-expect(result).toEqual(expectedResult);
+    // 2. Create the component fixture
+    fixture = TestBed.createComponent(MyComponent);
+    component = fixture.componentInstance;
+    h1 = fixture.nativeElement.querySelector('h1');
+  });
+
+  it('should display the default title', async () => {
+    // ACT: (Implicit) Component is created with default state.
+    // WAIT for initial data binding.
+    await fixture.whenStable();
+    // ASSERT the initial state.
+    expect(h1.textContent).toContain('Default Title');
+  });
+
+  it('should display a different title after a change', async () => {
+    // ACT: Change the component's title property.
+    component.title.set('New Test Title');
+
+    // WAIT for the asynchronous update to complete.
+    await fixture.whenStable();
+
+    // ASSERT the DOM has been updated.
+    expect(h1.textContent).toContain('New Test Title');
+  });
+});
 ```
+
+## TestBed and ComponentFixture
+
+- **`TestBed`**: The primary utility for creating a test-specific Angular module. Use `TestBed.configureTestingModule({...})` in your `beforeEach` to declare components, provide services, and set up imports needed for your test.
+- **`ComponentFixture`**: A handle on the created component instance and its environment.
+  - `fixture.componentInstance`: Access the component's class instance.
+  - `fixture.nativeElement`: Access the component's root DOM element.
+  - `fixture.debugElement`: An Angular-specific wrapper around the `nativeElement` that provides safer, platform-agnostic ways to query the DOM (e.g., `debugElement.query(By.css('p'))`).

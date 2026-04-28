@@ -1,28 +1,86 @@
-# Host elements
+# Component Host Elements
 
-## Regra local
+The **host element** is the DOM element that matches a component's selector. The component's template renders inside this element.
 
-- Preferir a chave `host` no `@Component`.
-- Evitar `@HostBinding` e `@HostListener` em novos recursos.
+## Binding to the Host Element
 
-## Exemplo
+Use the `host` property in the `@Component` decorator to bind properties, attributes, styles, and events to the host element. This is the **preferred approach** over legacy decorators.
 
 ```ts
 @Component({
-  selector: 'app-chip',
+  selector: 'custom-slider',
   host: {
-    'role': 'status',
-    '[attr.aria-live]': 'live()',
-    '[class.active]': 'active()',
+    'role': 'slider', // Static attribute
+    '[attr.aria-valuenow]': 'value', // Attribute binding
+    '[class.active]': 'isActive()', // Class binding
+    '[style.color]': 'color()', // Style binding
+    '[tabIndex]': 'disabled ? -1 : 0', // Property binding
+    '(keydown)': 'onKeyDown($event)', // Event binding
   },
 })
-export class Chip {
-  live = signal('polite');
-  active = signal(false);
+export class CustomSlider {
+  value = 0;
+  disabled = false;
+  isActive = signal(false);
+  color = signal('blue');
+
+  onKeyDown(event: KeyboardEvent) {
+    /* ... */
+  }
 }
 ```
 
-## Acessibilidade
+## Legacy Decorators
 
-- Não exponha inputs para `aria-*` como API configurável.
-- Prefira semântica interna e comportamento acessível auto-contido.
+`@HostBinding` and `@HostListener` are supported for backwards compatibility but should be avoided in new code.
+
+```ts
+export class CustomSlider {
+  @HostBinding('tabIndex')
+  get tabIndex() {
+    return this.disabled ? -1 : 0;
+  }
+
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    /* ... */
+  }
+}
+```
+
+## Binding Collisions
+
+If both the component (host binding) and the consumer (template binding) bind to the same property:
+
+1. **Static vs Static**: The instance (consumer) binding wins.
+2. **Static vs Dynamic**: The dynamic binding wins.
+3. **Dynamic vs Dynamic**: The component's host binding wins.
+
+## Injecting Host Attributes
+
+Use `HostAttributeToken` with the `inject` function to read static attributes from the host element at construction time.
+
+```ts
+import {Component, HostAttributeToken, inject} from '@angular/core';
+
+@Component({
+  selector: 'app-btn',
+  template: `<ng-content />`,
+})
+export class AppButton {
+  // Throws error if 'type' is missing unless injected with { optional: true }
+  type = inject(new HostAttributeToken('type'));
+}
+```
+
+Usage:
+
+```html
+<app-btn type="primary">Click Me</app-btn>
+```
+
+## Project Rules
+
+- Prefer the `host` key in `@Component` metadata.
+- Avoid `@HostBinding` and `@HostListener` in new code.
+- Do not expose `aria-*` inputs as configurable API; prefer self-contained internal semantics and accessible behavior.

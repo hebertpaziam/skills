@@ -1,146 +1,222 @@
 ---
 name: angular-standards
-description: 'Aplicar padroes Angular 21 em novos recursos, com arquitetura baseada em signals, OnPush, inject e control flow moderno. Para estilos de componente e testes unitarios, siga as references internas de `angular-standards` e respeite a stack configurada no projeto.'
+description: 'Generates Angular code and provides architectural guidance. Trigger when creating projects, components, or services, or for best practices on reactivity (signals, linkedSignal, resource), forms, dependency injection, routing, SSR, accessibility (ARIA), animations, styling (component styles, Tailwind CSS), testing, or CLI tooling. Enforces project conventions including LIFT principle, OnPush, inject(), signal-first state, BEM/SCSS standards, and opinionated testing rules.'
 ---
 
-# Angular 21 Standards
+# Angular Standards
 
-## Quando usar
+1. Always analyze the project's Angular version before providing guidance, as best practices and available features can vary significantly between versions. If creating a new project with Angular CLI, do not specify a version unless prompted by the user.
 
-- Criar ou refatorar recursos Angular.
-- Padronizar arquitetura Angular em components, services, directives, guards e afins.
-- Orquestrar tarefas Angular que também envolvam `*.component.scss`, `*.directive.scss`, classes de template ou arquivos `*.spec.ts`.
+2. When generating code, follow Angular's style guide and best practices for maintainability and performance. Use the Angular CLI for scaffolding components, services, directives, pipes, and routes to ensure consistency.
 
-## Objetivo
+3. Once you finish generating code, run the project's configured build script to ensure there are no build errors. If there are errors, analyze the error messages and fix them before proceeding.
 
-- Padronizar Angular 21 com signals, RxJS, testabilidade, simplicidade e acessibilidade.
-- Concentrar regras detalhadas de estilos de componente em [references/component-styles.md](references/component-styles.md).
-- Concentrar regras detalhadas de testes unitários em [references/testing-fundamentals.md](references/testing-fundamentals.md).
+## LIFT Principle
 
-## Principio LIFT
+Before creating any new component, service, directive, guard, helper, generator, or test, apply the LIFT principle:
 
-- Antes de criar novo component, service, directive, guard, helper, generator ou teste, aplicar o principio `LIFT`.
-- `Locate`: localizar codigo, contratos, generators, patterns e references ja existentes no projeto e no dominio.
-- `Identify`: identificar o que ja resolve parte do problema e onde ha duplicação potencial.
-- `Find`: encontrar o menor ponto coerente de reutilizacao, extensao ou composicao antes de introduzir codigo novo.
-- `Try to be DRY`: tentar eliminar duplicação real sem criar abstracoes prematuras ou estruturas genericas sem necessidade.
+- **Locate**: Find existing code, contracts, generators, patterns, and references in the project and domain.
+- **Identify**: Determine what already solves part of the problem and where there is potential duplication.
+- **Find**: Find the smallest coherent point of reuse, extension, or composition before introducing new code.
+- **Try to be DRY**: Eliminate real duplication without creating premature abstractions or unnecessary generic structures.
 
-## Integracao com referencias locais
+## Creating New Projects
 
-- Ao alterar tipagem geral, contratos compartilhados, interfaces, enums ou modelagem TypeScript, seguir `typescript-standards`.
-- Ao alterar arquivos `*.component.scss`, `*.directive.scss` ou classes em templates Angular, seguir [references/component-styles.md](references/component-styles.md).
-- Ao criar ou alterar arquivos `*.spec.ts`, seguir [references/testing-fundamentals.md](references/testing-fundamentals.md).
-- Ao sugerir ou executar scripts do projeto, respeitar a stack e os scripts ja configurados no projeto.
-- Ao preparar commits, seguir `git-commit`.
-- Em caso de conflito, prevalece esta ordem: [references/component-styles.md](references/component-styles.md) para estilos de componente, [references/testing-fundamentals.md](references/testing-fundamentals.md) para testes unitarios, `typescript-standards` para regras gerais de TypeScript, `git-commit` para commits e `angular-standards` para arquitetura Angular, organizacao de codigo, reatividade e acessibilidade.
+If no guidelines are provided by the user, here are some default rules to follow when creating a new Angular project:
 
-## Regras principais
+1. Use the latest stable version of Angular unless the user specifies otherwise.
+2. Use Signals Forms for form management in new projects (available in Angular v21 and newer) [Find out more](references/signal-forms.md).
 
-- Standalone por padrão. Não definir `standalone: true`.
-- Aplicar `LIFT` antes de introduzir novos components, services, directives, guards, helpers, generators ou testes.
-- Sempre criar o arquivo `.spec.ts` correspondente quando o recurso exigir teste unitário.
-- Ao criar ou atualizar testes unitários, seguir [references/testing-fundamentals.md](references/testing-fundamentals.md).
-- Ao criar ou atualizar testes unitarios, reutilizar apenas a ferramenta, os scripts e os utilitarios de teste ja configurados no projeto.
-- Toda nova interface deve ter um generator correspondente usando `faker.js`, com um unico seed aleatorio por execucao e respeitando a hierarquia de pastas adotada pelo projeto.
-- Usar `Generator` apenas para dados de mock/teste; caso contrário, preferir `Factory` ou `Builder`.
-- Ao criar ou alterar estilos de componente, seguir [references/component-styles.md](references/component-styles.md) e manter o template alinhado as classes usadas no HTML.
-- Usar Signals para qualquer dado em componentes.
-- Evitar getters e setters; preferir `computed`.
-- Usar APIs baseadas em Signals: `input`, `output`, `model`, `viewChild`.
-- Usar `inject()` no lugar de constructor injection.
-- Usar `ChangeDetectionStrategy.OnPush` sempre.
-- Usar `NgOptimizedImage` para imagens estáticas.
-- Usar control flow nativo (`@if`, `@for`, `@switch`).
-- Preferir `class` e `style` bindings sobre `ngClass` e `ngStyle`.
-- Ordem de propriedades: `enums`, `injects`, `queries`, `inputs`, `models`, `signals`, `outputs`, `computed`, `public properties`, `private properties`.
-- Ordem de métodos: `constructor`, `angular hooks`, `public methods`, `private methods`.
-- Evitar `effects` complexos; para lógica complexa e APIs use RxJS.
-- Em RxJS, não usar lógica dentro de `subscribe`; usar `pipe` com operadores (ex: `tap`).
-- Preferir operadores semânticos.
-- Evitar subscriptions desnecessárias; sempre usar `takeUntilDestroyed` para unsubscribe automático.
-- Métodos devem ser testáveis e legíveis; evitar acoplamento desnecessário.
-- Manter implementações separadas; criar novos componentes/serviços quando houver complexidade ou reuso.
-- Manter componente simples (KISS, YAGNI).
-- Manter 100% de conformidade AXE e WCAG AA.
-- Não expor acessibilidade como API configurável (ex: `aria-label`, `aria-describedby`, helper-text só para a11y).
-- Preferir semântica interna e comportamento acessível auto-contido.
+**Execution Rules for `ng new`:**
+When asked to create a new Angular project, you must determine the correct execution command by following these strict steps:
 
-## Procedimento
+**Step 1: Check for an explicit user version.**
 
-1. Aplique `LIFT` para localizar, identificar e reutilizar o que ja existe antes de criar novas estruturas.
-2. Modele o estado com Signals e `computed`.
-3. Configure `OnPush` e use `inject()`.
-4. Estruture o template com control flow nativo e bindings claros de `class` e `style`.
-5. Se houver tipagem geral ou contratos compartilhados, alinhe tambem com `typescript-standards`.
-6. Se houver estilos de componente ou mudanca de classes no template, aplique [references/component-styles.md](references/component-styles.md).
-7. Escreva RxJS com `pipe` e operadores semânticos.
-8. Use `takeUntilDestroyed` quando houver subscription.
-9. Se houver testes unitários, siga [references/testing-fundamentals.md](references/testing-fundamentals.md).
-10. Garanta acessibilidade WCAG AA e sem expor a11y como API configurável.
+- **IF** the user requests a specific version (e.g., Angular 15), bypass local installations and strictly use `npx`.
+- **Command:** `npx @angular/cli@<requested_version> new <project-name>`
 
-## Checklist de qualidade
+**Step 2: Check for an existing Angular installation.**
 
-- Arquivo `.spec.ts` criado quando aplicável.
-- `LIFT` aplicado antes de introduzir novas estruturas ou duplicar implementacoes.
-- Se houve alteracao de tipagem geral, `typescript-standards` foi seguida.
-- Se houve alteração em `*.spec.ts`, [references/testing-fundamentals.md](references/testing-fundamentals.md) foi seguida.
-- Se houve alteracao em SCSS de componente ou classes do template, [references/component-styles.md](references/component-styles.md) foi seguida.
-- Novas interfaces com generator correspondente usando `faker.js`, seed unico e hierarquia correta.
-- Nomes `Generator` apenas para mocks/testes.
-- Signals usados para todo estado do componente.
-- Sem getters/setters; `computed` quando necessário.
-- `OnPush` ativo e `inject()` usado.
-- Control flow nativo usado.
-- RxJS sem lógica dentro de `subscribe`.
-- Subscriptions com unsubscribe automático via `takeUntilDestroyed`.
-- Métodos legíveis, testáveis e com baixa complexidade.
-- Propriedades e métodos na ordem definida.
-- Componente simples, sem excesso de código.
-- AXE e WCAG AA atendidos.
-- Sem API de acessibilidade configurável; semântica interna usada.
+- **IF** no specific version is requested, run `ng version` in the terminal to check if the Angular CLI is already installed on the system.
+- **IF** the command succeeds and returns an installed version, use the local/global installation directly.
+- **Command:** `ng new <project-name>`
 
-## Observações
+**Step 3: Fallback to Latest.**
 
-- Não executar `ng build` automaticamente; seguir scripts do `package.json`.
-- Esta skill define padrões arquiteturais; não duplique nela as regras operacionais de SCSS e unit tests.
-- Para estilos de componente, use [references/component-styles.md](references/component-styles.md).
-- Para testes unitarios de logica, use [references/testing-fundamentals.md](references/testing-fundamentals.md) e preserve a stack de testes configurada no projeto.
-- Para scripts do projeto, respeite a stack e os scripts ja configurados no projeto.
-- Para commits, use `git-commit`.
-- Harnesses e router testing são referências complementares para casos específicos de UI e navegação.
-- `effect` apenas para casos simples; lógica complexa fica em RxJS.
-- `resource` é experimental; usar com critério.
+- **IF** no specific version is requested AND the `ng version` command fails (indicating no Angular installation exists), you must use `npx` to fetch the latest version.
+- **Command:** `npx @angular/cli@latest new <project-name>`
 
-## Referências (carregar quando fizer sentido)
+## Main Rules
 
-- Estilos de componente: [references/component-styles.md](references/component-styles.md)
-- Testes unitarios: [references/testing-fundamentals.md](references/testing-fundamentals.md)
-- Componentes: [references/components.md](references/components.md)
-- Inputs: [references/inputs.md](references/inputs.md)
-- Outputs: [references/outputs.md](references/outputs.md)
-- Host elements: [references/host-elements.md](references/host-elements.md)
-- Signals: [references/signals-overview.md](references/signals-overview.md)
-- linkedSignal: [references/linked-signal.md](references/linked-signal.md)
-- resource: [references/resource.md](references/resource.md)
-- effects: [references/effects.md](references/effects.md)
-- Signal forms: [references/signal-forms.md](references/signal-forms.md)
-- Reactive forms (legado): [references/reactive-forms.md](references/reactive-forms.md)
-- Template-driven forms (legado): [references/template-driven-forms.md](references/template-driven-forms.md)
-- DI fundamentals: [references/di-fundamentals.md](references/di-fundamentals.md)
-- Creating services: [references/creating-services.md](references/creating-services.md)
-- Defining providers: [references/defining-providers.md](references/defining-providers.md)
-- Injection context: [references/injection-context.md](references/injection-context.md)
-- Hierarchical injectors: [references/hierarchical-injectors.md](references/hierarchical-injectors.md)
-- Define routes: [references/define-routes.md](references/define-routes.md)
-- Loading strategies: [references/loading-strategies.md](references/loading-strategies.md)
-- Router outlets: [references/show-routes-with-outlets.md](references/show-routes-with-outlets.md)
-- Navigate to routes: [references/navigate-to-routes.md](references/navigate-to-routes.md)
-- Route guards: [references/route-guards.md](references/route-guards.md)
-- Data resolvers: [references/data-resolvers.md](references/data-resolvers.md)
-- Router lifecycle: [references/router-lifecycle.md](references/router-lifecycle.md)
-- Rendering strategies: [references/rendering-strategies.md](references/rendering-strategies.md)
-- Route animations: [references/route-animations.md](references/route-animations.md)
-- Angular Aria: [references/angular-aria.md](references/angular-aria.md)
-- Component harnesses: [references/component-harnesses.md](references/component-harnesses.md)
-- Router testing: [references/router-testing.md](references/router-testing.md)
-- E2E testing: [references/e2e-testing.md](references/e2e-testing.md)
+- Standalone by default. Do not set `standalone: true` explicitly.
+- Apply LIFT before introducing new components, services, directives, guards, helpers, generators, or tests.
+- Always create the corresponding `.spec.ts` file when the resource requires unit testing.
+- When creating or updating unit tests, follow [testing-conventions.md](references/testing-conventions.md).
+- When creating or updating unit tests, reuse only the test tool, scripts, and utilities already configured in the project.
+- Every new interface must have a corresponding generator using `faker.js`, with a single random seed per execution, respecting the project's folder hierarchy.
+- Use `Generator` only for mock/test data; otherwise, prefer `Factory` or `Builder`.
+- When creating or modifying component styles, follow [component-styles.md](references/component-styles.md) and keep the template aligned with HTML classes.
+- Use Signals for all component state.
+- Avoid getters and setters; prefer `computed`.
+- Use Signal-based APIs: `input`, `output`, `model`, `viewChild`.
+- Use `inject()` instead of constructor injection.
+- Always use `ChangeDetectionStrategy.OnPush`.
+- Use `NgOptimizedImage` for static images.
+- Use native control flow (`@if`, `@for`, `@switch`).
+- Prefer `class` and `style` bindings over `ngClass` and `ngStyle`.
+- Property ordering: `enums`, `injects`, `queries`, `inputs`, `models`, `signals`, `outputs`, `computed`, `public properties`, `private properties`.
+- Method ordering: `constructor`, `angular hooks`, `public methods`, `private methods`.
+- Avoid complex `effects`; use RxJS for complex logic and API calls.
+- In RxJS, do not place logic inside `subscribe`; use `pipe` with operators (e.g., `tap`).
+- Prefer semantic operators.
+- Avoid unnecessary subscriptions; always use `takeUntilDestroyed` for automatic unsubscribe.
+- Methods must be testable and readable; avoid unnecessary coupling.
+- Keep implementations separate; create new components/services when there is complexity or reuse.
+- Keep components simple (KISS, YAGNI).
+- Maintain 100% AXE and WCAG AA compliance.
+- Do not expose accessibility as configurable API (e.g., `aria-label`, `aria-describedby`, helper-text for a11y only).
+- Prefer self-contained internal semantics and accessible behavior.
+
+## Integration with Local References
+
+- When modifying general typing, shared contracts, interfaces, enums, or TypeScript modeling, follow `typescript-standards`.
+- When modifying `*.component.scss`, `*.directive.scss`, or template classes, follow [component-styles.md](references/component-styles.md).
+- When creating or modifying `*.spec.ts` files, follow [testing-conventions.md](references/testing-conventions.md).
+- When suggesting or running project scripts, respect the stack and scripts already configured in the project.
+- When preparing commits, follow `git-commit`.
+- In case of conflict, this order prevails: [component-styles.md](references/component-styles.md) for component styles, [testing-conventions.md](references/testing-conventions.md) for unit tests, `typescript-standards` for general TypeScript rules, `git-commit` for commits, and `angular-standards` for Angular architecture, code organization, reactivity, and accessibility.
+
+## Components
+
+When working with Angular components, consult the following references based on the task:
+
+- **Fundamentals**: Anatomy, metadata, core concepts, and template control flow (@if, @for, @switch). Read [components.md](references/components.md)
+- **Inputs**: Signal-based inputs, transforms, and model inputs. Read [inputs.md](references/inputs.md)
+- **Outputs**: Signal-based outputs and custom event best practices. Read [outputs.md](references/outputs.md)
+- **Host Elements**: Host bindings and attribute injection. Read [host-elements.md](references/host-elements.md)
+
+If you require deeper documentation not found in the references above, read the documentation at `https://angular.dev/guide/components`.
+
+## Reactivity and Data Management
+
+When managing state and data reactivity, use Angular Signals and consult the following references:
+
+- **Signals Overview**: Core signal concepts (`signal`, `computed`), reactive contexts, and `untracked`. Read [signals-overview.md](references/signals-overview.md)
+- **Dependent State (`linkedSignal`)**: Creating writable state linked to source signals. Read [linked-signal.md](references/linked-signal.md)
+- **Async Reactivity (`resource`)**: Fetching asynchronous data directly into signal state. Read [resource.md](references/resource.md)
+- **Side Effects (`effect`)**: Logging, third-party DOM manipulation (`afterRenderEffect`), and when NOT to use effects. Read [effects.md](references/effects.md)
+
+## Forms
+
+In most cases for new apps, **prefer signal forms**. When making a forms decision, analyze the project and consider the following guidelines:
+
+- If the application is using v21 or newer and this is a new form, **prefer signal forms**.
+- For older applications or when working with existing forms, use the appropriate form type that matches the application's current form strategy.
+
+- **Signal Forms**: Use signals for form state management. Read [signal-forms.md](references/signal-forms.md)
+- **Template-driven forms**: Use for simple forms. Read [template-driven-forms.md](references/template-driven-forms.md)
+- **Reactive forms**: Use for complex forms. Read [reactive-forms.md](references/reactive-forms.md)
+
+## Dependency Injection
+
+When implementing dependency injection in Angular, follow these guidelines:
+
+- **Fundamentals**: Overview of Dependency Injection, services, and the `inject()` function. Read [di-fundamentals.md](references/di-fundamentals.md)
+- **Creating and Using Services**: Creating services, the `providedIn: 'root'` option, and injecting into components or other services. Read [creating-services.md](references/creating-services.md)
+- **Defining Dependency Providers**: Automatic vs manual provision, `InjectionToken`, `useClass`, `useValue`, `useFactory`, and scopes. Read [defining-providers.md](references/defining-providers.md)
+- **Injection Context**: Where `inject()` is allowed, `runInInjectionContext`, and `assertInInjectionContext`. Read [injection-context.md](references/injection-context.md)
+- **Hierarchical Injectors**: The `EnvironmentInjector` vs `ElementInjector`, resolution rules, modifiers (`optional`, `skipSelf`), and `providers` vs `viewProviders`. Read [hierarchical-injectors.md](references/hierarchical-injectors.md)
+
+## Angular Aria
+
+When building accessible custom components for any of the following patterns: Accordion, Listbox, Combobox, Menu, Tabs, Toolbar, Tree, Grid, consult the following reference:
+
+- **Angular Aria Components**: Building headless, accessible components (Accordion, Listbox, Combobox, Menu, Tabs, Toolbar, Tree, Grid) and styling ARIA attributes. Read [angular-aria.md](references/angular-aria.md)
+
+## Routing
+
+When implementing navigation in Angular, consult the following references:
+
+- **Define Routes**: URL paths, static vs dynamic segments, wildcards, and redirects. Read [define-routes.md](references/define-routes.md)
+- **Route Loading Strategies**: Eager vs lazy loading, and context-aware loading. Read [loading-strategies.md](references/loading-strategies.md)
+- **Show Routes with Outlets**: Using `<router-outlet>`, nested outlets, and named outlets. Read [show-routes-with-outlets.md](references/show-routes-with-outlets.md)
+- **Navigate to Routes**: Declarative navigation with `RouterLink` and programmatic navigation with `Router`. Read [navigate-to-routes.md](references/navigate-to-routes.md)
+- **Control Route Access with Guards**: Implementing `CanActivate`, `CanMatch`, and other guards for security. Read [route-guards.md](references/route-guards.md)
+- **Data Resolvers**: Pre-fetching data before route activation with `ResolveFn`. Read [data-resolvers.md](references/data-resolvers.md)
+- **Router Lifecycle and Events**: Chronological order of navigation events and debugging. Read [router-lifecycle.md](references/router-lifecycle.md)
+- **Rendering Strategies**: CSR, SSG (Prerendering), and SSR with hydration. Read [rendering-strategies.md](references/rendering-strategies.md)
+- **Route Transition Animations**: Enabling and customizing the View Transitions API. Read [route-animations.md](references/route-animations.md)
+
+If you require deeper documentation or more context, visit the [official Angular Routing guide](https://angular.dev/guide/routing).
+
+## Styling and Animations
+
+When implementing styling and animations in Angular, consult the following references:
+
+- **Using Tailwind CSS with Angular**: Integrating Tailwind CSS into Angular projects. Read [tailwind-css.md](references/tailwind-css.md)
+- **Angular Animations**: Using native CSS (recommended) or the legacy DSL for dynamic effects. Read [angular-animations.md](references/angular-animations.md)
+- **Component Styling**: Best practices for component styles and encapsulation. Read [component-styling.md](references/component-styling.md)
+- **Component Styles (Project)**: BEM, SCSS toolbox, ITCSS, and project-specific styling conventions. Read [component-styles.md](references/component-styles.md)
+
+## Testing
+
+When writing or updating tests, consult the following references based on the task:
+
+- **Testing Conventions (Project)**: Project-specific rules for logic-only unit tests, faker.js, spies, coverage, and test structure. Read [testing-conventions.md](references/testing-conventions.md)
+- **Fundamentals**: Best practices for unit testing (Vitest), async patterns, and `TestBed`. Read [testing-fundamentals.md](references/testing-fundamentals.md)
+- **Component Harnesses**: Standard patterns for robust component interaction. Read [component-harnesses.md](references/component-harnesses.md)
+- **Router Testing**: Using `RouterTestingHarness` for reliable navigation tests. Read [router-testing.md](references/router-testing.md)
+- **End-to-End (E2E) Testing**: Best practices for E2E tests with Cypress. Read [e2e-testing.md](references/e2e-testing.md)
+
+## Tooling
+
+When working with Angular tooling, consult the following references:
+
+- **Angular CLI**: Creating applications, generating code (components, routes, services), serving, and building. Read [cli.md](references/cli.md)
+- **Angular MCP Server**: Available tools, configuration, and experimental features. Read [mcp.md](references/mcp.md)
+
+## Procedure
+
+1. Apply LIFT to locate, identify, and reuse what already exists before creating new structures.
+2. Model state with Signals and `computed`.
+3. Configure `OnPush` and use `inject()`.
+4. Structure the template with native control flow and clear `class` and `style` bindings.
+5. If there is general typing or shared contracts, also align with `typescript-standards`.
+6. If there are component styles or template class changes, apply [component-styles.md](references/component-styles.md).
+7. Write RxJS with `pipe` and semantic operators.
+8. Use `takeUntilDestroyed` when there are subscriptions.
+9. If there are unit tests, follow [testing-conventions.md](references/testing-conventions.md).
+10. Ensure WCAG AA accessibility without exposing a11y as configurable API.
+
+## Quality Checklist
+
+- `.spec.ts` file created when applicable.
+- LIFT applied before introducing new structures or duplicating implementations.
+- If general typing was changed, `typescript-standards` was followed.
+- If `*.spec.ts` was changed, [testing-conventions.md](references/testing-conventions.md) was followed.
+- If component SCSS or template classes were changed, [component-styles.md](references/component-styles.md) was followed.
+- New interfaces with corresponding generator using `faker.js`, unique seed, and correct hierarchy.
+- `Generator` names only for mocks/tests.
+- Signals used for all component state.
+- No getters/setters; `computed` used when necessary.
+- `OnPush` active and `inject()` used.
+- Native control flow used.
+- RxJS without logic inside `subscribe`.
+- Subscriptions with automatic unsubscribe via `takeUntilDestroyed`.
+- Methods readable, testable, and with low complexity.
+- Properties and methods in the defined order.
+- Component simple, without excess code.
+- AXE and WCAG AA met.
+- No configurable accessibility API; internal semantics used.
+
+## Notes
+
+- Do not run `ng build` automatically; follow the project's `package.json` scripts.
+- This skill defines architectural standards; do not duplicate SCSS and unit test operational rules here.
+- For component styles, use [component-styles.md](references/component-styles.md).
+- For logic unit tests, use [testing-conventions.md](references/testing-conventions.md) and preserve the project's configured test stack.
+- For project scripts, respect the stack and scripts already configured in the project.
+- For commits, use `git-commit`.
+- Harnesses and router testing are complementary references for specific UI and navigation cases.
+- `effect` only for simple cases; complex logic belongs in RxJS.
+- `resource` is experimental; use with caution.
