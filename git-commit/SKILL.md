@@ -1,17 +1,17 @@
 ---
 name: git-commit
-description: 'Execute git commit com análise de Conventional Commit messages, intelligent staging e geração de messages. Use quando o usuário pedir para fazer commit de mudanças, criar um git commit ou mencionar "/commit". Suporta: (1) Auto-detectar type e scope a partir das mudanças, (2) Gerar Conventional Commit messages a partir do diff, (3) Commit interativo com overrides opcionais de type/scope/description, (4) Intelligent file staging para logical grouping'
+description: 'Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Use when user asks to commit changes, create a git commit, or mentions "/commit". Supports: (1) Auto-detecting type and scope from changes, (2) Generating conventional commit messages from diff, (3) Interactive commit with optional type/scope/description overrides, (4) Intelligent file staging for logical grouping'
 license: MIT
 allowed-tools: Bash
 ---
 
-# Git Commit com Conventional Commits
+# Git Commit with Conventional Commits
 
-## Visão Geral
+## Overview
 
-Crie git commits padronizados e semânticos usando a especificação Conventional Commits. Analise o diff real para determinar o type, o scope e a message apropriados.
+Create standardized, semantic git commits using the Conventional Commits specification. Analyze the actual diff to determine appropriate type, scope, and message.
 
-## Formato de Conventional Commit
+## Conventional Commit Format
 
 ```
 <type>[optional scope]: <description>
@@ -21,58 +21,58 @@ Crie git commits padronizados e semânticos usando a especificação Conventiona
 [optional footer(s)]
 ```
 
-## Tipos de Commit
+## Commit Types
 
-| Type       | Objetivo                             |
-| ---------- | ------------------------------------ |
-| `feat`     | Nova feature                         |
-| `fix`      | Bug fix                              |
-| `docs`     | Apenas documentation                 |
-| `style`    | Formatting/style (sem lógica)        |
-| `refactor` | Code refactor (sem feature/fix)      |
-| `perf`     | Melhoria de performance              |
-| `test`     | Adicionar/atualizar tests            |
-| `build`    | Build system/dependencies            |
-| `ci`       | Mudanças de CI/config                |
-| `chore`    | Maintenance/misc                     |
-| `revert`   | Reverter commit                      |
+| Type       | Purpose                        |
+| ---------- | ------------------------------ |
+| `feat`     | New feature                    |
+| `fix`      | Bug fix                        |
+| `docs`     | Documentation only             |
+| `style`    | Formatting/style (no logic)    |
+| `refactor` | Code refactor (no feature/fix) |
+| `perf`     | Performance improvement        |
+| `test`     | Add/update tests               |
+| `build`    | Build system/dependencies      |
+| `ci`       | CI/config changes              |
+| `chore`    | Maintenance/misc               |
+| `revert`   | Revert commit                  |
 
 ## Breaking Changes
 
 ```
-# Exclamation mark após type/scope
+# Exclamation mark after type/scope
 feat!: remove deprecated endpoint
 
-# Footer de BREAKING CHANGE
+# BREAKING CHANGE footer
 feat: allow config to extend other configs
 
 BREAKING CHANGE: `extends` key behavior changed
 ```
 
-## Fluxo
+## Workflow
 
-### 1. Analisar Diff
+### 1. Analyze Diff
 
 ```bash
-# Se houver files staged, use staged diff
+# If files are staged, use staged diff
 git diff --staged
 
-# Se nada estiver staged, use working tree diff
+# If nothing staged, use working tree diff
 git diff
 
-# Também verifique o status
+# Also check status
 git status --porcelain
 ```
 
-### 2. Stage Files (se necessário)
+### 2. Stage Files (if needed)
 
-Se nada estiver staged ou se você quiser agrupar as mudanças de forma diferente:
+If nothing is staged or you want to group changes differently:
 
 ```bash
-# Fazer stage de files específicos
+# Stage specific files
 git add path/to/file1 path/to/file2
 
-# Fazer stage por pattern
+# Stage by pattern
 git add *.test.*
 git add src/components/*
 
@@ -80,23 +80,23 @@ git add src/components/*
 git add -p
 ```
 
-**Nunca faça commit de secrets** (`.env`, `credentials.json`, private keys).
+**Never commit secrets** (.env, credentials.json, private keys).
 
-### 3. Gerar Commit Message
+### 3. Generate Commit Message
 
-Analise o diff para determinar:
+Analyze the diff to determine:
 
-- **Type**: Que tipo de mudança é esta?
-- **Scope**: Qual área/module foi afetada?
-- **Description**: Resumo em uma linha do que mudou (present tense, imperative mood, `<72 chars>`)
+- **Type**: What kind of change is this?
+- **Scope**: What area/module is affected?
+- **Description**: One-line summary of what changed (present tense, imperative mood, <72 chars)
 
-### 4. Executar Commit
+### 4. Execute Commit
 
 ```bash
 # Single line
 git commit -m "<type>[scope]: <description>"
 
-# Multi-line com body/footer
+# Multi-line with body/footer
 git commit -m "$(cat <<'EOF'
 <type>[scope]: <description>
 
@@ -109,16 +109,16 @@ EOF
 
 ## Best Practices
 
-- Uma mudança lógica por commit
-- Use present tense: `add` e não `added`
-- Use imperative mood: `fix bug` e não `fixes bug`
-- Referencie issues: `Closes #123`, `Refs #456`
-- Mantenha a description com menos de 72 caracteres
+- One logical change per commit
+- Present tense: "add" not "added"
+- Imperative mood: "fix bug" not "fixes bug"
+- Reference issues: `Closes #123`, `Refs #456`
+- Keep description under 72 characters
 
 ## Git Safety Protocol
 
-- NEVER atualize o git config
-- NEVER execute destructive commands (`--force`, `hard reset`) sem pedido explícito
-- NEVER pule hooks (`--no-verify`) a menos que o usuário peça
-- NEVER faça force push para `main`/`master`
-- Se o commit falhar por causa de hooks, corrija e crie um NEW commit (`don't amend`)
+- NEVER update git config
+- NEVER run destructive commands (--force, hard reset) without explicit request
+- NEVER skip hooks (--no-verify) unless user asks
+- NEVER force push to main/master
+- If commit fails due to hooks, fix and create NEW commit (don't amend)
