@@ -1,0 +1,17 @@
+# browser-dom
+- typescript:S5260 — Table cells should reference their headers
+- typescript:S5256 — Tables should have headers
+- typescript:S5257 — HTML "<table>" should not be used for layout purposes
+- typescript:S6840 — DOM elements should use the "autocomplete" attribute correctly
+- typescript:S6841 — "tabIndex" values should be 0 or -1
+- typescript:S6844 — Anchor tags should not be used as buttons
+- typescript:S6850 — Heading elements should have accessible content
+- typescript:S1077 — Image, area, button with image and object elements should have an alternative text
+- typescript:S1090 — iFrames must have a title
+- typescript:S4084 — Media elements should have captions
+- typescript:S5254 — HTML elements should have a valid language attribute
+- typescript:S5264 — "<object>" tags should provide an alternative content
+- typescript:S6827 — Anchors should contain accessible content
+- typescript:S6845 — Non-interactive DOM elements should not have the `tabIndex` property
+- typescript:S6846 — DOM elements should not use the "accesskey" property
+- typescript:S6853 — Label elements should have a text label and an associated control

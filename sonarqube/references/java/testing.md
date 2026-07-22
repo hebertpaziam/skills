@@ -1,0 +1,33 @@
+# testing
+- java:S1607 — JUnit4 @Ignored and JUnit5 @Disabled annotations should be used to disable tests
+- java:S2187 — Test files should contain at least one test case (TestClassNamePattern=.*(Test|Tests|TestCase))
+- java:S2188 — JUnit test cases should call super methods
+- java:S2699 — Tests should include assertions
+- java:S2970 — Assertions should be complete
+- java:S3415 — Assertion arguments should be passed in the correct order
+- java:S5776 — Exception tests should be clean
+- java:S5777 — Only one method invocation is expected when testing runtime exceptions
+- java:S5778 — Only one method invocation is expected when testing runtime exceptions
+- java:S5779 — Annotation arguments should be provided in the correct order
+- java:S5783 — Only one method invocation is expected when testing runtime exceptions
+- java:S5785 — JUnit5 assertions should use "assertAll" method
+- java:S5786 — Test methods visibility should follow conventions
+- java:S5790 — JUnit5 test method parameters should be supported by a ParameterResolver or ParameterizedTest
+- java:S5803 — Test class names should end with "Test"
+- java:S5810 — JUnit5 @MethodSource arguments should all reference existing methods
+- java:S5831 — JUnit5 parameterized test arguments should match parameters
+- java:S5833 — JUnit5 @Tag should follow naming convention
+- java:S5838 — "assertEquals" and "assertNotEquals" should be simplified
+- java:S5841 — Tests should check the correct exception is thrown
+- java:S5842 — Test methods should not be skipped without a reason
+- java:S5863 — Assertions should not be given twice the same argument
+- java:S5958 — Tests should check which exception is thrown
+- java:S5960 — Assertions should not be used in production code
+- java:S5961 — Test methods should not contain too many assertions (MaximumAssertionNumber=25)
+- java:S5967 — "assertThat" subject should not be a constant
+- java:S5969 — Test methods should use the expected annotation
+- java:S5973 — Tests should be stable
+- java:S5976 — Similar tests should be grouped in a single Parameterized test
+- java:S6068 — Call to Mockito method "verify", "when" or "given" should be simplified
+- java:S6103 — "MethodSource" arguments should refer to existing methods
+- java:S6104 — Test methods should not throw checked exceptions

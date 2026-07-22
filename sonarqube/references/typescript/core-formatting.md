@@ -1,0 +1,28 @@
+# core-formatting
+- typescript:S109 — Magic numbers should not be used
+- typescript:S122 — Statements should be on separate lines
+- typescript:S1441 — Quotes for string literals should be used consistently
+- typescript:S3786 — Template literal placeholder syntax should not be used in regular strings
+- typescript:S4624 — Template literals should not be nested
+- typescript:S6557 — Ends of strings should be checked with "startsWith()" and "endsWith()"
+- typescript:S105 — Tabulation characters should not be used
+- typescript:S1105 — An open curly brace should be located at the end of a line
+- typescript:S1116 — Extra semicolons should be removed
+- typescript:S1125 — Boolean literals should not be used in comparisons
+- typescript:S113 — Files should end with a newline
+- typescript:S1131 — Lines should not end with trailing whitespaces
+- typescript:S1438 — Statements should end with semicolons
+- typescript:S1472 — Function call arguments should not start on new lines
+- typescript:S1516 — Multiline string literals should not be used
+- typescript:S1537 — Trailing commas should not be used
+- typescript:S1940 — Boolean checks should not be inverted
+- typescript:S2138 — "undefined" should not be assigned
+- typescript:S2990 — The global "this" object should not be used
+- typescript:S3402 — Strings and non-strings should not be added
+- typescript:S3498 — Object literal shorthand syntax should be used
+- typescript:S3499 — Shorthand object properties should be grouped at the beginning or end of an object declaration
+- typescript:S3512 — Template strings should be used instead of concatenation
+- typescript:S3514 — Destructuring syntax should be used for assignments
+- typescript:S3524 — Braces and parentheses should be used consistently with arrow functions
+- typescript:S4136 — Method overloads should be grouped together
+- typescript:S4137 — Type assertions should use "as"

@@ -1,0 +1,71 @@
+# core-formatting
+- java:S106 — Standard outputs should not be used directly to log anything
+- java:S108 — Nested blocks of code should not be left empty
+- java:S1075 — URIs should not be hardcoded
+- java:S1116 — Empty statements should be removed
+- java:S1117 — Local variables should not shadow class fields
+- java:S1119 — Labels should not be used
+- java:S1121 — Assignments should not be made from within sub-expressions
+- java:S1125 — Boolean literals should not be redundant
+- java:S1153 — "String.valueOf()" should not be appended to a String
+- java:S1155 — Collection.isEmpty() should be used to test for emptiness
+- java:S1157 — Case-insensitive String comparisons should be made without intermediate upper or lower casing
+- java:S1158 — Primitive wrappers should not be instantiated only to call "toString"
+- java:S1192 — String literals should not be duplicated (threshold=3)
+- java:S1197 — Array designators "[]" should be on the type, not the variable
+- java:S1199 — Nested code blocks should not be used
+- java:S1220 — The default unnamed package should not be used
+- java:S1317 — "StringBuilder" and "StringBuffer" should not be instantiated with a character
+- java:S1488 — Local variables should not be declared and then immediately returned or thrown
+- java:S1602 — Lambdas containing only one statement should not nest this statement in a block
+- java:S1604 — Anonymous inner classes containing only one method should become lambdas
+- java:S1611 — Parentheses should be removed from a single lambda input parameter when its type is inferred
+- java:S1612 — Lambdas should be replaced with method references
+- java:S1640 — Maps with keys that are enum values should be replaced with EnumMap
+- java:S1643 — Strings should not be concatenated using "+" in a loop
+- java:S1656 — Variables should not be self-assigned
+- java:S1659 — Multiple variables should not be declared on the same line
+- java:S1710 — Annotation repetitions should not be wrapped
+- java:S2129 — Constructors should not be used to instantiate "String", "BigInteger", "BigDecimal" and primitive-wrapper classes
+- java:S2130 — Parsing should be used to convert "Strings" to primitives
+- java:S2293 — The diamond operator ("<>") should be used
+- java:S2447 — "null" should not be returned from a "Boolean" method
+- java:S2479 — Whitespace and control characters in literals should be explicit (allowTabsInTextBlocks=false)
+- java:S2629 — "Preconditions" and logging arguments should not require evaluation
+- java:S2786 — Nested "enum"s should not be declared static
+- java:S3457 — Format strings should be used correctly
+- java:S3631 — "Arrays.stream" should be used for primitive arrays
+- java:S3878 — Arrays should not be created for varargs parameters
+- java:S4032 — Packages containing only "package-info.java" should be removed
+- java:S4042 — "java.nio.Files#delete" should be preferred
+- java:S4065 — "ThreadLocal.withInitial" should be preferred
+- java:S4087 — "close()" calls should not be redundant
+- java:S4425 — "Integer.toHexString" should not be used to build hexadecimal strings
+- java:S4488 — "@Override" methods should do something
+- java:S4682 — Primitive values should not be used in "Optional"
+- java:S4719 — "StandardCharsets" constants should be preferred
+- java:S4738 — Java features should be preferred to Guava
+- java:S4838 — An iteration on a Collection should be performed on the type handled by the Collection
+- java:S4929 — "read(byte[],int,int)" should be overridden
+- java:S4977 — "@Deprecated" annotations should include the reason and the removal date
+- java:S5261 — "else" statements should be clearly matched with an "if"
+- java:S5329 — String constructor should not be used with predictable argument
+- java:S5361 — "String#replace" should be preferred to "String#replaceAll"
+- java:S5411 — Avoid using boxed "Boolean" types directly in boolean expressions
+- java:S5663 — Simple string literal should be used for single line strings
+- java:S5664 — Whitespace for text block indent should be consistent
+- java:S5665 — Escape sequences should not be used in text blocks
+- java:S5669 — Vararg method arguments should not be confusing
+- java:S6126 — String multiline concatenation should be replaced with Text Blocks
+- java:S6203 — Text blocks should not be used in complex expressions (MaximumNumberOfLines=5)
+- java:S6205 — Switch arrow labels should not use redundant keywords
+- java:S6206 — Records should be used instead of ordinary classes when representing immutable data structure
+- java:S6207 — Redundant constructors/methods should be avoided in records
+- java:S6208 — Comma-separated labels should be used in Switch with colon case
+- java:S6485 — Hash-based collections with known capacity should be initialized with the proper related static method
+- java:S6548 — Singletons should use an enum type
+- java:S6878 — Use record pattern instead of explicit field access
+- java:S6880 — Use switch instead of if-else chain to compare a variable against multiple cases
+- java:S6885 — Use built-in "Math.clamp" methods
+- java:S6916 — Use when instead of a single if inside a pattern match body
+- java:S7158 — "String.isEmpty()" should be used to test for emptiness

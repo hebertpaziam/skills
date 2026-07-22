@@ -1,0 +1,26 @@
+# core-errors
+- java:S112 — Generic exceptions should never be thrown
+- java:S1111 — Return value of built-in methods should be used
+- java:S1113 — "finalize()" should not set fields to null
+- java:S1123 — "@Deprecated" annotation should be coupled with a "@deprecated" Javadoc tag
+- java:S1124 — Modifiers should be declared in the correct order
+- java:S1130 — "throws" declarations should not be superfluous
+- java:S1141 — Try-catch blocks should not be nested
+- java:S1143 — "return" statements should not occur in "finally" blocks
+- java:S1163 — Exceptions should not be thrown in "finally" blocks
+- java:S1165 — Exception classes should be immutable
+- java:S1168 — Empty arrays and collections should be returned instead of null
+- java:S1174 — "Object.finalize()" should not be called
+- java:S1175 — The signatures of "Object.finalize()" should not be overloaded
+- java:S1181 — Throwable and Error should not be caught
+- java:S1193 — Exception types should not be tested using "instanceof" in catch blocks
+- java:S1989 — Exceptions should not be thrown from servlet methods
+- java:S2093 — Try-with-resources should be used
+- java:S2095 — Resources should be closed
+- java:S2109 — Reflection should not be used to check non-runtime annotations
+- java:S2139 — Exceptions should be either logged or rethrown but not both
+- java:S2147 — Catches should be combined
+- java:S2151 — "runFinalizersOnExit" should not be called
+- java:S3020 — Value-based classes should not be used for locking
+- java:S3984 — Exception should not be created without being thrown
+- java:S5876 — Session fixation should be prevented

@@ -1,0 +1,16 @@
+# testing
+- typescript:S6079 — Tests should not execute any code after "done()" is called
+- typescript:S2187 — Test files should contain at least one test case
+- typescript:S2699 — Tests should include assertions
+- typescript:S2970 — Assertions should be complete
+- typescript:S1607 — Tests should not be skipped without providing a reason
+- typescript:S1862 — "if/else if" chains and "switch" cases should not have the same condition
+- typescript:S2137 — Special identifiers should not be bound or assigned
+- typescript:S3415 — Assertion arguments should be passed in the correct order
+- typescript:S5863 — Assertions should not be given twice the same argument
+- typescript:S5958 — Tests should check which exception is thrown
+- typescript:S5973 — Tests should be stable
+- typescript:S6080 — Disabling Mocha timeouts should be explicit
+- typescript:S6092 — Chai assertions should have only one reason to succeed
+- typescript:S6426 — Exclusive tests should not be commited to version control
+- typescript:S6523 — Optional chaining should not be used if returning "undefined" throws an error

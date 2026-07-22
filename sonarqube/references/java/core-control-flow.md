@@ -1,0 +1,25 @@
+# core-control-flow
+- java:S127 — "for" loop stop conditions should be invariant
+- java:S128 — Switch cases should end with an unconditional "break" statement
+- java:S131 — "switch" statements should have "default" clauses
+- java:S135 — Loops should not contain more than a single "break" or "continue" statement
+- java:S899 — Return values should not be ignored when they contain the operation status code
+- java:S1065 — Unused labels should be removed
+- java:S1066 — Collapsible "if" statements should be merged
+- java:S1126 — Return of boolean expressions should not be wrapped into an "if-then-else" statement
+- java:S1219 — "switch" statements should not be nested
+- java:S1264 — A "while" loop should be used instead of a "for" loop
+- java:S1301 — "switch" statements should have at least 3 "case" clauses
+- java:S1479 — "switch" statements should not have too many "case" clauses (maximum=30)
+- java:S1751 — Jumps should not occur in "finally" blocks
+- java:S1871 — Two branches in a conditional structure should not have exactly the same implementation
+- java:S2189 — Loops should not be infinite
+- java:S2251 — A "for" loop update clause should move the counter in the right direction
+- java:S2252 — Loops with at most one iteration should be refactored
+- java:S2681 — Multiline blocks should be enclosed in curly braces
+- java:S3358 — Ternary operators should not be nested
+- java:S3626 — Jump statements should not be redundant
+- java:S3923 — All branches in a conditional structure should not have exactly the same implementation
+- java:S3972 — Conditionals should start on new lines
+- java:S3973 — Comparison operators should not be used in other comparison operators
+- java:S4524 — "default" clauses should be last

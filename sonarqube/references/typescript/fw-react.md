@@ -1,0 +1,36 @@
+# fw-react
+- typescript:S6299 — Disabling Vue.js built-in escaping is security-sensitive
+- typescript:S6435 — React "render" functions should return a value
+- typescript:S6438 — Comments inside JSX expressions should be enclosed in curly braces
+- typescript:S6439 — React components should not render non-boolean condition values
+- typescript:S6440 — React Hooks should be properly called
+- typescript:S6441 — Unused methods of React components should be removed
+- typescript:S6442 — React's useState hook should not be used directly in the render function or body of a component
+- typescript:S6443 — React state setter function should not be called with its matching state variable
+- typescript:S6477 — JSX list components should have a key property
+- typescript:S6478 — React components should not be nested
+- typescript:S6479 — JSX list components should not use array indexes as key
+- typescript:S6480 — Disallow `.bind()` and arrow functions in JSX props
+- typescript:S6481 — React Context Provider values should have stable identities
+- typescript:S6486 — JSX list components keys should match up between renders
+- typescript:S6746 — In React "this.state" should not be mutated directly
+- typescript:S6747 — JSX elements should not use unknown properties and attributes
+- typescript:S6748 — React "children" should not be passed as prop
+- typescript:S6750 — The return value of "ReactDOM.render" should not be used
+- typescript:S6756 — "setState" should use a callback when referencing the previous state
+- typescript:S6757 — "this" should not be used in functional components
+- typescript:S6761 — "children" and "dangerouslySetInnerHTML" should not be used together
+- typescript:S6763 — "shouldComponentUpdate" should not be defined when extending "React.PureComponent"
+- typescript:S6766 — JSX special characters should be escaped
+- typescript:S6772 — Spacing between inline elements should be explicit
+- typescript:S6788 — React's "findDOMNode" should not be used
+- typescript:S6789 — React's "isMounted" should not be used
+- typescript:S6790 — String references should not be used
+- typescript:S6791 — React legacy lifecycle methods should not be used
+- typescript:S6749 — Redundant React fragments should be removed
+- typescript:S6754 — The return value of "useState" should be destructured and named symmetrically
+- typescript:S6759 — React props should be read-only
+- typescript:S6767 — Unused React typed props should be removed
+- typescript:S6770 — User-defined JSX components should use Pascal case
+- typescript:S6775 — All "defaultProps" should have non-required PropTypes
+- typescript:S6957 — Deprecated React APIs should not be used

@@ -1,0 +1,15 @@
+# core-naming
+- java:S100 — Method names should comply with a naming convention (format=^[a-z][a-zA-Z0-9]*$)
+- java:S101 — Class names should comply with a naming convention (format=^[A-Z][a-zA-Z0-9]*$)
+- java:S114 — Interface names should comply with a naming convention (format=^[A-Z][a-zA-Z0-9]*$)
+- java:S115 — Constant names should comply with a naming convention (format=^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$)
+- java:S116 — Field names should comply with a naming convention (format=^[a-z][a-zA-Z0-9]*$)
+- java:S117 — Local variable and method parameter names should comply with a naming convention (format=^[a-z][a-zA-Z0-9]*$)
+- java:S119 — Type parameter names should comply with a naming convention (format=^[A-Z][0-9]?$)
+- java:S120 — Package names should comply with a naming convention (format=^[a-z_]+(\.[a-z_][a-z0-9_]*)*$)
+- java:S1596 — "package" declaration should match source file directory
+- java:S1598 — Source files should comply with the project's directory structure
+- java:S1700 — A field should not duplicate the name of its containing class
+- java:S3008 — Static non-final field names should comply with a naming convention (format=^[a-z][a-zA-Z0-9]*$)
+- java:S3577 — Test classes should comply with a naming convention (format=^((Test|IT)[a-zA-Z0-9_]+|[A-Z][a-zA-Z0-9_]*(Test|Tests|TestCase|IT|ITCase))$)
+- java:S6213 — Restricted Identifiers should not be used as Identifiers

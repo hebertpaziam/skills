@@ -1,0 +1,12 @@
+# core-modules
+- typescript:S4328 — Dependencies should be explicit
+- typescript:S6522 — Import variables should not be reassigned
+- typescript:S6627 — Users should not use internal APIs
+- typescript:S6861 — Mutable variables should not be exported
+- typescript:S7060 — Module should not import itself
+- typescript:S1128 — Unnecessary imports should be removed
+- typescript:S3533 — "import" should be used to include external code
+- typescript:S3863 — Imports from the same module should be merged
+- typescript:S4156 — "module" should not be used
+- typescript:S6650 — Renaming import, export, and destructuring assignments should not be to the same name
+- typescript:S6859 — Imports should not use absolute paths

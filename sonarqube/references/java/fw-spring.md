@@ -1,0 +1,37 @@
+# fw-spring
+- java:S3305 — "@Inject" fields should not be used
+- java:S3751 — "@RequestMapping" methods should be public
+- java:S3753 — "@Controller" classes should use "@Validated" annotation
+- java:S6241 — Region should be set explicitly when creating a new "AwsClient"
+- java:S6242 — Credentials Provider should be set explicitly when creating a new "AwsClient"
+- java:S6243 — Reusable resources should be initialized at construction time of Lambda functions
+- java:S6244 — Consumer Builders should be used
+- java:S6246 — Lambdas should not invoke other lambdas synchronously
+- java:S6262 — AWS region should not be set with a hardcoded String
+- java:S6804 — "@Value" annotation should inject property or SpEL expression
+- java:S6806 — "@PathVariable" names should match the URI template variables
+- java:S6809 — Methods with Spring proxy should not be called via "this"
+- java:S6810 — "@Transactional" methods should not be used with "synchronized"
+- java:S6813 — Field injection should not be used
+- java:S6814 — Constructor injection should be used instead of field injection with "@Autowired"
+- java:S6816 — "@Nullable" annotations should be used on methods that can return null
+- java:S6817 — "@Nullable" annotations should be used on parameters that can be null
+- java:S6818 — "@Autowired" should not be used on abstract methods
+- java:S6829 — "@Autowired" should be used when multiple constructors are provided
+- java:S6830 — Bean names should adhere to the naming conventions
+- java:S6831 — Spring @Bean methods should not have parameter injection and annotation at the same time
+- java:S6832 — Non-singleton Spring beans should not be injected into singleton beans
+- java:S6833 — "@Controller" should be replaced with "@RestController"
+- java:S6837 — Superfluous "@ResponseBody" annotations should be removed
+- java:S6838 — "@Controller" class methods should not return "ResponseEntity"
+- java:S6856 — Path template variables should be properly bound to method parameters
+- java:S6857 — SpEL expression should have a valid syntax
+- java:S6862 — "@RequestMapping" annotations should have explicit HTTP method
+- java:S6863 — Spring beans should be considered by "@ComponentScan"
+- java:S6881 — Switch expressions should use pattern matching instead of instanceof chains
+- java:S6905 — SQL queries should retrieve only necessary fields
+- java:S6906 — JDBC operations should use parameterized queries
+- java:S6909 — Constant parameters in a "PreparedStatement" should not be set more than once
+- java:S6912 — Use batch Processing in JDBC
+- java:S6913 — "@Transactional" should not be applied on private methods
+- java:S6915 — Spring auto-configuration classes should satisfy conditions

@@ -1,0 +1,11 @@
+# core-streams
+- java:S3864 — "Stream.peek" should be used with caution
+- java:S3958 — Stream pipelines should not be used and then discarded
+- java:S3959 — Intermediate stream methods should not be called on single-element collections
+- java:S4034 — "Stream" call chains should be simplified when possible
+- java:S6019 — Consumed Stream pipelines should not be reused
+- java:S6035 — "Collectors.toList()" and "Collectors.toSet()" should not be used with "Stream.collect(Collectors.unmodifiableList())"
+- java:S6204 — "Stream.toList()" should be used instead of "collect(Collectors.toList())"
+- java:S6395 — Non-capturing groups without quantifier should not be used
+- java:S6396 — Superfluous curly brace quantifiers should be avoided
+- java:S6397 — Character classes in regular expressions should not contain only one character

@@ -1,0 +1,36 @@
+# core-concurrency
+- java:S1149 — Synchronized classes "Vector", "Hashtable", "Stack" and "StringBuffer" should not be used
+- java:S1215 — "System.gc()" should not be called
+- java:S1217 — "Thread.run()" should not be called directly
+- java:S1844 — "Object.wait" should not be called on objects that implement "java.util.concurrent.locks.Condition"
+- java:S1860 — Synchronization should not be based on Strings or boxed primitives
+- java:S2122 — "ScheduledExecutorService" should not be used for short delays
+- java:S2142 — "InterruptedException" should not be ignored
+- java:S2168 — Double-checked locking should not be used
+- java:S2222 — Locks should be released
+- java:S2236 — "wait", "notify" and "notifyAll" should not be called on Thread instances
+- java:S2273 — "wait", "notify" and "notifyAll" should only be called when a lock is obviously held on an object
+- java:S2274 — "Object.wait()" and "Condition.await()" should be called inside a "while" loop
+- java:S2276 — "Thread.sleep" should not be used in tests
+- java:S2442 — "Lock" objects should not be "synchronized"
+- java:S2445 — Blocks synchronized on fields should not contain assignments of new objects to those fields
+- java:S2446 — "notifyAll" should be used
+- java:S2885 — Non-thread-safe fields should not be static
+- java:S2886 — "volatile" variables should not be used with compound operators
+- java:S2924 — JUnit rules should be used
+- java:S2925 — "Thread.sleep" should not be used in tests
+- java:S3010 — Static fields should not be updated in constructors
+- java:S3014 — "ThreadGroup" should not be used
+- java:S3034 — Raw byte values should not be used in bitwise operations with a "short" or "int"
+- java:S3042 — "writeObject" should not be the only "synchronized" code in a class
+- java:S3046 — "synchronized" classes should not be used
+- java:S3064 — Assignments should not be made in sub-expressions within synchronized blocks
+- java:S3065 — "getClass" should not be used for synchronization
+- java:S3066 — "Condition" variables should be referenced while holding a "Lock"
+- java:S3067 — "getClass" should not be used for synchronization in non-final classes
+- java:S3077 — Non-primitive fields should not be "volatile"
+- java:S3078 — "volatile" variables should be used in DCL pattern
+- java:S5164 — "ThreadLocal" variables should be cleaned up when no longer used
+- java:S5445 — "File.createTempFile" should not be used to create directories
+- java:S6889 — Proper Sensor Resource Management
+- java:S6901 — "setDaemon", "setPriority" and "getThreadGroup" should not be invoked on virtual threads

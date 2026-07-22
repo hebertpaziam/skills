@@ -1,0 +1,15 @@
+# security-injection
+- typescript:S4823 — Using command line arguments is security-sensitive
+- tssecurity:S2076 — OS commands should not be vulnerable to command injection attacks
+- tssecurity:S2083 — I/O function calls should not be vulnerable to path injection attacks
+- tssecurity:S3649 — Database queries should not be vulnerable to injection attacks
+- tssecurity:S5131 — Endpoints should not be vulnerable to reflected cross-site scripting (XSS) attacks
+- tssecurity:S5146 — HTTP request redirections should not be open to forging attacks
+- tssecurity:S5147 — NoSQL operations should not be vulnerable to injection attacks
+- tssecurity:S5334 — Dynamic code execution should not be vulnerable to injection attacks
+- tssecurity:S5696 — DOM updates should not lead to cross-site scripting (XSS) attacks
+- tssecurity:S6096 — Extracting archives should not lead to zip slip vulnerabilities
+- tssecurity:S6105 — DOM updates should not lead to open redirect vulnerabilities
+- typescript:S2755 — XML parsers should not be vulnerable to XXE attacks
+- tssecurity:S5144 — Server-side requests should not be vulnerable to forging attacks
+- tssecurity:S5883 — OS commands should not be vulnerable to argument injection attacks
