@@ -42,31 +42,32 @@ They are **agent-agnostic** — designed to work with any AI assistant that supp
 Skills are designed to work together. The diagram below shows how they interact:
 
 ```
-┌──────────────────────────────────────────────────────┐
-│                                                      │
-│   🔍 sonarqube                                       │
-│   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄                     │
-│   Highest precedence. Overrides                      │
-│   any conflicting rules below.                       │
-│                                                      │
-├──────────────────────────────────────────────────────┤
-│                                                      │
-│   🅰️ angular-standards                               │
-│       │                                              │
-│       ├── loads ──▶ 🟦 typescript-standards           │
-│       │            (shared contracts, typing, design) │
-│       │                                              │
-│       └── delegates ──▶ 📝 git-commit                │
-│                         (commit workflow)             │
-│                                                      │
-├──────────────────────────────────────────────────────┤
-│                                                      │
-│   🟦 typescript-standards                            │
-│   ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄                     │
-│   Standalone for non-Angular TS projects.            │
-│   Complementary when used with angular-standards.    │
-│                                                      │
-└──────────────────────────────────────────────────────┘
++------------------------------------------------------+
+|                                                      |
+|   sonarqube                                          |
+|   ............................                       |
+|   Highest precedence. Overrides                      |
+|   any conflicting rules below.                       |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+|   angular-standards                                  |
+|       |                                              |
+|       +-- loads --> typescript-standards              |
+|       |             (shared contracts, typing,       |
+|       |              design)                         |
+|       |                                              |
+|       +-- delegates --> git-commit                   |
+|                         (commit workflow)             |
+|                                                      |
++------------------------------------------------------+
+|                                                      |
+|   typescript-standards                               |
+|   ............................                       |
+|   Standalone for non-Angular TS projects.            |
+|   Complementary when used with angular-standards.    |
+|                                                      |
++------------------------------------------------------+
 ```
 
 **Precedence rules:**
