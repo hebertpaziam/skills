@@ -32,7 +32,7 @@ They are **agent-agnostic** — designed to work with any AI assistant that supp
 |-------|-------------|:----------:|
 | 🅰️ [angular-standards](./angular-standards/) | Angular code generation & architectural guidance — components, signals, forms, DI, routing, SSR, a11y, animations, styling (BEM/SCSS, Tailwind), testing (Vitest, Cypress) | 39 docs |
 | 🟦 [typescript-standards](./typescript-standards/) | TypeScript design standards — typing decisions, domain modeling, architecture (SOLID, GoF, KISS, YAGNI, LIFT), modules & boundaries | 30 docs |
-| 🔍 [sonarqube](./sonarqube/) | SonarQube compliance — prevents violations during generation, audits on demand. Routes ~976 rules (TypeScript + Java) by context | 47 docs |
+| 🔍 [sonarqube-audit](./sonarqube-audit/) | Full codebase audit against SonarQube rules — generates a detailed Markdown report with phased action plan. Routes ~976 rules (TypeScript + Java) by context | 47 docs |
 | 📝 [git-commit](./git-commit/) | Conventional Commits — auto-detects type/scope from diffs, intelligent staging, message generation | — |
 
 ---
@@ -43,13 +43,13 @@ Skills are designed to work together. The diagram below shows how they interact:
 
 ```mermaid
 graph TD
-    SQ["🔍 sonarqube<br/><i>~976 rules · highest precedence</i>"]
+    SQ["🔍 sonarqube-audit<br/><i>~976 rules · full codebase audit</i>"]
     AG["🅰️ angular-standards<br/><i>components · signals · forms · routing</i>"]
     TS["🟦 typescript-standards<br/><i>typing · architecture · design principles</i>"]
     GC["📝 git-commit<br/><i>conventional commits · auto staging</i>"]
 
-    SQ -. "overrides" .-> AG
-    SQ -. "overrides" .-> TS
+    SQ -. "generates report" .-> AG
+    SQ -. "generates report" .-> TS
     AG -- "loads" --> TS
     AG -- "delegates commits" --> GC
 
@@ -59,10 +59,9 @@ graph TD
     style GC fill:#1a1a2e,stroke:#2ecc71,color:#fff
 ```
 
-> **Precedence:** 🔍 `sonarqube` > 🅰️ `angular-standards` > 🟦 `typescript-standards`
+> **Composition:** 🅰️ `angular-standards` loads 🟦 `typescript-standards` and delegates commits to 📝 `git-commit`
 >
-> - Framework-specific rules (Angular) prevail for ecosystem conventions
-> - Language-level rules (TypeScript) prevail for general design & typing
+> **Audit:** 🔍 `sonarqube-audit` is standalone — audits any TS or Java project independently
 
 ---
 
@@ -108,7 +107,7 @@ skills/
 │       ├── types-generics.md
 │       ├── architecture-api-design.md
 │       └── ...
-├── 🔍 sonarqube/
+├── 🔍 sonarqube-audit/
 │   ├── SKILL.md
 │   └── references/                 # 47 reference documents
 │       ├── typescript/             # 25 docs (TS-specific rules)
