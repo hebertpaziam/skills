@@ -41,39 +41,28 @@ They are **agent-agnostic** — designed to work with any AI assistant that supp
 
 Skills are designed to work together. The diagram below shows how they interact:
 
-```
-+------------------------------------------------------+
-|                                                      |
-|   sonarqube                                          |
-|   ............................                       |
-|   Highest precedence. Overrides                      |
-|   any conflicting rules below.                       |
-|                                                      |
-+------------------------------------------------------+
-|                                                      |
-|   angular-standards                                  |
-|       |                                              |
-|       +-- loads --> typescript-standards              |
-|       |             (shared contracts, typing,       |
-|       |              design)                         |
-|       |                                              |
-|       +-- delegates --> git-commit                   |
-|                         (commit workflow)             |
-|                                                      |
-+------------------------------------------------------+
-|                                                      |
-|   typescript-standards                               |
-|   ............................                       |
-|   Standalone for non-Angular TS projects.            |
-|   Complementary when used with angular-standards.    |
-|                                                      |
-+------------------------------------------------------+
+```mermaid
+graph TD
+    SQ["🔍 sonarqube<br/><i>~976 rules · highest precedence</i>"]
+    AG["🅰️ angular-standards<br/><i>components · signals · forms · routing</i>"]
+    TS["🟦 typescript-standards<br/><i>typing · architecture · design principles</i>"]
+    GC["📝 git-commit<br/><i>conventional commits · auto staging</i>"]
+
+    SQ -. "overrides" .-> AG
+    SQ -. "overrides" .-> TS
+    AG -- "loads" --> TS
+    AG -- "delegates commits" --> GC
+
+    style SQ fill:#1a1a2e,stroke:#e94560,color:#fff
+    style AG fill:#1a1a2e,stroke:#dd2476,color:#fff
+    style TS fill:#1a1a2e,stroke:#3498db,color:#fff
+    style GC fill:#1a1a2e,stroke:#2ecc71,color:#fff
 ```
 
-**Precedence rules:**
-- 🔍 `sonarqube` > 🅰️ `angular-standards` > 🟦 `typescript-standards`
-- Framework-specific rules (Angular) prevail for ecosystem conventions
-- Language-level rules (TypeScript) prevail for general design & typing
+> **Precedence:** 🔍 `sonarqube` > 🅰️ `angular-standards` > 🟦 `typescript-standards`
+>
+> - Framework-specific rules (Angular) prevail for ecosystem conventions
+> - Language-level rules (TypeScript) prevail for general design & typing
 
 ---
 
