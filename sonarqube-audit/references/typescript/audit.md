@@ -48,11 +48,11 @@ O relatório gerado DEVE seguir exatamente este template. Substituir todos os pl
 - [Arquivos com Violações](#-arquivos-com-violações)
 - [Regras Mais Violadas](#-regras-mais-violadas)
 - [Plano de Ação](#-plano-de-ação)
-  - [Fase 1 — Correções Urgentes e Rápidas](#fase-1--correções-urgentes-e-rápidas)
-  - [Fase 2 — Correções Urgentes com Refatoração](#fase-2--correções-urgentes-com-refatoração)
-  - [Fase 3 — Melhorias de Qualidade Rápidas](#fase-3--melhorias-de-qualidade-rápidas)
-  - [Fase 4 — Melhorias com Refatoração](#fase-4--melhorias-com-refatoração)
-  - [Fase 5 — Ajustes Finos](#fase-5--ajustes-finos)
+  - [🔴 Fase 1 — Correções Urgentes e Rápidas](#-fase-1--correções-urgentes-e-rápidas)
+  - [🟠 Fase 2 — Correções Urgentes com Refatoração](#-fase-2--correções-urgentes-com-refatoração)
+  - [🟡 Fase 3 — Melhorias de Qualidade Rápidas](#-fase-3--melhorias-de-qualidade-rápidas)
+  - [🔵 Fase 4 — Melhorias com Refatoração](#-fase-4--melhorias-com-refatoração)
+  - [🟢 Fase 5 — Ajustes Finos](#-fase-5--ajustes-finos)
 - [Glossário](#-glossário)
 - [Prompt para Correção Automatizada](#-prompt-para-correção-automatizada)
 
@@ -128,7 +128,7 @@ Lista completa de todos os arquivos com violações detectadas, ordenados por se
 
 O plano está organizado em **5 fases**, priorizando por criticidade (eixo principal) e facilidade de correção (desempate). Comece pela Fase 1 e avance sequencialmente.
 
-### Fase 1 — Correções Urgentes e Rápidas
+### 🔴 Fase 1 — Correções Urgentes e Rápidas
 > 🔴🟠 BLOCKER + CRITICAL | ⚡ Esforço ≤ 5min por item
 > **Total:** {fase1_total} violações | **Esforço estimado:** {fase1_esforco}
 
@@ -137,7 +137,7 @@ O plano está organizado em **5 fases**, priorizando por criticidade (eixo princ
 | 1 | `{arquivo}` | {linha} | `{rule}` | {problema} | {como_corrigir} | {esforco} |
 | ... | ... | ... | ... | ... | ... | ... |
 
-### Fase 2 — Correções Urgentes com Refatoração
+### 🟠 Fase 2 — Correções Urgentes com Refatoração
 > 🔴🟠 BLOCKER + CRITICAL | 🔧 Esforço > 5min por item
 > **Total:** {fase2_total} violações | **Esforço estimado:** {fase2_esforco}
 
@@ -145,7 +145,7 @@ O plano está organizado em **5 fases**, priorizando por criticidade (eixo princ
 |---|---------|:-----:|-------|----------|---------------|:-------:|
 | ... | ... | ... | ... | ... | ... | ... |
 
-### Fase 3 — Melhorias de Qualidade Rápidas
+### 🟡 Fase 3 — Melhorias de Qualidade Rápidas
 > 🟡 MAJOR | ⚡ Esforço ≤ 5min por item
 > **Total:** {fase3_total} violações | **Esforço estimado:** {fase3_esforco}
 
@@ -153,7 +153,7 @@ O plano está organizado em **5 fases**, priorizando por criticidade (eixo princ
 |---|---------|:-----:|-------|----------|---------------|:-------:|
 | ... | ... | ... | ... | ... | ... | ... |
 
-### Fase 4 — Melhorias com Refatoração
+### 🔵 Fase 4 — Melhorias com Refatoração
 > 🟡 MAJOR | 🔧 Esforço > 5min por item
 > **Total:** {fase4_total} violações | **Esforço estimado:** {fase4_esforco}
 
@@ -161,7 +161,7 @@ O plano está organizado em **5 fases**, priorizando por criticidade (eixo princ
 |---|---------|:-----:|-------|----------|---------------|:-------:|
 | ... | ... | ... | ... | ... | ... | ... |
 
-### Fase 5 — Ajustes Finos
+### 🟢 Fase 5 — Ajustes Finos
 > 🔵⚪ MINOR + INFO
 > **Total:** {fase5_total} violações | **Esforço estimado:** {fase5_esforco}
 

@@ -47,6 +47,26 @@ O relatório gerado **DEVE** seguir rigorosamente o template definido nos arquiv
 
 - **Todas as seções do template são obrigatórias** — mesmo que uma seção tenha zero itens, ela deve aparecer com a indicação "Nenhuma violação encontrada nesta fase."
 - **A ordem das seções nunca muda** — Índice → Resumo Executivo → Metodologia e Limitações → Severidade → Arquivos com Violações → Regras Mais Violadas → Plano de Ação (Fases 1-5) → Glossário → Prompt
+- **Ícones nos títulos são OBRIGATÓRIOS** — Cada seção deve incluir o emoji correspondente conforme a tabela abaixo. NUNCA omitir os ícones:
+
+  | Seção | Título com Ícone |
+  |-------|-----------------|
+  | Título principal | `# 🔍 Relatório de Auditoria SonarQube` |
+  | Índice | `## 📋 Índice` |
+  | Resumo Executivo | `## 📊 Resumo Executivo` |
+  | Metodologia | `## ⚠️ Metodologia e Limitações` |
+  | Severidade | `## 🎯 Visão Geral por Severidade` |
+  | Arquivos | `## 📁 Arquivos com Violações` |
+  | Regras | `## 📏 Regras Mais Violadas` |
+  | Plano de Ação | `## 🚀 Plano de Ação` |
+  | Fase 1 | `### 🔴 Fase 1 — Correções Urgentes e Rápidas` |
+  | Fase 2 | `### 🟠 Fase 2 — Correções Urgentes com Refatoração` |
+  | Fase 3 | `### 🟡 Fase 3 — Melhorias de Qualidade Rápidas` |
+  | Fase 4 | `### 🔵 Fase 4 — Melhorias com Refatoração` |
+  | Fase 5 | `### 🟢 Fase 5 — Ajustes Finos` |
+  | Glossário | `## 📖 Glossário` |
+  | Prompt | `## 🤖 Prompt para Correção Automatizada` |
+
 - **O glossário é sempre o mesmo** — termos e definições são fixos, não variam por projeto
 - **As 5 fases do plano de ação são sempre as mesmas** — a matriz criticidade x facilidade não muda
 - **O formato das tabelas é fixo** — mesmas colunas, mesma ordem, mesmos headers
