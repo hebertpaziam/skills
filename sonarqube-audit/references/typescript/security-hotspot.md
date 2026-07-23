@@ -1,69 +1,69 @@
 # security-hotspot
-- typescript:S1523 — Dynamically executing code is security-sensitive
-- typescript:S2245 — Using pseudorandom number generators (PRNGs) is security-sensitive
-- typescript:S2598 — File uploads should be restricted
-- typescript:S2819 — Origins should be verified during cross-origin communications
-- typescript:S4502 — Disabling CSRF protections is security-sensitive
-- typescript:S4784 — Using regular expressions is security-sensitive
-- typescript:S4790 — Using weak hashing algorithms is security-sensitive
-- typescript:S4817 — Executing XPath expressions is security-sensitive
-- typescript:S4818 — Using Sockets is security-sensitive
-- typescript:S4829 — Reading the Standard Input is security-sensitive
-- typescript:S5042 — Expanding archive files without controlling resource consumption is security-sensitive
-- typescript:S5332 — Using clear-text protocols is security-sensitive
-- typescript:S5443 — Using publicly writable directories is security-sensitive
-- typescript:S5547 — Cipher algorithms should be robust
-- typescript:S5659 — JWT should be signed and verified with strong cipher algorithms
-- typescript:S5852 — Using slow regular expressions is security-sensitive
-- typescript:S5876 — A new session should be created during user authentication
-- typescript:S6249 — Authorizing HTTP communications with S3 buckets is security-sensitive
-- typescript:S6281 — Allowing public ACLs or policies on a S3 bucket is security-sensitive
-- typescript:S1314 — Octal values should not be used
-- typescript:S2068 — Hard-coded passwords are security-sensitive
-- typescript:S6265 — Granting access to S3 buckets to all or authenticated users is security-sensitive
-- typescript:S6270 — Policies authorizing public access to resources are security-sensitive
-- typescript:S6302 — Policies granting all privileges are security-sensitive
-- typescript:S6304 — Policies granting access to all resources of an account are security-sensitive
-- typescript:S6329 — Allowing public network access to cloud resources is security-sensitive
-- typescript:S6333 — Creating public APIs is security-sensitive
-- typescript:S6418 — Hard-coded secrets are security-sensitive
-- tssecurity:S6287 — Applications should not create session cookies from untrusted input
-- tssecurity:S6350 — Constructing arguments of system commands from user input is security-sensitive
-- typescript:S106 — Standard outputs should not be used directly to log anything
-- typescript:S2077 — Formatting SQL queries is security-sensitive
-- typescript:S2612 — Setting loose POSIX file permissions is security-sensitive
-- typescript:S4721 — Using shell interpreter when executing OS commands is security-sensitive
-- typescript:S5247 — Disabling auto-escaping in template engines is security-sensitive
-- typescript:S5604 — Using intrusive permissions is security-sensitive
-- typescript:S5691 — Statically serving hidden files is security-sensitive
-- typescript:S5693 — Allowing requests with excessive content length is security-sensitive
-- typescript:S6275 — Using unencrypted EBS volumes is security-sensitive
-- typescript:S6303 — Using unencrypted RDS DB resources is security-sensitive
-- typescript:S6308 — Using unencrypted Elasticsearch domains is security-sensitive
-- typescript:S6319 — Using unencrypted SageMaker notebook instances is security-sensitive
-- typescript:S6327 — Using unencrypted SNS topics is security-sensitive
-- typescript:S6330 — Using unencrypted SQS queues is security-sensitive
-- typescript:S6332 — Using unencrypted EFS file systems is security-sensitive
-- typescript:S1313 — Using hardcoded IP addresses is security-sensitive
-- typescript:S2092 — Creating cookies without the "secure" flag is security-sensitive
-- typescript:S2255 — Writing cookies is security-sensitive
-- typescript:S3330 — Creating cookies without the "HttpOnly" flag is security-sensitive
-- typescript:S4036 — Searching OS commands in PATH is security-sensitive
-- typescript:S4507 — Delivering code in production with debug features activated is security-sensitive
-- typescript:S5122 — Having a permissive Cross-Origin Resource Sharing policy is security-sensitive
-- typescript:S5148 — Authorizing an opened window to access back to the originating window is security-sensitive
-- typescript:S5689 — Disclosing fingerprints from web application technologies is security-sensitive
-- typescript:S5725 — Using remote artifacts without integrity checks is security-sensitive
-- typescript:S5728 — Disabling content security policy fetch directives is security-sensitive
-- typescript:S5730 — Allowing mixed-content is security-sensitive
-- typescript:S5732 — Disabling content security policy frame-ancestors directive is security-sensitive
-- typescript:S5734 — Allowing browsers to sniff MIME types is security-sensitive
-- typescript:S5736 — Disabling strict HTTP no-referrer policy is security-sensitive
-- typescript:S5739 — Disabling Strict-Transport-Security policy is security-sensitive
-- typescript:S5742 — Disabling Certificate Transparency monitoring is security-sensitive
-- typescript:S5743 — Allowing browsers to perform DNS prefetching is security-sensitive
-- typescript:S5757 — Allowing confidential information to be logged is security-sensitive
-- typescript:S5759 — Forwarding client IP address is security-sensitive
-- typescript:S6245 — Disabling server-side encryption of S3 buckets is security-sensitive
-- typescript:S6252 — Disabling versioning of S3 buckets is security-sensitive
-- typescript:S6321 — Administration services access should be restricted to specific IP addresses
+- typescript:S1523 — Dynamically executing code is security-sensitive (BLOCKER)
+- typescript:S2245 — Using pseudorandom number generators (PRNGs) is security-sensitive (CRITICAL)
+- typescript:S2598 — File uploads should be restricted (CRITICAL)
+- typescript:S2819 — Origins should be verified during cross-origin communications (CRITICAL)
+- typescript:S4502 — Disabling CSRF protections is security-sensitive (BLOCKER)
+- typescript:S4784 — Using regular expressions is security-sensitive (MAJOR)
+- typescript:S4790 — Using weak hashing algorithms is security-sensitive (CRITICAL)
+- typescript:S4817 — Executing XPath expressions is security-sensitive (MAJOR)
+- typescript:S4818 — Using Sockets is security-sensitive (MAJOR)
+- typescript:S4829 — Reading the Standard Input is security-sensitive (MAJOR)
+- typescript:S5042 — Expanding archive files without controlling resource consumption is security-sensitive (CRITICAL)
+- typescript:S5332 — Using clear-text protocols is security-sensitive (CRITICAL)
+- typescript:S5443 — Using publicly writable directories is security-sensitive (MAJOR)
+- typescript:S5547 — Cipher algorithms should be robust (MAJOR)
+- typescript:S5659 — JWT should be signed and verified with strong cipher algorithms (CRITICAL)
+- typescript:S5852 — Using slow regular expressions is security-sensitive (MAJOR)
+- typescript:S5876 — A new session should be created during user authentication (CRITICAL)
+- typescript:S6249 — Authorizing HTTP communications with S3 buckets is security-sensitive (MAJOR)
+- typescript:S6281 — Allowing public ACLs or policies on a S3 bucket is security-sensitive (MAJOR)
+- typescript:S1314 — Octal values should not be used (MINOR)
+- typescript:S2068 — Hard-coded passwords are security-sensitive (BLOCKER)
+- typescript:S6265 — Granting access to S3 buckets to all or authenticated users is security-sensitive (MAJOR)
+- typescript:S6270 — Policies authorizing public access to resources are security-sensitive (MAJOR)
+- typescript:S6302 — Policies granting all privileges are security-sensitive (MAJOR)
+- typescript:S6304 — Policies granting access to all resources of an account are security-sensitive (MAJOR)
+- typescript:S6329 — Allowing public network access to cloud resources is security-sensitive (MAJOR)
+- typescript:S6333 — Creating public APIs is security-sensitive (MAJOR)
+- typescript:S6418 — Hard-coded secrets are security-sensitive (BLOCKER)
+- tssecurity:S6287 — Applications should not create session cookies from untrusted input (BLOCKER)
+- tssecurity:S6350 — Constructing arguments of system commands from user input is security-sensitive (CRITICAL)
+- typescript:S106 — Standard outputs should not be used directly to log anything (CRITICAL)
+- typescript:S2077 — Formatting SQL queries is security-sensitive (BLOCKER)
+- typescript:S2612 — Setting loose POSIX file permissions is security-sensitive (MAJOR)
+- typescript:S4721 — Using shell interpreter when executing OS commands is security-sensitive (BLOCKER)
+- typescript:S5247 — Disabling auto-escaping in template engines is security-sensitive (CRITICAL)
+- typescript:S5604 — Using intrusive permissions is security-sensitive (MAJOR)
+- typescript:S5691 — Statically serving hidden files is security-sensitive (MAJOR)
+- typescript:S5693 — Allowing requests with excessive content length is security-sensitive (CRITICAL)
+- typescript:S6275 — Using unencrypted EBS volumes is security-sensitive (MAJOR)
+- typescript:S6303 — Using unencrypted RDS DB resources is security-sensitive (MAJOR)
+- typescript:S6308 — Using unencrypted Elasticsearch domains is security-sensitive (MAJOR)
+- typescript:S6319 — Using unencrypted SageMaker notebook instances is security-sensitive (MAJOR)
+- typescript:S6327 — Using unencrypted SNS topics is security-sensitive (MAJOR)
+- typescript:S6330 — Using unencrypted SQS queues is security-sensitive (MAJOR)
+- typescript:S6332 — Using unencrypted EFS file systems is security-sensitive (MAJOR)
+- typescript:S1313 — Using hardcoded IP addresses is security-sensitive (CRITICAL)
+- typescript:S2092 — Creating cookies without the "secure" flag is security-sensitive (CRITICAL)
+- typescript:S2255 — Writing cookies is security-sensitive (MAJOR)
+- typescript:S3330 — Creating cookies without the "HttpOnly" flag is security-sensitive (CRITICAL)
+- typescript:S4036 — Searching OS commands in PATH is security-sensitive (MAJOR)
+- typescript:S4507 — Delivering code in production with debug features activated is security-sensitive (CRITICAL)
+- typescript:S5122 — Having a permissive Cross-Origin Resource Sharing policy is security-sensitive (CRITICAL)
+- typescript:S5148 — Authorizing an opened window to access back to the originating window is security-sensitive (MAJOR)
+- typescript:S5689 — Disclosing fingerprints from web application technologies is security-sensitive (CRITICAL)
+- typescript:S5725 — Using remote artifacts without integrity checks is security-sensitive (MAJOR)
+- typescript:S5728 — Disabling content security policy fetch directives is security-sensitive (MAJOR)
+- typescript:S5730 — Allowing mixed-content is security-sensitive (MAJOR)
+- typescript:S5732 — Disabling content security policy frame-ancestors directive is security-sensitive (MAJOR)
+- typescript:S5734 — Allowing browsers to sniff MIME types is security-sensitive (MAJOR)
+- typescript:S5736 — Disabling strict HTTP no-referrer policy is security-sensitive (MAJOR)
+- typescript:S5739 — Disabling Strict-Transport-Security policy is security-sensitive (MAJOR)
+- typescript:S5742 — Disabling Certificate Transparency monitoring is security-sensitive (MAJOR)
+- typescript:S5743 — Allowing browsers to perform DNS prefetching is security-sensitive (MAJOR)
+- typescript:S5757 — Allowing confidential information to be logged is security-sensitive (MAJOR)
+- typescript:S5759 — Forwarding client IP address is security-sensitive (MAJOR)
+- typescript:S6245 — Disabling server-side encryption of S3 buckets is security-sensitive (MAJOR)
+- typescript:S6252 — Disabling versioning of S3 buckets is security-sensitive (MAJOR)
+- typescript:S6321 — Administration services access should be restricted to specific IP addresses (MAJOR)

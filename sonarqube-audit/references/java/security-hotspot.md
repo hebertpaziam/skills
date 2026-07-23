@@ -1,40 +1,40 @@
 # security-hotspot
-- java:S1313 — Using hardcoded IP addresses is security-sensitive
-- java:S2068 — Hard-coded credentials are security-sensitive (credentialWords=password,passwd,pwd,passphrase,java.naming.security.credentials)
-- java:S2077 — Formatting SQL queries is security-sensitive
-- java:S2092 — Creating cookies without the "secure" flag is security-sensitive
-- java:S2245 — Using pseudorandom number generators (PRNGs) is security-sensitive
-- java:S2254 — HTTP sessions should not allow unrestricted access
-- java:S2257 — Using a non-standard cryptographic algorithm is security-sensitive
-- java:S2612 — Setting loose POSIX file permissions is security-sensitive
-- java:S3330 — Creating cookies without the "HttpOnly" flag is security-sensitive
-- java:S3752 — Allowing requests with excessive content length is security-sensitive
-- java:S4036 — Using command line arguments is security-sensitive
-- java:S4434 — Connecting to an LDAP server without proper authentication is security-sensitive
-- java:S4502 — Disabling CSRF protections is security-sensitive
-- java:S4507 — Delivering code in production with debug features activated is security-sensitive
-- java:S4512 — Setting JavaBean properties is security-sensitive
-- java:S4544 — Using unsafe Jackson deserialization configuration is security-sensitive
-- java:S4790 — Using weak hashing algorithms is security-sensitive
-- java:S5042 — Expanding archive files without controlling resource consumption is security-sensitive
-- java:S5122 — Having a permissive Cross-Origin Resource Sharing policy is security-sensitive
-- java:S5247 — Disabling auto-escaping in template engines is security-sensitive
-- java:S5301 — "ActiveMQConnectionFactory" should not be vulnerable to malicious code deserialization
-- java:S5320 — Broadcasting intents is security-sensitive
-- java:S5322 — Allowing external or world storage access is security-sensitive
-- java:S5324 — Using queries to the content resolver is security-sensitive
-- java:S5332 — Using clear-text protocols is security-sensitive
-- java:S5443 — Using publicly writable directories is security-sensitive
-- java:S5689 — Disclosing fingerprints from web application technologies is security-sensitive
-- java:S5693 — Allowing requests with excessive content length is security-sensitive (fileUploadSizeLimit=8388608)
-- java:S5804 — Using unprotected debug endpoints is security-sensitive
-- java:S6263 — Dynamic Class Loading should not be used
-- java:S6288 — ACL permissions should be checked when managing Android notifications
-- java:S6291 — Using unencrypted databases in mobile applications is security-sensitive
-- java:S6293 — Using biometric authentication without a cryptographic solution is security-sensitive
-- java:S6300 — Android KeyStore keys should be used properly
-- java:S6362 — Using regex patterns with vulnerable inputs is security-sensitive
-- java:S6363 — Using permissive model binder is security-sensitive
-- java:S6418 — Secrets should not be committed to source code (secretWords=api[_.-]?key,auth,credential,secret,token, randomnessSensibility=5.0)
-- java:S6437 — Credentials should not be hard-coded
-- javasecurity:S6350 — SSRF attacks should be prevented
+- java:S1313 — Using hardcoded IP addresses is security-sensitive (CRITICAL)
+- java:S2068 — Hard-coded credentials are security-sensitive (credentialWords=password,passwd,pwd,passphrase,java.naming.security.credentials) (BLOCKER)
+- java:S2077 — Formatting SQL queries is security-sensitive (BLOCKER)
+- java:S2092 — Creating cookies without the "secure" flag is security-sensitive (CRITICAL)
+- java:S2245 — Using pseudorandom number generators (PRNGs) is security-sensitive (CRITICAL)
+- java:S2254 — HTTP sessions should not allow unrestricted access (MAJOR)
+- java:S2257 — Using a non-standard cryptographic algorithm is security-sensitive (CRITICAL)
+- java:S2612 — Setting loose POSIX file permissions is security-sensitive (MAJOR)
+- java:S3330 — Creating cookies without the "HttpOnly" flag is security-sensitive (CRITICAL)
+- java:S3752 — Allowing requests with excessive content length is security-sensitive (MAJOR)
+- java:S4036 — Using command line arguments is security-sensitive (MAJOR)
+- java:S4434 — Connecting to an LDAP server without proper authentication is security-sensitive (CRITICAL)
+- java:S4502 — Disabling CSRF protections is security-sensitive (BLOCKER)
+- java:S4507 — Delivering code in production with debug features activated is security-sensitive (CRITICAL)
+- java:S4512 — Setting JavaBean properties is security-sensitive (MAJOR)
+- java:S4544 — Using unsafe Jackson deserialization configuration is security-sensitive (CRITICAL)
+- java:S4790 — Using weak hashing algorithms is security-sensitive (CRITICAL)
+- java:S5042 — Expanding archive files without controlling resource consumption is security-sensitive (CRITICAL)
+- java:S5122 — Having a permissive Cross-Origin Resource Sharing policy is security-sensitive (CRITICAL)
+- java:S5247 — Disabling auto-escaping in template engines is security-sensitive (CRITICAL)
+- java:S5301 — "ActiveMQConnectionFactory" should not be vulnerable to malicious code deserialization (MAJOR)
+- java:S5320 — Broadcasting intents is security-sensitive (MAJOR)
+- java:S5322 — Allowing external or world storage access is security-sensitive (MAJOR)
+- java:S5324 — Using queries to the content resolver is security-sensitive (MAJOR)
+- java:S5332 — Using clear-text protocols is security-sensitive (CRITICAL)
+- java:S5443 — Using publicly writable directories is security-sensitive (MAJOR)
+- java:S5689 — Disclosing fingerprints from web application technologies is security-sensitive (CRITICAL)
+- java:S5693 — Allowing requests with excessive content length is security-sensitive (fileUploadSizeLimit=8388608) (CRITICAL)
+- java:S5804 — Using unprotected debug endpoints is security-sensitive (MAJOR)
+- java:S6263 — Dynamic Class Loading should not be used (MAJOR)
+- java:S6288 — ACL permissions should be checked when managing Android notifications (CRITICAL)
+- java:S6291 — Using unencrypted databases in mobile applications is security-sensitive (CRITICAL)
+- java:S6293 — Using biometric authentication without a cryptographic solution is security-sensitive (CRITICAL)
+- java:S6300 — Android KeyStore keys should be used properly (CRITICAL)
+- java:S6362 — Using regex patterns with vulnerable inputs is security-sensitive (CRITICAL)
+- java:S6363 — Using permissive model binder is security-sensitive (CRITICAL)
+- java:S6418 — Secrets should not be committed to source code (secretWords=api[_.-]?key,auth,credential,secret,token, randomnessSensibility=5.0) (BLOCKER)
+- java:S6437 — Credentials should not be hard-coded (BLOCKER)
+- javasecurity:S6350 — SSRF attacks should be prevented (CRITICAL)

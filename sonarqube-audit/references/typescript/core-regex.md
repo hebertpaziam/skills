@@ -1,24 +1,24 @@
 # core-regex
-- tssecurity:S2631 — Regular expressions should not be vulnerable to Denial of Service attacks
-- typescript:S5856 — Regular expressions should be syntactically valid
-- typescript:S2639 — Empty character classes should not be used
-- typescript:S5843 — Regular expressions should not be too complicated
-- typescript:S5850 — Alternatives in regular expressions should be grouped when used with anchors
-- typescript:S5860 — Names of regular expressions named groups should be used
-- typescript:S5868 — Unicode Grapheme Clusters should be avoided inside regex character classes
-- typescript:S5869 — Character classes in regular expressions should not contain the same character twice
-- typescript:S6019 — Reluctant quantifiers in regular expressions should be followed by an expression that can't match the empty string
-- typescript:S6035 — Single-character alternations in regular expressions should be replaced with character classes
-- typescript:S6323 — Alternation in regular expressions should not contain empty alternatives
-- typescript:S6324 — Regular expressions should not contain control characters
-- typescript:S6326 — Regular expressions should not contain multiple spaces
-- typescript:S6328 — Replacement strings should reference existing regular expression groups
-- typescript:S6331 — Regular expressions should not contain empty groups
-- typescript:S6351 — Regular expressions with the global flag should be used with caution
-- typescript:S6397 — Character classes in regular expressions should not contain only one character
-- typescript:S6535 — Unnecessary character escapes should be removed
-- typescript:S5842 — Repeated patterns in regular expressions should not match the empty string
-- typescript:S5867 — Regular expressions using Unicode character classes or property escapes should enable the unicode flag
-- typescript:S6325 — Regular expression literals should be used when possible
-- typescript:S6353 — Regular expression quantifiers and character classes should be used concisely
-- typescript:S6594 — "RegExp.exec()" should be preferred over "String.match()"
+- tssecurity:S2631 — Regular expressions should not be vulnerable to Denial of Service attacks (MAJOR)
+- typescript:S5856 — Regular expressions should be syntactically valid (MAJOR)
+- typescript:S2639 — Empty character classes should not be used (MAJOR)
+- typescript:S5843 — Regular expressions should not be too complicated (MAJOR)
+- typescript:S5850 — Alternatives in regular expressions should be grouped when used with anchors (MAJOR)
+- typescript:S5860 — Names of regular expressions named groups should be used (MAJOR)
+- typescript:S5868 — Unicode Grapheme Clusters should be avoided inside regex character classes (MAJOR)
+- typescript:S5869 — Character classes in regular expressions should not contain the same character twice (MAJOR)
+- typescript:S6019 — Reluctant quantifiers in regular expressions should be followed by an expression that can't match the empty string (MAJOR)
+- typescript:S6035 — Single-character alternations in regular expressions should be replaced with character classes (MAJOR)
+- typescript:S6323 — Alternation in regular expressions should not contain empty alternatives (MAJOR)
+- typescript:S6324 — Regular expressions should not contain control characters (MAJOR)
+- typescript:S6326 — Regular expressions should not contain multiple spaces (MAJOR)
+- typescript:S6328 — Replacement strings should reference existing regular expression groups (MAJOR)
+- typescript:S6331 — Regular expressions should not contain empty groups (MAJOR)
+- typescript:S6351 — Regular expressions with the global flag should be used with caution (MAJOR)
+- typescript:S6397 — Character classes in regular expressions should not contain only one character (MAJOR)
+- typescript:S6535 — Unnecessary character escapes should be removed (MAJOR)
+- typescript:S5842 — Repeated patterns in regular expressions should not match the empty string (MAJOR)
+- typescript:S5867 — Regular expressions using Unicode character classes or property escapes should enable the unicode flag (MAJOR)
+- typescript:S6325 — Regular expression literals should be used when possible (MAJOR)
+- typescript:S6353 — Regular expression quantifiers and character classes should be used concisely (MAJOR)
+- typescript:S6594 — "RegExp.exec()" should be preferred over "String.match()" (MAJOR)

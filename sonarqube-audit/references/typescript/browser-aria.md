@@ -1,16 +1,16 @@
 # browser-aria
-- typescript:S6793 — ARIA properties in DOM elements should have valid values
-- typescript:S6807 — DOM elements with ARIA roles should have the required properties
-- typescript:S6811 — DOM elements with ARIA role should only have supported properties
-- typescript:S6819 — Prefer tag over ARIA role
-- typescript:S6821 — DOM elements with ARIA roles should have a valid non-abstract role
-- typescript:S6822 — No redundant ARIA role
-- typescript:S6824 — No ARIA role or property for unsupported DOM elements
-- typescript:S6825 — Focusable elements should not have "aria-hidden" attribute
-- typescript:S6842 — Non-interactive DOM elements should not have interactive ARIA roles
-- typescript:S6843 — Interactive DOM elements should not have non-interactive ARIA roles
-- typescript:S6823 — DOM elements with the `aria-activedescendant` property should be accessible via the tab key
-- typescript:S6847 — Non-interactive elements shouldn't have event handlers
-- typescript:S6848 — Non-interactive DOM elements should not have an interactive handler
-- typescript:S6851 — Images should have a non-redundant alternate description
-- typescript:S6852 — Elements with an interactive role should support focus
+- typescript:S6793 — ARIA properties in DOM elements should have valid values (MAJOR)
+- typescript:S6807 — DOM elements with ARIA roles should have the required properties (MAJOR)
+- typescript:S6811 — DOM elements with ARIA role should only have supported properties (MAJOR)
+- typescript:S6819 — Prefer tag over ARIA role (MAJOR)
+- typescript:S6821 — DOM elements with ARIA roles should have a valid non-abstract role (MAJOR)
+- typescript:S6822 — No redundant ARIA role (MAJOR)
+- typescript:S6824 — No ARIA role or property for unsupported DOM elements (MAJOR)
+- typescript:S6825 — Focusable elements should not have "aria-hidden" attribute (MAJOR)
+- typescript:S6842 — Non-interactive DOM elements should not have interactive ARIA roles (MAJOR)
+- typescript:S6843 — Interactive DOM elements should not have non-interactive ARIA roles (MAJOR)
+- typescript:S6823 — DOM elements with the `aria-activedescendant` property should be accessible via the tab key (MAJOR)
+- typescript:S6847 — Non-interactive elements shouldn't have event handlers (MAJOR)
+- typescript:S6848 — Non-interactive DOM elements should not have an interactive handler (MAJOR)
+- typescript:S6851 — Images should have a non-redundant alternate description (MAJOR)
+- typescript:S6852 — Elements with an interactive role should support focus (MAJOR)

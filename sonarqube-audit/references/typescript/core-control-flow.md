@@ -1,39 +1,39 @@
 # core-control-flow
-- typescript:S1067 — Expressions should not be too complex
-- typescript:S1143 — Jump statements should not occur in "finally" blocks
-- typescript:S121 — Control structures should use curly braces
-- typescript:S126 — "if ... else if" constructs should end with "else" clauses
-- typescript:S131 — "switch" statements should have "default" clauses
-- typescript:S1821 — "switch" statements should not be nested
-- typescript:S1994 — "for" loop increment clauses should modify the loops' counters
-- typescript:S3812 — Parentheses should be used when negating "in" and "instanceof" operations
-- typescript:S3972 — Conditionals should start on new lines
-- typescript:S3973 — A conditionally executed single line should be denoted by indentation
-- typescript:S4524 — "default" clauses should be last
-- typescript:S128 — Switch cases should end with an unconditional "break" statement
-- typescript:S1066 — Mergeable "if" statements should be combined
-- typescript:S1119 — Labels should not be used
-- typescript:S1154 — Results of operations on strings should not be ignored
-- typescript:S1439 — Only "while", "do", "for" and "switch" statements should be labelled
-- typescript:S1479 — "switch" statements should not have too many "case" clauses
-- typescript:S1515 — Functions should not be defined inside loops
-- typescript:S1535 — "for...in" loops should filter properties before acting on them
-- typescript:S1751 — Loops with at most one iteration should be refactored
-- typescript:S1763 — All code should be reachable
-- typescript:S1871 — Two branches in a conditional structure should not have exactly the same implementation
-- typescript:S2310 — Loop counters should not be assigned within the loop body
-- typescript:S2589 — Boolean expressions should not be gratuitous
-- typescript:S2681 — Multiline blocks should be enclosed in curly braces
-- typescript:S3923 — All branches in a conditional structure should not have exactly the same implementation
-- typescript:S3981 — Collection size and array length comparisons should make sense
-- typescript:S4139 — "for in" should not be used with iterables
-- typescript:S4144 — Functions should not have identical implementations
-- typescript:S6638 — Binary expressions should not always return the same value
-- typescript:S6660 — If statements should not be the only statement in else blocks
-- typescript:S6836 — "case" and "default" clauses should not contain lexical declarations
-- typescript:S905 — Non-empty statements should change control flow or have at least one side-effect
-- typescript:S1264 — A "while" loop should be used instead of a "for" loop
-- typescript:S1301 — "if" statements should be preferred over "switch" when simpler
-- typescript:S135 — Loops should not contain more than a single "break" or "continue" statement
-- typescript:S4138 — "for of" should be used with Iterables
-- typescript:S909 — "continue" should not be used
+- typescript:S1067 — Expressions should not be too complex (MAJOR)
+- typescript:S1143 — Jump statements should not occur in "finally" blocks (MAJOR)
+- typescript:S121 — Control structures should use curly braces (MAJOR)
+- typescript:S126 — "if ... else if" constructs should end with "else" clauses (MAJOR)
+- typescript:S131 — "switch" statements should have "default" clauses (MAJOR)
+- typescript:S1821 — "switch" statements should not be nested (MAJOR)
+- typescript:S1994 — "for" loop increment clauses should modify the loops' counters (MAJOR)
+- typescript:S3812 — Parentheses should be used when negating "in" and "instanceof" operations (MAJOR)
+- typescript:S3972 — Conditionals should start on new lines (MAJOR)
+- typescript:S3973 — A conditionally executed single line should be denoted by indentation (MAJOR)
+- typescript:S4524 — "default" clauses should be last (MAJOR)
+- typescript:S128 — Switch cases should end with an unconditional "break" statement (MAJOR)
+- typescript:S1066 — Mergeable "if" statements should be combined (MAJOR)
+- typescript:S1119 — Labels should not be used (MAJOR)
+- typescript:S1154 — Results of operations on strings should not be ignored (MAJOR)
+- typescript:S1439 — Only "while", "do", "for" and "switch" statements should be labelled (MAJOR)
+- typescript:S1479 — "switch" statements should not have too many "case" clauses (MAJOR)
+- typescript:S1515 — Functions should not be defined inside loops (MAJOR)
+- typescript:S1535 — "for...in" loops should filter properties before acting on them (MAJOR)
+- typescript:S1751 — Loops with at most one iteration should be refactored (MAJOR)
+- typescript:S1763 — All code should be reachable (MAJOR)
+- typescript:S1871 — Two branches in a conditional structure should not have exactly the same implementation (MAJOR)
+- typescript:S2310 — Loop counters should not be assigned within the loop body (MAJOR)
+- typescript:S2589 — Boolean expressions should not be gratuitous (MAJOR)
+- typescript:S2681 — Multiline blocks should be enclosed in curly braces (MAJOR)
+- typescript:S3923 — All branches in a conditional structure should not have exactly the same implementation (MAJOR)
+- typescript:S3981 — Collection size and array length comparisons should make sense (MAJOR)
+- typescript:S4139 — "for in" should not be used with iterables (MAJOR)
+- typescript:S4144 — Functions should not have identical implementations (MAJOR)
+- typescript:S6638 — Binary expressions should not always return the same value (MAJOR)
+- typescript:S6660 — If statements should not be the only statement in else blocks (MAJOR)
+- typescript:S6836 — "case" and "default" clauses should not contain lexical declarations (MAJOR)
+- typescript:S905 — Non-empty statements should change control flow or have at least one side-effect (MAJOR)
+- typescript:S1264 — A "while" loop should be used instead of a "for" loop (MINOR)
+- typescript:S1301 — "if" statements should be preferred over "switch" when simpler (MINOR)
+- typescript:S135 — Loops should not contain more than a single "break" or "continue" statement (MINOR)
+- typescript:S4138 — "for of" should be used with Iterables (MAJOR)
+- typescript:S909 — "continue" should not be used (MINOR)

@@ -1,11 +1,11 @@
 # core-errors
-- typescript:S1848 — Objects should not be created to be dropped immediately without being used
-- typescript:S2201 — Return values from functions without side effects should not be ignored
-- typescript:S3696 — Literals should not be thrown
-- typescript:S3801 — Functions should use "return" consistently
-- typescript:S6671 — Literals should not be used for promise rejection
-- typescript:S6676 — Calls to ".call()" and ".apply()" methods should not be redundant
-- typescript:S1226 — Initial values of parameters, caught exceptions, and loop variables should not be ignored
-- typescript:S2486 — Exceptions should not be ignored
-- typescript:S2737 — "catch" clauses should do more than rethrow
-- typescript:S3626 — Jump statements should not be redundant
+- typescript:S1848 — Objects should not be created to be dropped immediately without being used (MAJOR)
+- typescript:S2201 — Return values from functions without side effects should not be ignored (MAJOR)
+- typescript:S3696 — Literals should not be thrown (MAJOR)
+- typescript:S3801 — Functions should use "return" consistently (MAJOR)
+- typescript:S6671 — Literals should not be used for promise rejection (MAJOR)
+- typescript:S6676 — Calls to ".call()" and ".apply()" methods should not be redundant (MAJOR)
+- typescript:S1226 — Initial values of parameters, caught exceptions, and loop variables should not be ignored (MAJOR)
+- typescript:S2486 — Exceptions should not be ignored (MAJOR)
+- typescript:S2737 — "catch" clauses should do more than rethrow (MAJOR)
+- typescript:S3626 — Jump statements should not be redundant (MAJOR)

@@ -1,39 +1,39 @@
 # security-injection
-- java:S2115 — Databases should be password-protected
-- java:S2755 — XML parsers should not be vulnerable to XXE attacks
-- java:S4601 — Content-Security-Policy headers should not be permissive
-- java:S4684 — Persistent entities should not be used as arguments of "@RequestMapping" methods
-- java:S5344 — Passwords should not be stored in plain-text or with a fast hashing algorithm
-- java:S5527 — Server hostnames should be verified during SSL/TLS connections
-- java:S5679 — Sources of random data should be provided by the platform
-- java:S5808 — Server-side requests should be validated against an allow list
-- java:S6301 — AES encryption algorithm should use secure mode
-- java:S6373 — XML should be parsed safely
-- java:S6376 — XML entities should not be vulnerable to injection attacks
-- java:S6377 — XML related libraries should not be vulnerable to XXE attacks
-- java:S6432 — Permissions granted via "PermissionCollection" should be checked before being added
-- javasecurity:S2076 — OS commands should not be vulnerable to command injection attacks
-- javasecurity:S2078 — LDAP queries should not be vulnerable to injection attacks
-- javasecurity:S2083 — File paths should not be vulnerable to path traversal attacks
-- javasecurity:S2091 — XPath expressions should not be vulnerable to injection attacks
-- javasecurity:S2631 — Regular expressions should not be vulnerable to Denial of Service attacks
-- javasecurity:S3649 — SQL queries should not be vulnerable to injection attacks
-- javasecurity:S5131 — Endpoints should not be vulnerable to reflected cross-site scripting (XSS) attacks
-- javasecurity:S5135 — Deserialization should not be vulnerable to injection attacks
-- javasecurity:S5144 — HTTP response headers should not be vulnerable to injection attacks
-- javasecurity:S5145 — Logging should not be vulnerable to injection attacks
-- javasecurity:S5146 — HTTP request redirections should not be open to forging attacks
-- javasecurity:S5147 — Cookies should not be vulnerable to injection attacks
-- javasecurity:S5334 — Code should not be vulnerable to permission injection
-- javasecurity:S5496 — Server-side template injection should not be vulnerable
-- javasecurity:S5883 — Exception messages should not be vulnerable to injection
-- javasecurity:S6096 — File access should not be vulnerable to path injection attacks
-- javasecurity:S6173 — HTTP request forwarding should not be open to injection attacks
-- javasecurity:S6287 — HTTP response splitting should be prevented
-- javasecurity:S6384 — User-controlled data should not be used in Reflection API
-- javasecurity:S6390 — User-controlled data should not be used to construct JMX object names
-- javasecurity:S6398 — User-controlled data should not be used in Spring expression language
-- javasecurity:S6399 — User-controlled data should not be used in JPA criteria API calls
-- javasecurity:S6547 — User-controlled data should not be used in JNI calls
-- javasecurity:S6549 — User-controlled data should not be used to build Spring MVC model attributes
-- javasecurity:S7044 — User-controlled data should not be used to build SQL-like NoSQL queries
+- java:S2115 — Databases should be password-protected (BLOCKER)
+- java:S2755 — XML parsers should not be vulnerable to XXE attacks (BLOCKER)
+- java:S4601 — Content-Security-Policy headers should not be permissive (MAJOR)
+- java:S4684 — Persistent entities should not be used as arguments of "@RequestMapping" methods (BLOCKER)
+- java:S5344 — Passwords should not be stored in plain-text or with a fast hashing algorithm (MAJOR)
+- java:S5527 — Server hostnames should be verified during SSL/TLS connections (MAJOR)
+- java:S5679 — Sources of random data should be provided by the platform (MAJOR)
+- java:S5808 — Server-side requests should be validated against an allow list (MAJOR)
+- java:S6301 — AES encryption algorithm should use secure mode (MAJOR)
+- java:S6373 — XML should be parsed safely (MAJOR)
+- java:S6376 — XML entities should not be vulnerable to injection attacks (MAJOR)
+- java:S6377 — XML related libraries should not be vulnerable to XXE attacks (MAJOR)
+- java:S6432 — Permissions granted via "PermissionCollection" should be checked before being added (MAJOR)
+- javasecurity:S2076 — OS commands should not be vulnerable to command injection attacks (BLOCKER)
+- javasecurity:S2078 — LDAP queries should not be vulnerable to injection attacks (MAJOR)
+- javasecurity:S2083 — File paths should not be vulnerable to path traversal attacks (MAJOR)
+- javasecurity:S2091 — XPath expressions should not be vulnerable to injection attacks (MAJOR)
+- javasecurity:S2631 — Regular expressions should not be vulnerable to Denial of Service attacks (MAJOR)
+- javasecurity:S3649 — SQL queries should not be vulnerable to injection attacks (BLOCKER)
+- javasecurity:S5131 — Endpoints should not be vulnerable to reflected cross-site scripting (XSS) attacks (BLOCKER)
+- javasecurity:S5135 — Deserialization should not be vulnerable to injection attacks (MAJOR)
+- javasecurity:S5144 — HTTP response headers should not be vulnerable to injection attacks (MAJOR)
+- javasecurity:S5145 — Logging should not be vulnerable to injection attacks (MAJOR)
+- javasecurity:S5146 — HTTP request redirections should not be open to forging attacks (MAJOR)
+- javasecurity:S5147 — Cookies should not be vulnerable to injection attacks (MAJOR)
+- javasecurity:S5334 — Code should not be vulnerable to permission injection (MAJOR)
+- javasecurity:S5496 — Server-side template injection should not be vulnerable (MAJOR)
+- javasecurity:S5883 — Exception messages should not be vulnerable to injection (MAJOR)
+- javasecurity:S6096 — File access should not be vulnerable to path injection attacks (MAJOR)
+- javasecurity:S6173 — HTTP request forwarding should not be open to injection attacks (MAJOR)
+- javasecurity:S6287 — HTTP response splitting should be prevented (MAJOR)
+- javasecurity:S6384 — User-controlled data should not be used in Reflection API (MAJOR)
+- javasecurity:S6390 — User-controlled data should not be used to construct JMX object names (MAJOR)
+- javasecurity:S6398 — User-controlled data should not be used in Spring expression language (MAJOR)
+- javasecurity:S6399 — User-controlled data should not be used in JPA criteria API calls (MAJOR)
+- javasecurity:S6547 — User-controlled data should not be used in JNI calls (MAJOR)
+- javasecurity:S6549 — User-controlled data should not be used to build Spring MVC model attributes (MAJOR)
+- javasecurity:S7044 — User-controlled data should not be used to build SQL-like NoSQL queries (MAJOR)

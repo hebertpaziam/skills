@@ -1,44 +1,44 @@
 # core-types
-- java:S1319 — Declarations should use Java collection interfaces such as "List" rather than specific implementation classes
-- java:S1452 — Wildcard types should not be used in return parameters
-- java:S1858 — "toString()" should never be called on a String object
-- java:S1872 — Classes should not be compared by name
-- java:S1948 — Fields in a "Serializable" class should either be transient or serializable
-- java:S2110 — Invalid "Date" values should not be used
-- java:S2111 — "BigDecimal(double)" should not be used
-- java:S2119 — "Random" objects should be reused
-- java:S2121 — "Comparable.compareTo" should not return "Integer.MIN_VALUE"
-- java:S2127 — "Double.longBitsToDouble" should not be used for "int"
-- java:S2140 — Methods of "Random" that return floating point values should not be used in random integer generation
-- java:S2153 — Unnecessary primitive boxing should not be used
-- java:S2154 — Dissimilar primitive wrappers should not be used with the ternary operator without explicit casting
-- java:S2259 — Null pointers should not be dereferenced
-- java:S2275 — Printf-style format strings should not lead to unexpected behavior at runtime
-- java:S2437 — Silly bit operations should not be performed
-- java:S2637 — "@Nullable" and "@NotNull" annotations should not be used on the same element
-- java:S2639 — "String.replaceAll" should not be called with a String that can be replaced by "String.replace"
-- java:S2674 — The value returned from a stream read should be checked
-- java:S2675 — "readObject" should not be "synchronized"
-- java:S2676 — Neither "Math.abs" nor negation should be used on numbers that could be "MIN_VALUE"
-- java:S2677 — "read" and "readLine" return values should be used
-- java:S2689 — Boolean checks should not be inverted
-- java:S2718 — "DateUtils.truncate" from Apache Commons should not be used
-- java:S2789 — "Optional" should not be used for parameters or fields
-- java:S3740 — Raw types should not be used
-- java:S4143 — Collection elements should not be replaced unconditionally
-- java:S4165 — Assignments should not be redundant
-- java:S4201 — Null checks should use "instanceof"
-- java:S4517 — "Comparator.comparing" should not be followed by calling "thenComparing" with a wrong sort direction
-- java:S4602 — Non-empty "switch" value clauses should end with unconditional statement
-- java:S4635 — String operations on the substring should be performed on the full string
-- java:S4973 — Strings and Boxed types should be compared using "equals()"
-- java:S5826 — "Charset" should be preferred to "String" for character encoding
-- java:S5917 — "DateTimeFormatter" should be used instead of "SimpleDateFormat"
-- java:S6209 — Pattern variables should be used in "instanceof" expressions
-- java:S6216 — "equals" methods should be symmetric and work for subclasses
-- javabugs:S2190 — Recursion should not be infinite
-- javabugs:S6320 — String formatting should be correct
-- javabugs:S6322 — String operations arguments should be in range
-- javabugs:S6416 — Calls to Map methods should use correct key/value types
-- javabugs:S6417 — Math operations should not overflow
-- javabugs:S6466 — Non-thread-safe fields should not be static
+- java:S1319 — Declarations should use Java collection interfaces such as "List" rather than specific implementation classes (MAJOR)
+- java:S1452 — Wildcard types should not be used in return parameters (MAJOR)
+- java:S1858 — "toString()" should never be called on a String object (MAJOR)
+- java:S1872 — Classes should not be compared by name (MAJOR)
+- java:S1948 — Fields in a "Serializable" class should either be transient or serializable (MAJOR)
+- java:S2110 — Invalid "Date" values should not be used (MAJOR)
+- java:S2111 — "BigDecimal(double)" should not be used (MAJOR)
+- java:S2119 — "Random" objects should be reused (MAJOR)
+- java:S2121 — "Comparable.compareTo" should not return "Integer.MIN_VALUE" (MAJOR)
+- java:S2127 — "Double.longBitsToDouble" should not be used for "int" (MAJOR)
+- java:S2140 — Methods of "Random" that return floating point values should not be used in random integer generation (MAJOR)
+- java:S2153 — Unnecessary primitive boxing should not be used (MAJOR)
+- java:S2154 — Dissimilar primitive wrappers should not be used with the ternary operator without explicit casting (MAJOR)
+- java:S2259 — Null pointers should not be dereferenced (MAJOR)
+- java:S2275 — Printf-style format strings should not lead to unexpected behavior at runtime (MAJOR)
+- java:S2437 — Silly bit operations should not be performed (MAJOR)
+- java:S2637 — "@Nullable" and "@NotNull" annotations should not be used on the same element (MAJOR)
+- java:S2639 — "String.replaceAll" should not be called with a String that can be replaced by "String.replace" (MAJOR)
+- java:S2674 — The value returned from a stream read should be checked (MAJOR)
+- java:S2675 — "readObject" should not be "synchronized" (MAJOR)
+- java:S2676 — Neither "Math.abs" nor negation should be used on numbers that could be "MIN_VALUE" (MAJOR)
+- java:S2677 — "read" and "readLine" return values should be used (MAJOR)
+- java:S2689 — Boolean checks should not be inverted (MAJOR)
+- java:S2718 — "DateUtils.truncate" from Apache Commons should not be used (MAJOR)
+- java:S2789 — "Optional" should not be used for parameters or fields (MAJOR)
+- java:S3740 — Raw types should not be used (MAJOR)
+- java:S4143 — Collection elements should not be replaced unconditionally (MAJOR)
+- java:S4165 — Assignments should not be redundant (MAJOR)
+- java:S4201 — Null checks should use "instanceof" (MAJOR)
+- java:S4517 — "Comparator.comparing" should not be followed by calling "thenComparing" with a wrong sort direction (MAJOR)
+- java:S4602 — Non-empty "switch" value clauses should end with unconditional statement (MAJOR)
+- java:S4635 — String operations on the substring should be performed on the full string (MAJOR)
+- java:S4973 — Strings and Boxed types should be compared using "equals()" (MAJOR)
+- java:S5826 — "Charset" should be preferred to "String" for character encoding (MAJOR)
+- java:S5917 — "DateTimeFormatter" should be used instead of "SimpleDateFormat" (MAJOR)
+- java:S6209 — Pattern variables should be used in "instanceof" expressions (MAJOR)
+- java:S6216 — "equals" methods should be symmetric and work for subclasses (MAJOR)
+- javabugs:S2190 — Recursion should not be infinite (MAJOR)
+- javabugs:S6320 — String formatting should be correct (MAJOR)
+- javabugs:S6322 — String operations arguments should be in range (MAJOR)
+- javabugs:S6416 — Calls to Map methods should use correct key/value types (MAJOR)
+- javabugs:S6417 — Math operations should not overflow (MAJOR)
+- javabugs:S6466 — Non-thread-safe fields should not be static (MAJOR)

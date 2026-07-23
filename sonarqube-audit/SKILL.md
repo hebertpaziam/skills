@@ -58,48 +58,69 @@ Isso garante que qualquer pessoa que leia relatórios de projetos diferentes rec
 
 ## Fluxo de Execução
 
-### Etapa 1 — Inventário de Arquivos
+### Etapa 1 — Inventário de Arquivos (baseado em .gitignore)
 
-1. Listar **todos** os arquivos do projeto.
-2. Respeitar **todos** os `.gitignore` encontrados (raiz e subdiretórios).
-3. Excluir automaticamente:
-   - `node_modules/`, `dist/`, `build/`, `target/`, `.git/`
-   - Arquivos gerados (`*.min.js`, `*.map`, `*.d.ts`)
-   - Assets não-código (`*.png`, `*.jpg`, `*.svg`, `*.ico`, `*.woff`, `*.ttf`)
-4. Registrar o total de arquivos que serão analisados.
+**Esta etapa é mecânica — não requer julgamento.**
 
-### Etapa 2 — Detecção de Linguagem e Carregamento de Regras
+1. Ler o arquivo `.gitignore` da raiz do projeto (e `.gitignore` de subdiretórios, se existirem).
+2. Construir a lista de exclusão a partir dos patterns do `.gitignore`.
+3. Adicionar exclusões padrão (mesmo que não estejam no `.gitignore`):
+   - `.git/`
+   - Binários: `*.class`, `*.jar`, `*.war`, `*.ear`, `*.zip`, `*.tar.gz`, `*.rar`
+   - Imagens: `*.png`, `*.jpg`, `*.jpeg`, `*.gif`, `*.svg`, `*.ico`, `*.bmp`
+   - Fontes: `*.woff`, `*.woff2`, `*.ttf`, `*.eot`
+   - Compilados: `*.pyc`, `*.o`, `*.so`, `*.dll`
+4. Listar **TODOS** os arquivos de texto restantes — **sem filtro por extensão**.
+5. Registrar o total de arquivos que serão analisados.
 
-Analisar as extensões dos arquivos inventariados para determinar quais conjuntos de regras carregar:
+**CRÍTICO:** Não filtrar por extensão. Arquivos `.jsp`, `.xml`, `.properties`, `.yml`, `.env`, `.cfg`, `.conf`, `.sql`, `.sh`, `.bat`, `.md` — todos devem entrar no inventário. A cobertura deve ser 100% dos arquivos de texto.
+
+### Etapa 2 — Classificação por Categoria
+
+Classificar cada arquivo inventariado em uma categoria. A categoria determina quais referências de regras serão aplicadas.
+
+**IMPORTANTE:** Todos os arquivos recebem `universal/scan-all.md` — sempre. A categoria adiciona regras específicas.
 
 ```
-Arquivos *.ts, *.tsx, *.js, *.jsx, *.mjs, *.cjs, *.html encontrados?
-  → Carregar referências de typescript/
-  → Seguir árvore de decisão em typescript/audit.md
-
-Arquivos *.java encontrados?
-  → Carregar referências de java/
-  → Seguir árvore de decisão em java/audit.md
-
-Ambos encontrados?
-  → Carregar ambos + universal/blockers.md
-
-Nenhum encontrado?
-  → Informar que não há regras disponíveis para as linguagens detectadas e encerrar.
+CATEGORIA       EXTENSÕES                                    REFERÊNCIAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+source          *.java                                       java/* + universal/scan-all
+template        *.jsp                                        web/jsp + universal/scan-all
+typescript      *.ts, *.tsx, *.js, *.jsx, *.mjs, *.cjs,      typescript/* + universal/scan-all
+                *.html
+config-xml      *.xml                                        config/xml + universal/scan-all
+config-secrets  *.properties, *.yml, *.yaml, *.env,          config/secrets + universal/scan-all
+                *.cfg, *.conf, *.ini
+unknown         qualquer outra extensão de texto              universal/scan-all (somente)
 ```
 
-**Importante:** Carregar APENAS as referências da(s) linguagem(ns) detectada(s). Nunca carregar Java para um projeto TypeScript puro e vice-versa.
+**Nota sobre JavaScript:** Arquivos `*.js` e `*.jsx` usam as mesmas referências `typescript/*` (o SonarQube aplica regras idênticas para JS e TS). Regras exclusivas de TypeScript (ex: type intersections, const assertions) devem ser **ignoradas** pelo agente quando o arquivo é `.js` puro.
 
-### Etapa 3 — Análise Arquivo por Arquivo
+Agrupar os arquivos por categoria para a próxima etapa.
 
-Para **cada** arquivo inventariado:
+### Etapa 3 — Análise por Sub-agentes Paralelos
+
+Disparar **um sub-agente por categoria** que tenha arquivos. Cada sub-agente recebe:
+- A lista de arquivos da sua categoria
+- As referências específicas da categoria
+- `universal/scan-all.md` (obrigatório para TODOS os sub-agentes)
+
+```
+Sub-agente SOURCE     → arquivos .java           + java/* + universal/scan-all
+Sub-agente TEMPLATE   → arquivos .jsp            + web/jsp + universal/scan-all
+Sub-agente TYPESCRIPT → arquivos .ts/.tsx/.js/.jsx/.html + typescript/* + universal/scan-all
+Sub-agente CONFIG-XML → arquivos .xml            + config/xml + universal/scan-all
+Sub-agente CONFIG-SEC → arquivos .properties/.yml/.env + config/secrets + universal/scan-all
+Sub-agente UNIVERSAL  → arquivos unknown         + universal/scan-all (somente)
+```
+
+**Cada sub-agente, para cada arquivo:**
 
 1. Ler o conteúdo do arquivo.
-2. Aplicar as regras relevantes com base no contexto do arquivo:
-   - Tipo de arquivo (componente, serviço, controller, teste, config, etc.)
-   - Domínio (segurança, async, OOP, SQL, etc.)
-   - Construtos presentes (switch, class, try/catch, etc.)
-3. Registrar cada violação encontrada com:
+2. Aplicar PRIMEIRO as regras universais (`universal/scan-all.md`).
+3. Aplicar as regras específicas da categoria.
+4. Para source/typescript, aplicar também regras de domínio e construtos (ver árvore de decisão abaixo).
+5. Registrar cada violação com:
    - Caminho do arquivo (relativo à raiz do projeto)
    - Número da linha
    - Regra violada (código + título)
@@ -108,11 +129,11 @@ Para **cada** arquivo inventariado:
    - Instrução de correção em pt-BR
    - Estimativa de esforço
 
-**Não pular nenhum arquivo.** A cobertura deve ser 100%.
+**Não pular nenhum arquivo. Não usar amostragem. TODOS os arquivos de TODAS as categorias devem ser analisados.**
 
 ### Etapa 4 — Classificação e Faseamento
 
-Organizar as violações em fases usando dois eixos:
+Consolidar as violações de todos os sub-agentes e organizar em fases usando dois eixos:
 
 | Fase | Criticidade | Facilidade | Descrição |
 |------|-------------|------------|-----------|
@@ -126,7 +147,7 @@ Organizar as violações em fases usando dois eixos:
 - **Fácil** (≤ 5min): Renomear, remover código morto, adicionar tipo, trocar operador
 - **Difícil** (> 5min): Refatorar lógica, extrair classe/função, reestruturar fluxo
 
-### Etapa 5 — Gerar Relatório
+### Etapa 5 — Gerar Relatório (Formato Híbrido)
 
 Gerar o arquivo na raiz do projeto com o nome:
 ```
@@ -136,6 +157,29 @@ sonarqube-audit--AAAA-MM-DD.md
 Onde `AAAA-MM-DD` é a data da execução.
 
 O relatório deve seguir **exatamente** o template definido no arquivo `audit.md` da linguagem correspondente (`typescript/audit.md` ou `java/audit.md`). Para projetos multilinguagem, combinar ambos os templates em um único relatório.
+
+**Formato híbrido obrigatório:**
+
+**No corpo do relatório (Detalhamento por Arquivo)**, usar formato compacto — cada arquivo aparece UMA vez com contagem de violações por regra:
+
+```
+### `path/to/file.jsp`
+| Regra | Severidade | Qtd | Descrição |
+|-------|-----------|-----|-----------|
+| S5131 | BLOCKER | 5 | EL expressions sem escaping em contexto JS |
+| S5131 | CRITICAL | 3 | EL expressions sem escaping em HTML |
+| S1313 | MAJOR | 1 | IP hardcoded |
+```
+
+**CRÍTICO:** Listar **TODOS** os arquivos com violações — não usar "primeira ocorrência" ou amostragem. Se 60 JSPs têm violações, os 60 devem aparecer.
+
+**No prompt de correção (final do relatório)**, usar formato detalhado com linha exata:
+
+```
+### Correções para `path/to/file.jsp`
+- **Linha 15:** `${error}` → `<c:out value="${error}"/>` (S5131)
+- **Linha 23:** `${link}` em `<script>` → escapar com `Encoder.forJavaScript()` (S5131)
+```
 
 ### Etapa 6 — Output no Terminal
 
@@ -151,10 +195,26 @@ Nada mais. O relatório é autocontido.
 
 ## Árvore de Decisão — Referências por Contexto
 
-Use esta árvore para determinar quais referências carregar para cada arquivo durante a análise. Carregar **TODAS** as referências que se aplicam — não apenas a primeira.
+Use esta árvore para determinar quais referências carregar para cada arquivo durante a análise. A árvore opera em 3 camadas:
 
-### TypeScript/JavaScript
+### Camada 1 — Universal (TODOS os arquivos)
 
+Sempre aplicar `universal/scan-all.md` a qualquer arquivo de texto. Sem exceção.
+
+### Camada 2 — Categoria (por extensão/tipo)
+
+#### Template (JSP)
+```
+*.jsp → web/jsp (procedimento completo de verificação EL obrigatório)
+```
+
+#### Config
+```
+*.xml                                    → config/xml
+*.properties, *.yml, *.yaml, *.env, etc. → config/secrets
+```
+
+#### TypeScript/JavaScript
 ```
 *.component.ts    → typescript/base + typescript/fw-angular
 *.tsx, *.jsx      → typescript/base + typescript/fw-react
@@ -164,7 +224,19 @@ Use esta árvore para determinar quais referências carregar para cada arquivo d
 *.ts, *.js, etc.  → typescript/base + verificar domínio e construtos
 ```
 
-**Domínio (carregar TODOS que se aplicam):**
+**Nota:** Para arquivos `*.js` puros, ignorar regras que dependem de tipos TypeScript (ex: S4335 type intersections, S4204 `any` type, S3353 `const` assertions). Todas as outras regras se aplicam igualmente.
+
+#### Java
+```
+*Test.java, *Tests.java  → java/base + java/testing
+*.java                    → java/base + verificar domínio e construtos
+```
+
+### Camada 3 — Contexto (por conteúdo do arquivo)
+
+Para arquivos `source` e `typescript`, inspecionar o conteúdo e carregar referências adicionais:
+
+**TypeScript — Domínio (carregar TODOS que se aplicam):**
 - Segurança (auth, crypto, cookies) → `typescript/security-hotspot`
 - SQL, comandos externos → `typescript/security-injection`
 - Regex → `typescript/core-regex`
@@ -173,7 +245,7 @@ Use esta árvore para determinar quais referências carregar para cada arquivo d
 - Angular → `typescript/fw-angular`
 - React → `typescript/fw-react`
 
-**Construtos (carregar TODOS que se aplicam):**
+**TypeScript — Construtos (carregar TODOS que se aplicam):**
 - switch/if/for/while → `typescript/core-control-flow`
 - class/extends → `typescript/core-oop`
 - import/export → `typescript/core-modules`
@@ -184,14 +256,7 @@ Use esta árvore para determinar quais referências carregar para cada arquivo d
 - try/catch/throw → `typescript/core-errors`
 - operadores → `typescript/core-operators`
 
-### Java
-
-```
-*Test.java, *Tests.java  → java/base + java/testing
-*.java                    → java/base + verificar domínio e construtos
-```
-
-**Domínio (carregar TODOS que se aplicam):**
+**Java — Domínio (carregar TODOS que se aplicam):**
 - Spring/Jakarta → `java/fw-spring`
 - Segurança → `java/security-hotspot` + `java/security-crypto`
 - SQL/JPA/JDBC → `java/security-injection`
@@ -199,7 +264,7 @@ Use esta árvore para determinar quais referências carregar para cada arquivo d
 - Streams/lambdas → `java/core-streams`
 - Regex → `java/core-regex`
 
-**Construtos (carregar TODOS que se aplicam):**
+**Java — Construtos (carregar TODOS que se aplicam):**
 - switch/if/for/while → `java/core-control-flow`
 - class/extends/implements → `java/core-oop`
 - Collection/Map/List → `java/core-collections`

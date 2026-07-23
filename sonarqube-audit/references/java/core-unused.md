@@ -1,18 +1,18 @@
 # core-unused
-- java:S1068 — Unused "private" fields should be removed
-- java:S1128 — Unnecessary imports should be removed
-- java:S1144 — Unused "private" methods should be removed
-- java:S1172 — Unused method parameters should be removed
-- java:S1226 — Method parameters, caught exceptions and foreach variables' initial values should not be ignored
-- java:S1450 — Private fields only used as local variables in methods should become local variables
-- java:S1481 — Unused local variables should be removed
-- java:S1854 — Unused assignments should be removed
-- java:S1874 — "@Deprecated" code should not be used
-- java:S1905 — Redundant casts should not be used
-- java:S2094 — Classes should not be empty
-- java:S2326 — Unused type parameters should be removed
-- java:S2583 — Conditionally executed code should be reachable
-- java:S2589 — Boolean expressions should not be gratuitous
-- java:S2737 — "catch" clauses should do more than rethrow
-- java:S4144 — Methods should not have identical implementations
-- java:S6201 — "instanceof" checks should not be redundant
+- java:S1068 — Unused "private" fields should be removed (MAJOR)
+- java:S1128 — Unnecessary imports should be removed (MAJOR)
+- java:S1144 — Unused "private" methods should be removed (MAJOR)
+- java:S1172 — Unused method parameters should be removed (MAJOR)
+- java:S1226 — Method parameters, caught exceptions and foreach variables' initial values should not be ignored (MAJOR)
+- java:S1450 — Private fields only used as local variables in methods should become local variables (MAJOR)
+- java:S1481 — Unused local variables should be removed (MAJOR)
+- java:S1854 — Unused assignments should be removed (MAJOR)
+- java:S1874 — "@Deprecated" code should not be used (MAJOR)
+- java:S1905 — Redundant casts should not be used (MAJOR)
+- java:S2094 — Classes should not be empty (MAJOR)
+- java:S2326 — Unused type parameters should be removed (MAJOR)
+- java:S2583 — Conditionally executed code should be reachable (MAJOR)
+- java:S2589 — Boolean expressions should not be gratuitous (MAJOR)
+- java:S2737 — "catch" clauses should do more than rethrow (MAJOR)
+- java:S4144 — Methods should not have identical implementations (MAJOR)
+- java:S6201 — "instanceof" checks should not be redundant (MAJOR)

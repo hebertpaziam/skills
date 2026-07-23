@@ -1,15 +1,15 @@
 # core-operators
-- typescript:S1121 — Assignments should not be made from within sub-expressions
-- typescript:S1440 — "===" and "!==" should be used instead of "==" and "!="
-- typescript:S1529 — Bitwise operators should not be used in boolean contexts
-- typescript:S1774 — The ternary operator should not be used
-- typescript:S2688 — "NaN" should not be used in comparisons
-- typescript:S2692 — "indexOf" checks should not be for positive numbers
-- typescript:S3358 — Ternary operators should not be nested
-- typescript:S4327 — "this" should not be assigned to variables
-- typescript:S6679 — "Number.isNaN()" should be used to check for "NaN" value
-- typescript:S878 — Comma operator should not be used
-- typescript:S881 — Increment (++) and decrement (--) operators should not be used in a method call or mixed with other operators in an expression
-- typescript:S6582 — Optional chaining should be preferred
-- typescript:S6644 — Ternary operator should not be used instead of simpler alternatives
-- typescript:S6654 — __proto__ property should not be used
+- typescript:S1121 — Assignments should not be made from within sub-expressions (MAJOR)
+- typescript:S1440 — "===" and "!==" should be used instead of "==" and "!=" (MAJOR)
+- typescript:S1529 — Bitwise operators should not be used in boolean contexts (MAJOR)
+- typescript:S1774 — The ternary operator should not be used (MAJOR)
+- typescript:S2688 — "NaN" should not be used in comparisons (MAJOR)
+- typescript:S2692 — "indexOf" checks should not be for positive numbers (MAJOR)
+- typescript:S3358 — Ternary operators should not be nested (MAJOR)
+- typescript:S4327 — "this" should not be assigned to variables (MAJOR)
+- typescript:S6679 — "Number.isNaN()" should be used to check for "NaN" value (MAJOR)
+- typescript:S878 — Comma operator should not be used (MAJOR)
+- typescript:S881 — Increment (++) and decrement (--) operators should not be used in a method call or mixed with other operators in an expression (MAJOR)
+- typescript:S6582 — Optional chaining should be preferred (MAJOR)
+- typescript:S6644 — Ternary operator should not be used instead of simpler alternatives (MAJOR)
+- typescript:S6654 — __proto__ property should not be used (MAJOR)

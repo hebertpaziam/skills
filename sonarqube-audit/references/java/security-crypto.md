@@ -1,12 +1,12 @@
 # security-crypto
-- java:S2053 — Hash values should include an unpredictable salt
-- java:S3329 — Cipher algorithms should be robust
-- java:S4347 — Seeds for random number generators should not be predictable
-- java:S4348 — Iterator methods should follow contracts
-- java:S4423 — Weak SSL/TLS protocols should not be used
-- java:S4426 — Cryptographic keys should be robust enough
-- java:S4433 — LDAP connections should be authenticated
-- java:S4830 — Server certificates should be verified during SSL/TLS connections
-- java:S5542 — Encryption algorithms should be used with secure mode and padding scheme
-- java:S5547 — Cipher algorithms should be robust
-- java:S5659 — JWT should be signed and verified
+- java:S2053 — Hash values should include an unpredictable salt (CRITICAL)
+- java:S3329 — Cipher algorithms should be robust (CRITICAL)
+- java:S4347 — Seeds for random number generators should not be predictable (CRITICAL)
+- java:S4348 — Iterator methods should follow contracts (MAJOR)
+- java:S4423 — Weak SSL/TLS protocols should not be used (MAJOR)
+- java:S4426 — Cryptographic keys should be robust enough (MAJOR)
+- java:S4433 — LDAP connections should be authenticated (MAJOR)
+- java:S4830 — Server certificates should be verified during SSL/TLS connections (MAJOR)
+- java:S5542 — Encryption algorithms should be used with secure mode and padding scheme (MAJOR)
+- java:S5547 — Cipher algorithms should be robust (MAJOR)
+- java:S5659 — JWT should be signed and verified (MAJOR)

@@ -1,18 +1,18 @@
 # core-operators
-- java:S1764 — Identical expressions should not be used on both sides of a binary operator
-- java:S1862 — Related "if-else if" and "switch-case" statements should not have the same condition
-- java:S1940 — Boolean checks should not be inverted
-- java:S2123 — Values should not be uselessly incremented
-- java:S2178 — Short-circuit logic should be used to prevent null pointer dereferences in conditionals
-- java:S2183 — Ints and longs should not be shifted by zero or more than their number of bits-1
-- java:S2184 — Math operands should be cast before assignment
-- java:S2185 — Silly math should not be performed
-- java:S2200 — "compareTo" results should not be checked for specific values
-- java:S2201 — Return values from functions without side effects should not be ignored
-- java:S2757 — "=+" should not be used instead of "+="
-- java:S2761 — "!" should not be used twice
-- java:S3346 — Expressions used in "assert" should not produce side effects
-- java:S3518 — Zero should not be a possible divisor
-- java:S6001 — Equality operators should not be used in "for" loop termination conditions
-- java:S6002 — Comparisons should not be made with extreme enum values
-- java:S6070 — Non-"static" methods should not be marked as "@Test"
+- java:S1764 — Identical expressions should not be used on both sides of a binary operator (MAJOR)
+- java:S1862 — Related "if-else if" and "switch-case" statements should not have the same condition (MAJOR)
+- java:S1940 — Boolean checks should not be inverted (MAJOR)
+- java:S2123 — Values should not be uselessly incremented (MAJOR)
+- java:S2178 — Short-circuit logic should be used to prevent null pointer dereferences in conditionals (MAJOR)
+- java:S2183 — Ints and longs should not be shifted by zero or more than their number of bits-1 (MAJOR)
+- java:S2184 — Math operands should be cast before assignment (MAJOR)
+- java:S2185 — Silly math should not be performed (MAJOR)
+- java:S2200 — "compareTo" results should not be checked for specific values (MAJOR)
+- java:S2201 — Return values from functions without side effects should not be ignored (MAJOR)
+- java:S2757 — "=+" should not be used instead of "+=" (MAJOR)
+- java:S2761 — "!" should not be used twice (MAJOR)
+- java:S3346 — Expressions used in "assert" should not produce side effects (MAJOR)
+- java:S3518 — Zero should not be a possible divisor (MAJOR)
+- java:S6001 — Equality operators should not be used in "for" loop termination conditions (MAJOR)
+- java:S6002 — Comparisons should not be made with extreme enum values (MAJOR)
+- java:S6070 — Non-"static" methods should not be marked as "@Test" (MAJOR)

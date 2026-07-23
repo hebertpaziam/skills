@@ -1,100 +1,100 @@
 # core-oop
-- java:S110 — Inheritance tree of classes should not be too deep (max=5)
-- java:S1104 — Class variable fields should not have public accessibility
-- java:S1118 — Utility classes should not have public constructors
-- java:S1150 — "Enumeration" should not be implemented
-- java:S1161 — "@Override" annotation should be used on any method overriding or implementing
-- java:S1170 — Constants should be declared "final"
-- java:S1171 — Non-static initializer should not be used
-- java:S1182 — Classes that override "clone" should be "Cloneable" and call "super.clone()"
-- java:S1185 — Overriding methods should do more than simply call the same method on the super class
-- java:S1186 — Methods should not be empty
-- java:S1190 — Future keywords should not be used as names
-- java:S1191 — Classes from "sun.*" packages should not be used
-- java:S1195 — Methods should not return "null" for an Optional return type
-- java:S1201 — "equals(Object obj)" and "hashCode()" should be overridden in pairs
-- java:S1206 — "equals(Object obj)" and "hashCode()" should be overridden in pairs
-- java:S1210 — "equals(Object obj)" should be overridden along with the "compareTo(T obj)" method
-- java:S1214 — Constants should not be defined in interfaces
-- java:S1221 — "nonfinalizer" should not be named "finalize"
-- java:S1223 — Non-constructor methods should not have the same name as the enclosing class
-- java:S1444 — "public static" fields should be constant
-- java:S1845 — Methods and field names should not be the same or differ only by capitalization
-- java:S1849 — "Iterator.hasNext()" should not call "Iterator.next()"
-- java:S1994 — "for" loop increment clauses should modify the loops' counters
-- java:S2055 — "Serializable" inner classes of non-serializable classes should be "static"
-- java:S2060 — Non-primitive fields should not be used for synchronization
-- java:S2061 — Custom serialization method signatures should meet requirements
-- java:S2062 — "@SuppressWarnings" should not be used blindly
-- java:S2065 — Fields in non-serializable classes should not be "transient"
-- java:S2066 — "Serializable" inner classes of "Serializable" classes should be static or transient
-- java:S2097 — "equals(Object obj)" and "hashCode()" should be overridden in pairs
-- java:S2112 — "URL.hashCode" and "URL.equals" should be avoided
-- java:S2116 — "hashCode" and "toString" should not be called on array instances
-- java:S2118 — "Serializable" classes should have a version id
-- java:S2133 — Objects should not be created only to invoke "getClass()"
-- java:S2134 — Classes extending "Thread" should override "run"
-- java:S2157 — "Cloneables" should implement "clone"
-- java:S2159 — Silly equality checks should not be made
-- java:S2160 — "hashCode" and "equals" should be defined when overriding one
-- java:S2166 — Classes named like "Exception" should extend "Exception" or a subclass
-- java:S2167 — "compareTo" results should not be checked for specific values
-- java:S2176 — Class names should not shadow interfaces or superclasses
-- java:S2177 — Child class methods named for parent class methods should be overrides
-- java:S2204 — "equals()" should not be used to test the values of "Atomic" classes
-- java:S2209 — "static" members should be accessed statically
-- java:S2225 — "toString()" and "clone()" methods should not return null
-- java:S2226 — Servlets should not have mutable instance fields
-- java:S2229 — "@Inject" members should be initialized
-- java:S2230 — Non-public methods should not be decorated with "@Transactional"
-- java:S2232 — "ResultSet.isLast()" should not be used
-- java:S2234 — Parameters should be passed in the correct order
-- java:S2235 — IllegalArgumentException should not be thrown without a message
-- java:S2272 — "Iterator.next()" methods should throw "NoSuchElementException"
-- java:S2386 — Mutable fields should not be "public static"
-- java:S2387 — Child class fields should not shadow parent class fields
-- java:S2388 — Inner class calls to super class methods should be unambiguous
-- java:S2390 — Weak references should not be used for caching
-- java:S2438 — "Threads" should not be used where "Runnables" are expected
-- java:S2440 — Classes with only "static" methods should not be instantiated
-- java:S2441 — Non-serializable objects should not be stored in HTTP sessions
-- java:S2638 — Method overrides should not change contracts
-- java:S2695 — "super()" should not be called blindly within constructors
-- java:S2696 — Instance methods should not write to "static" fields
-- java:S2975 — "clone" should not be overridden
-- java:S3011 — Reflection should not be used to increase accessibility of classes, methods, or fields
-- java:S3012 — Arrays should not be stored directly
-- java:S3038 — Duplicate annotations should not be used
-- java:S3039 — "String" replacements should not overlap
-- java:S3252 — "static" base class members should not be accessed via derived types
-- java:S3398 — "private" methods called only by inner classes should be moved to those classes
-- java:S3400 — Methods should not return constants
-- java:S3416 — Loggers should be "private static final" and should share a naming convention
-- java:S3436 — Map values should not be replaced unconditionally
-- java:S3516 — Methods should not return more than one value
-- java:S3551 — Types and "@Override" methods should not be duplicated
-- java:S3599 — Double Brace Initialization should not be used
-- java:S3655 — "Optional" values should be handled properly
-- java:S3985 — Unused "private" classes should be removed
-- java:S3986 — Exception handlers should preserve the original exceptions
-- java:S4274 — "assert" should not be used to validate parameters
-- java:S4275 — Getters and setters should access the expected fields
-- java:S4276 — Functional interfaces should be as specialized as possible
-- java:S4349 — "Iterator.hasNext()" should not call "Iterator.next()"
-- java:S4351 — "equals" methods parameters should not be marked "@Nonnull"
-- java:S4449 — "@Nullable" annotation should be used when returning null from methods
-- java:S4454 — Synchronized classes "Vector", "Hashtable", "Stack" and "StringBuffer" should not be used
-- java:S4925 — "instanceOf" should be used instead of getClass() with equals()
-- java:S4968 — "@Deprecated" code should not be used
-- java:S4970 — Non-deprecated non-abstract methods should not have empty body
-- java:S5738 — Members deprecated with "@Deprecated" should also be marked with "@deprecated" Javadoc tag
-- java:S5993 — "Closeable" resources should be closed
-- java:S5994 — "Closeable" resources should be closed in "finally" blocks or in try-with-resources
-- java:S5996 — Non-public methods should not be "@Transactional"
-- java:S6202 — "instanceof" checks should be replaced with pattern matching
-- java:S6217 — "Optional#isPresent()" or "Optional#isEmpty()" should be used before accessing value
-- java:S6218 — Sealed classes should have "permits" clause
-- java:S6219 — "default" methods should not be declared in anonymous classes
-- javaarchitecture:S7027 — API classes should not depend on implementation classes
-- javaarchitecture:S7091 — Architecture layers should follow a consistent pattern
-- javaarchitecture:S7134 — Classes should not have circular dependencies
+- java:S110 — Inheritance tree of classes should not be too deep (max=5) (MAJOR)
+- java:S1104 — Class variable fields should not have public accessibility (MAJOR)
+- java:S1118 — Utility classes should not have public constructors (MAJOR)
+- java:S1150 — "Enumeration" should not be implemented (MAJOR)
+- java:S1161 — "@Override" annotation should be used on any method overriding or implementing (MAJOR)
+- java:S1170 — Constants should be declared "final" (MAJOR)
+- java:S1171 — Non-static initializer should not be used (MAJOR)
+- java:S1182 — Classes that override "clone" should be "Cloneable" and call "super.clone()" (MAJOR)
+- java:S1185 — Overriding methods should do more than simply call the same method on the super class (MAJOR)
+- java:S1186 — Methods should not be empty (MAJOR)
+- java:S1190 — Future keywords should not be used as names (MAJOR)
+- java:S1191 — Classes from "sun.*" packages should not be used (MAJOR)
+- java:S1195 — Methods should not return "null" for an Optional return type (MAJOR)
+- java:S1201 — "equals(Object obj)" and "hashCode()" should be overridden in pairs (MAJOR)
+- java:S1206 — "equals(Object obj)" and "hashCode()" should be overridden in pairs (MAJOR)
+- java:S1210 — "equals(Object obj)" should be overridden along with the "compareTo(T obj)" method (MAJOR)
+- java:S1214 — Constants should not be defined in interfaces (MAJOR)
+- java:S1221 — "nonfinalizer" should not be named "finalize" (MAJOR)
+- java:S1223 — Non-constructor methods should not have the same name as the enclosing class (MAJOR)
+- java:S1444 — "public static" fields should be constant (MAJOR)
+- java:S1845 — Methods and field names should not be the same or differ only by capitalization (MAJOR)
+- java:S1849 — "Iterator.hasNext()" should not call "Iterator.next()" (MAJOR)
+- java:S1994 — "for" loop increment clauses should modify the loops' counters (MAJOR)
+- java:S2055 — "Serializable" inner classes of non-serializable classes should be "static" (MAJOR)
+- java:S2060 — Non-primitive fields should not be used for synchronization (MAJOR)
+- java:S2061 — Custom serialization method signatures should meet requirements (MAJOR)
+- java:S2062 — "@SuppressWarnings" should not be used blindly (MAJOR)
+- java:S2065 — Fields in non-serializable classes should not be "transient" (MAJOR)
+- java:S2066 — "Serializable" inner classes of "Serializable" classes should be static or transient (MAJOR)
+- java:S2097 — "equals(Object obj)" and "hashCode()" should be overridden in pairs (MAJOR)
+- java:S2112 — "URL.hashCode" and "URL.equals" should be avoided (MAJOR)
+- java:S2116 — "hashCode" and "toString" should not be called on array instances (MAJOR)
+- java:S2118 — "Serializable" classes should have a version id (MAJOR)
+- java:S2133 — Objects should not be created only to invoke "getClass()" (MAJOR)
+- java:S2134 — Classes extending "Thread" should override "run" (MAJOR)
+- java:S2157 — "Cloneables" should implement "clone" (MAJOR)
+- java:S2159 — Silly equality checks should not be made (MAJOR)
+- java:S2160 — "hashCode" and "equals" should be defined when overriding one (MAJOR)
+- java:S2166 — Classes named like "Exception" should extend "Exception" or a subclass (MAJOR)
+- java:S2167 — "compareTo" results should not be checked for specific values (MAJOR)
+- java:S2176 — Class names should not shadow interfaces or superclasses (MAJOR)
+- java:S2177 — Child class methods named for parent class methods should be overrides (MAJOR)
+- java:S2204 — "equals()" should not be used to test the values of "Atomic" classes (MAJOR)
+- java:S2209 — "static" members should be accessed statically (MAJOR)
+- java:S2225 — "toString()" and "clone()" methods should not return null (MAJOR)
+- java:S2226 — Servlets should not have mutable instance fields (MAJOR)
+- java:S2229 — "@Inject" members should be initialized (MAJOR)
+- java:S2230 — Non-public methods should not be decorated with "@Transactional" (MAJOR)
+- java:S2232 — "ResultSet.isLast()" should not be used (MAJOR)
+- java:S2234 — Parameters should be passed in the correct order (MAJOR)
+- java:S2235 — IllegalArgumentException should not be thrown without a message (MAJOR)
+- java:S2272 — "Iterator.next()" methods should throw "NoSuchElementException" (MAJOR)
+- java:S2386 — Mutable fields should not be "public static" (MAJOR)
+- java:S2387 — Child class fields should not shadow parent class fields (MAJOR)
+- java:S2388 — Inner class calls to super class methods should be unambiguous (MAJOR)
+- java:S2390 — Weak references should not be used for caching (MAJOR)
+- java:S2438 — "Threads" should not be used where "Runnables" are expected (MAJOR)
+- java:S2440 — Classes with only "static" methods should not be instantiated (MAJOR)
+- java:S2441 — Non-serializable objects should not be stored in HTTP sessions (MAJOR)
+- java:S2638 — Method overrides should not change contracts (MAJOR)
+- java:S2695 — "super()" should not be called blindly within constructors (MAJOR)
+- java:S2696 — Instance methods should not write to "static" fields (MAJOR)
+- java:S2975 — "clone" should not be overridden (MAJOR)
+- java:S3011 — Reflection should not be used to increase accessibility of classes, methods, or fields (MAJOR)
+- java:S3012 — Arrays should not be stored directly (MAJOR)
+- java:S3038 — Duplicate annotations should not be used (MAJOR)
+- java:S3039 — "String" replacements should not overlap (MAJOR)
+- java:S3252 — "static" base class members should not be accessed via derived types (MAJOR)
+- java:S3398 — "private" methods called only by inner classes should be moved to those classes (MAJOR)
+- java:S3400 — Methods should not return constants (MAJOR)
+- java:S3416 — Loggers should be "private static final" and should share a naming convention (MAJOR)
+- java:S3436 — Map values should not be replaced unconditionally (MAJOR)
+- java:S3516 — Methods should not return more than one value (MAJOR)
+- java:S3551 — Types and "@Override" methods should not be duplicated (MAJOR)
+- java:S3599 — Double Brace Initialization should not be used (MAJOR)
+- java:S3655 — "Optional" values should be handled properly (MAJOR)
+- java:S3985 — Unused "private" classes should be removed (MAJOR)
+- java:S3986 — Exception handlers should preserve the original exceptions (MAJOR)
+- java:S4274 — "assert" should not be used to validate parameters (MAJOR)
+- java:S4275 — Getters and setters should access the expected fields (MAJOR)
+- java:S4276 — Functional interfaces should be as specialized as possible (MAJOR)
+- java:S4349 — "Iterator.hasNext()" should not call "Iterator.next()" (MAJOR)
+- java:S4351 — "equals" methods parameters should not be marked "@Nonnull" (MAJOR)
+- java:S4449 — "@Nullable" annotation should be used when returning null from methods (MAJOR)
+- java:S4454 — Synchronized classes "Vector", "Hashtable", "Stack" and "StringBuffer" should not be used (MAJOR)
+- java:S4925 — "instanceOf" should be used instead of getClass() with equals() (MAJOR)
+- java:S4968 — "@Deprecated" code should not be used (MAJOR)
+- java:S4970 — Non-deprecated non-abstract methods should not have empty body (MAJOR)
+- java:S5738 — Members deprecated with "@Deprecated" should also be marked with "@deprecated" Javadoc tag (MAJOR)
+- java:S5993 — "Closeable" resources should be closed (MAJOR)
+- java:S5994 — "Closeable" resources should be closed in "finally" blocks or in try-with-resources (MAJOR)
+- java:S5996 — Non-public methods should not be "@Transactional" (MAJOR)
+- java:S6202 — "instanceof" checks should be replaced with pattern matching (MAJOR)
+- java:S6217 — "Optional#isPresent()" or "Optional#isEmpty()" should be used before accessing value (MAJOR)
+- java:S6218 — Sealed classes should have "permits" clause (MAJOR)
+- java:S6219 — "default" methods should not be declared in anonymous classes (MAJOR)
+- javaarchitecture:S7027 — API classes should not depend on implementation classes (MAJOR)
+- javaarchitecture:S7091 — Architecture layers should follow a consistent pattern (MAJOR)
+- javaarchitecture:S7134 — Classes should not have circular dependencies (MAJOR)

@@ -1,80 +1,80 @@
 # core-unused
-- typescript:S1186 — Functions should not be empty
-- typescript:S1192 — String literals should not be duplicated
-- typescript:S1539 — "strict" mode should be used with caution
-- typescript:S2208 — Wildcard imports should not be used
-- typescript:S2871 — "Array.prototype.sort()" and "Array.prototype.toSorted()" should use a compare function
-- typescript:S3353 — Unchanged variables should be marked as "const"
-- typescript:S3504 — Variables should be declared with "let" or "const"
-- typescript:S3735 — "void" should not be used
-- typescript:S4423 — Weak SSL/TLS protocols should not be used
-- typescript:S6958 — Literals should not be used as functions
-- typescript:S888 — Equality operators should not be used in "for" loop termination conditions
-- typescript:S1219 — "switch" statements should not contain non-case labels
-- typescript:S1451 — Track lack of copyright and license headers
-- typescript:S1526 — Variables declared with "var" should be declared before they are used
-- typescript:S2817 — Web SQL databases should not be used
-- typescript:S3516 — Function returns should not be invariant
-- typescript:S1068 — Unused private class members should be removed
-- typescript:S108 — Nested blocks of code should not be left empty
-- typescript:S1110 — Redundant pairs of parentheses should be removed
-- typescript:S1117 — Variables should not be shadowed
-- typescript:S1172 — Unused function parameters should be removed
-- typescript:S1656 — Variables should not be self-assigned
-- typescript:S1764 — Identical expressions should not be used on both sides of a binary operator
-- typescript:S1788 — Function parameters with default values should be last
-- typescript:S1854 — Unused assignments should be removed
-- typescript:S2123 — Values should not be uselessly incremented
-- typescript:S2234 — Parameters should be passed in the correct order
-- typescript:S2251 — A "for" loop update clause should move the counter in the right direction
-- typescript:S2301 — Methods should not contain selector parameters
-- typescript:S2392 — Variables should be used in the blocks where they are declared
-- typescript:S2424 — Built-in objects should not be overridden
-- typescript:S2685 — "arguments.caller" and "arguments.callee" should not be used
-- typescript:S2757 — Non-existent operators '=+', '=-' and '=!' should not be used
-- typescript:S2999 — "new" should only be used with functions and classes
-- typescript:S3003 — Comparison operators should not be used with strings
-- typescript:S3513 — "arguments" should not be accessed directly
-- typescript:S3531 — Generators should explicitly "yield" a value
-- typescript:S3616 — Comma and logical OR operators should not be used in switch cases
-- typescript:S3699 — The return value of void functions should not be used
-- typescript:S3723 — Trailing commas should be used
-- typescript:S3799 — Destructuring patterns should not be empty
-- typescript:S3984 — Errors should not be created without being thrown
-- typescript:S4124 — Constructors should not be declared inside interfaces
-- typescript:S4165 — Assignments should not be redundant
-- typescript:S4623 — "undefined" should not be passed as the value of optional parameters
-- typescript:S4798 — Optional boolean parameters should have default value
-- typescript:S6534 — Numbers should not lose precision
-- typescript:S6564 — Redundant type aliases should not be used
-- typescript:S6569 — Unnecessary type constraints should be removed
-- typescript:S6643 — Prototypes of builtin objects should not be modified
-- typescript:S6657 — Octal escape sequences should not be used
-- typescript:S6661 — Object spread syntax should be used instead of "Object.assign"
-- typescript:S6666 — Spread syntax should be used instead of "apply()"
-- typescript:S1082 — Mouse events should have corresponding keyboard events
-- typescript:S1199 — Nested code blocks should not be used
-- typescript:S1488 — Local variables should not be declared and then immediately returned or thrown
-- typescript:S1525 — Debugger statements should not be used
-- typescript:S1528 — Array constructors should not be used
-- typescript:S1530 — Function declarations should not be made within blocks
-- typescript:S1533 — Wrapper objects should not be used for primitive types
-- typescript:S1874 — Deprecated APIs should not be used
-- typescript:S2094 — Classes should not be empty
-- typescript:S2427 — The base should be provided to "parseInt"
-- typescript:S3001 — "delete" should be used only with object properties
-- typescript:S3257 — Primitive types should be omitted from initialized or defaulted declarations
-- typescript:S4023 — Interfaces should not be empty
-- typescript:S4157 — Default type parameters should be omitted
-- typescript:S4158 — Empty collections should not be accessed or iterated
-- typescript:S4324 — Primitive return types should be used
-- typescript:S4325 — Redundant casts and non-null assertions should be avoided
-- typescript:S6509 — Extra boolean casts should be removed
-- typescript:S6565 — Prefer the return type "this" in fluent interfaces
-- typescript:S6571 — Type constituents of unions and intersections should not be redundant
-- typescript:S6598 — Function types should be preferred
-- typescript:S6606 — Nullish coalescing should be preferred
-- typescript:S6635 — Constructors should not return values
-- typescript:S6637 — Unnecessary calls to ".bind()" should not be used
-- typescript:S6647 — Unnecessary constructors should be removed
-- typescript:S6653 — Use Object.hasOwn static method instead of hasOwnProperty
+- typescript:S1186 — Functions should not be empty (MAJOR)
+- typescript:S1192 — String literals should not be duplicated (MAJOR)
+- typescript:S1539 — "strict" mode should be used with caution (MAJOR)
+- typescript:S2208 — Wildcard imports should not be used (MAJOR)
+- typescript:S2871 — "Array.prototype.sort()" and "Array.prototype.toSorted()" should use a compare function (MAJOR)
+- typescript:S3353 — Unchanged variables should be marked as "const" (MINOR)
+- typescript:S3504 — Variables should be declared with "let" or "const" (MINOR)
+- typescript:S3735 — "void" should not be used (MAJOR)
+- typescript:S4423 — Weak SSL/TLS protocols should not be used (MAJOR)
+- typescript:S6958 — Literals should not be used as functions (MAJOR)
+- typescript:S888 — Equality operators should not be used in "for" loop termination conditions (MAJOR)
+- typescript:S1219 — "switch" statements should not contain non-case labels (MAJOR)
+- typescript:S1451 — Track lack of copyright and license headers (CRITICAL)
+- typescript:S1526 — Variables declared with "var" should be declared before they are used (MINOR)
+- typescript:S2817 — Web SQL databases should not be used (MAJOR)
+- typescript:S3516 — Function returns should not be invariant (MAJOR)
+- typescript:S1068 — Unused private class members should be removed (MAJOR)
+- typescript:S108 — Nested blocks of code should not be left empty (MAJOR)
+- typescript:S1110 — Redundant pairs of parentheses should be removed (MAJOR)
+- typescript:S1117 — Variables should not be shadowed (MAJOR)
+- typescript:S1172 — Unused function parameters should be removed (MAJOR)
+- typescript:S1656 — Variables should not be self-assigned (MAJOR)
+- typescript:S1764 — Identical expressions should not be used on both sides of a binary operator (MAJOR)
+- typescript:S1788 — Function parameters with default values should be last (MAJOR)
+- typescript:S1854 — Unused assignments should be removed (MAJOR)
+- typescript:S2123 — Values should not be uselessly incremented (MAJOR)
+- typescript:S2234 — Parameters should be passed in the correct order (MAJOR)
+- typescript:S2251 — A "for" loop update clause should move the counter in the right direction (MAJOR)
+- typescript:S2301 — Methods should not contain selector parameters (MAJOR)
+- typescript:S2392 — Variables should be used in the blocks where they are declared (MAJOR)
+- typescript:S2424 — Built-in objects should not be overridden (MAJOR)
+- typescript:S2685 — "arguments.caller" and "arguments.callee" should not be used (MAJOR)
+- typescript:S2757 — Non-existent operators '=+', '=-' and '=!' should not be used (MAJOR)
+- typescript:S2999 — "new" should only be used with functions and classes (MAJOR)
+- typescript:S3003 — Comparison operators should not be used with strings (MAJOR)
+- typescript:S3513 — "arguments" should not be accessed directly (MAJOR)
+- typescript:S3531 — Generators should explicitly "yield" a value (MAJOR)
+- typescript:S3616 — Comma and logical OR operators should not be used in switch cases (MAJOR)
+- typescript:S3699 — The return value of void functions should not be used (MAJOR)
+- typescript:S3723 — Trailing commas should be used (MAJOR)
+- typescript:S3799 — Destructuring patterns should not be empty (MAJOR)
+- typescript:S3984 — Errors should not be created without being thrown (MAJOR)
+- typescript:S4124 — Constructors should not be declared inside interfaces (MAJOR)
+- typescript:S4165 — Assignments should not be redundant (MAJOR)
+- typescript:S4623 — "undefined" should not be passed as the value of optional parameters (MAJOR)
+- typescript:S4798 — Optional boolean parameters should have default value (MAJOR)
+- typescript:S6534 — Numbers should not lose precision (MAJOR)
+- typescript:S6564 — Redundant type aliases should not be used (MAJOR)
+- typescript:S6569 — Unnecessary type constraints should be removed (MAJOR)
+- typescript:S6643 — Prototypes of builtin objects should not be modified (MAJOR)
+- typescript:S6657 — Octal escape sequences should not be used (MAJOR)
+- typescript:S6661 — Object spread syntax should be used instead of "Object.assign" (MAJOR)
+- typescript:S6666 — Spread syntax should be used instead of "apply()" (MAJOR)
+- typescript:S1082 — Mouse events should have corresponding keyboard events (MAJOR)
+- typescript:S1199 — Nested code blocks should not be used (MAJOR)
+- typescript:S1488 — Local variables should not be declared and then immediately returned or thrown (MAJOR)
+- typescript:S1525 — Debugger statements should not be used (CRITICAL)
+- typescript:S1528 — Array constructors should not be used (MAJOR)
+- typescript:S1530 — Function declarations should not be made within blocks (MAJOR)
+- typescript:S1533 — Wrapper objects should not be used for primitive types (MAJOR)
+- typescript:S1874 — Deprecated APIs should not be used (MAJOR)
+- typescript:S2094 — Classes should not be empty (MAJOR)
+- typescript:S2427 — The base should be provided to "parseInt" (MAJOR)
+- typescript:S3001 — "delete" should be used only with object properties (MAJOR)
+- typescript:S3257 — Primitive types should be omitted from initialized or defaulted declarations (MAJOR)
+- typescript:S4023 — Interfaces should not be empty (MAJOR)
+- typescript:S4157 — Default type parameters should be omitted (MAJOR)
+- typescript:S4158 — Empty collections should not be accessed or iterated (MAJOR)
+- typescript:S4324 — Primitive return types should be used (MAJOR)
+- typescript:S4325 — Redundant casts and non-null assertions should be avoided (MAJOR)
+- typescript:S6509 — Extra boolean casts should be removed (MAJOR)
+- typescript:S6565 — Prefer the return type "this" in fluent interfaces (MAJOR)
+- typescript:S6571 — Type constituents of unions and intersections should not be redundant (MAJOR)
+- typescript:S6598 — Function types should be preferred (MAJOR)
+- typescript:S6606 — Nullish coalescing should be preferred (MAJOR)
+- typescript:S6635 — Constructors should not return values (MAJOR)
+- typescript:S6637 — Unnecessary calls to ".bind()" should not be used (MAJOR)
+- typescript:S6647 — Unnecessary constructors should be removed (MAJOR)
+- typescript:S6653 — Use Object.hasOwn static method instead of hasOwnProperty (MAJOR)

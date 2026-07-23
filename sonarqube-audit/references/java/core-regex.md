@@ -1,20 +1,20 @@
 # core-regex
-- java:S5843 — Regular expressions should not be too complex (maxComplexity=20)
-- java:S5845 — Regex alternatives should not be redundant
-- java:S5846 — Regular expressions should not contain multiple spaces
-- java:S5850 — Regex quantifier and character classes should not be redundant
-- java:S5852 — Using slow regular expressions is security-sensitive
-- java:S5853 — "String#replace" can be used instead of "String#replaceAll"
-- java:S5854 — Regex groups should not be empty
-- java:S5855 — Regex character classes should not use single-character alternatives
-- java:S5856 — Regular expressions should be syntactically valid
-- java:S5857 — Regex patterns should not contain escaped letters that are not special regex characters
-- java:S5860 — Regular expression back-references should refer to existing groups
-- java:S5866 — "Pattern.DOTALL" flag or inline modifier "(?s)" should be used when "." is expected to match any character
-- java:S5868 — Unicode-aware versions of character classes should be preferred
-- java:S5869 — Redundant character classes in regular expressions should be removed
-- java:S5998 — Regular expressions should not overflow the stack (maxStackConsumptionFactor=5.0)
-- java:S6326 — Single character alternation should be replaced by a character class
-- java:S6331 — Regex boundary matchers should not be unconditionally met
-- java:S6353 — Unicode escape sequences should not be used in regular expressions
-- java:S6355 — Regex pattern should not be created from unescaped String
+- java:S5843 — Regular expressions should not be too complex (maxComplexity=20) (MAJOR)
+- java:S5845 — Regex alternatives should not be redundant (MAJOR)
+- java:S5846 — Regular expressions should not contain multiple spaces (MAJOR)
+- java:S5850 — Regex quantifier and character classes should not be redundant (MAJOR)
+- java:S5852 — Using slow regular expressions is security-sensitive (MAJOR)
+- java:S5853 — "String#replace" can be used instead of "String#replaceAll" (MAJOR)
+- java:S5854 — Regex groups should not be empty (MAJOR)
+- java:S5855 — Regex character classes should not use single-character alternatives (MAJOR)
+- java:S5856 — Regular expressions should be syntactically valid (MAJOR)
+- java:S5857 — Regex patterns should not contain escaped letters that are not special regex characters (MAJOR)
+- java:S5860 — Regular expression back-references should refer to existing groups (MAJOR)
+- java:S5866 — "Pattern.DOTALL" flag or inline modifier "(?s)" should be used when "." is expected to match any character (MAJOR)
+- java:S5868 — Unicode-aware versions of character classes should be preferred (MAJOR)
+- java:S5869 — Redundant character classes in regular expressions should be removed (MAJOR)
+- java:S5998 — Regular expressions should not overflow the stack (maxStackConsumptionFactor=5.0) (MAJOR)
+- java:S6326 — Single character alternation should be replaced by a character class (MAJOR)
+- java:S6331 — Regex boundary matchers should not be unconditionally met (MAJOR)
+- java:S6353 — Unicode escape sequences should not be used in regular expressions (MAJOR)
+- java:S6355 — Regex pattern should not be created from unescaped String (MAJOR)

@@ -1,15 +1,15 @@
 # core-types
-- typescript:S4335 — Type intersections should use meaningful types
-- typescript:S4621 — Union and intersection types should not include duplicated constituents
-- typescript:S4204 — The "any" type should not be used
-- typescript:S4622 — Union types should not have too many elements
-- typescript:S4782 — Optional property declarations should not use both '?' and 'undefined' syntax
-- typescript:S6550 — All enum members should be literals
-- typescript:S6572 — Enum member values should be either all initialized or none
-- typescript:S6578 — Enum values should be unique
-- typescript:S6583 — Enum members should not mix value types
-- typescript:S6590 — "as const" assertions should be preferred
-- typescript:S2966 — Non-null assertions should not be used
-- typescript:S4322 — Type predicates should be used
-- typescript:S4323 — Type aliases should be used
-- typescript:S6568 — Non-null assertions should not be used misleadingly
+- typescript:S4335 — Type intersections should use meaningful types (MAJOR)
+- typescript:S4621 — Union and intersection types should not include duplicated constituents (MAJOR)
+- typescript:S4204 — The "any" type should not be used (MAJOR)
+- typescript:S4622 — Union types should not have too many elements (MAJOR)
+- typescript:S4782 — Optional property declarations should not use both '?' and 'undefined' syntax (MAJOR)
+- typescript:S6550 — All enum members should be literals (MAJOR)
+- typescript:S6572 — Enum member values should be either all initialized or none (MAJOR)
+- typescript:S6578 — Enum values should be unique (MAJOR)
+- typescript:S6583 — Enum members should not mix value types (MAJOR)
+- typescript:S6590 — "as const" assertions should be preferred (MAJOR)
+- typescript:S2966 — Non-null assertions should not be used (MAJOR)
+- typescript:S4322 — Type predicates should be used (MAJOR)
+- typescript:S4323 — Type aliases should be used (MAJOR)
+- typescript:S6568 — Non-null assertions should not be used misleadingly (MAJOR)
