@@ -44,8 +44,9 @@ O relatório gerado DEVE seguir exatamente este template. Substituir todos os pl
 ## 📋 Índice
 
 - [Resumo Executivo](#-resumo-executivo)
+- [Metodologia e Limitações](#-metodologia-e-limitações)
 - [Visão Geral por Severidade](#-visão-geral-por-severidade)
-- [Arquivos Mais Afetados](#-arquivos-mais-afetados)
+- [Arquivos com Violações](#-arquivos-com-violações)
 - [Regras Mais Violadas](#-regras-mais-violadas)
 - [Plano de Ação](#-plano-de-ação)
   - [Fase 1 — Correções Urgentes e Rápidas](#fase-1--correções-urgentes-e-rápidas)
@@ -53,7 +54,6 @@ O relatório gerado DEVE seguir exatamente este template. Substituir todos os pl
   - [Fase 3 — Melhorias de Qualidade Rápidas](#fase-3--melhorias-de-qualidade-rápidas)
   - [Fase 4 — Melhorias com Refatoração](#fase-4--melhorias-com-refatoração)
   - [Fase 5 — Ajustes Finos](#fase-5--ajustes-finos)
-- [Detalhamento por Arquivo](#-detalhamento-por-arquivo)
 - [Glossário](#-glossário)
 - [Prompt para Correção Automatizada](#-prompt-para-correção-automatizada)
 
@@ -73,6 +73,22 @@ Este relatório apresenta os resultados da auditoria de qualidade de código bas
 
 ---
 
+## ⚠️ Metodologia e Limitações
+
+Este relatório combina duas camadas de análise com níveis de precisão distintos:
+
+| Camada | Método | Precisão | Regras |
+|--------|--------|----------|--------|
+| **Determinística** | Scanner baseado em regex/AST (ripgrep, semgrep, ast-grep) | ~98% | S106, S5131, S1148, S1313, S2068, S6437, S6418, S1186, S1128, S1135, S6676, S2245, S2115, S2386, S4830, S3330, S5122, S2589 |
+| **Heurística** | Análise semântica por LLM (interpretação de contexto) | Variável | S3776, S2259, S1854, S1066, S3740, S112, S2095, S1874, S1161, S1168, S1192, S107, S3735, S125 (blocos complexos), entre outras |
+
+**Importante:**
+- Violações da camada determinística são altamente confiáveis (falsos positivos < 2%).
+- Violações da camada heurística são identificadas por interpretação do LLM e **podem conter falsos positivos ou falsos negativos**. Recomenda-se validação manual para itens críticos desta camada.
+- A contagem de linhas na análise heurística pode ter desvio de ±5 linhas em relação à posição exata da violação.
+
+---
+
 ## 🎯 Visão Geral por Severidade
 
 | Severidade | Quantidade | Significado |
@@ -85,13 +101,17 @@ Este relatório apresenta os resultados da auditoria de qualidade de código bas
 
 ---
 
-## 📁 Arquivos Mais Afetados
+## 📁 Arquivos com Violações
 
-| # | Arquivo | Violações | Severidade mais alta |
-|---|---------|:---------:|---------------------|
-| 1 | [`{arquivo_1}`]({link_arquivo_1}) | {count_1} | {severidade_1} |
-| 2 | [`{arquivo_2}`]({link_arquivo_2}) | {count_2} | {severidade_2} |
+Lista completa de todos os arquivos com violações detectadas, ordenados por severidade máxima (BLOCKER → CRITICAL → MAJOR → MINOR → INFO) e desempate por quantidade decrescente.
+
+| # | Arquivo | Issues | Sev. Máxima |
+|---|---------|:------:|-------------|
+| 1 | `{arquivo_1}` | {count_1} | {severidade_1} |
+| 2 | `{arquivo_2}` | {count_2} | {severidade_2} |
 | ... | ... | ... | ... |
+
+> Listar **TODOS** os arquivos com violações — sem corte ou amostragem.
 
 ---
 
@@ -115,7 +135,7 @@ O plano está organizado em **5 fases**, priorizando por criticidade (eixo princ
 
 | # | Arquivo | Linha | Regra | Problema | Como Corrigir | Esforço |
 |---|---------|:-----:|-------|----------|---------------|:-------:|
-| 1 | [`{arquivo}`](#detalhamento-{arquivo_anchor}) | {linha} | `{rule}` | {problema} | {como_corrigir} | {esforco} |
+| 1 | `{arquivo}` | {linha} | `{rule}` | {problema} | {como_corrigir} | {esforco} |
 | ... | ... | ... | ... | ... | ... | ... |
 
 ### Fase 2 — Correções Urgentes com Refatoração
@@ -149,23 +169,6 @@ O plano está organizado em **5 fases**, priorizando por criticidade (eixo princ
 | # | Arquivo | Linha | Regra | Problema | Como Corrigir | Esforço |
 |---|---------|:-----:|-------|----------|---------------|:-------:|
 | ... | ... | ... | ... | ... | ... | ... |
-
----
-
-## 📂 Detalhamento por Arquivo
-
-Para cada arquivo com violações, uma seção dedicada com todas as issues encontradas.
-
-### <a id="detalhamento-{arquivo_anchor}"></a> `{caminho/do/Arquivo.java}`
-
-**Violações:** {total} | **Severidade mais alta:** {severidade}
-
-| Linha | Regra | Severidade | Problema | Como Corrigir |
-|:-----:|-------|------------|----------|---------------|
-| {linha} | `{rule}` | {sev} | {problema} | {como_corrigir} |
-| ... | ... | ... | ... | ... |
-
-> Repetir esta seção para **cada arquivo** com violações, em ordem decrescente de quantidade de violações.
 
 ---
 

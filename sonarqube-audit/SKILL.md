@@ -46,7 +46,7 @@ Se a intenção do usuário não for 100% clara, **sempre pergunte antes de exec
 O relatório gerado **DEVE** seguir rigorosamente o template definido nos arquivos `typescript/audit.md` e `java/audit.md`. Independente das características do projeto:
 
 - **Todas as seções do template são obrigatórias** — mesmo que uma seção tenha zero itens, ela deve aparecer com a indicação "Nenhuma violação encontrada nesta fase."
-- **A ordem das seções nunca muda** — Índice → Resumo Executivo → Severidade → Arquivos Mais Afetados → Regras Mais Violadas → Plano de Ação (Fases 1-5) → Detalhamento por Arquivo → Glossário → Prompt
+- **A ordem das seções nunca muda** — Índice → Resumo Executivo → Metodologia e Limitações → Severidade → Arquivos com Violações → Regras Mais Violadas → Plano de Ação (Fases 1-5) → Glossário → Prompt
 - **O glossário é sempre o mesmo** — termos e definições são fixos, não variam por projeto
 - **As 5 fases do plano de ação são sempre as mesmas** — a matriz criticidade x facilidade não muda
 - **O formato das tabelas é fixo** — mesmas colunas, mesma ordem, mesmos headers
@@ -214,20 +214,19 @@ Onde `AAAA-MM-DD` é a data da execução.
 
 O relatório deve seguir **exatamente** o template definido no arquivo `audit.md` da linguagem correspondente (`typescript/audit.md` ou `java/audit.md`). Para projetos multilinguagem, combinar ambos os templates em um único relatório.
 
-**Formato híbrido obrigatório:**
+**Formato da seção "Arquivos com Violações":**
 
-**No corpo do relatório (Detalhamento por Arquivo)**, usar formato compacto — cada arquivo aparece UMA vez com contagem de violações por regra:
+Tabela compacta listando **TODOS** os arquivos com violações, ordenados por severidade máxima (BLOCKER → CRITICAL → MAJOR → MINOR → INFO), com desempate por quantidade decrescente:
 
 ```
-### `path/to/file.jsp`
-| Regra | Severidade | Qtd | Descrição |
-|-------|-----------|-----|-----------|
-| S5131 | BLOCKER | 5 | EL expressions sem escaping em contexto JS |
-| S5131 | CRITICAL | 3 | EL expressions sem escaping em HTML |
-| S1313 | MAJOR | 1 | IP hardcoded |
+| # | Arquivo | Issues | Sev. Máxima |
+|---|---------|:------:|-------------|
+| 1 | `path/to/file.jsp` | 33 | BLOCKER |
+| 2 | `path/to/Service.java` | 91 | CRITICAL |
+| ... | ... | ... | ... |
 ```
 
-**CRÍTICO:** Listar **TODOS** os arquivos com violações — não usar "primeira ocorrência" ou amostragem. Se 60 JSPs têm violações, os 60 devem aparecer.
+**CRÍTICO:** Listar **TODOS** os arquivos com violações — sem corte ou amostragem. Se 60 JSPs têm violações, os 60 devem aparecer.
 
 **No prompt de correção (final do relatório)**, usar formato detalhado com linha exata:
 
