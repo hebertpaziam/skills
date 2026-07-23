@@ -194,31 +194,17 @@ Copie o prompt abaixo e cole no seu agente de IA para iniciar a correção autom
 {openspec_block}
 
 ~~~
-Corrija as violações SonarQube listadas abaixo. Para cada item:
-1. Localize o arquivo e a linha indicados
-2. Aplique a correção descrita na coluna "Como Corrigir"
-3. Certifique-se de que a correção não introduz novos problemas
-4. Mantenha o comportamento funcional existente
+Corrija as violações SonarQube do projeto conforme o relatório `{nome_do_arquivo_gerado}`.
 
-## Fase 1 — Correções Urgentes e Rápidas ({fase1_total} itens)
+Instruções:
+1. Leia o relatório referenciado acima como fonte de verdade
+2. Comece pela Fase 1 (correções urgentes e rápidas) e avance sequencialmente
+3. Para cada violação, localize o arquivo e linha indicados no Plano de Ação
+4. Aplique a correção descrita na coluna "Como Corrigir"
+5. Certifique-se de que a correção não introduz novos problemas
+6. Mantenha o comportamento funcional existente
 
-{lista_fase1_com_arquivo_linha_regra_e_correcao}
-
-## Fase 2 — Correções Urgentes com Refatoração ({fase2_total} itens)
-
-{lista_fase2_com_arquivo_linha_regra_e_correcao}
-
-## Fase 3 — Melhorias de Qualidade Rápidas ({fase3_total} itens)
-
-{lista_fase3_com_arquivo_linha_regra_e_correcao}
-
-## Fase 4 — Melhorias com Refatoração ({fase4_total} itens)
-
-{lista_fase4_com_arquivo_linha_regra_e_correcao}
-
-## Fase 5 — Ajustes Finos ({fase5_total} itens)
-
-{lista_fase5_com_arquivo_linha_regra_e_correcao}
+Fases a corrigir: 1 a 5 (priorize as fases iniciais).
 ~~~
 ````
 

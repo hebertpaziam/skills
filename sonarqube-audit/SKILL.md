@@ -233,13 +233,23 @@ Tabela compacta listando **TODOS** os arquivos com violações, ordenados por se
 
 **CRÍTICO:** Listar **TODOS** os arquivos com violações — sem corte ou amostragem. Se 60 JSPs têm violações, os 60 devem aparecer.
 
-**No prompt de correção (final do relatório)**, usar formato detalhado com linha exata:
+**No prompt de correção (final do relatório)**, usar formato simples que referencia o próprio relatório como fonte:
 
 ```
-### Correções para `path/to/file.jsp`
-- **Linha 15:** `${error}` → `<c:out value="${error}"/>` (S5131)
-- **Linha 23:** `${link}` em `<script>` → escapar com `Encoder.forJavaScript()` (S5131)
+Corrija as violações SonarQube do projeto conforme o relatório `<nome-do-arquivo>.md`.
+
+Instruções:
+1. Leia o relatório referenciado acima como fonte de verdade
+2. Comece pela Fase 1 e avance sequencialmente
+3. Para cada violação, localize o arquivo e linha indicados no Plano de Ação
+4. Aplique a correção descrita na coluna "Como Corrigir"
+5. Certifique-se de que a correção não introduz novos problemas
+6. Mantenha o comportamento funcional existente
+
+Fases a corrigir: 1 a 5 (priorize as fases iniciais).
 ```
+
+**NÃO listar arquivos/violações no prompt.** O relatório já contém toda a informação necessária.
 
 ### Etapa 6 — Output no Terminal
 
