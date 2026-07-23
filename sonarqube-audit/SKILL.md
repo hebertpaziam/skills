@@ -58,6 +58,59 @@ Isso garante que qualquer pessoa que leia relatórios de projetos diferentes rec
 
 ## Fluxo de Execução
 
+### Etapa 0 — Scan Determinístico (pré-análise automatizada)
+
+**Esta etapa é 100% mecânica — não requer julgamento do LLM.**
+
+Antes de qualquer análise por sub-agentes, executar o scanner determinístico para detectar violações mecânicas com precisão exata.
+
+**Execução:**
+
+```bash
+bash .agents/skills/sonarqube-audit/scanners/scan.sh <project_root> /tmp/opencode
+```
+
+O script automaticamente:
+1. Detecta ferramentas disponíveis (semgrep > ast-grep > ripgrep)
+2. Executa a cascata de detecção apropriada
+3. Gera `/tmp/opencode/findings.json` com todas as violações determinísticas
+
+**Saída:** `findings.json` contendo findings com campos: file, line, rule, severity, category, message, match, confidence, source.
+
+**Impacto nos sub-agentes (Etapa 3):**
+- Sub-agentes recebem o `findings.json` como input
+- Para regras já cobertas pelo scanner (S2068, S5131, S106, S1313, S1148, etc.), os sub-agentes **NÃO recontar** — aceitar os números como verdade
+- Sub-agentes focam **apenas** em regras que o scanner não cobre (complexidade cognitiva S3776, design patterns, @Override S1161, lógica de negócio)
+- Arquivos que só têm violações já detectadas pelo scanner **NÃO precisam ser lidos** pelo sub-agente
+
+**Regras cobertas pelo scanner (não recontar):**
+- S2068 (credenciais hardcoded)
+- S1313 (IPs hardcoded)
+- S5131 (XSS em JSP - EL expressions)
+- S2115 (senha de DB vazia)
+- S106 (System.out/err)
+- S1148 (printStackTrace)
+- S1128 (wildcard imports)
+- S1135 (TODO/FIXME)
+- S2589 (condição always true/false)
+- S1186 (método vazio)
+- S2386 (mutable public static)
+- S6676 (console.log)
+- S4830 (SSL reject unauthorized)
+- S2245 (Math.random)
+- S3330 (cookie sem HttpOnly)
+- S5122 (CORS wildcard)
+
+**Regras que ficam para os sub-agentes LLM:**
+- S3776 (complexidade cognitiva)
+- S1161 (@Override ausente)
+- S1066 (condições colapsáveis)
+- S1452 (wildcard generics)
+- S2259 (null dereference)
+- S1854 (dead stores — contexto necessário)
+- Regras de design/arquitetura
+- Regras que requerem análise semântica
+
 ### Etapa 1 — Inventário de Arquivos (baseado em .gitignore)
 
 **Esta etapa é mecânica — não requer julgamento.**
@@ -104,6 +157,9 @@ Disparar **um sub-agente por categoria** que tenha arquivos. Cada sub-agente rec
 - A lista de arquivos da sua categoria
 - As referências específicas da categoria
 - `universal/scan-all.md` (obrigatório para TODOS os sub-agentes)
+- **Os findings determinísticos da Etapa 0** (para não recontar regras mecânicas)
+
+**IMPORTANTE:** O sub-agente deve pular a leitura de arquivos que só possuem violações já detectadas na Etapa 0. Focar apenas em arquivos que precisam de análise semântica.
 
 ```
 Sub-agente SOURCE     → arquivos .java           + java/* + universal/scan-all

@@ -1,0 +1,105 @@
+# ast-grep rules for SonarQube Java rules
+# These rules use tree-sitter patterns for AST-level detection
+
+# S2068 - Hard-coded credentials in variable assignments
+id: sonar-S2068-java
+language: java
+severity: error
+message: "Credencial hardcoded: variável '$VAR' contém segredo"
+metadata:
+  sonar_rule: S2068
+  severity: BLOCKER
+  category: security
+rule:
+  any:
+    - pattern: String $VAR = $VALUE;
+      constraints:
+        VAR:
+          regex: "(?i)(password|passwd|pwd|secret|apikey|api_key|token|credential)"
+        VALUE:
+          regex: "\"[^\"]{3,}\""
+    - pattern: private String $VAR = $VALUE;
+      constraints:
+        VAR:
+          regex: "(?i)(password|passwd|pwd|secret|apikey|api_key|token|credential)"
+        VALUE:
+          regex: "\"[^\"]{3,}\""
+---
+# S106 - Standard outputs should not be used directly to log anything
+id: sonar-S106-sysout
+language: java
+severity: warning
+message: "Uso de System.out ao invés de logger"
+metadata:
+  sonar_rule: S106
+  severity: MAJOR
+  category: code-smell
+rule:
+  any:
+    - pattern: System.out.println($$$ARGS)
+    - pattern: System.out.print($$$ARGS)
+    - pattern: System.out.printf($$$ARGS)
+    - pattern: System.err.println($$$ARGS)
+    - pattern: System.err.print($$$ARGS)
+---
+# S1148 - Throwable.printStackTrace() should not be called
+id: sonar-S1148-printstacktrace
+language: java
+severity: warning
+message: "Uso de printStackTrace() ao invés de logger"
+metadata:
+  sonar_rule: S1148
+  severity: MAJOR
+  category: code-smell
+rule:
+  pattern: $EX.printStackTrace()
+---
+# S2386 - Mutable public static fields
+id: sonar-S2386-mutable-static
+language: java
+severity: error
+message: "Campo mutável public static sem final"
+metadata:
+  sonar_rule: S2386
+  severity: CRITICAL
+  category: code-smell
+rule:
+  any:
+    - pattern: public static List $FIELD = $VALUE;
+    - pattern: public static Map $FIELD = $VALUE;
+    - pattern: public static Set $FIELD = $VALUE;
+    - pattern: public static Collection $FIELD = $VALUE;
+---
+# S1186 - Methods should not be empty
+id: sonar-S1186-empty-method
+language: java
+severity: warning
+message: "Corpo de método vazio"
+metadata:
+  sonar_rule: S1186
+  severity: MAJOR
+  category: code-smell
+rule:
+  pattern: |
+    $RET $METHOD($$$PARAMS) {
+    }
+---
+# S2095 - Resources should be closed (try-with-resources)
+id: sonar-S2095-resource-leak
+language: java
+severity: error
+message: "Recurso não fechado - usar try-with-resources"
+metadata:
+  sonar_rule: S2095
+  severity: CRITICAL
+  category: reliability
+rule:
+  any:
+    - pattern: |
+        $TYPE $VAR = new $RESOURCE($$$ARGS);
+      constraints:
+        RESOURCE:
+          regex: "(FileInputStream|FileOutputStream|BufferedReader|BufferedWriter|Connection|Statement|ResultSet|Socket|Scanner)"
+      not:
+        inside:
+          kind: resource_specification

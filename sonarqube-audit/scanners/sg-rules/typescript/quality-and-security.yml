@@ -1,0 +1,91 @@
+# ast-grep rules for SonarQube TypeScript/JavaScript rules
+
+# S6676 - console.log usage
+id: sonar-S6676-console-log
+language: typescript
+severity: warning
+message: "Uso de console.$METHOD() - remover antes de produção"
+metadata:
+  sonar_rule: S6676
+  severity: MAJOR
+  category: code-smell
+rule:
+  any:
+    - pattern: console.log($$$ARGS)
+    - pattern: console.warn($$$ARGS)
+    - pattern: console.error($$$ARGS)
+    - pattern: console.info($$$ARGS)
+    - pattern: console.debug($$$ARGS)
+---
+# S4830 - Server certificates should be verified
+id: sonar-S4830-reject-unauthorized
+language: typescript
+severity: error
+message: "Verificação de certificado SSL desabilitada"
+metadata:
+  sonar_rule: S4830
+  severity: BLOCKER
+  category: security
+rule:
+  pattern: "rejectUnauthorized: false"
+---
+# S2245 - Math.random() is not cryptographically secure
+id: sonar-S2245-math-random
+language: typescript
+severity: error
+message: "Math.random() não é criptograficamente seguro"
+metadata:
+  sonar_rule: S2245
+  severity: CRITICAL
+  category: security
+rule:
+  pattern: Math.random()
+---
+# S1186 - Empty function body
+id: sonar-S1186-empty-function-ts
+language: typescript
+severity: warning
+message: "Corpo de função vazio"
+metadata:
+  sonar_rule: S1186
+  severity: MAJOR
+  category: code-smell
+rule:
+  any:
+    - pattern: "function $NAME($$$PARAMS) {}"
+    - pattern: "($$$PARAMS) => {}"
+---
+# S3776 - Cognitive complexity (catch nested callbacks >3 levels)
+id: sonar-S3776-nested-callbacks
+language: typescript
+severity: warning
+message: "Callback aninhado em excesso - aumenta complexidade cognitiva"
+metadata:
+  sonar_rule: S3776
+  severity: CRITICAL
+  category: code-smell
+rule:
+  pattern: |
+    $A($$$) {
+      $B($$$) {
+        $C($$$) {
+          $$$BODY
+        }
+      }
+    }
+---
+# S1854 - Dead stores (assigned but never used - simple case)
+id: sonar-S1854-unused-assignment
+language: typescript
+severity: warning
+message: "Variável atribuída mas potencialmente não utilizada"
+metadata:
+  sonar_rule: S1854
+  severity: MAJOR
+  category: code-smell
+note: "This is a heuristic - AST alone can't fully determine unused vars"
+rule:
+  pattern: "let $VAR = $VALUE;"
+  not:
+    followed:
+      pattern: $VAR
