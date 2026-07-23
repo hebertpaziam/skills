@@ -8,7 +8,7 @@ description: 'Audita o codebase completo contra regras SonarQube e gera um relat
 Audita **todos** os arquivos do projeto contra regras SonarQube e produz um relatório `.md` completo na raiz do projeto.
 
 **Idioma do relatório:** pt-BR
-**Idioma do output no terminal:** mínimo — o valor está no arquivo gerado.
+**Output no terminal:** NENHUM durante a execução. Apenas uma linha final com o nome do arquivo gerado. O LLM deve trabalhar silenciosamente usando tools — sem emitir texto intermediário ao usuário.
 
 ---
 
@@ -207,10 +207,15 @@ Consolidar as violações de todos os sub-agentes e organizar em fases usando do
 
 Gerar o arquivo na raiz do projeto com o nome:
 ```
-sonarqube-audit--AAAA-MM-DD.md
+<nome-da-pasta-do-projeto>_<AAAA-MM-DD>_v<N>.md
 ```
 
-Onde `AAAA-MM-DD` é a data da execução.
+Onde:
+- `<nome-da-pasta-do-projeto>` é o basename do diretório raiz do projeto (em kebab-case, como está)
+- `<AAAA-MM-DD>` é a data da execução
+- `<N>` é um número auto-incrementado: verificar quais arquivos `<nome>_<data>_v*.md` já existem na raiz e usar o próximo número (v1, v2, v3...)
+
+Exemplo: `br-novo-portal-prestadores-site_2026-07-23_v1.md`
 
 O relatório deve seguir **exatamente** o template definido no arquivo `audit.md` da linguagem correspondente (`typescript/audit.md` ou `java/audit.md`). Para projetos multilinguagem, combinar ambos os templates em um único relatório.
 
@@ -238,10 +243,12 @@ Tabela compacta listando **TODOS** os arquivos com violações, ordenados por se
 
 ### Etapa 6 — Output no Terminal
 
-Após gerar o relatório, o output no terminal deve ser **mínimo e direto**:
+O agente **NÃO deve emitir nenhum texto ao usuário durante a execução**. Todo o trabalho intermediário (scanner, inventário, sub-agentes) acontece silenciosamente via tools.
+
+Após gerar o relatório, emitir **apenas uma linha**:
 
 ```
-Relatório gerado: sonarqube-audit--2026-07-22.md
+Relatório gerado: <nome-do-arquivo>.md
 ```
 
 Nada mais. O relatório é autocontido.

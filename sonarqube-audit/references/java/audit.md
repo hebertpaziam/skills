@@ -234,7 +234,7 @@ Se o projeto possui OpenSpec configurado (diretório `openspec/` na raiz), inclu
 
 Este projeto utiliza OpenSpec. Para iniciar a correção via change proposal, use o comando:
 
-> `/opsx-propose Corrigir violações SonarQube da Fase {N} conforme relatório sonarqube-audit--{AAAA-MM-DD}.md`
+ > `/opsx-propose Corrigir violações SonarQube da Fase {N} conforme relatório {nome-do-projeto}_{AAAA-MM-DD}_v{N}.md`
 ```
 
 Se o projeto **não** possui OpenSpec, omitir este bloco completamente e substituir `{openspec_block}` por string vazia.
