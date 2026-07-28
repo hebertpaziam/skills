@@ -43,11 +43,11 @@ Se a intenção do usuário não for 100% clara, **sempre pergunte antes de exec
 
 ## Consistência do Relatório
 
-O relatório gerado **DEVE** seguir rigorosamente o template definido nos arquivos `typescript/audit.md` e `java/audit.md`. Independente das características do projeto:
+O relatório gerado **DEVE** seguir rigorosamente o template definido em `_shared/report-template.md`.
 
 - **Todas as seções do template são obrigatórias** — mesmo que uma seção tenha zero itens, ela deve aparecer com a indicação "Nenhuma violação encontrada nesta fase."
-- **A ordem das seções nunca muda** — Índice → Resumo Executivo → Metodologia e Limitações → Severidade → Arquivos com Violações → Regras Mais Violadas → Plano de Ação (Fases 1-5) → Glossário → Prompt
-- **Ícones nos títulos são OBRIGATÓRIOS** — Cada seção deve incluir o emoji correspondente conforme a tabela abaixo. NUNCA omitir os ícones:
+- **A ordem das seções nunca muda** — seguir exatamente a sequência do template
+- **Ícones nos títulos são OBRIGATÓRIOS** — NUNCA omitir os ícones. Referência rápida:
 
   | Seção | Título com Ícone |
   |-------|-----------------|
@@ -67,12 +67,8 @@ O relatório gerado **DEVE** seguir rigorosamente o template definido nos arquiv
   | Glossário | `## 📖 Glossário` |
   | Prompt | `## 🤖 Prompt para Correção Automatizada` |
 
-- **O glossário é sempre o mesmo** — termos e definições são fixos, não variam por projeto
-- **As 5 fases do plano de ação são sempre as mesmas** — a matriz criticidade x facilidade não muda
-- **O formato das tabelas é fixo** — mesmas colunas, mesma ordem, mesmos headers
+- **Seções vazias devem aparecer** com "Nenhuma violação encontrada nesta fase."
 - **Adaptações permitidas:** nome do projeto, data, linguagem detectada, dados quantitativos, conteúdo das violações encontradas, presença/ausência do bloco OpenSpec
-
-Isso garante que qualquer pessoa que leia relatórios de projetos diferentes reconheça imediatamente o layout e saiba onde encontrar cada informação.
 
 ---
 
@@ -177,6 +173,7 @@ Disparar **um sub-agente por categoria** que tenha arquivos. Cada sub-agente rec
 - A lista de arquivos da sua categoria
 - As referências específicas da categoria
 - `universal/scan-all.md` (obrigatório para TODOS os sub-agentes)
+- `_shared/report-template.md` (template de output do relatório)
 - **Os findings determinísticos da Etapa 0** (para não recontar regras mecânicas)
 
 **IMPORTANTE:** O sub-agente deve pular a leitura de arquivos que só possuem violações já detectadas na Etapa 0. Focar apenas em arquivos que precisam de análise semântica.
@@ -237,39 +234,11 @@ Onde:
 
 Exemplo: `br-novo-portal-prestadores-site_2026-07-23_v1.md`
 
-O relatório deve seguir **exatamente** o template definido no arquivo `audit.md` da linguagem correspondente (`typescript/audit.md` ou `java/audit.md`). Para projetos multilinguagem, combinar ambos os templates em um único relatório.
+O relatório deve seguir **exatamente** o template definido em `_shared/report-template.md`, substituindo `{linguagem}` pela linguagem correspondente. Para projetos multilinguagem, combinar ambos em um único relatório.
 
-**Formato da seção "Arquivos com Violações":**
+**Formato da seção "Arquivos com Violações":** Seguir exatamente o template em `_shared/report-template.md`. Listar **TODOS** os arquivos com violações — sem corte ou amostragem.
 
-Tabela compacta listando **TODOS** os arquivos com violações, ordenados por severidade máxima (BLOCKER → CRITICAL → MAJOR → MINOR → INFO), com desempate por quantidade decrescente:
-
-```
-| # | Arquivo | Issues | Sev. Máxima |
-|---|---------|:------:|-------------|
-| 1 | `path/to/file.jsp` | 33 | BLOCKER |
-| 2 | `path/to/Service.java` | 91 | CRITICAL |
-| ... | ... | ... | ... |
-```
-
-**CRÍTICO:** Listar **TODOS** os arquivos com violações — sem corte ou amostragem. Se 60 JSPs têm violações, os 60 devem aparecer.
-
-**No prompt de correção (final do relatório)**, usar formato simples que referencia o próprio relatório como fonte:
-
-```
-Corrija as violações SonarQube do projeto conforme o relatório `<nome-do-arquivo>.md`.
-
-Instruções:
-1. Leia o relatório referenciado acima como fonte de verdade
-2. Comece pela Fase 1 e avance sequencialmente
-3. Para cada violação, localize o arquivo e linha indicados no Plano de Ação
-4. Aplique a correção descrita na coluna "Como Corrigir"
-5. Certifique-se de que a correção não introduz novos problemas
-6. Mantenha o comportamento funcional existente
-
-Fases a corrigir: 1 a 5 (priorize as fases iniciais).
-```
-
-**NÃO listar arquivos/violações no prompt.** O relatório já contém toda a informação necessária.
+**No prompt de correção (final do relatório):** Seguir exatamente o formato definido em `_shared/report-template.md`. **NÃO listar arquivos/violações no prompt.** O relatório já contém toda a informação necessária.
 
 ### Etapa 6 — Output no Terminal
 
