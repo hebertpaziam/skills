@@ -16,6 +16,7 @@ O relatório gerado DEVE seguir exatamente este template. Substituir todos os pl
 ## 📋 Índice
 
 - [Resumo Executivo](#📊%20Resumo%20Executivo)
+- [Estado das Issues Anteriores](#🔁%20Estado%20das%20Issues%20Anteriores)
 - [Metodologia e Limitações](#⚠️%20Metodologia%20e%20Limitações)
 - [Visão Geral por Severidade](#🎯%20Visão%20Geral%20por%20Severidade)
 - [Arquivos com Violações](#📁%20Arquivos%20com%20Violações)
@@ -33,15 +34,40 @@ O relatório gerado DEVE seguir exatamente este template. Substituir todos os pl
 
 ## 📊 Resumo Executivo
 
-Este relatório apresenta os resultados da auditoria de qualidade de código baseada nas regras do SonarQube. O objetivo é identificar violações, classificá-las por impacto e fornecer um plano de ação claro para resolução.
+Este relatório apresenta o **estado atual de saúde** do código, verificado diretamente na base nesta execução. Todas as issues foram confirmadas contra o código real — nada é presumido de relatórios anteriores.
 
 | Indicador | Valor |
 |-----------|-------|
+| Cobertura da análise | **{n_analisados}** / {n_elegiveis} arquivos elegíveis ({percentual_cobertura}%) |
 | Total de violações | **{total}** |
 | Arquivos com violações | **{arquivos_com_violacoes}** / {total_arquivos} |
 | Arquivos limpos | **{arquivos_limpos}** |
 | Esforço estimado total | **{esforco_total}** |
 | Nota de saúde | **{nota}** ({percentual_limpo}% dos arquivos sem violações) |
+
+> **Integridade de cobertura:** `{n_analisados}` deve ser igual a `{n_elegiveis}`. Divergência invalida o relatório.
+
+---
+
+## 🔁 Estado das Issues Anteriores
+
+> Incluir esta seção **somente** se existir relatório anterior. Cada issue anterior foi reaberta e re-verificada contra o código atual — **não** é uma cópia do relatório passado. **Proibido** reconciliar versões anteriores do relatório entre si.
+
+| Indicador | Quantidade |
+|-----------|:----------:|
+| ✅ Corrigidas (não existem mais) | {corrigidas} |
+| ❌ Persistem (ainda no código) | {persistem} |
+| ➖ N/A (arquivo removido/inelegível) | {na} |
+| 🆕 Novas (surgiram nesta execução) | {novas} |
+
+**Issues corrigidas desde o último relatório:**
+
+| # | Arquivo | Linha | Regra | Status |
+|---|---------|:-----:|-------|:------:|
+| 1 | `{arquivo}` | {linha} | `{rule}` | ✅ corrigida |
+| ... | ... | ... | ... | ... |
+
+> Se não houver relatório anterior, substituir toda esta seção por: "Primeira auditoria do projeto — sem histórico para comparar. Todas as violações abaixo são novas."
 
 ---
 
@@ -51,7 +77,7 @@ Este relatório combina duas camadas de análise com níveis de precisão distin
 
 | Camada | Método | Precisão | Regras |
 |--------|--------|----------|--------|
-| **Determinística** | Scanner baseado em regex/AST (ripgrep, semgrep, ast-grep) | ~98% | S106, S5131, S1148, S1313, S2068, S6437, S6418, S1186, S1128, S1135, S6676, S2245, S2115, S2386, S4830, S3330, S5122, S2589 |
+| **Determinística** | Scanner `scan.mjs` (regex Node + AST via ast-grep) | ~98% | S106, S5131, S1148, S1313, S2068, S6437, S6418, S1186, S1128, S1135, S6676, S2245, S2115, S2386, S4830, S3330, S5122, S2589, S2095 |
 | **Heurística** | Análise semântica por LLM (interpretação de contexto) | Variável | S3776, S2259, S1854, S1066, S3740, S112, S2095, S1874, S1161, S1168, S1192, S107, S3735, S125 (blocos complexos), entre outras |
 
 **Importante:**
@@ -192,7 +218,7 @@ Se o projeto possui OpenSpec configurado (diretório `openspec/` na raiz), inclu
 
 Este projeto utiliza OpenSpec. Para iniciar a correção via change proposal, use o comando:
 
- > `/opsx-propose Corrigir violações SonarQube da Fase {N} conforme relatório {nome-do-projeto}_{AAAA-MM-DD}_v{N}.md`
+ > `/opsx-propose Corrigir violações SonarQube da Fase {N} conforme relatório sonarqube-reports/{nome-do-projeto}_{AAAA-MM-DDTHHMMSS}.md`
 ```
 
 Se o projeto **não** possui OpenSpec, omitir este bloco completamente e substituir `{openspec_block}` por string vazia.

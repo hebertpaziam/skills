@@ -1,10 +1,14 @@
-# ast-grep rules for SonarQube TypeScript/JavaScript rules
+# ast-grep rules for SonarQube TypeScript/JavaScript rules (schema: ast-grep >= 0.30)
+# Multi-document YAML: one rule per document, separated by `---`.
+# NOTE: `metadata` is NOT emitted in ast-grep --json output; the merge step
+# (scan.sh) re-reads these files to recover sonar_rule/severity/category.
+# `constraints` MUST be a top-level sibling of `rule` (not nested per pattern).
 
-# S6676 - console.log usage
+# S6676 - console.* usage
 id: sonar-S6676-console-log
 language: typescript
 severity: warning
-message: "Uso de console.$METHOD() - remover antes de produção"
+message: "Uso de console.* - remover antes de produção"
 metadata:
   sonar_rule: S6676
   severity: MAJOR
@@ -16,12 +20,13 @@ rule:
     - pattern: console.error($$$ARGS)
     - pattern: console.info($$$ARGS)
     - pattern: console.debug($$$ARGS)
+    - pattern: console.trace($$$ARGS)
 ---
 # S4830 - Server certificates should be verified
 id: sonar-S4830-reject-unauthorized
 language: typescript
 severity: error
-message: "Verificação de certificado SSL desabilitada"
+message: "Verificação de certificado SSL desabilitada (rejectUnauthorized: false)"
 metadata:
   sonar_rule: S4830
   severity: BLOCKER
@@ -41,7 +46,7 @@ metadata:
 rule:
   pattern: Math.random()
 ---
-# S1186 - Empty function body
+# S1481 - Unused local variables (assigned literal, heuristic)
 id: sonar-S1186-empty-function-ts
 language: typescript
 severity: warning
@@ -55,37 +60,28 @@ rule:
     - pattern: "function $NAME($$$PARAMS) {}"
     - pattern: "($$$PARAMS) => {}"
 ---
-# S3776 - Cognitive complexity (catch nested callbacks >3 levels)
-id: sonar-S3776-nested-callbacks
+# S5122 - CORS wildcard origin
+id: sonar-S5122-cors-wildcard
 language: typescript
-severity: warning
-message: "Callback aninhado em excesso - aumenta complexidade cognitiva"
+severity: error
+message: "CORS com origem curinga '*' expõe recursos a qualquer domínio"
 metadata:
-  sonar_rule: S3776
+  sonar_rule: S5122
   severity: CRITICAL
-  category: code-smell
+  category: security
 rule:
-  pattern: |
-    $A($$$) {
-      $B($$$) {
-        $C($$$) {
-          $$$BODY
-        }
-      }
-    }
+  any:
+    - pattern: "origin: '*'"
+    - pattern: "origin: \"*\""
 ---
-# S1854 - Dead stores (assigned but never used - simple case)
-id: sonar-S1854-unused-assignment
+# S2703 / debugger statement should not be used
+id: sonar-S1442-debugger
 language: typescript
 severity: warning
-message: "Variável atribuída mas potencialmente não utilizada"
+message: "Instrução debugger não deve permanecer no código"
 metadata:
-  sonar_rule: S1854
+  sonar_rule: S1442
   severity: MAJOR
   category: code-smell
-note: "This is a heuristic - AST alone can't fully determine unused vars"
 rule:
-  pattern: "let $VAR = $VALUE;"
-  not:
-    followed:
-      pattern: $VAR
+  pattern: debugger
