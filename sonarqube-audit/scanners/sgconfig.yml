@@ -1,5 +1,0 @@
-# ast-grep project configuration for the SonarQube audit skill.
-# Used by scan.sh:  ast-grep scan --config <this file> --json <project>
-# `ruleDirs` are resolved relative to THIS file's location.
-ruleDirs:
-  - sg-rules

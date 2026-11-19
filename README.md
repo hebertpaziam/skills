@@ -32,7 +32,7 @@ They are **agent-agnostic** — designed to work with any AI assistant that supp
 |-------|-------------|:----------:|
 | 🅰️ [angular-standards](./angular-standards/) | Angular code generation & architectural guidance — components, signals, forms, DI, routing, SSR, a11y, animations, styling (BEM/SCSS, Tailwind), testing (Vitest, Cypress) | 39 docs |
 | 🟦 [typescript-standards](./typescript-standards/) | TypeScript design standards — typing decisions, domain modeling, architecture (SOLID, GoF, KISS, YAGNI, LIFT), modules & boundaries | 30 docs |
-| 🔍 [sonarqube-audit](./sonarqube-audit/) | Full codebase audit against SonarQube rules — generates a detailed Markdown report with phased action plan. Routes ~976 rules (TypeScript + Java) by context | 47 docs |
+| 🔍 [sonarqube-audit](./sonarqube-audit/) | Codebase audit powered by a real SonarQube Community (Docker) — generates a Markdown report with phased action plan and issue diff between runs. Falls back to an approximate JS/TS-only mode without Docker | scripts |
 | 📝 [git-commit](./git-commit/) | Conventional Commits — auto-detects type/scope from diffs, intelligent staging, message generation | — |
 
 ---
@@ -43,7 +43,7 @@ Skills are designed to work together. The diagram below shows how they interact:
 
 ```mermaid
 graph TD
-    SQ["🔍 sonarqube-audit<br/><i>~976 rules · full codebase audit</i>"]
+    SQ["🔍 sonarqube-audit<br/><i>real SonarQube (Docker) · full audit report</i>"]
     AG["🅰️ angular-standards<br/><i>components · signals · forms · routing</i>"]
     TS["🟦 typescript-standards<br/><i>typing · architecture · design principles</i>"]
     GC["📝 git-commit<br/><i>conventional commits · auto staging</i>"]
@@ -61,7 +61,7 @@ graph TD
 
 > **Composition:** 🅰️ `angular-standards` loads 🟦 `typescript-standards` and delegates commits to 📝 `git-commit`
 >
-> **Audit:** 🔍 `sonarqube-audit` is standalone — audits any TS or Java project independently
+> **Audit:** 🔍 `sonarqube-audit` is standalone — audits any project independently (needs `docker` + `node`; without Docker it runs an approximate JS/TS-only mode)
 
 ---
 
@@ -109,10 +109,9 @@ skills/
 │       └── ...
 ├── 🔍 sonarqube-audit/
 │   ├── SKILL.md
-│   └── references/                 # 47 reference documents
-│       ├── typescript/             # 25 docs (TS-specific rules)
-│       ├── java/                   # 21 docs (Java-specific rules)
-│       └── universal/              # 1 doc (cross-language blockers)
+│   ├── scripts/                    # audit.mjs + lib/ (Docker, Sonar API, diff, render)
+│   └── references/
+│       └── report-template.md
 ├── 📝 git-commit/
 │   └── SKILL.md
 ├── LICENSE
